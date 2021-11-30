@@ -2,7 +2,7 @@
 
 namespace AsteroidS
 {
-    interface IUserInputProxy
+    public interface IUserInputProxy
     {
         event Action<float> OnAxisChange;
         void GetAxis();

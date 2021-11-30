@@ -2,7 +2,7 @@
 
 namespace AsteroidS
 {
-    interface IMobileInputFactory
+    public interface IMobileInputFactory
     {
         Button Create();
     }

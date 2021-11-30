@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace AsteroidS
 {
-    class PlayerMovementController : IInitialization, IFixedExecute, ICleanup
+    public class PlayerMovementController : IInitialization, IFixedExecute, ICleanup
     {
         private Rigidbody2D _rigidbodyToMove;
         private Movement _movement;

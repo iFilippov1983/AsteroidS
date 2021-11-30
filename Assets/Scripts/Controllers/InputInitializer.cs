@@ -2,10 +2,10 @@
 
 namespace AsteroidS
 {
-    class InputInitializer
+    public class InputInitializer
     {
-        private IUserInputProxy _pcInputHorizontal;
-        private IUserInputProxy _pcInputVertical;
+        public IUserInputProxy _pcInputHorizontal;
+        public IUserInputProxy _pcInputVertical;
 
         public InputInitializer()
         {

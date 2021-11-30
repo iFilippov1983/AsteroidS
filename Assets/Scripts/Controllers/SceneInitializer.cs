@@ -2,7 +2,7 @@
 
 namespace AsteroidS
 {
-    class SceneInitializer : IInitialization
+    public class SceneInitializer : IInitialization
     {
         private GameData _gameData;
 

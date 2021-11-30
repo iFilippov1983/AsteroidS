@@ -1,6 +1,6 @@
 ﻿namespace AsteroidS
 {
-    class InputController : IExecute
+    public class InputController : IExecute
     {
         private readonly IUserInputProxy _horizontal;
         private readonly IUserInputProxy _vertical;

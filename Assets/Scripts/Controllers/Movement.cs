@@ -2,7 +2,7 @@
 
 namespace AsteroidS
 {
-    class Movement //PhysicsMovement
+    public class Movement
     {
         private float _direction;
 

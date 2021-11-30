@@ -3,7 +3,7 @@ using Object = UnityEngine.Object;
 
 namespace AsteroidS
 {
-    class PlayerInitializer
+    public class PlayerInitializer
     {
         private readonly GameObject _player;
 
