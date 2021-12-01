@@ -1,16 +1,20 @@
+using System;
 using UnityEngine;
 
 namespace AsteroidS
 {
     public class GameManager : MonoBehaviour
     {
+        [SerializeField] private UIRootView _uiRootView;
         [SerializeField] private GameData _gameData;
         private ControllersProxy _controllers;
 
+     
+        
         private void Awake()
         {
             _controllers = new ControllersProxy();
-            new GameInitializer(_controllers, _gameData);
+            new GameInitializer(_controllers, _gameData, _uiRootView);
         }
 
         void Start()
@@ -19,9 +23,10 @@ namespace AsteroidS
         }
 
         void Update()
-        {
+        {   
             var deltaTime = Time.unscaledDeltaTime;
             _controllers.Execute(deltaTime);
+           
         }
 
         private void FixedUpdate()
