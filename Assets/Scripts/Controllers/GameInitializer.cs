@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-namespace AsteroidS
+﻿namespace AsteroidS
 {
     public class GameInitializer
     {

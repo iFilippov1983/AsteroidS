@@ -1,12 +1,15 @@
 using System;
 using TMPro;
-using UnityEngine;
 
 namespace AsteroidS
 {
     public class TimerController: IExecute, IInitialization, ICleanup
     {
+        private const string _message = "Time alive: ";
         private TextMeshProUGUI _timerDisplay;
+        private TimeSpan _time;
+        private float _seconds;
+        private string _aliveTime;
         private bool _isGameStarted;
 
         public TimerController(TimerCountView timerDisplay)
@@ -16,8 +19,10 @@ namespace AsteroidS
 
         public void Execute(float deltaTime)
         {
-            var timeSpan = deltaTime;
-            _timerDisplay.text = $"Time: {timeSpan}";
+            _seconds += deltaTime;
+            _time = TimeSpan.FromSeconds(_seconds);
+                
+            _timerDisplay.text = $"{_message}{_time.Hours:00}:{_time.Minutes:00}:{_time.Seconds:00}";
         }
 
         public void Initialize()
@@ -30,9 +35,12 @@ namespace AsteroidS
            
         }
 
-        private void GameStart(bool value)
+        private void PlayerDead(bool dead)
         {
-            _isGameStarted = value;
+            if (dead)
+                _aliveTime = $"{_time.Hours:00}:{_time.Minutes:00}:{_time.Seconds:00}";
         }
+
+        public string TimeAlive => _aliveTime;
     }
 }

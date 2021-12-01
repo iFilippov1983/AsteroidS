@@ -1,7 +1,4 @@
-using System;
 using TMPro;
-using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace AsteroidS
 {
