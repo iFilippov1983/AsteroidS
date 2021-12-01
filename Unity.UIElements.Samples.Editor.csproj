@@ -53,22 +53,22 @@
     <UnityVersion>2020.3.16f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Bootstraps\RuntimeTextAlignmentTags.cs" />
+    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Bootstraps\RuntimeEventsClickEvent.cs" />
+    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Events\GeometryChangedWindow.cs" />
+    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Bootstraps\RuntimeEventsGeometryChanged.cs" />
+    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Events\PointerEventsWindow.cs" />
+    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Bootstraps\RuntimeGeneralRootSelector.cs" />
+    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Bootstraps\RuntimeTextAssets.cs" />
     <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Events\KeyboardEventsWindow.cs" />
     <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Rendering\MeshApiWindow.cs" />
-    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Bootstraps\RuntimeTextBasicStyleTags.cs" />
-    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Events\GeometryChangedWindow.cs" />
-    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\General\DragAndDropWindow.cs" />
-    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Bootstraps\RuntimeEventsKeyboardEvents.cs" />
     <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\General\DataPersistenceWindow.cs" />
+    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Bootstraps\RuntimeTextBasicStyleTags.cs" />
+    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Bootstraps\RuntimeEventsKeyboardEvents.cs" />
     <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Bootstraps\RuntimeEventsTouchMove.cs" />
-    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Events\PointerEventsWindow.cs" />
+    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\General\DragAndDropWindow.cs" />
     <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Bootstraps\RuntimeRenderToTexture.cs" />
+    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Bootstraps\RuntimeTextAlignmentTags.cs" />
     <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Bootstraps\RuntimeEventsPointerEvents.cs" />
-    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Bootstraps\RuntimeTextAssets.cs" />
-    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Bootstraps\RuntimeEventsClickEvent.cs" />
-    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Bootstraps\RuntimeGeneralRootSelector.cs" />
-    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Bootstraps\RuntimeEventsGeometryChanged.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Editor\Unity.UIElements.Samples.Editor.asmdef" />

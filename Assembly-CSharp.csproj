@@ -64,11 +64,13 @@
     <Compile Include="Assets\Scripts\Data\PlayerData.cs" />
     <Compile Include="Assets\Scripts\Controllers\AsteroidBuilder.cs" />
     <Compile Include="Assets\Scripts\Controllers\InputInitializer.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviour\Bullet.cs" />
     <Compile Include="Assets\Scripts\Controllers\InputController.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviour\Asteroid.cs" />
     <Compile Include="Assets\Scripts\Data\AmmoType.cs" />
     <Compile Include="Assets\Scripts\Interface\IFixedExecute.cs" />
     <Compile Include="Assets\Scripts\Interface\IUserInputProxy.cs" />
+    <Compile Include="Assets\Scripts\Controllers\BulletsController.cs" />
     <Compile Include="Assets\Scripts\Controllers\Input\MobileInputFactory.cs" />
     <Compile Include="Assets\Scripts\Controllers\AsteroidsController.cs" />
     <Compile Include="Assets\Scripts\Interface\IMobileInputFactory.cs" />
@@ -89,8 +91,6 @@
     <Compile Include="Assets\Scripts\MonoBehaviour\GameManager.cs" />
     <Compile Include="Assets\Scripts\Interface\IExecute.cs" />
     <Compile Include="Assets\Scripts\Data\BulletData.cs" />
-    <Compile Include="Assets\Scripts\Controllers\BulletsController.cs" />
-    <Compile Include="Assets\Scripts\MonoBehaviour\Bullet.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Samples\UI Builder\1.0.0-preview.18\TanksMainMenu\TanksMainMenu.uxml" />

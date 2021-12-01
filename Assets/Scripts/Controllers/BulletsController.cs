@@ -12,7 +12,7 @@ namespace Assets.Scripts.Controllers
         private float _distanse = 2f;
         private Transform _transform;
         private bool _shootingTimer = true;
-        private float _rateOfFaire = 5f;
+        private float _rateOfFire = 5f;
         internal BulletsController(List<Asteroid> asteroids, Transform player)
         {
             _asteroids = asteroids;
@@ -30,10 +30,10 @@ namespace Assets.Scripts.Controllers
             {
                 if (_shootingTimer)
                 {
-                    var asteroidHut = GetAsteroid(hit);
+                    var asteroidHit = GetAsteroid(hit);
                     _shootingTimer = false;
-                    //asteroidHut.damag();
-                    Timer(_rateOfFaire);
+                    //asteroidHit.damage();
+                    Timer(_rateOfFire);
                 }
             }
         }

@@ -53,18 +53,18 @@
     <UnityVersion>2020.3.16f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Runtime\Rendering\Rotator.cs" />
-    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Runtime\Text\TextAssets.cs" />
     <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Runtime\Text\AlignmentTags.cs" />
-    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Runtime\Events\TouchMove.cs" />
-    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Runtime\General\RootSelector.cs" />
-    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Runtime\Rendering\UITextureProjection.cs" />
-    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Runtime\Text\BasicStyleTags.cs" />
-    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Runtime\Events\ClickEventSample.cs" />
     <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Runtime\Rendering\RenderTextureBackgroundDemo.cs" />
-    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Runtime\Events\KeyboardEvents.cs" />
-    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Runtime\Events\GeometryChanged.cs" />
+    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Runtime\Events\TouchMove.cs" />
     <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Runtime\Events\PointerEvents.cs" />
+    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Runtime\Events\GeometryChanged.cs" />
+    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Runtime\Rendering\Rotator.cs" />
+    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Runtime\Rendering\UITextureProjection.cs" />
+    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Runtime\Events\KeyboardEvents.cs" />
+    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Runtime\Text\TextAssets.cs" />
+    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Runtime\Events\ClickEventSample.cs" />
+    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Runtime\Text\BasicStyleTags.cs" />
+    <Compile Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Runtime\General\RootSelector.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Samples\UI Toolkit\1.0.0-preview.17\UI Toolkit Examples\Resources\Layouts\Rendering_RenderTextureBackground.uxml" />
