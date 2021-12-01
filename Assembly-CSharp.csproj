@@ -64,8 +64,10 @@
      <Compile Include="Assets\Scripts\Controllers\AsteroidBuilder.cs" />
      <Compile Include="Assets\Scripts\Controllers\InputInitializer.cs" />
      <Compile Include="Assets\Scripts\Controllers\InputController.cs" />
+     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\UIRootView.cs" />
      <Compile Include="Assets\Scripts\MonoBehaviour\Asteroid.cs" />
      <Compile Include="Assets\Scripts\Data\AmmoType.cs" />
+     <Compile Include="Assets\Scripts\Controllers\ScoreCountController.cs" />
      <Compile Include="Assets\Scripts\Interface\IFixedExecute.cs" />
      <Compile Include="Assets\Scripts\Interface\IUserInputProxy.cs" />
      <Compile Include="Assets\Scripts\Controllers\Input\MobileInputFactory.cs" />
@@ -78,6 +80,7 @@
      <Compile Include="Assets\Scripts\MonoBehaviour\Ammo.cs" />
      <Compile Include="Assets\Scripts\Data\GameData.cs" />
      <Compile Include="Assets\Scripts\Data\AsteroidType.cs" />
+     <Compile Include="Assets\Scripts\Data\UIObjectNames.cs" />
      <Compile Include="Assets\Scripts\Controllers\Movement.cs" />
      <Compile Include="Assets\Scripts\Controllers\PlayerMovementController.cs" />
      <Compile Include="Assets\Scripts\Interface\IController.cs" />
@@ -87,7 +90,30 @@
      <Compile Include="Assets\Scripts\Controllers\AsteroidsSpawner.cs" />
      <Compile Include="Assets\Scripts\MonoBehaviour\GameManager.cs" />
      <Compile Include="Assets\Scripts\Interface\IExecute.cs" />
-     <Compile Include="Assets\Scripts\MonoBehaviour\UIDisplayView.cs" />
+     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\ScoreCountView.cs" />
+     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\TimerCountView.cs" />
+     <Compile Include="Assets\Scripts\Controllers\TimerController.cs" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Mobile.cginc" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF SSD.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Surface.shader" />
+     <None Include="Assets\TextMesh Pro\Sprites\EmojiOne Attribution.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Custom-Atlas.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile SSD.shader" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Properties.cginc" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMPro_Surface.cginc" />
+     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Following Characters.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Masking.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF Overlay.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Fonts\LiberationSans - OFL.txt" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile.shader" />
+     <None Include="Assets\TextMesh Pro\Shaders\TMP_Sprite.shader" />
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
  </Reference>
