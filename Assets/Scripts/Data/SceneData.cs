@@ -7,11 +7,11 @@ namespace AsteroidS
     public class SceneData : ScriptableObject 
     {
         [Header("Assets to place on scene")]
-        [SerializeField] private List<Asteroid> _asteroidsPrefabs;
+        [SerializeField] private List<SpaceObject> _asteroidsPrefabs;
         [SerializeField] private GameObject[] _boundaries;
         [SerializeField] private Camera _gameCamera;
 
-        public List<Asteroid> AsteroidsPrefabs => _asteroidsPrefabs;
+        public List<SpaceObject> AsteroidsPrefabs => _asteroidsPrefabs;
         public GameObject[] Boundaries => _boundaries;
         public Camera Camera => _gameCamera;
 

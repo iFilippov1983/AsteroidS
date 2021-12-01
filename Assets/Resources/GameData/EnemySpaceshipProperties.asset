@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1274937fc2569b47a12a5a504ab4369, type: 3}
-  m_Name: GameData
+  m_Script: {fileID: 11500000, guid: d5abace8c29ecc746a98433fe3b8bb3b, type: 3}
+  m_Name: EnemySpaceshipProperties
   m_EditorClassIdentifier: 
-  _playerDataPath: PlayerData
-  _sceneDataPath: SceneData
-  _spaceObjectsDataPath: SpaceObjectsData
+  type: 3
+  hitPoints: 150
+  mass: 1
+  amountOnScene: 3
+  speed: 1
+  isBreakable: 0
+  isShooting: 0
