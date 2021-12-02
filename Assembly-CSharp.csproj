@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\Controllers\InputController.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviour\SpaceObject.cs" />
     <Compile Include="Assets\Scripts\Data\AmmoType.cs" />
+    <Compile Include="Assets\Scripts\Controllers\SpaceObjectDriver.cs" />
     <Compile Include="Assets\Scripts\Interface\IFixedExecute.cs" />
     <Compile Include="Assets\Scripts\Interface\IUserInputProxy.cs" />
     <Compile Include="Assets\Scripts\Controllers\Input\MobileInputFactory.cs" />
@@ -89,7 +90,6 @@
     <Compile Include="Assets\Scripts\Data\AxisManager.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviour\GameManager.cs" />
     <Compile Include="Assets\Scripts\Interface\IExecute.cs" />
-    <Compile Include="Assets\Scripts\Controllers\SpaceObjectDriver.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
