@@ -19,7 +19,6 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_Text.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../MyFirst2DPlatformer/Assets/Scripts/Controller/EndGameHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MonoBehaviour/UIView/TimerCountView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d962c48d73ca455889390bf9d50d28ad6600/c1/98eda7eb/Canvas.cs" root0="SKIP_HIGHLIGHTING" />
@@ -29,7 +28,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/MonoBehaviour/SpaceObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a0ef933b1aa54b668801ea864e4204fe13b600/42/e2b71c73/Object.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../MyFirst2DPlatformer/Assets/Scripts/Model/LevelDataModel.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TextMeshProUGUI.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a0ef933b1aa54b668801ea864e4204fe13b600/ed/9846aa1b/RectTransform.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../MyFirst2DPlatformer/Assets/Scripts/Controller/ScoreHandler.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -64,6 +62,7 @@
       <workItem from="1638472871411" duration="358000" />
       <workItem from="1638473321913" duration="270000" />
       <workItem from="1638473621612" duration="15000" />
+      <workItem from="1638474613308" duration="760000" />
     </task>
     <servers />
   </component>
