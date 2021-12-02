@@ -10,6 +10,7 @@ namespace AsteroidS
         public float mass;
         public int amountOnScene;
         public float speed;
+        public float maxLifeTime;
         public bool isBreakable;
         public bool isShooting;
     }

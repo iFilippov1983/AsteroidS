@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace AsteroidS
 {
@@ -8,6 +9,7 @@ namespace AsteroidS
         [SerializeField] private string _spaceObjectPropertiesPath;
 
         private SpaceObjectProperties _properties;
+        private float _lifeTimeCounter = 0;
 
         public Collider2D Collider => GetComponent<Collider2D>();
         public Rigidbody2D Rigidbody => GetComponent<Rigidbody2D>();
@@ -25,6 +27,31 @@ namespace AsteroidS
 
                 return _properties;
             }
+        }
+
+        public Action<SpaceObject> OnObjectHit;
+        public Action<SpaceObject> OnLifeTimeIsOver;
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.GetType() == typeof(Ammo)) OnObjectHit?.Invoke(this);
+        }
+
+        private void Update()
+        {
+            _lifeTimeCounter += Time.deltaTime;
+
+            if (_lifeTimeCounter >= _properties.maxLifeTime)
+            {
+                _lifeTimeCounter = 0;
+                OnLifeTimeIsOver?.Invoke(this);
+            } 
+            
+        }
+
+        private void OnDisable()
+        {
+            _lifeTimeCounter = 0;
         }
     }
 }

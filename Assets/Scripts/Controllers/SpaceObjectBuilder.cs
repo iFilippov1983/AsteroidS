@@ -16,6 +16,14 @@ namespace AsteroidS
         public SpaceObjectBuilder SetPosition(Vector2 position)
         {
             _spaceObject.transform.position = position;
+            _spaceObject.transform.eulerAngles = new Vector3(0f, 0f, Random.value * 360.0f);
+
+            return this;
+        }
+
+        public SpaceObjectBuilder SetRotation(Quaternion rotation)
+        {
+            _spaceObject.transform.rotation = rotation;
 
             return this;
         }
@@ -27,9 +35,9 @@ namespace AsteroidS
             return this;
         }
 
-        public SpaceObjectBuilder SetRandomRotation()
+        public SpaceObjectBuilder SetActivityState(bool isActive)
         {
-            _spaceObject.transform.eulerAngles = new Vector3(0f, 0f, Random.value * 360.0f);
+            _spaceObject.gameObject.SetActive(isActive);
 
             return this;
         }

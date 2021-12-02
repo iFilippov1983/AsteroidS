@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 namespace AsteroidS
 {
@@ -12,14 +8,18 @@ namespace AsteroidS
     {
         private Dictionary<SpaceObjectType, SpaceObject> _spaceObjects;
         private SpaceObjectBuilder _builder;
+        private float _spawnDistanceMultiplier;
+        private float _trajectoryVariance;
 
         public SpaceObjectsSpawner(GameData gameData)
         {
             _spaceObjects = gameData.SpaceObjectsData.SpaceObjectsPrefabsDictionary;
             _builder = new SpaceObjectBuilder();
+            _spawnDistanceMultiplier = gameData.SpaceObjectsData.DistanceMultiplier;
+            _trajectoryVariance = gameData.SpaceObjectsData.TrajectoryVariance;
         }
 
-        public Stack<SpaceObject> SpawnAllSpaceObjects()
+        public Stack<SpaceObject> CreateStackOfUnactiveSpaceObjects()
         {
             var stack = new Stack<SpaceObject>();
 
@@ -31,7 +31,7 @@ namespace AsteroidS
 
                 for (int index = 0; index < amount ; index++)
                 {
-                    var obj = Spawn(spaceObjectType);
+                    var obj = SpawnUnactive(spaceObjectType);
                     stack.Push(obj);
                 }
             }
@@ -39,15 +39,25 @@ namespace AsteroidS
             return stack;
         }
 
-        public SpaceObject Spawn(SpaceObjectType type)
+        public SpaceObject Respawn(SpaceObject spaceObject)
+        {
+            spaceObject.transform.position = CalculateRandomPosition();
+            spaceObject.transform.rotation = CalculetaRandomRotation();
+            spaceObject.gameObject.SetActive(true);
+
+            return spaceObject;
+        }
+
+        private SpaceObject SpawnUnactive(SpaceObjectType type)
         {
             var prefab = _spaceObjects[type];
 
             var spaceObject = _builder
                                 .MakeInstance(prefab)
                                 .SetPosition(CalculateRandomPosition())
+                                .SetRotation(CalculetaRandomRotation())
                                 .SetObjectView(prefab.GetSprites)
-                                .SetRandomRotation()
+                                .SetActivityState(false)
                                 .Get();
 
             return spaceObject;
@@ -55,7 +65,20 @@ namespace AsteroidS
 
         private Vector3 CalculateRandomPosition()
         {
-            return Vector3.zero;
+            Vector3 spawnDirection = Random.insideUnitCircle.normalized * _spawnDistanceMultiplier;
+            Vector3 spawnPoint = Vector3.zero + spawnDirection;
+
+            return spawnPoint;
         }
+
+        private Quaternion CalculetaRandomRotation()
+        {
+            float variance = Random.Range(-_trajectoryVariance, _trajectoryVariance);
+            Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward);
+
+            return rotation;
+        }
+
+        
     }
 }
