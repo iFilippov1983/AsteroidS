@@ -10,10 +10,12 @@ namespace AsteroidS
         [SerializeField] private SpaceObject[] _spaceObjectsPrefabs;
         [SerializeField] private float _spawnRate = 2.0f;
         [SerializeField] private float _spawnDistanceMultiplier = 15.0f;
+        [SerializeField] private float _trajectoryVariance = 15.0f;
 
         public Dictionary<SpaceObjectType, SpaceObject> SpaceObjectsPrefabsDictionary => PrefabsDictionary();
         public float SpawnRate => _spawnRate;
         public float DistanceMultiplier => _spawnDistanceMultiplier;
+        public float TrajectoryVariance => _trajectoryVariance;
 
         private Dictionary<SpaceObjectType, SpaceObject> PrefabsDictionary()
         {
