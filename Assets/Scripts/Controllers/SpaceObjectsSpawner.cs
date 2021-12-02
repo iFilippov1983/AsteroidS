@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
+using AsteroidS;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace AsteroidS
+namespace Controllers
 {
     public class SpaceObjectsSpawner
     {
