@@ -10,6 +10,26 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d962c48d73ca455889390bf9d50d28ad6600/c1/98eda7eb/Canvas.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TMP_Text.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../MyFirst2DPlatformer/Assets/Scripts/Controller/EndGameHandler.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MonoBehaviour/UIView/TimerCountView.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$USER_HOME$/Desktop/GameManager.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a0ef933b1aa54b668801ea864e4204fe13b600/42/e2b71c73/Object.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../MyFirst2DPlatformer/Assets/Scripts/Model/LevelDataModel.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.textmeshpro@3.0.6/Scripts/Runtime/TextMeshProUGUI.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a0ef933b1aa54b668801ea864e4204fe13b600/ed/9846aa1b/RectTransform.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../MyFirst2DPlatformer/Assets/Scripts/Controller/ScoreHandler.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="ProjectId" id="21e0SX6mp0B7fWFIGRevXpKFvAp" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -30,6 +50,12 @@
       <option name="presentableId" value="Default" />
       <updated>1638286248893</updated>
       <workItem from="1638286254906" duration="19000" />
+      <workItem from="1638286471918" duration="790000" />
+      <workItem from="1638287918075" duration="1637000" />
+      <workItem from="1638294542572" duration="546000" />
+      <workItem from="1638295215808" duration="6653000" />
+      <workItem from="1638344498581" duration="17838000" />
+      <workItem from="1638372021227" duration="4093000" />
     </task>
     <servers />
   </component>
