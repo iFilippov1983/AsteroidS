@@ -54,7 +54,6 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Controllers\Input\PCInputVertical.cs" />
      <Compile Include="Assets\Scripts\Controllers\SpaceObjectBuilder.cs" />
-     <Compile Include="Assets\Scripts\Controllers\SpaceObjectDriver.cs" />
      <Compile Include="Assets\Scripts\Data\SpaceObjectProperties.cs" />
      <Compile Include="Assets\Scripts\Data\SpaceObjectsData.cs" />
      <Compile Include="Assets\Scripts\Interface\IAmmo.cs" />
@@ -70,6 +69,7 @@
      <Compile Include="Assets\Scripts\MonoBehaviour\UIView\UIRootView.cs" />
      <Compile Include="Assets\Scripts\Data\AmmoType.cs" />
      <Compile Include="Assets\Scripts\Controllers\ScoreCountController.cs" />
+     <Compile Include="Assets\Scripts\Controllers\SpaceObjectDriver.cs" />
      <Compile Include="Assets\Scripts\Interface\IFixedExecute.cs" />
      <Compile Include="Assets\Scripts\Interface\IUserInputProxy.cs" />
      <Compile Include="Assets\Scripts\Controllers\Input\MobileInputFactory.cs" />
