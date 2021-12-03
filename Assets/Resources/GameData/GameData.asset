@@ -14,4 +14,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerDataPath: PlayerData
   _sceneDataPath: SceneData
-  _spaceObjectsDataPath: SpaceObjectsData

@@ -4,16 +4,13 @@ namespace AsteroidS
 {
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] private UIRootView _uiRootView;
         [SerializeField] private GameData _gameData;
         private ControllersProxy _controllers;
 
-     
-        
         private void Awake()
         {
             _controllers = new ControllersProxy();
-            new GameInitializer(_controllers, _gameData, _uiRootView);
+            new GameInitializer(_controllers, _gameData);
         }
 
         void Start()
@@ -22,10 +19,9 @@ namespace AsteroidS
         }
 
         void Update()
-        {   
+        {
             var deltaTime = Time.unscaledDeltaTime;
             _controllers.Execute(deltaTime);
-           
         }
 
         private void FixedUpdate()
