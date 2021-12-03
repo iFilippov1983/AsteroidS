@@ -1,13 +1,13 @@
 ﻿using System.Collections.Generic;
-using AsteroidS;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Controllers
+namespace AsteroidS
 {
     public class SpaceObjectsSpawner
     {
         private Dictionary<SpaceObjectType, SpaceObject> _spaceObjects;
+        private List<SpaceObject> _childsPrefabs;
         private SpaceObjectBuilder _builder;
         private float _spawnDistanceMultiplier;
         private float _trajectoryVariance;
@@ -15,6 +15,7 @@ namespace Controllers
         public SpaceObjectsSpawner(GameData gameData)
         {
             _spaceObjects = gameData.SpaceObjectsData.SpaceObjectsPrefabsDictionary;
+            _childsPrefabs = GetChilds(_spaceObjects);
             _builder = new SpaceObjectBuilder();
             _spawnDistanceMultiplier = gameData.SpaceObjectsData.DistanceMultiplier;
             _trajectoryVariance = gameData.SpaceObjectsData.TrajectoryVariance;
@@ -36,7 +37,7 @@ namespace Controllers
                     stack.Push(obj);
                 }
             }
-
+            
             return stack;
         }
 
@@ -49,6 +50,17 @@ namespace Controllers
             return spaceObject;
         }
 
+        public SpaceObject[] SpawnChilds(int amount, Transform position)
+        {
+            var childs = new SpaceObject[amount];
+            for(int index = 0; index < amount; index++)
+            {
+                Respawn(childs[index]);
+            }
+
+            return childs;
+        }
+
         private SpaceObject SpawnUnactive(SpaceObjectType type)
         {
             var prefab = _spaceObjects[type];
@@ -57,9 +69,9 @@ namespace Controllers
                                 .MakeInstance(prefab)
                                 .SetPosition(CalculateRandomPosition())
                                 .SetRotation(CalculetaRandomRotation())
-                                .SetObjectView(prefab.GetSprites)
+                                .SetRandomObjectView(prefab.GetSprites)
                                 .SetActivityState(false)
-                                .Get();
+                                .Build();
 
             return spaceObject;
         }
@@ -80,6 +92,15 @@ namespace Controllers
             return rotation;
         }
 
-        
+        private List<SpaceObject> GetChilds(Dictionary<SpaceObjectType, SpaceObject> dictionary)
+        {
+            var list = new List<SpaceObject>();
+            foreach (SpaceObject so in dictionary.Values)
+            {
+                if (so.GetSpaceObjectProperties.isChild) list.Add(so);
+            }
+
+            return list;
+        }
     }
 }

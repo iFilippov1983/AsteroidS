@@ -28,7 +28,7 @@ namespace AsteroidS
             return this;
         }
 
-        public SpaceObjectBuilder SetObjectView(Sprite[] sprites)
+        public SpaceObjectBuilder SetRandomObjectView(Sprite[] sprites)
         {
             _spaceObject.GetComponent<SpriteRenderer>().sprite = sprites[Random.Range(0, sprites.Length)];
             
@@ -42,7 +42,7 @@ namespace AsteroidS
             return this;
         }
 
-        public SpaceObject Get()
+        public SpaceObject Build()
         {
             return _spaceObject;
         }

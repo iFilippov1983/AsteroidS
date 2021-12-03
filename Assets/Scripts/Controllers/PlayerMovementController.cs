@@ -5,7 +5,7 @@ namespace AsteroidS
     public class PlayerMovementController : IInitialization, IFixedExecute, ICleanup
     {
         private Rigidbody2D _rigidbodyToMove;
-        private Movement _movement;
+        private PlayerMovement _movement;
 
         private IUserInputProxy _horizontalMovement;
         private IUserInputProxy _verticalMovement;
@@ -20,7 +20,7 @@ namespace AsteroidS
             Transform player,
             (IUserInputProxy horizontalMovement, IUserInputProxy verticalMovement) input)
         {
-            _movement = new Movement();
+            _movement = new PlayerMovement();
             _rigidbodyToMove = player.GetComponent<Rigidbody2D>();
 
             _horizontalMovement = input.horizontalMovement;
@@ -57,7 +57,5 @@ namespace AsteroidS
         {
             _horizontal = value;
         }
-
-        
     }
 }

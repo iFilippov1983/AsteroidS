@@ -17,9 +17,7 @@ namespace AsteroidS
         {
             spaceObject.gameObject.SetActive(false);
             spaceObject.transform.position = Vector2.zero;
-
-            var rb = spaceObject.gameObject.GetComponent<Rigidbody2D>();
-            rb.velocity = Vector2.zero;
+            spaceObject.gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         }
 
         private Vector3 SetTrajectory(SpaceObject obj)

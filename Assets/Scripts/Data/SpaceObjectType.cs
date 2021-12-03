@@ -3,8 +3,8 @@
     public enum SpaceObjectType
     {
         None = 0,
-        AsteroidBig = 1,
-        AsteroidSmall = 2,
+        AsteroidSmall = 1,
+        AsteroidBig = 2,
         EnemySpaceship = 3
     }
 }

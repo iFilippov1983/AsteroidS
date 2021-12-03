@@ -13,7 +13,6 @@ namespace AsteroidS
 
         public Collider2D Collider => GetComponent<Collider2D>();
         public Rigidbody2D Rigidbody => GetComponent<Rigidbody2D>();
-
         public Sprite[] GetSprites => _sprites;
 
         public SpaceObjectProperties GetSpaceObjectProperties
@@ -29,12 +28,13 @@ namespace AsteroidS
             }
         }
 
-        public Action<SpaceObject> OnObjectHit;
+        public Action<SpaceObject> OnSpaceObjectHit;
         public Action<SpaceObject> OnLifeTimeIsOver;
 
-        private void OnCollisionEnter(Collision collision)
+        private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.GetType() == typeof(Ammo)) OnObjectHit?.Invoke(this);
+            if (collision.GetType() == typeof(Ammo)) OnSpaceObjectHit?.Invoke(this);
+            if (_properties.isChild) Destroy(gameObject);
         }
 
         private void Update()
@@ -46,7 +46,6 @@ namespace AsteroidS
                 _lifeTimeCounter = 0;
                 OnLifeTimeIsOver?.Invoke(this);
             } 
-            
         }
 
         private void OnDisable()

@@ -12,6 +12,7 @@ namespace AsteroidS
         public float speed;
         public float maxLifeTime;
         public bool isBreakable;
+        public bool isChild;
         public bool isShooting;
     }
 }

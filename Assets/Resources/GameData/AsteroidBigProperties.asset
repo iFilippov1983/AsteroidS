@@ -15,8 +15,9 @@ MonoBehaviour:
   type: 1
   hitPoints: 200
   mass: 1
-  amountOnScene: 10
-  speed: 10
+  amountOnScene: 8
+  speed: 8
   maxLifeTime: 15
-  isBreakable: 0
+  isBreakable: 1
+  isChild: 0
   isShooting: 0

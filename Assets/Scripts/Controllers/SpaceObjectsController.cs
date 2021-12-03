@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using Controllers;
+using UnityEngine;
 using Object = UnityEngine.Object;
+using Random = UnityEngine.Random;
 
 namespace AsteroidS
 {
@@ -13,6 +14,7 @@ namespace AsteroidS
         private Stack<SpaceObject> _soStack;
         private float _spawnRate;
         private float _timeCounter;
+        private int _maxChildsAmount;
 
         public SpaceObjectsController(GameData gameData)
         {
@@ -20,16 +22,17 @@ namespace AsteroidS
             _spawner = new SpaceObjectsSpawner(gameData);
             _objectDriver = new SpaceObjectDriver();
             _spawnRate = _spaceObjectsData.SpawnRate;
+            _maxChildsAmount = _spaceObjectsData.MaxChildsAmount;
         }
 
-        public Action OnObjectHit;
+        public Action OnObjectHitEvent;
 
         public void Initialize()
         {
             _soStack = _spawner.CreateStackOfUnactiveSpaceObjects();
             foreach (SpaceObject so in _soStack)
             {
-                so.OnObjectHit += OnHit;
+                so.OnSpaceObjectHit += OnHit;
                 so.OnLifeTimeIsOver += OnLifeTermination;
             }
         }
@@ -52,13 +55,13 @@ namespace AsteroidS
             var liveObjects = Object.FindObjectsOfType(typeof(SpaceObject));
             foreach (SpaceObject so in liveObjects)
             {
-                so.OnObjectHit -= OnHit;
+                so.OnSpaceObjectHit -= OnHit;
                 so.OnLifeTimeIsOver -= OnLifeTermination;
             }
 
             foreach (SpaceObject so in _soStack)
             {
-                so.OnObjectHit -= OnHit;
+                so.OnSpaceObjectHit -= OnHit;
                 so.OnLifeTimeIsOver -= OnLifeTermination;
             }
         }
@@ -67,13 +70,27 @@ namespace AsteroidS
         {
             _objectDriver.Stop(spaceObject);
             _soStack.Push(spaceObject);
-            OnObjectHit?.Invoke();
+
+            if (spaceObject.GetSpaceObjectProperties.isBreakable) SpawnChildAsteroids(spaceObject.transform);
+
+            OnObjectHitEvent?.Invoke();
         }
 
         private void OnLifeTermination(SpaceObject spaceObject)
         {
             _objectDriver.Stop(spaceObject);
             _soStack.Push(spaceObject);
+        }
+
+        private void SpawnChildAsteroids(Transform position)
+        {
+            var childsAmount = Random.Range(1, _maxChildsAmount + 1);
+            var childs = _spawner.SpawnChilds(childsAmount, position);
+
+            foreach (SpaceObject so in childs)
+            {
+                _objectDriver.Drive(so);
+            }
         }
     }
 }
