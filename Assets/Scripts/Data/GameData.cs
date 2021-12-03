@@ -8,9 +8,11 @@ namespace AsteroidS
     {
         [SerializeField] private string _playerDataPath;
         [SerializeField] private string _sceneDataPath;
+        [SerializeField] private string _spaceObjectsDataPath;
 
         private PlayerData _playerData;
         private SceneData _sceneData;
+        private SpaceObjectsData _spaceObjectsData;
 
         public PlayerData PlayerData
         {
@@ -27,6 +29,15 @@ namespace AsteroidS
             {
                 if (_sceneData == null) _sceneData = LoadPath<SceneData>("GameData/" + _sceneDataPath);
                 return _sceneData;
+            }
+        }
+
+        public SpaceObjectsData SpaceObjectsData
+        {
+            get 
+            {
+                if (_spaceObjectsData == null) _spaceObjectsData = LoadPath<SpaceObjectsData>("GameData/" + _spaceObjectsDataPath);
+                return _spaceObjectsData;
             }
         }
 
