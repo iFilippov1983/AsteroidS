@@ -23,7 +23,7 @@ namespace AsteroidS
 
         public string ScoreMessage => _scoreMessage;
         public string TimerMessage => _timerMessage;
-        public GameObject UiRoot => _UIRoot;
+        public GameObject UIRoot => _UIRoot;
 
         public int ScoreHolder
         {

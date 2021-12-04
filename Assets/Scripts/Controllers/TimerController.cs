@@ -5,17 +5,17 @@ namespace AsteroidS
 {
     public class TimerController: IExecute, IInitialization, ICleanup
     {
-        private readonly TimerCountView _timerCountView;
+        private UIInitialize _uiInitialize;
+        private TimerCountView _timerCountView;
         private TextMeshProUGUI _timerDisplay;
         private TimeSpan _time;
         private float _seconds;
         private string _message;
         private string _deathTime;
 
-        public TimerController(GameData gameData)
+        public TimerController(GameData gameData, UIInitialize uiInitialize)
         {
-            _timerCountView = gameData.UIData.UiRoot.GetComponentInChildren<TimerCountView>();
-            _timerDisplay = _timerCountView.GetComponentInChildren<TextMeshProUGUI>();
+            _uiInitialize = uiInitialize;
             _time = gameData.UIData.TimeHolder;
             _message = gameData.UIData.TimerMessage;
         }
@@ -30,7 +30,8 @@ namespace AsteroidS
 
         public void Initialize()
         {
-            
+            _timerCountView = _uiInitialize.GetTimerCount();
+            _timerDisplay = _timerCountView.GetComponent<TextMeshProUGUI>();
         }
 
         public void Cleanup()
