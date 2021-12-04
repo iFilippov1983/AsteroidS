@@ -84,6 +84,7 @@
      <Compile Include="Assets\Scripts\Controllers\Input\PCInputHorizontal.cs" />
      <Compile Include="Assets\Scripts\Interface\IUserInputProxy.cs" />
      <Compile Include="Assets\Scripts\Data\AxisManager.cs" />
+     <Compile Include="Assets\Scripts\Controllers\UIInitialize.cs" />
      <Compile Include="Assets\Scripts\Controllers\Input\MobileInputFactory.cs" />
      <Compile Include="Assets\Scripts\Controllers\SpaceObjectsController.cs" />
      <Compile Include="Assets\Scripts\Interface\IMobileInputFactory.cs" />
