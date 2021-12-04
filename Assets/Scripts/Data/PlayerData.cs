@@ -8,14 +8,17 @@ namespace AsteroidS
     public class PlayerData : ScriptableObject
     {
         [SerializeField] private GameObject _playerPrefab;
-        [SerializeField] private GameObject[] _ammoPrefabs;
+        [SerializeField] private Ammo[] _ammoPrefabs;
         [SerializeField] private float _MoveSpeed;
         [SerializeField] private float _rotationSpeed;
+        public Ammo currentAmmo;
+        [SerializeField] private Vector3 _shotOffset;
 
-        public GameObject PlayerPrefab { get => _playerPrefab; }
-        public GameObject[] BulletDefaultPrefab { get => _ammoPrefabs; }
-        public float PlayerMovementSpeed { get => _MoveSpeed; }
-        public float PlayerRotationSpeed { get => _rotationSpeed; }
+        public GameObject PlayerPrefab => _playerPrefab;
+        public Ammo[] AmmoPrefabs => _ammoPrefabs;
+        public float PlayerMovementSpeed => _MoveSpeed;
+        public float PlayerRotationSpeed => _rotationSpeed;
+        public Vector3 ShotOffset => _shotOffset;
     }
 }
 

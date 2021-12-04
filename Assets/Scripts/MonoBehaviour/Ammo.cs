@@ -3,22 +3,32 @@ using UnityEngine;
 
 namespace AsteroidS
 {
-    public abstract class Ammo : MonoBehaviour, IAmmo
+    public class Ammo : MonoBehaviour
     {
-        [SerializeField] private AmmoPrefs _ammoPrefs;
-
-        public event Action<int> OnHitEvent;
-
-        public abstract void Hit();
-      
-        private struct AmmoPrefs
+        [SerializeField] private string _ammoPropertiesPath;
+        
+        private AmmoProperties _ammoProperties;
+        
+        public AmmoProperties Properties
         {
-            public AmmoType ammoType;
-            public int damage;
-            public float speed;
+            get 
+            {
+                if (_ammoProperties == null)
+                {
+                    _ammoProperties = Resources.Load<AmmoProperties>("GameData/" + _ammoPropertiesPath);
+                }
+
+                return _ammoProperties;
+            }
+        }
+
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
+            if (collision.gameObject.TryGetComponent(out SpaceObject so))
+            {
+                Destroy(this);
+            } 
         }
     }
-
-    
 }
 

@@ -25,7 +25,7 @@ namespace AsteroidS
             _maxChildsAmount = _spaceObjectsData.MaxChildsAmount;
         }
 
-        public Action OnObjectHitEvent;
+        public Action OnObjectDestroyEvent;
 
         public void Initialize()
         {
@@ -68,12 +68,8 @@ namespace AsteroidS
 
         private void OnHit(SpaceObject spaceObject)
         {
-            _objectDriver.Stop(spaceObject);
-            _soStack.Push(spaceObject);
-
-            if (spaceObject.GetSpaceObjectProperties.isBreakable) SpawnChildAsteroids(spaceObject.transform);
-
-            OnObjectHitEvent?.Invoke();
+            var hp = spaceObject.Properties.hitPoints;
+            if (hp <= 0) DesactivateSO(spaceObject);
         }
 
         private void OnLifeTermination(SpaceObject spaceObject)
@@ -91,6 +87,16 @@ namespace AsteroidS
             {
                 _objectDriver.Drive(so);
             }
+        }
+
+        private void DesactivateSO(SpaceObject spaceObject)
+        {
+            _objectDriver.Stop(spaceObject);
+            _soStack.Push(spaceObject);
+
+            if (spaceObject.Properties.isBreakable) SpawnChildAsteroids(spaceObject.transform);
+
+            OnObjectDestroyEvent?.Invoke();
         }
     }
 }

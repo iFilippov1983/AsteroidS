@@ -14,5 +14,6 @@ namespace AsteroidS
             var playerPrefab = gameData.PlayerData.PlayerPrefab;
             _player = Object.Instantiate(playerPrefab);
         }
+
     }
 }

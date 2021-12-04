@@ -9,7 +9,7 @@ namespace AsteroidS
             spaceObject.gameObject.SetActive(true);
 
             var rb = spaceObject.gameObject.GetComponent<Rigidbody2D>();
-            var speed = spaceObject.GetSpaceObjectProperties.speed;
+            var speed = spaceObject.Properties.speed;
             rb.AddForce(SetTrajectory(spaceObject) * speed);
         }
 

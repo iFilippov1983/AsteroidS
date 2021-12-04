@@ -25,7 +25,7 @@ namespace AsteroidS
 
             for (int prefabIndex = 0; prefabIndex < _spaceObjectsPrefabs.Length; prefabIndex++)
             {
-                var type = _spaceObjectsPrefabs[prefabIndex].GetSpaceObjectProperties.type;
+                var type = _spaceObjectsPrefabs[prefabIndex].Properties.type;
                 dictionary[type] = _spaceObjectsPrefabs[prefabIndex];
             }
 

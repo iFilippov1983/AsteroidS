@@ -21,10 +21,9 @@ namespace AsteroidS
         }
 
         void Update()
-        {   
+        {
             var deltaTime = Time.unscaledDeltaTime;
             _controllers.Execute(deltaTime);
-           
         }
 
         private void FixedUpdate()

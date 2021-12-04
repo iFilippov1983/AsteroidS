@@ -29,7 +29,7 @@ namespace AsteroidS
             {
                 var spaceObjectType = (SpaceObjectType)typeIndex;
                 var prefab = _spaceObjects[spaceObjectType];
-                var amount = prefab.GetSpaceObjectProperties.amountOnScene;
+                var amount = prefab.Properties.amountOnScene;
 
                 for (int index = 0; index < amount ; index++)
                 {
@@ -97,7 +97,7 @@ namespace AsteroidS
             var list = new List<SpaceObject>();
             foreach (SpaceObject so in dictionary.Values)
             {
-                if (so.GetSpaceObjectProperties.isChild) list.Add(so);
+                if (so.Properties.isChild) list.Add(so);
             }
 
             return list;
