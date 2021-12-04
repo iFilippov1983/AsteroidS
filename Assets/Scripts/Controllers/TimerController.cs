@@ -22,9 +22,14 @@ namespace AsteroidS
 
         public void Execute(float deltaTime)
         {
+            DisplayTimer(deltaTime);
+        }
+
+        private void DisplayTimer(float deltaTime)
+        {
             _seconds += deltaTime;
             _time = TimeSpan.FromSeconds(_seconds);
-                
+
             _timerDisplay.text = $"{_message}{_time.Hours:00}:{_time.Minutes:00}:{_time.Seconds:00}";
         }
 

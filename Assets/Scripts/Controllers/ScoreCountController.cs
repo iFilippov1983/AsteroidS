@@ -30,6 +30,11 @@ namespace AsteroidS
 
         public void Execute(float deltaTime)
         {
+            DisplayScores();
+        }
+
+        private void DisplayScores()
+        {
             _scoreDisplay.text = $"{_message} {_score}";
         }
 
