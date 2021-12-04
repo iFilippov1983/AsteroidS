@@ -5,16 +5,19 @@ namespace AsteroidS
 {
     public class TimerController: IExecute, IInitialization, ICleanup
     {
-        private const string _message = "Time alive: ";
+        private readonly TimerCountView _timerCountView;
         private TextMeshProUGUI _timerDisplay;
         private TimeSpan _time;
         private float _seconds;
-        private string _aliveTime;
-        private bool _isGameStarted;
+        private string _message;
+        private string _deathTime;
 
-        public TimerController(TimerCountView timerDisplay)
+        public TimerController(GameData gameData)
         {
-            _timerDisplay = timerDisplay.GetComponent<TextMeshProUGUI>();
+            _timerCountView = gameData.UIData.UiRoot.GetComponentInChildren<TimerCountView>();
+            _timerDisplay = _timerCountView.GetComponentInChildren<TextMeshProUGUI>();
+            _time = gameData.UIData.TimeHolder;
+            _message = gameData.UIData.TimerMessage;
         }
 
         public void Execute(float deltaTime)
@@ -38,9 +41,9 @@ namespace AsteroidS
         private void PlayerDead(bool dead)
         {
             if (dead)
-                _aliveTime = $"{_time.Hours:00}:{_time.Minutes:00}:{_time.Seconds:00}";
+                _deathTime = $"{_time.Hours:00}:{_time.Minutes:00}:{_time.Seconds:00}";
         }
 
-        public string TimeAlive => _aliveTime;
+        public string DeathTime => _deathTime;
     }
 }

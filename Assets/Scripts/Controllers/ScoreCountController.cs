@@ -1,19 +1,21 @@
 using TMPro;
+using UnityEngine;
 
 namespace AsteroidS
 {
     public class ScoreCountController:IInitialization, IExecute, ICleanup
     {
-        private const string _message = "Score:";
         private readonly ScoreCountView _scoreCountView;
         private TextMeshProUGUI _scoreDisplay;
         private int _score;
-       
+        private string _message;
 
-        public ScoreCountController(ScoreCountView scoreCountView)
+        public ScoreCountController(GameData gameData)
         {
-            _scoreCountView = scoreCountView;
+            _scoreCountView = gameData.UIData.UiRoot.GetComponentInChildren<ScoreCountView>();
             _scoreDisplay = _scoreCountView.GetComponent<TextMeshProUGUI>();
+            _message = gameData.UIData.ScoreMessage;
+            _score = gameData.UIData.ScoreHolder;
         }
 
         public void Cleanup()

@@ -54,6 +54,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Interface\ICleanup.cs" />
      <Compile Include="Assets\Scripts\Controllers\Input\PCInputVertical.cs" />
+     <Compile Include="Assets\Scripts\Data\UIData.cs" />
      <Compile Include="Assets\Scripts\Interface\IAmmo.cs" />
      <Compile Include="Assets\Scripts\Controllers\GameInitializer.cs" />
      <Compile Include="Assets\Scripts\Controllers\Input\MobileInput.cs" />
@@ -68,7 +69,6 @@
      <Compile Include="Assets\Scripts\Data\GameData.cs" />
      <Compile Include="Assets\Scripts\Controllers\InputInitializer.cs" />
      <Compile Include="Assets\Scripts\Controllers\InputController.cs" />
-     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\UIRootView.cs" />
      <Compile Include="Assets\Scripts\MonoBehaviour\SpaceObject.cs" />
      <Compile Include="Assets\Scripts\Data\AmmoType.cs" />
      <Compile Include="Assets\Scripts\Controllers\ScoreCountController.cs" />
@@ -80,7 +80,6 @@
      <Compile Include="Assets\Scripts\Controllers\SpaceObjectDriver.cs" />
      <Compile Include="Assets\Scripts\Data\SceneData.cs" />
      <Compile Include="Assets\Scripts\Interface\IFixedExecute.cs" />
-     <Compile Include="Assets\Scripts\MonoBehaviour\UIDisplayView.cs" />
      <Compile Include="Assets\Scripts\MonoBehaviour\UIView\TimerCountView.cs" />
      <Compile Include="Assets\Scripts\Controllers\Input\PCInputHorizontal.cs" />
      <Compile Include="Assets\Scripts\Interface\IUserInputProxy.cs" />
@@ -95,7 +94,6 @@
      <Compile Include="Assets\Scripts\Data\SpaceObjectsData.cs" />
      <Compile Include="Assets\Scripts\Data\SpaceObjectProperties.cs" />
      <Compile Include="Assets\Scripts\Controllers\TimerController.cs" />
-     <Compile Include="Assets\Scripts\Data\UIData.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

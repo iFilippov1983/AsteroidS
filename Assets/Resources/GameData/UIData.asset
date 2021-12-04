@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e1274937fc2569b47a12a5a504ab4369, type: 3}
-  m_Name: GameData
+  m_Script: {fileID: 11500000, guid: 8c233e80d13fd57468ccfa998bfac40d, type: 3}
+  m_Name: UIData
   m_EditorClassIdentifier: 
-  _playerDataPath: PlayerData
-  _sceneDataPath: SceneData
-  _spaceObjectsDataPath: SpaceObjectsData
-  _uiDataPath: UIData
+  _scoreMessage: 'Score:'
+  _timerMessage: 'Time alive:'
+  _scoreCount: {fileID: 0}
+  _timerCount: {fileID: 0}
+  _UIRoot: {fileID: 2664380880930773836, guid: d8038c506985b7d4fa16cac65f77d460, type: 3}
