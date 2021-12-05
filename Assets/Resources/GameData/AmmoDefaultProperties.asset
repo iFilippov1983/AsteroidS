@@ -15,5 +15,5 @@ MonoBehaviour:
   ammoType: 0
   damage: 30
   fireRate: 0.5
-  shotDistance: 100
+  shotDistance: 12
   speedRate: 4
