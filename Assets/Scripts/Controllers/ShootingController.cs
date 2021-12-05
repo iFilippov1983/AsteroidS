@@ -38,8 +38,9 @@ namespace AsteroidS
 
 		public void Execute(float deltaTime)
 		{
-			int layerMask = LayerMask.GetMask("SpaceObject");
-            var hit = Physics2D.Raycast(_player.position, _player.eulerAngles, _shotDistance, layerMask);
+            int layerMaskOnlyPlayer = 1 << 8;
+            int layerMaskWithoutPlayer = ~layerMaskOnlyPlayer;
+            var hit = Physics2D.Raycast(_player.position, _player.eulerAngles, _shotDistance, layerMaskWithoutPlayer);
             Debug.DrawRay(_player.position, _player.eulerAngles, Color.red);
             if (hit == _ammo)
 			{
