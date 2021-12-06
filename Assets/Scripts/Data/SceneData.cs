@@ -6,10 +6,12 @@ namespace AsteroidS
     [CreateAssetMenu(menuName = "GameData/SceneData", fileName = "SceneData")]
     public class SceneData : ScriptableObject 
     {
+        [SerializeField] private const string _sceneName = "AsteroidS";
         [Header("Assets to place on scene")]
         [SerializeField] private GameObject[] _boundaries;
         [SerializeField] private Camera _gameCamera;
 
+        public string SceneName => _sceneName;
         public GameObject[] Boundaries => _boundaries;
         public Camera Camera => _gameCamera;
 

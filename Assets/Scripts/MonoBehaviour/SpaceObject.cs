@@ -30,16 +30,22 @@ namespace AsteroidS
 
         public Action<SpaceObject> OnSpaceObjectHit;
         public Action<SpaceObject> OnLifeTimeIsOver;
+        public Action OnPlayerHit;
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.TryGetComponent(out Ammo ammo))
             {
-                Debug.Log(ammo);
+                //Debug.Log(ammo);
                 var damage = ammo.Properties.damage;
                 _spaceObjectProperties.hitPoints -= damage;
                 OnSpaceObjectHit?.Invoke(this);
-            } 
+            }
+
+            if (collision.gameObject.tag == TagsHolder.Player)
+            {
+                OnPlayerHit?.Invoke();
+            }
         }
 
         private void Update()

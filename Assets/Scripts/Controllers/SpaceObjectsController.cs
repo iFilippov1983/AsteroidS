@@ -26,6 +26,7 @@ namespace AsteroidS
         }
 
         public Action OnObjectDestroyEvent;
+        public Action OnPlayerDestroyEvent;
 
         public void Initialize()
         {
@@ -34,6 +35,7 @@ namespace AsteroidS
             {
                 so.OnSpaceObjectHit += OnHit;
                 so.OnLifeTimeIsOver += OnLifeTermination;
+                so.OnPlayerHit += OnPlayerDestroy;
             }
         }
 
@@ -57,12 +59,14 @@ namespace AsteroidS
             {
                 so.OnSpaceObjectHit -= OnHit;
                 so.OnLifeTimeIsOver -= OnLifeTermination;
+                so.OnPlayerHit -= OnPlayerDestroy;
             }
 
             foreach (SpaceObject so in _soStack)
             {
                 so.OnSpaceObjectHit -= OnHit;
                 so.OnLifeTimeIsOver -= OnLifeTermination;
+                so.OnPlayerHit -= OnPlayerDestroy;
             }
         }
 
@@ -76,6 +80,11 @@ namespace AsteroidS
         {
             _objectDriver.Stop(spaceObject);
             _soStack.Push(spaceObject);
+        }
+
+        private void OnPlayerDestroy()
+        {
+            OnPlayerDestroyEvent?.Invoke();
         }
 
         private void SpawnChildAsteroids(Transform position)

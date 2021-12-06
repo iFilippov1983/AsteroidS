@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\MonoBehaviour\SpaceObject.cs" />
     <Compile Include="Assets\Scripts\Data\AmmoType.cs" />
     <Compile Include="Assets\Scripts\Controllers\ScoreCountController.cs" />
+    <Compile Include="Assets\Scripts\Data\MasksHolder.cs" />
     <Compile Include="Assets\Scripts\Data\SpaceObjectType.cs" />
     <Compile Include="Assets\Scripts\Data\UIObjectNames.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerMovementController.cs" />
@@ -99,7 +100,8 @@
     <Compile Include="Assets\Scripts\Data\SpaceObjectsData.cs" />
     <Compile Include="Assets\Scripts\Data\SpaceObjectProperties.cs" />
     <Compile Include="Assets\Scripts\Controllers\TimerController.cs" />
-    <Compile Include="Assets\Scripts\Data\MasksHolder.cs" />
+    <Compile Include="Assets\Scripts\Data\TagsHolder.cs" />
+    <Compile Include="Assets\Scripts\Controllers\GameProgressController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
