@@ -30,12 +30,12 @@ namespace AsteroidS
 
         public void Initialize()
         {
-            _soStack = _spawner.CreateStackOfUnactiveSpaceObjects();
+            _soStack = _spawner.CreateUnactiveSpaceObjectsStack();
             foreach (SpaceObject so in _soStack)
             {
-                so.OnSpaceObjectHit += OnHit;
-                so.OnLifeTimeIsOver += OnLifeTermination;
-                so.OnPlayerHit += OnPlayerDestroy;
+                so.SpaceObjectHit += OnHit;
+                so.LifeTimeTermination += OnLifeTermination;
+                so.PlayerHit += OnPlayerDestroy;
             }
         }
 
@@ -57,16 +57,16 @@ namespace AsteroidS
             var liveObjects = Object.FindObjectsOfType(typeof(SpaceObject));
             foreach (SpaceObject so in liveObjects)
             {
-                so.OnSpaceObjectHit -= OnHit;
-                so.OnLifeTimeIsOver -= OnLifeTermination;
-                so.OnPlayerHit -= OnPlayerDestroy;
+                so.SpaceObjectHit -= OnHit;
+                so.LifeTimeTermination -= OnLifeTermination;
+                so.PlayerHit -= OnPlayerDestroy;
             }
 
             foreach (SpaceObject so in _soStack)
             {
-                so.OnSpaceObjectHit -= OnHit;
-                so.OnLifeTimeIsOver -= OnLifeTermination;
-                so.OnPlayerHit -= OnPlayerDestroy;
+                so.SpaceObjectHit -= OnHit;
+                so.LifeTimeTermination -= OnLifeTermination;
+                so.PlayerHit -= OnPlayerDestroy;
             }
         }
 
@@ -87,6 +87,16 @@ namespace AsteroidS
             OnPlayerDestroyEvent?.Invoke();
         }
 
+        private void DesactivateSO(SpaceObject spaceObject)
+        {
+            _objectDriver.Stop(spaceObject);
+            _soStack.Push(spaceObject);
+
+            if (spaceObject.Properties.isBreakable) SpawnChildAsteroids(spaceObject.transform);
+
+            OnObjectDestroyEvent?.Invoke();
+        }
+
         private void SpawnChildAsteroids(Transform position)
         {
             var childsAmount = Random.Range(1, _maxChildsAmount + 1);
@@ -96,16 +106,6 @@ namespace AsteroidS
             {
                 _objectDriver.Drive(so);
             }
-        }
-
-        private void DesactivateSO(SpaceObject spaceObject)
-        {
-            _objectDriver.Stop(spaceObject);
-            _soStack.Push(spaceObject);
-
-            if (spaceObject.Properties.isBreakable) SpawnChildAsteroids(spaceObject.transform);
-
-            OnObjectDestroyEvent?.Invoke();
         }
     }
 }

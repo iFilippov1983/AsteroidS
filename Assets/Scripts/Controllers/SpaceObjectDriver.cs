@@ -2,7 +2,7 @@
 
 namespace AsteroidS
 {
-    class SpaceObjectDriver
+    public class SpaceObjectDriver
     {
         public void Drive(SpaceObject spaceObject)
         {

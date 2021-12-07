@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e50018818d4e2e4488239822ad752603, type: 3}
   m_Name: AmmoDefaultProperties
   m_EditorClassIdentifier: 
-  ammoType: 0
+  ammoType: 1
   damage: 30
-  fireRate: 0.5
+  reloadTime: 1
   shotDistance: 12
-  speedRate: 4
+  speedRate: 40

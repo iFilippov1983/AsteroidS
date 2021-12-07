@@ -21,7 +21,7 @@ namespace AsteroidS
             _trajectoryVariance = gameData.SpaceObjectsData.TrajectoryVariance;
         }
 
-        public Stack<SpaceObject> CreateStackOfUnactiveSpaceObjects()
+        public Stack<SpaceObject> CreateUnactiveSpaceObjectsStack()
         {
             var stack = new Stack<SpaceObject>();
 

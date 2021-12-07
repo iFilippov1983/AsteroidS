@@ -8,7 +8,8 @@ namespace AsteroidS
         [SerializeField] private string _ammoPropertiesPath;
         
         private AmmoProperties _ammoProperties;
-        
+        private float _lifeTimeCounter;
+
         public AmmoProperties Properties
         {
             get 
@@ -22,12 +23,35 @@ namespace AsteroidS
             }
         }
 
+        public Action<Ammo> LifeTerminationEvent;
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.TryGetComponent(out SpaceObject so))
             {
-                Destroy(this);
+                LifeTerminationEvent?.Invoke(this);
             } 
+        }
+
+        private void Update()
+        {
+            Live();
+        }
+
+        private void OnDisable()
+        {
+            _lifeTimeCounter = 0;
+        }
+
+        private void Live()
+        {
+            _lifeTimeCounter += Time.deltaTime;
+
+            if (_lifeTimeCounter > _ammoProperties.LifeTime)
+            {
+                _lifeTimeCounter = 0;
+                LifeTerminationEvent?.Invoke(this);
+            }
         }
     }
 }

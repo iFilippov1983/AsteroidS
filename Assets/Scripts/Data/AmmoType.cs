@@ -1,7 +1,8 @@
 public enum AmmoType 
 {
-   Default = 0,
-   Laser = 1,
-   DoubleShot = 2,
-   TripleShot = 3
+   None = 0,
+   Default = 1,
+   Laser = 2,
+   DoubleShot = 3,
+   TripleShot = 4
 }

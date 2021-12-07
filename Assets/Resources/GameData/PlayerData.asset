@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerPrefab: {fileID: 174634665004576624, guid: fa4d4652efd501c40b48e95fe654a720, type: 3}
   _ammoPrefabs:
-  - {fileID: 8213800484456071961, guid: feebfe68452e70f448db82db11254f68, type: 3}
+  - {fileID: 8985725271236679985, guid: 62fe094ae0bd81f46bbdd1c9767709e4, type: 3}
   _MoveSpeed: 1
   _rotationSpeed: 0.3
-  currentAmmo: {fileID: 8213800484456071961, guid: feebfe68452e70f448db82db11254f68, type: 3}
+  currentAmmo: {fileID: 8985725271236679985, guid: 62fe094ae0bd81f46bbdd1c9767709e4, type: 3}
   _shotOffset: {x: 0, y: 5, z: 0}

@@ -8,17 +8,32 @@ namespace AsteroidS
     public class PlayerData : ScriptableObject
     {
         [SerializeField] private GameObject _playerPrefab;
-        [SerializeField] private Ammo[] _ammoPrefabs;
+        [SerializeField] private List<Ammo> _ammoPrefabs;
         [SerializeField] private float _MoveSpeed;
         [SerializeField] private float _rotationSpeed;
         public Ammo currentAmmo;
         [SerializeField] private Vector3 _shotOffset;
 
         public GameObject PlayerPrefab => _playerPrefab;
-        public Ammo[] AmmoPrefabs => _ammoPrefabs;
+        public Dictionary<AmmoType,Ammo> AmmoPrefabsDictionary => MakePrefabsDictionary();
         public float PlayerMovementSpeed => _MoveSpeed;
         public float PlayerRotationSpeed => _rotationSpeed;
         public Vector3 ShotOffset => _shotOffset;
+
+
+
+        private Dictionary<AmmoType, Ammo> MakePrefabsDictionary()
+        {
+            var dictionary = new Dictionary<AmmoType, Ammo>();
+
+            for (int index = 0; index < _ammoPrefabs.Count; index++)
+            {
+                var type = _ammoPrefabs[index].Properties.ammoType;
+                dictionary[type] = _ammoPrefabs[index];
+            }
+
+            return dictionary;
+        }
     }
 }
 
