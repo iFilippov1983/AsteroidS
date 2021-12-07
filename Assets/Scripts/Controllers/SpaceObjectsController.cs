@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 namespace AsteroidS
 {
-    public class SpaceObjectsController : IInitialization, IExecute, ICleanup
+    public class SpaceObjectsController : IInitialization, IExecute, IFixedExecute, ILateExecute, ICleanup
     {
         private SpaceObjectsData _spaceObjectsData;
         private SpaceObjectsSpawner _spawner;
@@ -41,8 +41,13 @@ namespace AsteroidS
 
         public void Execute(float deltaTime)
         {
-            _timeCounter += deltaTime;
-            if (_timeCounter >= _spawnRate && _soStack.Count !=0)
+           
+        }
+
+        public void FixedExecute()
+        {
+            _timeCounter += Time.deltaTime;
+            if (_timeCounter >= _spawnRate && _soStack.Count != 0)
             {
                 _timeCounter = 0;
 
@@ -50,6 +55,11 @@ namespace AsteroidS
                 _spawner.Respawn(spaceObject);
                 _objectDriver.Drive(spaceObject);
             }
+        }
+
+        public void LateExecute()
+        {
+            
         }
 
         public void Cleanup()

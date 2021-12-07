@@ -1,12 +1,11 @@
-﻿using Assets.Scripts.Controllers;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace AsteroidS
 {
-    internal class ShootingController : IInitialization, IExecute, ICleanup
+    internal class ShootingController : IInitialization, IExecute, IFixedExecute, ILateExecute, ICleanup
     {
         private GameData _gameData;
         private Transform _player;
@@ -15,15 +14,13 @@ namespace AsteroidS
         private Dictionary<AmmoType, Stack<Ammo>> _ammoPool;
 
         private float _reloadTime;
-        private float _reloadTimeCounter;
         private float _shotDistance;
         private Ammo _ammo;
         private AmmoType _currentAmmoType;
-        private bool _ammoRloaded = true;
+        private bool _ammoReloaded = true;
 
-        //private Coroutine _coroutineTimer;
-        //private Coroutine _counterTimerDelete;
-
+        private Coroutine _coroutineTimer;
+        
 
         internal ShootingController(GameData gameData, Transform player)
         {
@@ -45,29 +42,34 @@ namespace AsteroidS
 
         public void Execute(float deltaTime)
         {
-            _reloadTimeCounter += deltaTime;
-            if (_reloadTimeCounter > _reloadTime)
-            {
-                _reloadTimeCounter = 0;
-                _ammoRloaded = true;
-            } 
+            
+        }
+
+        public void FixedExecute()
+        {
 
             int mask = LayerMask.GetMask(MasksHolder.SpaceObject);
             var hit = Physics2D.Raycast(_player.position, _player.up, _shotDistance, mask);
             //temp
             Debug.DrawRay(_player.position, _player.up * _shotDistance, Color.red);
 
-            bool notEmpty = (_ammoPool[_currentAmmoType].Count != 0);
+            bool stackNotEmpty = (_ammoPool[_currentAmmoType].Count != 0);
 
-            if (hit && _ammoRloaded && notEmpty)
+            if (hit && _ammoReloaded && stackNotEmpty)
             {
-                _ammoRloaded = false;
+                _ammoReloaded = false;
 
                 Shoot(_player);
 
-                //_coroutineTimer = CoroutinesController.StartRoutine(Timer(_rateOfFire));
+                _coroutineTimer = CoroutinesController.StartRoutine(FireRateTimer(_reloadTime));
             }
         }
+
+        public void LateExecute()
+        {
+            
+        }
+
 
         public void Cleanup()
         {
@@ -78,25 +80,24 @@ namespace AsteroidS
             }
 
             UnsubscribeFromEvents(_ammoPool);
+            
         }
 
         private void OnLifeTermination(Ammo ammo)
         {
+            Debug.Log("Event C");
             var type = ammo.Properties.ammoType;
 
-            _ammoDriver.Stop(ammo);
             _ammoPool[type].Push(ammo);
+            _ammoDriver.Stop(ammo);
+            
         }
 
         private void Shoot(Transform transform)
         {
             var ammo = _ammoPool[_currentAmmoType].Pop();
             var shot = Object.Instantiate(ammo, transform.position, transform.rotation);
-            //var shotVector = _player.rotation * _player.position;
             _ammoDriver.Drive(shot, _player.up);
-
-            //var shot = Object.Instantiate(_ammo.gameObject, _player.position, _player.rotation);
-            //_counterTimerDelete = CoroutinesController.StartRoutine(TimerDelete(_bulletRemovalTimer, shot));
         }
 
         private void SubscribeToEvents(Dictionary<AmmoType, Stack<Ammo>> keyValuePair)
@@ -127,18 +128,11 @@ namespace AsteroidS
             }
         }
 
-        //IEnumerator Timer(float timeInSec)
-        //{
-        //    yield return new WaitForSeconds(timeInSec);
-        //    _ammoRloaded = true;
-        //    CoroutinesController.StopRoutine(_coroutineTimer);
-        //}
-
-        //IEnumerator TimerDelete(float timeInSec, GameObject shot)
-        //{
-        //    yield return new WaitForSeconds(timeInSec);
-        //    Object.Destroy(shot);
-        //    CoroutinesController.StopRoutine(_counterTimerDelete);
-        //}
+        IEnumerator FireRateTimer(float timeInSec)
+        {
+            yield return new WaitForSeconds(timeInSec);
+            _ammoReloaded = true;
+            CoroutinesController.StopRoutine(_coroutineTimer);
+        }
     }
 }

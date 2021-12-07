@@ -7,7 +7,7 @@ namespace AsteroidS
     {
         public AmmoType ammoType;
         public int damage;
-        [Range(1, 30)]
+        [Range(1f, 30f)]
         public float reloadTime;
         public float shotDistance;
         public float speedRate;

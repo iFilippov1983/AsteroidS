@@ -20,8 +20,6 @@ namespace AsteroidS
         public float PlayerRotationSpeed => _rotationSpeed;
         public Vector3 ShotOffset => _shotOffset;
 
-
-
         private Dictionary<AmmoType, Ammo> MakePrefabsDictionary()
         {
             var dictionary = new Dictionary<AmmoType, Ammo>();

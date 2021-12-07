@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-namespace Assets.Scripts.Controllers
+namespace AsteroidS
 {
 	internal sealed class CoroutinesController : MonoBehaviour
 	{
@@ -30,5 +30,10 @@ namespace Assets.Scripts.Controllers
 		{
 			instance.StopCoroutine(coroutine);
 		}
-	}
+
+        private void OnDestroy()
+        {
+			StopAllCoroutines();
+        }
+    }
 }

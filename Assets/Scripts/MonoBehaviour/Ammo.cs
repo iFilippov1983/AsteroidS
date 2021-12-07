@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace AsteroidS
@@ -8,7 +9,8 @@ namespace AsteroidS
         [SerializeField] private string _ammoPropertiesPath;
         
         private AmmoProperties _ammoProperties;
-        private float _lifeTimeCounter;
+        //private float _lifeTimeCounter;
+        private Coroutine _desactivationTimer;
 
         public AmmoProperties Properties
         {
@@ -25,33 +27,53 @@ namespace AsteroidS
 
         public Action<Ammo> LifeTerminationEvent;
 
+        
+
+        private void OnEnable()
+        {
+            _desactivationTimer = CoroutinesController.StartRoutine(LifeTimer(Properties.LifeTime, gameObject));
+        }
+
         private void OnCollisionEnter2D(Collision2D collision)
         {
             if (collision.gameObject.TryGetComponent(out SpaceObject so))
             {
-                LifeTerminationEvent?.Invoke(this);
+                if(so) LifeTerminationEvent?.Invoke(this);
             } 
         }
 
         private void Update()
         {
-            Live();
+            //Live();
+        }
+
+        private void FixedUpdate()
+        {
+            
         }
 
         private void OnDisable()
         {
-            _lifeTimeCounter = 0;
+            CoroutinesController.StopRoutine(_desactivationTimer);
         }
 
-        private void Live()
-        {
-            _lifeTimeCounter += Time.deltaTime;
+        //private void Live()
+        //{
+        //    _lifeTimeCounter += Time.deltaTime;
 
-            if (_lifeTimeCounter > _ammoProperties.LifeTime)
-            {
-                _lifeTimeCounter = 0;
-                LifeTerminationEvent?.Invoke(this);
-            }
+        //    if (_lifeTimeCounter > _ammoProperties.LifeTime)
+        //    {
+        //        Debug.Log("Event");
+        //        _lifeTimeCounter = 0;
+        //        LifeTerminationEvent?.Invoke(this);
+        //    }
+        //}
+
+        IEnumerator LifeTimer(float timeInSec, GameObject shot)
+        {
+            LifeTerminationEvent?.Invoke(this);
+            yield return new WaitForSeconds(timeInSec);
+            CoroutinesController.StopRoutine(_desactivationTimer);
         }
     }
 }
