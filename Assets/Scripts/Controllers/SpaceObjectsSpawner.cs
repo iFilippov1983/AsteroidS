@@ -50,17 +50,6 @@ namespace AsteroidS
             return spaceObject;
         }
 
-        //public SpaceObject[] SpawnChilds(int amount, Transform position)
-        //{
-        //    var childs = new SpaceObject[amount];
-        //    for(int index = 0; index < amount; index++)
-        //    {
-        //        Respawn(childs[index]);
-        //    }
-
-        //    return childs;
-        //}
-
         private SpaceObject SpawnUnactive(SpaceObjectType type)
         {
             var prefab = _spaceObjects[type];
@@ -102,5 +91,16 @@ namespace AsteroidS
 
             return list;
         }
+
+        //public SpaceObject[] SpawnChilds(int amount, Transform position)
+        //{
+        //    var childs = new SpaceObject[amount];
+        //    for(int index = 0; index < amount; index++)
+        //    {
+        //        Respawn(childs[index]);
+        //    }
+
+        //    return childs;
+        //}
     }
 }

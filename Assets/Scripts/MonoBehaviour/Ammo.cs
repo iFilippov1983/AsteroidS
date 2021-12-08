@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 namespace AsteroidS
@@ -34,8 +33,6 @@ namespace AsteroidS
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            Debug.Log("Hit");
-
             if (collision.gameObject.tag == TagsHolder.SpaceObject)
             {
                 LifeTerminationEvent?.Invoke(this);

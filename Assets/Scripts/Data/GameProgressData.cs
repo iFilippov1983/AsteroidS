@@ -2,7 +2,7 @@
 
 namespace AsteroidS
 {
-    class GameProgressData : ScriptableObject
+    public class GameProgressData : ScriptableObject
     {
         public int scores;
     }

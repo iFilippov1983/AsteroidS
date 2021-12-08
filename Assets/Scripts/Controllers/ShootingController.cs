@@ -5,7 +5,7 @@ using Object = UnityEngine.Object;
 
 namespace AsteroidS
 {
-    internal class ShootingController : IInitialization, IExecute, IFixedExecute, ILateExecute, ICleanup
+    internal class ShootingController : IInitialization, IFixedExecute, ICleanup
     {
         private GameData _gameData;
         private Transform _player;
@@ -21,7 +21,6 @@ namespace AsteroidS
 
         private Coroutine _coroutineTimer;
         
-
         internal ShootingController(GameData gameData, Transform player)
         {
             _gameData = gameData;
@@ -38,11 +37,6 @@ namespace AsteroidS
             _currentAmmoType = _ammo.Properties.ammoType;
             _ammoPool = _spawner.MakeSpawnedAmmoDictionary();
             SubscribeToEvents(_ammoPool);
-        }
-
-        public void Execute(float deltaTime)
-        {
-            
         }
 
         public void FixedExecute()
@@ -64,12 +58,6 @@ namespace AsteroidS
                 _coroutineTimer = CoroutinesController.StartRoutine(FireRateTimer(_reloadTime));
             }
         }
-
-        public void LateExecute()
-        {
-            
-        }
-
 
         public void Cleanup()
         {
@@ -95,7 +83,6 @@ namespace AsteroidS
         private void Shoot(Transform transform)
         {
             var ammo = _ammoPool[_currentAmmoType].Pop();
-            //var shot = Object.Instantiate(ammo, transform.position, transform.rotation);
             _ammoDriver.Drive(ammo, transform);
         }
 

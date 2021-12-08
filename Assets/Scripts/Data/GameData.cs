@@ -7,21 +7,25 @@ namespace AsteroidS
     public class GameData : ScriptableObject
     {
         private const string _gameDataFolder = "GameData/";
+
         [SerializeField] private string _playerDataPath;
         [SerializeField] private string _sceneDataPath;
         [SerializeField] private string _spaceObjectsDataPath;
         [SerializeField] private string _uiDataPath;
+        [SerializeField] private string _gameProgressDataPath;
         
         private PlayerData _playerData;
         private SceneData _sceneData;
         private SpaceObjectsData _spaceObjectsData;
         private UIData _uiData;
+        private GameProgressData _gameProgressData;
 
         public PlayerData PlayerData
         {
             get 
             {
-                if (_playerData == null) _playerData = LoadPath<PlayerData>(_gameDataFolder + _playerDataPath);
+                if (_playerData == null) _playerData = 
+                        LoadPath<PlayerData>(_gameDataFolder + _playerDataPath);
                 return _playerData;
             }
         }
@@ -30,7 +34,8 @@ namespace AsteroidS
         {
             get 
             {
-                if (_sceneData == null) _sceneData = LoadPath<SceneData>(_gameDataFolder + _sceneDataPath);
+                if (_sceneData == null) _sceneData = 
+                        LoadPath<SceneData>(_gameDataFolder + _sceneDataPath);
                 return _sceneData;
             }
         }
@@ -39,7 +44,8 @@ namespace AsteroidS
         {
             get 
             {
-                if (_spaceObjectsData == null) _spaceObjectsData = LoadPath<SpaceObjectsData>(_gameDataFolder + _spaceObjectsDataPath);
+                if (_spaceObjectsData == null) _spaceObjectsData = 
+                        LoadPath<SpaceObjectsData>(_gameDataFolder + _spaceObjectsDataPath);
                 return _spaceObjectsData;
             }
         }
@@ -48,8 +54,19 @@ namespace AsteroidS
         {
             get
             {
-                if (_uiData == null) _uiData = LoadPath<UIData>(_gameDataFolder + _uiDataPath);
+                if (_uiData == null) _uiData = 
+                        LoadPath<UIData>(_gameDataFolder + _uiDataPath);
                 return _uiData;
+            }
+        }
+
+        public GameProgressData GameProgressData
+        {
+            get 
+            {
+                if (_gameProgressData == null) _gameProgressData = 
+                        LoadPath<GameProgressData>(_gameDataFolder + _gameProgressDataPath);
+                return _gameProgressData;
             }
         }
 

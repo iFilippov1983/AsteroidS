@@ -10,7 +10,11 @@ namespace AsteroidS
         private GameData _gameData;
         private SpaceObjectsController _spaceObjectsController;
         
-        public GameProgressController(GameData gameData, SpaceObjectsController spaceObjectsController)
+        public GameProgressController(
+            GameData gameData, 
+            SpaceObjectsController spaceObjectsController,
+            ScoreCountController scoreCountController,
+            TimerController timerController)
         {
             _gameData = gameData;
             _spaceObjectsController = spaceObjectsController;

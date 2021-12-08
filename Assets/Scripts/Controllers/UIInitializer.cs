@@ -2,12 +2,12 @@
 
 namespace AsteroidS
 {
-    public class UIInitialize:IInitialization
+    public class UIInitializer : IInitialization
     {
         private GameObject _uiRootPrefab;
         private GameObject _uiRoot;
         
-        public UIInitialize(GameData gameData)
+        public UIInitializer(GameData gameData)
         {
             _uiRootPrefab = gameData.UIData.UIRoot;
         }
@@ -15,7 +15,7 @@ namespace AsteroidS
         public void Initialize()
         {
             if (_uiRoot == null)
-                _uiRoot = GameObject.Instantiate(_uiRootPrefab);
+                _uiRoot = Object.Instantiate(_uiRootPrefab);
         }
 
         public ScoreCountView GetScoreCount()

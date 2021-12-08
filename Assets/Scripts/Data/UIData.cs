@@ -14,9 +14,9 @@ namespace AsteroidS
         private string _timerMessage = "Time alive:";
 
         [Header("UIRoot reference")]
-        [Tooltip("Drad&drop here UIRootView")] [SerializeField]
+        [Tooltip("Drad&drop here UIRootView")] 
+        [SerializeField]
         private GameObject _UIRoot;
-
 
         private int _scoreHolder;
         private TimeSpan _timeHolder;
