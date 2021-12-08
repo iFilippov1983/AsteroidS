@@ -102,20 +102,20 @@ namespace AsteroidS
             _objectDriver.Stop(spaceObject);
             _soStack.Push(spaceObject);
 
-            if (spaceObject.Properties.isBreakable) SpawnChildAsteroids(spaceObject.transform);
+            //if (spaceObject.Properties.isBreakable) SpawnChildAsteroids(spaceObject.transform);
 
             OnObjectDestroyEvent?.Invoke();
         }
 
-        private void SpawnChildAsteroids(Transform position)
-        {
-            var childsAmount = Random.Range(1, _maxChildsAmount + 1);
-            var childs = _spawner.SpawnChilds(childsAmount, position);
+        //private void SpawnChildAsteroids(Transform position)
+        //{
+        //    var childsAmount = Random.Range(1, _maxChildsAmount + 1);
+        //    var childs = _spawner.SpawnChilds(childsAmount, position);
 
-            foreach (SpaceObject so in childs)
-            {
-                _objectDriver.Drive(so);
-            }
-        }
+        //    foreach (SpaceObject so in childs)
+        //    {
+        //        _objectDriver.Drive(so);
+        //    }
+        //}
     }
 }

@@ -11,8 +11,11 @@ namespace AsteroidS
         public float reloadTime;
         public float shotDistance;
         public float speedRate;
+        [Header("Time multiplier for different lifetime counters")]
+        public int timeMultiplier;
 
-        public float LifeTime => shotDistance / speedRate;
+        public float AmmoAmount => shotDistance / speedRate;
+        public float LifeTime => shotDistance / speedRate * timeMultiplier;
        
     }
 }

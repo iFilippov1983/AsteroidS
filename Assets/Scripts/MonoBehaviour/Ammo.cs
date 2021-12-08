@@ -9,8 +9,8 @@ namespace AsteroidS
         [SerializeField] private string _ammoPropertiesPath;
         
         private AmmoProperties _ammoProperties;
-        //private float _lifeTimeCounter;
-        private Coroutine _desactivationTimer;
+        private float _lifeTimeCounter;
+        //private Coroutine _desactivationTimer;
 
         public AmmoProperties Properties
         {
@@ -27,54 +27,48 @@ namespace AsteroidS
 
         public Action<Ammo> LifeTerminationEvent;
 
-        
-
         private void OnEnable()
         {
-            _desactivationTimer = CoroutinesController.StartRoutine(LifeTimer(Properties.LifeTime, gameObject));
+            //_desactivationTimer = CoroutinesController.StartRoutine(LifeTimer(Properties.LifeTime));
         }
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.TryGetComponent(out SpaceObject so))
-            {
-                if(so) LifeTerminationEvent?.Invoke(this);
-            } 
-        }
+            Debug.Log("Hit");
 
-        private void Update()
-        {
-            //Live();
+            if (collision.gameObject.tag == TagsHolder.SpaceObject)
+            {
+                LifeTerminationEvent?.Invoke(this);
+            } 
         }
 
         private void FixedUpdate()
         {
-            
+            Live();
         }
 
         private void OnDisable()
         {
-            CoroutinesController.StopRoutine(_desactivationTimer);
+            //CoroutinesController.StopRoutine(_desactivationTimer);
         }
 
-        //private void Live()
-        //{
-        //    _lifeTimeCounter += Time.deltaTime;
-
-        //    if (_lifeTimeCounter > _ammoProperties.LifeTime)
-        //    {
-        //        Debug.Log("Event");
-        //        _lifeTimeCounter = 0;
-        //        LifeTerminationEvent?.Invoke(this);
-        //    }
-        //}
-
-        IEnumerator LifeTimer(float timeInSec, GameObject shot)
+        private void Live()
         {
-            LifeTerminationEvent?.Invoke(this);
-            yield return new WaitForSeconds(timeInSec);
-            CoroutinesController.StopRoutine(_desactivationTimer);
+            _lifeTimeCounter += Time.deltaTime;
+
+            if (_lifeTimeCounter > _ammoProperties.LifeTime)
+            {
+                _lifeTimeCounter = 0;
+                LifeTerminationEvent?.Invoke(this);
+            }
         }
+
+        //IEnumerator LifeTimer(float timeInSec)
+        //{
+        //    LifeTerminationEvent?.Invoke(this);
+        //    yield return new WaitForSeconds(timeInSec);
+        //    CoroutinesController.StopRoutine(_desactivationTimer);
+        //}
     }
 }
 

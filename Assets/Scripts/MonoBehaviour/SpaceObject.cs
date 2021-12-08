@@ -32,10 +32,10 @@ namespace AsteroidS
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.TryGetComponent(out Ammo ammo))
+            if (collision.gameObject.tag == TagsHolder.Ammo)
             {
-                //Debug.Log(ammo);
-                var damage = ammo.Properties.damage;
+                var ammo = collision.gameObject;
+                var damage = ammo.GetComponent<Ammo>().Properties.damage;
                 _spaceObjectProperties.hitPoints -= damage;
                 SpaceObjectHit?.Invoke(this);
             }

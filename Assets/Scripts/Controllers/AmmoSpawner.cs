@@ -20,7 +20,7 @@ namespace AsteroidS
             {
                 var ammoType = (AmmoType)prefabIndex;
                 var prefab = _ammoPrefabsDictionary[ammoType];
-                var amount = CalculateAmmoAmount(prefab.Properties);
+                var amount = prefab.Properties.AmmoAmount; //CalculateAmmoAmount(prefab.Properties);
                 dictionary.Add(ammoType, new Stack<Ammo>());
 
                 for (int index = 0; index < amount; index++)
@@ -40,17 +40,17 @@ namespace AsteroidS
         //    return spawnedAmmo;
         //}
 
-        private int CalculateAmmoAmount(AmmoProperties properties)
-        {
-            int amount;
-            var reloadTime = properties.reloadTime;
-            var lifetime = properties.LifeTime;
+        //private int CalculateAmmoAmount(AmmoProperties properties)
+        //{
+        //    int amount;
+        //    var reloadTime = properties.reloadTime;
+        //    var lifetime = properties.LifeTime;
 
-            if (reloadTime > lifetime) amount = 1;
-            else amount = (int)(lifetime/reloadTime + 1);
+        //    if (reloadTime > lifetime) amount = 1;
+        //    else amount = (int)(lifetime/reloadTime + 1);
             
-            return amount;
-        }
+        //    return amount;
+        //}
 
         private Ammo SpawnUnactiveAmmoObject(AmmoType type)
         {

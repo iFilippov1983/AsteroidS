@@ -9,16 +9,14 @@ namespace AsteroidS
     {
         [SerializeField] private GameObject _playerPrefab;
         [SerializeField] private List<Ammo> _ammoPrefabs;
-        [SerializeField] private float _MoveSpeed;
+        [SerializeField] private float _moveSpeed;
         [SerializeField] private float _rotationSpeed;
         public Ammo currentAmmo;
-        [SerializeField] private Vector3 _shotOffset;
 
         public GameObject PlayerPrefab => _playerPrefab;
         public Dictionary<AmmoType,Ammo> AmmoPrefabsDictionary => MakePrefabsDictionary();
-        public float PlayerMovementSpeed => _MoveSpeed;
+        public float PlayerMovementSpeed => _moveSpeed;
         public float PlayerRotationSpeed => _rotationSpeed;
-        public Vector3 ShotOffset => _shotOffset;
 
         private Dictionary<AmmoType, Ammo> MakePrefabsDictionary()
         {

@@ -7,7 +7,7 @@ namespace AsteroidS
 	{
 		private static CoroutinesController _coroutine;
 
-		private static CoroutinesController instance
+		private static CoroutinesController Instance
 		{
 			get
 			{
@@ -15,6 +15,7 @@ namespace AsteroidS
 				{
 					var go = new GameObject("[COROUTINE MANAGER]");
 					_coroutine = go.AddComponent<CoroutinesController>();
+					
 					DontDestroyOnLoad(go);
 				}
 				return _coroutine;
@@ -23,12 +24,12 @@ namespace AsteroidS
 		
 		public static Coroutine StartRoutine (IEnumerator enumerator)
 		{
-			return instance.StartCoroutine(enumerator);
+			return Instance.StartCoroutine(enumerator);
 		}
 
 		public static void StopRoutine (Coroutine coroutine)
 		{
-			instance.StopCoroutine(coroutine);
+			Instance.StopCoroutine(coroutine);
 		}
 
         private void OnDestroy()

@@ -17,3 +17,4 @@ MonoBehaviour:
   reloadTime: 2
   shotDistance: 20
   speedRate: 10
+  timeMultiplier: 1

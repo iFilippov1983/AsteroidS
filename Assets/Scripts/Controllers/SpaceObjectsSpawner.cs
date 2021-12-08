@@ -50,16 +50,16 @@ namespace AsteroidS
             return spaceObject;
         }
 
-        public SpaceObject[] SpawnChilds(int amount, Transform position)
-        {
-            var childs = new SpaceObject[amount];
-            for(int index = 0; index < amount; index++)
-            {
-                Respawn(childs[index]);
-            }
+        //public SpaceObject[] SpawnChilds(int amount, Transform position)
+        //{
+        //    var childs = new SpaceObject[amount];
+        //    for(int index = 0; index < amount; index++)
+        //    {
+        //        Respawn(childs[index]);
+        //    }
 
-            return childs;
-        }
+        //    return childs;
+        //}
 
         private SpaceObject SpawnUnactive(SpaceObjectType type)
         {

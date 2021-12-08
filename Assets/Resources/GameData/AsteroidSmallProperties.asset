@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: AsteroidSmallProperties
   m_EditorClassIdentifier: 
   type: 2
-  hitPoints: 100
+  hitPoints: -450
+  scoresForDestroing: 0
   mass: 1
-  amountOnScene: 6
-  speed: 15
+  amountOnScene: 4
+  speed: 9
   maxLifeTime: 15
+  isPickable: 0
   isBreakable: 0
   isChild: 1
   isShooting: 0

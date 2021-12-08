@@ -85,27 +85,26 @@ namespace AsteroidS
 
         private void OnLifeTermination(Ammo ammo)
         {
-            Debug.Log("Event C");
             var type = ammo.Properties.ammoType;
 
-            _ammoPool[type].Push(ammo);
             _ammoDriver.Stop(ammo);
-            
+            _ammoPool[type].Push(ammo);
+
         }
 
         private void Shoot(Transform transform)
         {
             var ammo = _ammoPool[_currentAmmoType].Pop();
-            var shot = Object.Instantiate(ammo, transform.position, transform.rotation);
-            _ammoDriver.Drive(shot, _player.up);
+            //var shot = Object.Instantiate(ammo, transform.position, transform.rotation);
+            _ammoDriver.Drive(ammo, transform);
         }
 
         private void SubscribeToEvents(Dictionary<AmmoType, Stack<Ammo>> keyValuePair)
         {
-            for (int index = 1; index <= _ammoPool.Count; index++)
+            for (int index = 1; index <= keyValuePair.Count; index++)
             {
                 var type = (AmmoType)index;
-                var stack = _ammoPool[type];
+                var stack = keyValuePair[type];
 
                 foreach (Ammo a in stack)
                 {
@@ -116,10 +115,10 @@ namespace AsteroidS
 
         private void UnsubscribeFromEvents(Dictionary<AmmoType, Stack<Ammo>> keyValuePair)
         {
-            for (int index = 1; index <= _ammoPool.Count; index++)
+            for (int index = 1; index <= keyValuePair.Count; index++)
             {
                 var type = (AmmoType)index;
-                var stack = _ammoPool[type];
+                var stack = keyValuePair[type];
 
                 foreach (Ammo a in stack)
                 {
