@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace AsteroidS
 {
-    public class GameManager : MonoBehaviour
+    public class GameDriver : MonoBehaviour
     {
         [SerializeField] private GameData _gameData;
         private ControllersProxy _controllers;

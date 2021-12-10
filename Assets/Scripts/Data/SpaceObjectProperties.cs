@@ -7,7 +7,7 @@ namespace AsteroidS
     {
         public SpaceObjectType type;
         public int hitPoints;
-        public int scoresForDestroing;
+        public int scoresForDestruction;
         public float mass;
         public int amountOnScene;
         public float speed;

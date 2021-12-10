@@ -10,8 +10,11 @@ namespace AsteroidS
 
         private SpaceObjectProperties _spaceObjectProperties;
         private float _lifeTimeCounter = 0;
+        private int _hitPoints;
+
 
         public Sprite[] GetSprites => _sprites;
+        public int HitPoints => _hitPoints;
 
         public SpaceObjectProperties Properties
         {
@@ -30,16 +33,24 @@ namespace AsteroidS
         public Action<SpaceObject> LifeTimeTermination;
         public Action PlayerHit;
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnEnable()
+        {
+            _hitPoints = Properties.hitPoints;
+        }
+
+        private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.tag == TagsHolder.Ammo)
             {
                 var ammo = collision.gameObject;
                 var damage = ammo.GetComponent<Ammo>().Properties.damage;
-                _spaceObjectProperties.hitPoints -= damage;
+                _hitPoints -= damage;
                 SpaceObjectHit?.Invoke(this);
             }
+        }
 
+        private void OnCollisionEnter2D(Collision2D collision)
+        {
             if (collision.gameObject.tag == TagsHolder.Player)
             {
                 PlayerHit?.Invoke();

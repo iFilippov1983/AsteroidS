@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5abace8c29ecc746a98433fe3b8bb3b, type: 3}
   m_Name: AsteroidBigProperties
   m_EditorClassIdentifier: 
-  type: 1
-  hitPoints: -450
-  scoresForDestroing: 0
+  type: 2
+  hitPoints: 30
+  scoresForDestruction: 0
   mass: 1
   amountOnScene: 6
   speed: 5

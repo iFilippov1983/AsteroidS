@@ -94,11 +94,12 @@
     <Compile Include="Assets\Scripts\Controllers\Input\MobileInputFactory.cs" />
     <Compile Include="Assets\Scripts\Controllers\ShootingController.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameProgressController.cs" />
+    <Compile Include="Assets\Scripts\Data\GameLevelProperties.cs" />
     <Compile Include="Assets\Scripts\Data\AmmoProperties.cs" />
     <Compile Include="Assets\Scripts\Controllers\SpaceObjectsController.cs" />
     <Compile Include="Assets\Scripts\Interface\IMobileInputFactory.cs" />
     <Compile Include="Assets\Scripts\Controllers\SceneInitializer.cs" />
-    <Compile Include="Assets\Scripts\MonoBehaviour\GameManager.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviour\GameDriver.cs" />
     <Compile Include="Assets\Scripts\Interface\IExecute.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\ScoreCountView.cs" />
     <Compile Include="Assets\Scripts\Data\SpaceObjectsData.cs" />

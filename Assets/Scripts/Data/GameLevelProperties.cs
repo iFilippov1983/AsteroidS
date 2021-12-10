@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
 
 namespace AsteroidS
 {
-    [CreateAssetMenu(menuName = "GameData/SpaceObjectsData", fileName = "SpaceObjectsData")]
-    public class SpaceObjectsData : ScriptableObject
+    [CreateAssetMenu(menuName = "GameData/Properties/LevelPropeties", fileName = "Level_number_Properties")]
+    public class GameLevelProperties : ScriptableObject
     {
         [SerializeField] private SpaceObject[] _spaceObjectsPrefabs;
 
@@ -34,3 +34,4 @@ namespace AsteroidS
         }
     }
 }
+

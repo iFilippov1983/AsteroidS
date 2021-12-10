@@ -5,11 +5,18 @@ using UnityEngine.SceneManagement;
 
 namespace AsteroidS
 {
-    class GameProgressController : IInitialization, IExecute, ICleanup
+    class GameProgressController : IInitialization, IExecute, IFixedExecute, ILateExecute, ICleanup
     {
         private GameData _gameData;
         private SpaceObjectsController _spaceObjectsController;
-        
+        private ScoreCountController _scoreCountController;
+        private TimerController _timerController;
+
+        private int _currentLevel;
+        private TimeSpan _levelDuration;
+        private float _levelDurationTimer;
+
+
         public GameProgressController(
             GameData gameData, 
             SpaceObjectsController spaceObjectsController,
@@ -18,16 +25,41 @@ namespace AsteroidS
         {
             _gameData = gameData;
             _spaceObjectsController = spaceObjectsController;
+            _scoreCountController = scoreCountController;
+            _timerController = timerController;
         }
         
         public void Initialize()
         {
+            _levelDuration = _gameData.GameProgressData.LevelDuration;
+            _currentLevel = _gameData.GameProgressData.CurrentLevel;
+
             _spaceObjectsController.OnPlayerDestroyEvent += RestartScene;
         }
 
         public void Execute(float deltaTime)
         {
+            _levelDurationTimer += deltaTime;
+        }
+
+        public void FixedExecute()
+        {
             
+        }
+
+        public void LateExecute()
+        {
+            if (TimeSpan.FromSeconds(_levelDurationTimer) > _levelDuration)
+            {
+                _currentLevel += 1;
+
+                //temp
+                Debug.Log($"Level: {_currentLevel}");
+
+                _gameData.GameProgressData.CurrentLevel = _currentLevel;
+                _spaceObjectsController.LevelTransition = true;
+                _levelDurationTimer = 0;
+            }
         }
 
         public void Cleanup()

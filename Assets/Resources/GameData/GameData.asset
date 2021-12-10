@@ -16,3 +16,4 @@ MonoBehaviour:
   _sceneDataPath: SceneData
   _spaceObjectsDataPath: SpaceObjectsData
   _uiDataPath: UIData
+  _gameProgressDataPath: GameProgressData

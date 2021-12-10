@@ -6,19 +6,20 @@ namespace AsteroidS
 {
     public class SpaceObjectsSpawner
     {
-        private Dictionary<SpaceObjectType, SpaceObject> _spaceObjects;
-        private List<SpaceObject> _childsPrefabs;
         private SpaceObjectBuilder _builder;
+        private Dictionary<SpaceObjectType, SpaceObject> _spaceObjects;
         private float _spawnDistanceMultiplier;
         private float _trajectoryVariance;
+        //private List<SpaceObject> _childsPrefabs;
 
         public SpaceObjectsSpawner(GameData gameData)
         {
-            _spaceObjects = gameData.SpaceObjectsData.SpaceObjectsPrefabsDictionary;
-            _childsPrefabs = GetChilds(_spaceObjects);
             _builder = new SpaceObjectBuilder();
-            _spawnDistanceMultiplier = gameData.SpaceObjectsData.DistanceMultiplier;
-            _trajectoryVariance = gameData.SpaceObjectsData.TrajectoryVariance;
+
+            _spaceObjects = gameData.GameProgressData.CurrentLevelProperties.SpaceObjectsPrefabsDictionary;
+            _spawnDistanceMultiplier = gameData.GameProgressData.CurrentLevelProperties.DistanceMultiplier;
+            _trajectoryVariance = gameData.GameProgressData.CurrentLevelProperties.TrajectoryVariance;
+            //_childsPrefabs = GetChilds(_spaceObjects);
         }
 
         public Stack<SpaceObject> CreateUnactiveSpaceObjectsStack()
