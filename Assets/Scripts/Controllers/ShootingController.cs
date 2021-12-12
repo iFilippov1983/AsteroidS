@@ -1,11 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
 namespace AsteroidS
 {
-    internal class ShootingController : IInitialization, IFixedExecute, ICleanup
+    public class ShootingController : IInitialization, IFixedExecute, ICleanup
     {
         private GameData _gameData;
         private Transform _player;
@@ -20,8 +21,11 @@ namespace AsteroidS
         private bool _ammoReloaded = true;
 
         private Coroutine _coroutineTimer;
-        
-        internal ShootingController(GameData gameData, Transform player)
+
+        public event Action OnShot;
+
+
+        public ShootingController(GameData gameData, Transform player)
         {
             _gameData = gameData;
             _player = player;
@@ -54,7 +58,7 @@ namespace AsteroidS
                 _ammoReloaded = false;
 
                 Shoot(_player);
-
+                OnShot?.Invoke();
                 _coroutineTimer = CoroutinesController.StartRoutine(FireRateTimer(_reloadTime));
             }
         }
