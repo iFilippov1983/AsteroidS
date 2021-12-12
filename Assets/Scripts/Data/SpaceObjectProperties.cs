@@ -16,6 +16,7 @@ namespace AsteroidS
         public bool isPickable;
         public bool isBreakable;
         public bool isChild;
+        public bool canBeChild;
         public bool isShooting;
     }
 }

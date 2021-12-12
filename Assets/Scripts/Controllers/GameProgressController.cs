@@ -10,8 +10,8 @@ namespace AsteroidS
         private GameData _gameData;
         private SpaceObjectsController _spaceObjectsController;
         private ScoreCountController _scoreCountController;
-        private TimerController _timerController;
 
+        private const int _startLevel = 1;
         private int _currentLevel;
         private TimeSpan _levelDuration;
         private float _levelDurationTimer;
@@ -20,13 +20,11 @@ namespace AsteroidS
         public GameProgressController(
             GameData gameData, 
             SpaceObjectsController spaceObjectsController,
-            ScoreCountController scoreCountController,
-            TimerController timerController)
+            ScoreCountController scoreCountController)
         {
             _gameData = gameData;
             _spaceObjectsController = spaceObjectsController;
             _scoreCountController = scoreCountController;
-            _timerController = timerController;
         }
         
         public void Initialize()
@@ -34,6 +32,7 @@ namespace AsteroidS
             _levelDuration = _gameData.GameProgressData.LevelDuration;
             _currentLevel = _gameData.GameProgressData.CurrentLevel;
 
+            _spaceObjectsController.OnObjectDestroyEvent += _scoreCountController.AddScore;
             _spaceObjectsController.OnPlayerDestroyEvent += RestartScene;
         }
 
@@ -53,9 +52,6 @@ namespace AsteroidS
             {
                 _currentLevel += 1;
 
-                //temp
-                Debug.Log($"Level: {_currentLevel}");
-
                 _gameData.GameProgressData.CurrentLevel = _currentLevel;
                 _spaceObjectsController.LevelTransition = true;
                 _levelDurationTimer = 0;
@@ -64,12 +60,21 @@ namespace AsteroidS
 
         public void Cleanup()
         {
-            _spaceObjectsController.OnPlayerDestroyEvent += RestartScene;
+            ResetProperties();
+
+            _spaceObjectsController.OnObjectDestroyEvent -= _scoreCountController.AddScore;
+            _spaceObjectsController.OnPlayerDestroyEvent -= RestartScene;
         }
 
         private void RestartScene()
         {
             SceneManager.LoadScene(_gameData.SceneData.SceneName);
+        }
+
+        private void ResetProperties()
+        {
+            _gameData.GameProgressData.CurrentLevel = _startLevel;
+            _spaceObjectsController.LevelTransition = false;
         }
     }
 }
