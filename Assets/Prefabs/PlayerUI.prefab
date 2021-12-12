@@ -603,7 +603,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2664380880930773838}
   m_Layer: 0
-  m_Name: UIRoot
+  m_Name: PlayerUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

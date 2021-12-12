@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AsteroidS
 {
-    public class UIInitialize:IInitialization
+    public class UIInitializer:IInitialization
     {
         private GameObject _mainMenuPrefab;
         private GameObject _settingsMenuPrefab;
@@ -14,9 +14,11 @@ namespace AsteroidS
         private GameObject _playerUI;
 
 
-        public UIInitialize(GameData gameData)
+        public UIInitializer(GameData gameData)
         {
             _playerUIPrefab = gameData.UIData.PlayerUI;
+            _mainMenuPrefab = gameData.UIData.MainMenu;
+            _settingsMenuPrefab = gameData.UIData.SettingsMenu;
         }
 
         public void Initialize()
@@ -33,6 +35,7 @@ namespace AsteroidS
         private GameObject GetSettingsMenu()
         {
             var settingsMenu = Object.Instantiate(_settingsMenuPrefab, _uiRoot.transform);
+            settingsMenu.SetActive(false);
             return settingsMenu;
         }
 

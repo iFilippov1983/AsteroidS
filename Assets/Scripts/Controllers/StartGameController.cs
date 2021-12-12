@@ -8,10 +8,10 @@ namespace AsteroidS
         private GameObject _mainMenu;
         private GameObject _levelRootObject;
         
-        public StartGameController(UIInitialize uiInitialize, GameStateController gameStateController)
+        public StartGameController(UIInitializer uiInitializer, GameStateController gameStateController)
         {
             _gameStateController = gameStateController;
-            _mainMenu = uiInitialize.MainMenu;
+            _mainMenu = uiInitializer.MainMenu;
         }
 
 

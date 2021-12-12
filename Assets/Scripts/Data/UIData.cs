@@ -16,21 +16,14 @@ namespace AsteroidS
 
         [Header("UIRoot reference")]
         [Tooltip("Drad&drop here UIRootView")] [SerializeField]
-        private GameObject _playerUi;
+        private GameObject _playerUI;
 
         [Header("Menu objects")] 
         [Tooltip("Drag&drop here MainMenu object")] [SerializeField]
         private GameObject _mainMenu;
-        [SerializeField] private Button _startButton;
-        [SerializeField] private Button _settingsButton;
-        [SerializeField] private Button _exitButton;
 
         [Tooltip("Drag&drop here SettingsMenu object")] [SerializeField]
         private GameObject _settingsMenu;
-
-        [SerializeField] private Button _backButton;
-        [SerializeField] private Slider _volumeSlider;
-        [SerializeField] private Dropdown _resolutionSettingsDropdown;
 
 
         private int _scoreHolder;
@@ -38,15 +31,9 @@ namespace AsteroidS
 
         public string ScoreMessage => _scoreMessage;
         public string TimerMessage => _timerMessage;
-        public GameObject PlayerUI => _playerUi;
+        public GameObject PlayerUI => _playerUI;
         public GameObject MainMenu => _mainMenu;
         public GameObject SettingsMenu => _settingsMenu;
-        public Button StartButton => _startButton;
-        public Button SettingsButton => _settingsButton;
-        public Button ExitButton => _exitButton;
-        public Button BackButton => _backButton;
-        public Slider VolumeSlider => _volumeSlider;
-        public Dropdown ResolutionSettingsDropdown => _resolutionSettingsDropdown;
 
         public int ScoreHolder
         {
