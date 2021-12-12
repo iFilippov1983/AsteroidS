@@ -8,6 +8,7 @@ namespace AsteroidS
     public class SpaceObjectsData : ScriptableObject
     {
         [SerializeField] private SpaceObject[] _spaceObjectsPrefabs;
+
         [SerializeField] private float _spawnRate = 2.0f;
         [SerializeField] private float _spawnDistanceMultiplier = 15.0f;
         [SerializeField] private float _trajectoryVariance = 15.0f;

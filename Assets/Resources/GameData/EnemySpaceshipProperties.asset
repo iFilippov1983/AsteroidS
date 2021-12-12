@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: EnemySpaceshipProperties
   m_EditorClassIdentifier: 
   type: 3
-  hitPoints: -270
-  scoresForDestroing: 0
+  hitPoints: 60
+  scoresForDestruction: 2
   mass: 1
   amountOnScene: 2
   speed: 7
@@ -22,4 +22,5 @@ MonoBehaviour:
   isPickable: 0
   isBreakable: 0
   isChild: 0
-  isShooting: 1
+  canBeChild: 0
+  isShooting: 0

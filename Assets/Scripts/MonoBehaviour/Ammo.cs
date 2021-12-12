@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 namespace AsteroidS
@@ -32,14 +31,15 @@ namespace AsteroidS
             //_desactivationTimer = CoroutinesController.StartRoutine(LifeTimer(Properties.LifeTime));
         }
 
-        private void OnCollisionEnter2D(Collision2D collision)
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            Debug.Log("Hit");
+            //temp 
+            Debug.Log($"Ammo hits object: {collision.gameObject.name}");
 
             if (collision.gameObject.tag == TagsHolder.SpaceObject)
             {
                 LifeTerminationEvent?.Invoke(this);
-            } 
+            }
         }
 
         private void FixedUpdate()
