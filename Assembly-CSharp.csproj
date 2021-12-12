@@ -62,6 +62,7 @@
     <Compile Include="Assets\Scripts\Controllers\GameInitializer.cs" />
     <Compile Include="Assets\Scripts\Data\Input\MobileInput.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerInitializer.cs" />
+    <Compile Include="Assets\Scripts\Controllers\MenuController.cs" />
     <Compile Include="Assets\Scripts\Interface\ILateExecute.cs" />
     <Compile Include="Assets\Scripts\Controllers\SpaceObjectBuilder.cs" />
     <Compile Include="Assets\Scripts\Controllers\SpaceObjectsSpawner.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Assets\Scripts\MonoBehaviour\Ammo.cs" />
     <Compile Include="Assets\Scripts\Data\PlayerData.cs" />
     <Compile Include="Assets\Scripts\Data\GameData.cs" />
+    <Compile Include="Assets\Scripts\Controllers\AudioSourceHandler.cs" />
     <Compile Include="Assets\Scripts\Controllers\InputInitializer.cs" />
     <Compile Include="Assets\Scripts\Controllers\CoroutinesController.cs" />
     <Compile Include="Assets\Scripts\Controllers\InputController.cs" />
@@ -85,6 +87,7 @@
     <Compile Include="Assets\Scripts\Controllers\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Interface\IController.cs" />
     <Compile Include="Assets\Scripts\Controllers\SpaceObjectDriver.cs" />
+    <Compile Include="Assets\Scripts\Controllers\AudioController.cs" />
     <Compile Include="Assets\Scripts\Data\SceneData.cs" />
     <Compile Include="Assets\Scripts\Interface\IFixedExecute.cs" />
     <Compile Include="Assets\Scripts\Controllers\AmmoSpawner.cs" />
@@ -108,9 +111,6 @@
     <Compile Include="Assets\Scripts\Data\SpaceObjectsData.cs" />
     <Compile Include="Assets\Scripts\Data\SpaceObjectProperties.cs" />
     <Compile Include="Assets\Scripts\Controllers\TimerController.cs" />
-    <Compile Include="Assets\Scripts\Controllers\AudioController.cs" />
-    <Compile Include="Assets\Scripts\Controllers\MenuController.cs" />
-    <Compile Include="Assets\Scripts\Controllers\AudioSourceHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
