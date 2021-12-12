@@ -29,9 +29,9 @@ namespace AsteroidS
             }
         }
 
-        public Action<SpaceObject> SpaceObjectHit;
-        public Action<SpaceObject> LifeTimeTermination;
-        public Action PlayerHit;
+        public Action<SpaceObject> OnSpaceObjectHit;
+        public Action<SpaceObject> OnLifeTimeTermination;
+        public Action OnPlayerHit;
 
         private void OnEnable()
         {
@@ -45,7 +45,7 @@ namespace AsteroidS
                 var ammo = collision.gameObject;
                 var damage = ammo.GetComponent<Ammo>().Properties.damage;
                 _hitPoints -= damage;
-                SpaceObjectHit?.Invoke(this);
+                OnSpaceObjectHit?.Invoke(this);
             }
         }
 
@@ -53,7 +53,7 @@ namespace AsteroidS
         {
             if (collision.gameObject.tag == TagsHolder.Player)
             {
-                PlayerHit?.Invoke();
+                OnPlayerHit?.Invoke();
             }
         }
 
@@ -73,8 +73,11 @@ namespace AsteroidS
 
             if (_lifeTimeCounter >= _spaceObjectProperties.maxLifeTime)
             {
+                //temp
+                if (Properties.isChild) Debug.Log("Child live time terminated");
+
                 _lifeTimeCounter = 0;
-                LifeTimeTermination?.Invoke(this);
+                OnLifeTimeTermination?.Invoke(this);
             }
         }
 

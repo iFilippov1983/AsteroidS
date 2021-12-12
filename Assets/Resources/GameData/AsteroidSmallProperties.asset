@@ -22,4 +22,5 @@ MonoBehaviour:
   isPickable: 0
   isBreakable: 0
   isChild: 1
+  canBeChild: 1
   isShooting: 0

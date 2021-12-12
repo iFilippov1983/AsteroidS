@@ -34,15 +34,16 @@ namespace AsteroidS
 
         }
 
+        public void AddScore(int scoreToAdd)
+        {
+            _score += scoreToAdd;
+        }
 
         private void DisplayScores()
         {
             _scoreDisplay.text = $"{_message} {_score}";
         }
 
-        private void AddScore(int addScore)
-        {
-            _score += addScore;
-        }
+        
     }
 }

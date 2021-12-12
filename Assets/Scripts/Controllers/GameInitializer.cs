@@ -19,7 +19,7 @@
             controllers.Add(new InputController(inputInitialiser.GetInput()));
             controllers.Add(new PlayerMovementController(gameData, playerInitializer.Player, inputInitialiser.GetInput()));
             controllers.Add(new ShootingController(gameData, playerInitializer.Player.transform));
-            controllers.Add(new GameProgressController(gameData, spaceObjectsController, scoreCountController, timerController));
+            controllers.Add(new GameProgressController(gameData, spaceObjectsController, scoreCountController));
         }
     }
 }
