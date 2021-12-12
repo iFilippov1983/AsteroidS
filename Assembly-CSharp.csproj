@@ -113,6 +113,14 @@
      <Compile Include="Assets\Scripts\Data\SpaceObjectProperties.cs" />
      <Compile Include="Assets\Scripts\Controllers\TimerController.cs" />
      <Compile Include="Assets\Scripts\Controllers\UIInitializer.cs" />
+     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\StartButtonView.cs" />
+     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\SettingsMenuButton.cs" />
+     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\VolumeSliderView.cs" />
+     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\ExitButtonView.cs" />
+     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\BackButtonView.cs" />
+     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\ScreenResolutionView.cs" />
+     <Compile Include="Assets\Scripts\Controllers\UIObjectGetterController.cs" />
+     <Compile Include="Assets\Scripts\Interface\IConfigure.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

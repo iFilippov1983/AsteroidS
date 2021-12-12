@@ -6,6 +6,7 @@ namespace AsteroidS
 {
     public class ControllersProxy : IInitialization, IExecute, IFixedExecute, ILateExecute, ICleanup
     {
+        private readonly List<IConfigure> _configureController;
         private readonly List<IInitialization> _initializationControllers;
         private readonly List<IExecute> _executeControllers;
         private readonly List<IFixedExecute> _fixedExecuteControllers;
@@ -14,6 +15,7 @@ namespace AsteroidS
 
         public ControllersProxy()
         {
+            _configureController = new List<IConfigure>();
             _initializationControllers = new List<IInitialization>();
             _executeControllers = new List<IExecute>();
             _fixedExecuteControllers = new List<IFixedExecute>();
@@ -23,6 +25,11 @@ namespace AsteroidS
 
         public void Add(IController controller)
         {
+            if (controller is IConfigure configController)
+            {
+                _configureController.Add(configController);
+            }
+
             if (controller is IInitialization initController)
             {
                 _initializationControllers.Add(initController);
@@ -47,6 +54,12 @@ namespace AsteroidS
             {
                 _cleanupControllers.Add(cleanupController);
             }
+        }
+
+        public void Configure()
+        {
+            foreach (IConfigure controller in _configureController)
+                controller.Configure();
         }
 
         public void Initialize()

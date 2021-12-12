@@ -7,7 +7,6 @@ namespace AsteroidS
     {
         private UIData _uiData;
         private GameObject _mainMenu;
-        private GameObject _levelRootObject;
         private GameObject _settingsMenu;
 
         private Button _startButton;
@@ -19,7 +18,6 @@ namespace AsteroidS
             _uiData = gameData.UIData;
             _mainMenu = _uiData.MainMenu;
             _settingsMenu = _uiData.SettingsMenu;
-            
         }
     }
 }

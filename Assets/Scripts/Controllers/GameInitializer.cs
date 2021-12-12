@@ -7,13 +7,14 @@
             var inputInitialiser = new InputInitializer();
             var playerInitializer = new PlayerInitializer(gameData);
             var uiInitialize = new UIInitializer(gameData);
+            var uiObjectsGetter = new UIObjectGetterController(uiInitialize);
             var spaceObjectsController = new SpaceObjectsController(gameData);
-            var scoreCountController = new ScoreCountController(gameData, uiInitialize);
-            var timerController = new TimerController(gameData, uiInitialize);
+            var scoreCountController = new ScoreCountController(gameData, uiObjectsGetter);
+            var timerController = new TimerController(gameData, uiObjectsGetter);
             var menuController = new MenuController();
             var shootingController = new ShootingController(gameData, playerInitializer.Player.transform);
 
-            controllers.Add(uiInitialize);
+            controllers.Add(uiObjectsGetter);
             controllers.Add(spaceObjectsController);
             controllers.Add(scoreCountController);
             controllers.Add(timerController);

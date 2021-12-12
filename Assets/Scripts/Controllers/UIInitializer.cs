@@ -1,9 +1,9 @@
-﻿using TMPro;
+﻿using AsteroidS.UIView;
 using UnityEngine;
 
 namespace AsteroidS
 {
-    public class UIInitializer:IInitialization
+    public class UIInitializer
     {
         private GameObject _mainMenuPrefab;
         private GameObject _settingsMenuPrefab;
@@ -16,12 +16,13 @@ namespace AsteroidS
 
         public UIInitializer(GameData gameData)
         {
-            _playerUIPrefab = gameData.UIData.PlayerUI;
             _mainMenuPrefab = gameData.UIData.MainMenu;
             _settingsMenuPrefab = gameData.UIData.SettingsMenu;
+            _playerUIPrefab = gameData.UIData.PlayerUI;
+            CreateUI();
         }
 
-        public void Initialize()
+        private void CreateUI()
         {
             if (_uiRoot is null)
             {
@@ -32,16 +33,10 @@ namespace AsteroidS
             }
         }
 
-        private GameObject GetSettingsMenu()
-        {
-            var settingsMenu = Object.Instantiate(_settingsMenuPrefab, _uiRoot.transform);
-            settingsMenu.SetActive(false);
-            return settingsMenu;
-        }
-
         private GameObject GetMainMenu()
         {
             var mainMenu = Object.Instantiate(_mainMenuPrefab, _uiRoot.transform);
+            mainMenu.SetActive(false);
             return mainMenu;
         }
 
@@ -51,16 +46,19 @@ namespace AsteroidS
             return playerUI;
         }
 
+        private GameObject GetSettingsMenu()
+        {
+            var settingsMenu = Object.Instantiate(_settingsMenuPrefab, _uiRoot.transform);
+            settingsMenu.SetActive(false);
+            return settingsMenu;
+        }
+
         public GameObject PlayerUI => _playerUI;
+
         public GameObject MainMenu => _mainMenu;
 
         public GameObject SettingsMenu => _settingsMenu;
 
-        public ScoreCountView GetScoreCount()
-        {
-            var scoreCountView = _playerUI.GetComponentInChildren<ScoreCountView>();
-            return scoreCountView;
-        }
 
         public TimerCountView GetTimerCount()
         {
