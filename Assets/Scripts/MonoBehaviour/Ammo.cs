@@ -33,6 +33,9 @@ namespace AsteroidS
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
+            //temp 
+            Debug.Log($"Ammo hits object: {collision.gameObject.name}");
+
             if (collision.gameObject.tag == TagsHolder.SpaceObject)
             {
                 LifeTerminationEvent?.Invoke(this);

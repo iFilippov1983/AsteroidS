@@ -73,9 +73,6 @@ namespace AsteroidS
 
             if (_lifeTimeCounter >= _spaceObjectProperties.maxLifeTime)
             {
-                //temp
-                if (Properties.isChild) Debug.Log("Child live time terminated");
-
                 _lifeTimeCounter = 0;
                 OnLifeTimeTermination?.Invoke(this);
             }

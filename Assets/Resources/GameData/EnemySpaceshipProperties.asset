@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 3
   hitPoints: 60
-  scoresForDestruction: 0
+  scoresForDestruction: 2
   mass: 1
   amountOnScene: 2
   speed: 7

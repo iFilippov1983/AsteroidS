@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   hitPoints: 30
-  scoresForDestruction: 0
+  scoresForDestruction: 1
   mass: 1
   amountOnScene: 6
   speed: 5
@@ -22,4 +22,5 @@ MonoBehaviour:
   isPickable: 0
   isBreakable: 1
   isChild: 0
+  canBeChild: 0
   isShooting: 0

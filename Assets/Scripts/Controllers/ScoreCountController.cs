@@ -36,6 +36,9 @@ namespace AsteroidS
 
         public void AddScore(int scoreToAdd)
         {
+            //temp
+            Debug.Log($"Got scores: {_score}");
+            
             _score += scoreToAdd;
         }
 
