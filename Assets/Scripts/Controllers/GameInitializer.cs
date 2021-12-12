@@ -22,7 +22,7 @@
             controllers.Add(new PlayerMovementController(gameData, playerInitializer.Player, inputInitialiser.GetInput()));
             controllers.Add(shootingController);
             controllers.Add(new GameProgressController(gameData, spaceObjectsController, scoreCountController));
-            controllers.Add(new AudioController(gameData, menuController, shootingController));
+            controllers.Add(new AudioController(gameData, menuController, shootingController, spaceObjectsController));
         }
     }
 }

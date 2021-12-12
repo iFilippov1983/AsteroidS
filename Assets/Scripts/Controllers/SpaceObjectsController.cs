@@ -30,6 +30,8 @@ namespace AsteroidS
 
         public Action<int> OnObjectDestroyEvent;
         public Action OnPlayerDestroyEvent;
+        public Action<string> OnObjectHitEvent;
+        public Action<string> OnObjectDestroy;
 
         public void Initialize()
         {
@@ -86,7 +88,6 @@ namespace AsteroidS
                     SubscribeOnSOEvents();
                     _levelTransition = false;
                 }
-
             }
         }
 
@@ -101,7 +102,12 @@ namespace AsteroidS
                 DestructSO(spaceObject);
 
                 OnObjectDestroyEvent?.Invoke(scores);
-            } 
+                OnObjectDestroy?.Invoke(spaceObject.tag);
+            }
+            else
+            {
+                OnObjectHitEvent?.Invoke(spaceObject.tag);
+            }
         }
 
         private void LifeTermination(SpaceObject spaceObject)
