@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerDataPath: PlayerData
   _sceneDataPath: SceneData
-  _spaceObjectsDataPath: SpaceObjectsData
   _uiDataPath: UIData
+  _gameProgressDataPath: GameProgressData
+  _soundDataPath: SoundData

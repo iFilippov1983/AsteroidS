@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2ed1b1b27e61b84db946e0be2277dd9, type: 3}
+  m_Name: Level_1_Properties
+  m_EditorClassIdentifier: 
+  _spaceObjectsPrefabs:
+  - {fileID: 3757296140655742042, guid: 8746202606efc404fae5de06bcb1241f, type: 3}
+  _spawnRate: 2
+  _spawnDistanceMultiplier: 15
+  _trajectoryVariance: 15
+  _maxChildsAmount: 3

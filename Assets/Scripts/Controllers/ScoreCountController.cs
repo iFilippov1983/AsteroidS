@@ -5,26 +5,22 @@ namespace AsteroidS
 {
     public class ScoreCountController:IInitialization, IExecute, ICleanup
     {
-        private UIInitialize _uiInitialize;
+        private UIComponentInitializer _uiObjectGetter;
         private ScoreCountView _scoreCountView;
         private TextMeshProUGUI _scoreDisplay;
         private int _score;
         private string _message;
 
-        public ScoreCountController(GameData gameData, UIInitialize uiInitialize)
+        public ScoreCountController(GameData gameData, UIComponentInitializer uiObjectGetter)
         {
-            _uiInitialize = uiInitialize;
+            _uiObjectGetter = uiObjectGetter;
             _message = gameData.UIData.ScoreMessage;
             _score = gameData.UIData.ScoreHolder;
         }
 
-        public void Cleanup()
-        {
-        }
-
         public void Initialize()
         {
-            _scoreCountView = _uiInitialize.GetScoreCount();
+            _scoreCountView = _uiObjectGetter.ScoreCount;
             _scoreDisplay = _scoreCountView.GetComponent<TextMeshProUGUI>();
         }
 
@@ -33,14 +29,24 @@ namespace AsteroidS
             DisplayScores();
         }
 
+        public void Cleanup()
+        {
+
+        }
+
+        public void AddScore(int scoreToAdd)
+        {
+            //temp
+            Debug.Log($"Got scores: {_score}");
+            
+            _score += scoreToAdd;
+        }
+
         private void DisplayScores()
         {
             _scoreDisplay.text = $"{_message} {_score}";
         }
 
-        private void AddScore(int addScore)
-        {
-            _score += addScore;
-        }
+        
     }
 }
