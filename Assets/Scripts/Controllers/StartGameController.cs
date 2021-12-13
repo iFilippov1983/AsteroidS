@@ -5,30 +5,28 @@ namespace AsteroidS
     public class StartGameController: IInitialization, ICleanup
     {
         private GameStateController _gameStateController;
-        private GameObject _mainMenu;
-        private GameObject _levelRootObject;
         
-        public StartGameController(UIInitializer uiInitializer, GameStateController gameStateController)
+        public StartGameController(GameStateController gameStateController)
         {
             _gameStateController = gameStateController;
-            _mainMenu = uiInitializer.MainMenu;
         }
 
 
         public void Initialize()
         {
-            _gameStateController.OnStartGame += StartGame;
+            _gameStateController.OnStartClicked += StartGame;
         }
 
         public void Cleanup()
         {
-            _gameStateController.OnStartGame -= StartGame;
+            _gameStateController.OnStartClicked -= StartGame;
         }
 
-        private void StartGame()
+        private void StartGame(GameObject mainMenu, GameObject settingsMenu, GameObject playerUI)
         {
-            _mainMenu.SetActive(false);
-            _levelRootObject.SetActive(true);
+            mainMenu.SetActive(false);
+            settingsMenu.SetActive(false);
+            playerUI.SetActive(true);
             Time.timeScale = 1;
         }
     }

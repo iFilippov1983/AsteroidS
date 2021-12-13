@@ -1,34 +1,65 @@
 ﻿using System;
+using UnityEngine;
+using UnityEngine.Events;
 
 namespace AsteroidS
 {
-    public class GameStateController
+    public class GameStateController:IInitialization, ICleanup
     {
+        public event Action<GameObject, GameObject, GameObject> OnStartClicked = delegate(GameObject mm, GameObject sm, GameObject pui) {  };
+        public event Action<GameObject, GameObject, GameObject> OnSettingslicked = delegate(GameObject mm, GameObject sm, GameObject pui) {  };
+        public event Action<GameObject, GameObject, GameObject> OnExitClicked = delegate(GameObject mm, GameObject sm, GameObject pui) {  };
+        public event Action<GameObject, GameObject, GameObject> OnPauseClicked = delegate(GameObject mm, GameObject sm, GameObject pui) {  };
+        public event Action<GameObject, GameObject, GameObject> OnDefaultState = delegate(GameObject mm, GameObject sm, GameObject pui) {  };
+        
+        private MainMenuController _mainMenuController;
+        private StartGameController _startGameController;
+        private DefaultStateController _defaultStateController;
+        private GameObject _mainMenu;
+        private GameObject _playerUI;
+        private GameObject _settingsMenu;
 
-        public event Action OnStartGame = () => { };
-        public event Action OnSettingsCalled = () => { };
-        public event Action OnPauseCalled = () => { };
-        public event Action OnExit = () => { }; 
-
-        public GameStateController(GameState gameState)
+        public GameStateController(UIInitializer uiInitializer, UIComponentInitializer uiComponentInitializer)
         {
+            _mainMenu = uiInitializer.MainMenu;
+            _playerUI = uiInitializer.PlayerUI;
+            _settingsMenu = uiInitializer.SettingsMenu;
+            _mainMenuController = new MainMenuController(uiComponentInitializer, this);
+            _startGameController = new StartGameController(this);
+            _defaultStateController = new DefaultStateController(this);
         }
 
-        private void ChangeGameState(GameState gameState)
+        public void Initialize()
+        {
+            _mainMenuController.Initialize();
+            _defaultStateController.Initialize();
+            _startGameController.Initialize();
+            ChangeGameState(GameState.Default);
+        }
+
+        public void Cleanup()
+        {
+            _mainMenuController.Cleanup();
+            _defaultStateController.Cleanup();
+            _startGameController.Cleanup();
+        }
+
+        public void ChangeGameState(GameState gameState)
         {
             switch (gameState)
             {
                 case GameState.Start:
-                    OnStartGame?.Invoke();
+                    OnStartClicked?.Invoke(_mainMenu, _settingsMenu, _playerUI);
                     break;
                 case GameState.Settings:
-                    OnSettingsCalled?.Invoke();
                     break;
                 case GameState.Pause:
-                    OnPauseCalled?.Invoke();
                     break;
                 case GameState.Exit:
-                    OnExit?.Invoke();
+                    Application.Quit();
+                    break;
+                case GameState.Default:
+                    OnDefaultState?.Invoke(_mainMenu,_settingsMenu,_playerUI);
                     break;
             }
         }

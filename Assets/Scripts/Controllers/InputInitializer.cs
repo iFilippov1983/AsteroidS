@@ -6,6 +6,7 @@ namespace AsteroidS
     {
         public IUserInputProxy _pcInputHorizontal;
         public IUserInputProxy _pcInputVertical;
+        public IUserInputProxy _pcInputCancel;
 
         public InputInitializer()
         {
@@ -16,12 +17,13 @@ namespace AsteroidS
             }
             _pcInputHorizontal = new PCInputHorizontal();
             _pcInputVertical = new PCInputVertical();
+            _pcInputCancel = new PCInputCancel();
         }
 
-        public (IUserInputProxy inputHorizontal, IUserInputProxy inpurVertical) GetInput()
+        public (IUserInputProxy inputHorizontal, IUserInputProxy inputVertical, IUserInputProxy inputCancel) GetInput()
         {
-            (IUserInputProxy inputHorizontal, IUserInputProxy inpurVertical) result =
-                (_pcInputHorizontal, _pcInputVertical);
+            (IUserInputProxy inputHorizontal, IUserInputProxy inpurVertical, IUserInputProxy inputCancel) result =
+                (_pcInputHorizontal, _pcInputVertical, _pcInputCancel);
 
             return result;
         }

@@ -1,23 +1,37 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine.UI;
 
 namespace AsteroidS
 {
-    public class MainMenuController
+    public class MainMenuController: IInitialization, ICleanup
     {
-        private UIData _uiData;
-        private GameObject _mainMenu;
-        private GameObject _settingsMenu;
-
+        private GameStateController _gameStateController;
+        private UIComponentInitializer _uiComponentInitializer;
         private Button _startButton;
         private Button _settingsButton;
         private Button _exitButton;
         
-        public MainMenuController(GameData gameData, GameStateController gameStateController)
+        public MainMenuController(UIComponentInitializer uiComponentInitializer, GameStateController gameStateController)
         {
-            _uiData = gameData.UIData;
-            _mainMenu = _uiData.MainMenu;
-            _settingsMenu = _uiData.SettingsMenu;
+            _gameStateController = gameStateController;
+            _uiComponentInitializer = uiComponentInitializer;
+        }
+
+        public void Initialize()
+        {
+            _startButton = _uiComponentInitializer.StartButton.GetComponent<Button>();
+            _settingsButton = _uiComponentInitializer.SettingsButton.GetComponent<Button>();
+            _exitButton = _uiComponentInitializer.ExitButton.GetComponent<Button>();
+            _startButton.onClick.AddListener(ChangeStateToStart);
+        }
+
+        public void Cleanup()
+        {
+            _startButton.onClick.RemoveAllListeners();
+        }
+
+        private void ChangeStateToStart()
+        {
+            _gameStateController.ChangeGameState(GameState.Start);
         }
     }
 }

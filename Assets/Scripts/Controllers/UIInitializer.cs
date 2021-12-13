@@ -36,7 +36,6 @@ namespace AsteroidS
         private GameObject GetMainMenu()
         {
             var mainMenu = Object.Instantiate(_mainMenuPrefab, _uiRoot.transform);
-            mainMenu.SetActive(false);
             return mainMenu;
         }
 
@@ -49,21 +48,11 @@ namespace AsteroidS
         private GameObject GetSettingsMenu()
         {
             var settingsMenu = Object.Instantiate(_settingsMenuPrefab, _uiRoot.transform);
-            settingsMenu.SetActive(false);
             return settingsMenu;
         }
 
         public GameObject PlayerUI => _playerUI;
-
         public GameObject MainMenu => _mainMenu;
-
         public GameObject SettingsMenu => _settingsMenu;
-
-
-        public TimerCountView GetTimerCount()
-        {
-            var timerCountView = _playerUI.GetComponentInChildren<TimerCountView>();
-            return timerCountView;
-        }
     }
 }

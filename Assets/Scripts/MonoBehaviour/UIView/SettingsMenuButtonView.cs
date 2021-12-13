@@ -2,7 +2,7 @@
 
 namespace AsteroidS
 {
-    public class SettingsMenuButton: MonoBehaviour
+    public class SettingsMenuButtonView: MonoBehaviour
     {
     }
 }

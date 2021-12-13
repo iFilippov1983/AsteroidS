@@ -5,7 +5,7 @@ namespace AsteroidS
 {
     public class TimerController: IExecute, IInitialization, ICleanup
     {
-        private UIObjectGetterController _uiObjectGetter;
+        private UIComponentInitializer _uiObjectGetter;
         private TimerCountView _timerCountView;
         private TextMeshProUGUI _timerDisplay;
         private TimeSpan _time;
@@ -15,7 +15,7 @@ namespace AsteroidS
 
         public string DeathTime => _deathTime;
 
-        public TimerController(GameData gameData, UIObjectGetterController uiObjectGetter)
+        public TimerController(GameData gameData, UIComponentInitializer uiObjectGetter)
         {
             _uiObjectGetter = uiObjectGetter;
             _time = gameData.UIData.TimeHolder;
