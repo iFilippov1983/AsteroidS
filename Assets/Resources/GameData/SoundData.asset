@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9c9781ea4ded944eb9e688acca579e9, type: 3}
   m_Name: SoundData
   m_EditorClassIdentifier: 
+  _audioMixer: {fileID: 24100000, guid: a98539e84c5391149a87997599dfe53f, type: 2}
+  _audioMixerGroup: {fileID: 24300002, guid: a98539e84c5391149a87997599dfe53f, type: 2}
   _backgroundMusicClip: {fileID: 8300000, guid: 385b5d202dfb80b40875efec4fc60fce, type: 3}
   _shotWeaponClip: {fileID: 8300000, guid: 80af3977a6eab144187259b1faf37124, type: 3}
   _armorHitsClip: {fileID: 8300000, guid: d83e2b73ff8ee254bbc2f0707fd56d5c, type: 3}
   _asteroidExplosionClip: {fileID: 8300000, guid: d940aef4f2fb6ea48a9ab4d321ba1754, type: 3}
   _shipExplosionClip: {fileID: 8300000, guid: 9bdd63ed345c44e469535c54f59e8c3f, type: 3}
   _asteroidHitsClip: {fileID: 8300000, guid: f566d93ba1b105540a8e58b3f43f9e61, type: 3}
+  _exposedAudioParameter: SceneVolume

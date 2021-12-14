@@ -1,79 +1,85 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Audio;
 
 namespace AsteroidS
 {
     public class AudioSourceHandler
     {
-        private GameObject _parent;
-        public AudioSource backgroundMusicSourse;
-        public AudioSource shotWeaponSourse;
-        public AudioSource armorHitsSourse;
-        public AudioSource asteroidExplosionSourse;
-        public AudioSource shipExplosionSourse;
-        public AudioSource asteroidHitsSourse;
+        public AudioSource BackgroundMusicSource;
+        public AudioSource ShotWeaponSource;
+        public AudioSource ArmorHitsSource;
+        public AudioSource AsteroidExplosionSource;
+        public AudioSource ShipExplosionSource;
+        public AudioSource AsteroidHitsSource;
 
-        public AudioSourceHandler()
+        private AudioMixerGroup _audioMixerGroup;
+        private GameObject _parent;
+
+        public AudioSourceHandler(AudioMixerGroup audioMixerGroup)
         {
+            _audioMixerGroup = audioMixerGroup;
             _parent = new GameObject("AudioSourceHandler");
         }
 
         public void SetAudioSourses()
         {
-            backgroundMusicSourse = _parent.AddComponent<AudioSource>();
-            shotWeaponSourse = _parent.AddComponent<AudioSource>();
-            armorHitsSourse = _parent.AddComponent<AudioSource>();
-            asteroidExplosionSourse = _parent.AddComponent<AudioSource>();
-            shipExplosionSourse = _parent.AddComponent<AudioSource>();
-            asteroidHitsSourse = _parent.AddComponent<AudioSource>();
+            BackgroundMusicSource = SetParentAndMixerGroop();
+            ShotWeaponSource = SetParentAndMixerGroop();
+            ArmorHitsSource = SetParentAndMixerGroop();
+            AsteroidExplosionSource = SetParentAndMixerGroop();
+            ShipExplosionSource = SetParentAndMixerGroop();
+            AsteroidHitsSource = SetParentAndMixerGroop();
         }
 
         public void PlayBackgroundMusic()
         {
-            backgroundMusicSourse.Play();
-            backgroundMusicSourse.volume = 0.2f; // временно
+            BackgroundMusicSource.Play();
+            BackgroundMusicSource.volume = 0.2f; // временно
         }
 
         public void SetBackgroundMusicVolume(float volume)
         {
-            backgroundMusicSourse.volume = volume;
+            BackgroundMusicSource.volume = volume;
         }
 
         public void PlayOneShotShotWeaponSourse(AudioClip audioClip)
         {
-            shotWeaponSourse.PlayOneShot(audioClip);
+            ShotWeaponSource.PlayOneShot(audioClip);
         }
 
         public void PlayOneArmorHitsSourse(AudioClip audioClip)
         {
-            armorHitsSourse.PlayOneShot(audioClip);
+            ArmorHitsSource.PlayOneShot(audioClip);
         }
 
         public void PlayOneAsteroidExplosionSourse(AudioClip audioClip)
         {
-            asteroidExplosionSourse.PlayOneShot(audioClip);
+            AsteroidExplosionSource.PlayOneShot(audioClip);
         }
 
         public void PlayOneShipExplosionSourse(AudioClip audioClip)
         {
-            shipExplosionSourse.PlayOneShot(audioClip);
+            ShipExplosionSource.PlayOneShot(audioClip);
         }
 
         public void PlayOneAsteroidHitsSourse(AudioClip audioClip)
         {
-            asteroidHitsSourse.PlayOneShot(audioClip);
+            AsteroidHitsSource.PlayOneShot(audioClip);
         }
 
         public void SetSourseVolume(float volume)
         {
-            shotWeaponSourse.volume = volume;
-            armorHitsSourse.volume = volume;
-            asteroidExplosionSourse.volume = volume;
-            shipExplosionSourse.volume = volume;
+            ShotWeaponSource.volume = volume;
+            ArmorHitsSource.volume = volume;
+            AsteroidExplosionSource.volume = volume;
+            ShipExplosionSource.volume = volume;
+        }
+
+        private AudioSource SetParentAndMixerGroop()
+        {
+            var AudioSource = _parent.AddComponent<AudioSource>();
+            AudioSource.outputAudioMixerGroup = _audioMixerGroup;
+            return AudioSource;
         }
     }
 }
