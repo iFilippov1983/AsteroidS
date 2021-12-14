@@ -2,7 +2,7 @@
 
 namespace AsteroidS
 {
-    public class DefaultStateController:IInitialization, ICleanup
+    public class DefaultStateController: IInitialization, ICleanup
     {
         private GameStateController _gameStateController;
         
@@ -23,7 +23,7 @@ namespace AsteroidS
 
         private void DefaultState(GameObject mainMenu, GameObject settingsMenu, GameObject playerUI)
         {
-            Debug.LogError("Default State");
+            //Debug.LogError("Default State");
             Time.timeScale = 0;
             mainMenu.SetActive(true);
             settingsMenu.SetActive(false);

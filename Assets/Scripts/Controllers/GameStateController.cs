@@ -6,11 +6,11 @@ namespace AsteroidS
 {
     public class GameStateController:IInitialization, ICleanup
     {
-        public event Action<GameObject, GameObject, GameObject> OnStartClicked = delegate(GameObject mm, GameObject sm, GameObject pui) {  };
-        public event Action<GameObject, GameObject, GameObject> OnSettingslicked = delegate(GameObject mm, GameObject sm, GameObject pui) {  };
-        public event Action<GameObject, GameObject, GameObject> OnExitClicked = delegate(GameObject mm, GameObject sm, GameObject pui) {  };
-        public event Action<GameObject, GameObject, GameObject> OnPauseClicked = delegate(GameObject mm, GameObject sm, GameObject pui) {  };
-        public event Action<GameObject, GameObject, GameObject> OnDefaultState = delegate(GameObject mm, GameObject sm, GameObject pui) {  };
+        public event Action<GameObject, GameObject, GameObject> OnStartClicked = delegate {  };
+        public event Action<GameObject, GameObject, GameObject> OnSettingslicked = delegate {  };
+        public event Action<GameObject, GameObject, GameObject> OnExitClicked = delegate {  };
+        public event Action<GameObject, GameObject, GameObject> OnPauseClicked = delegate {  };
+        public event Action<GameObject, GameObject, GameObject> OnDefaultState = delegate {  };
         
         private MainMenuController _mainMenuController;
         private StartGameController _startGameController;

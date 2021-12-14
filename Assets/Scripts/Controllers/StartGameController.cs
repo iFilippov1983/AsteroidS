@@ -11,7 +11,6 @@ namespace AsteroidS
             _gameStateController = gameStateController;
         }
 
-
         public void Initialize()
         {
             _gameStateController.OnStartClicked += StartGame;

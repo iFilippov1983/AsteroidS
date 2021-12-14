@@ -10,17 +10,23 @@ namespace AsteroidS
         private AudioClip _asteroidExplosionClip;
         private AudioClip _shipExplosionClip;
         private AudioClip _asteroidHitsClip;
+
         private MenuController _menuController;
         private AudioSourceHandler _audioSourceHandler;
         private ShootingController _shootingController;
         private SpaceObjectsController _spaceObjectsController;
 
-        public AudioController(GameData gameData, MenuController settingsMenuController, ShootingController shootingController, SpaceObjectsController spaceObjectsController)
+        public AudioController(
+            GameData gameData, 
+            MenuController settingsMenuController, 
+            ShootingController shootingController, 
+            SpaceObjectsController spaceObjectsController)
         {
             _audioSourceHandler = new AudioSourceHandler();
             _menuController = settingsMenuController;
             _shootingController = shootingController;
             _spaceObjectsController = spaceObjectsController;
+
             _backgroundMusicClip = gameData.SoundData.BackgroundMusicClip;
             _shotWeaponClip = gameData.SoundData.ShotWeaponClip;
             _armorHitsClip = gameData.SoundData.ArmorHitsClip;
@@ -32,11 +38,13 @@ namespace AsteroidS
         public void Initialize()
         {
             _audioSourceHandler.SetAudioSourses();
+
             _menuController.OnSoundVolumeChangebackground += AudioBackgroundVolume;
             _menuController.OnSoundVolume += AudioSourceVolume;
             _shootingController.OnShot += AudioShotWeaponSourse;
             _spaceObjectsController.OnObjectDestroy += AudioShotDestroy;
             _spaceObjectsController.OnObjectHitEvent += AudioShotHitsSourse;
+
             _audioSourceHandler.backgroundMusicSourse.clip = _backgroundMusicClip;
             _audioSourceHandler.PlayBackgroundMusic();
 
@@ -57,6 +65,7 @@ namespace AsteroidS
         {
             _audioSourceHandler.SetSourseVolume(volume);
         }
+
         public void AudioShotHitsSourse(string tag)
         {
             if(tag == TagsHolder.Ship)
