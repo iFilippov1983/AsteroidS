@@ -6,14 +6,14 @@ namespace AsteroidS
     {
         private AudioClip _backgroundMusicClip;
         private AudioClip _shotWeaponSourse;
-        private MenuController _menuController;
+        private SettingsMenuController _settingsMenuController;
         private AudioSourceHandler _audioSourceHandler;
         private ShootingController _shootingController;
 
-        public AudioController(GameData gameData, MenuController settingsMenuController, ShootingController shootingController)
+        public AudioController(GameData gameData, MenuManagmentController menuManagmentController, ShootingController shootingController)
         {
             _audioSourceHandler = new AudioSourceHandler();
-            _menuController = settingsMenuController;
+            _settingsMenuController = menuManagmentController.SettingsMenuController;
             _shootingController = shootingController;
             _backgroundMusicClip = gameData.SoundData.BackgroundMusicClip;
             _shotWeaponSourse = gameData.SoundData.ShotWeaponClip;
@@ -23,8 +23,8 @@ namespace AsteroidS
         public void Initialize()
         {
             _audioSourceHandler.SetAudioSourses();
-            _menuController.OnSoundVolumeChangebackground += AudioBackgroundVolume;
-            _menuController.OnSoundVolume += AudioSourceVolume;
+            _settingsMenuController.OnSoundVolumeChangebackground += AudioBackgroundVolume;
+            _settingsMenuController.OnSoundVolume += AudioSourceVolume;
             _shootingController.OnShot += AudioShotWeaponSourse;
             _audioSourceHandler.backgroundMusicSourse.clip = _backgroundMusicClip;
             _audioSourceHandler.PlayBackgroundMusic();
@@ -47,8 +47,8 @@ namespace AsteroidS
 
         public void Cleanup()
         {
-            _menuController.OnSoundVolumeChangebackground -= AudioBackgroundVolume;
-            _menuController.OnSoundVolume -= AudioSourceVolume;
+            _settingsMenuController.OnSoundVolumeChangebackground -= AudioBackgroundVolume;
+            _settingsMenuController.OnSoundVolume -= AudioSourceVolume;
             _shootingController.OnShot -= AudioShotWeaponSourse;
         }
     }
