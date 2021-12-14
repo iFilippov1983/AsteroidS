@@ -12,6 +12,10 @@ namespace AsteroidS
         private GameObject parent;
         public AudioSource backgroundMusicSourse;
         public AudioSource shotWeaponSourse;
+        public AudioSource armorHitsSourse;
+        public AudioSource asteroidExplosionSourse;
+        public AudioSource shipExplosionSourse;
+        public AudioSource asteroidHitsSourse;
 
         public AudioSourceHandler()
         {
@@ -22,11 +26,17 @@ namespace AsteroidS
         {
             backgroundMusicSourse = parent.AddComponent<AudioSource>();
             shotWeaponSourse = parent.AddComponent<AudioSource>();
+            armorHitsSourse = parent.AddComponent<AudioSource>();
+            asteroidExplosionSourse = parent.AddComponent<AudioSource>();
+            shipExplosionSourse = parent.AddComponent<AudioSource>();
+            asteroidHitsSourse = parent.AddComponent<AudioSource>();
+
         }
 
         public void PlayBackgroundMusic()
         {
             backgroundMusicSourse.Play();
+            backgroundMusicSourse.volume = 0.2f; // временно
         }
 
         public void SetBackgroundMusicVolume(float volume)
@@ -39,9 +49,29 @@ namespace AsteroidS
             shotWeaponSourse.PlayOneShot(audioClip);
         }
 
+        public void PlayOneArmorHitsSourse(AudioClip audioClip)
+        {
+            armorHitsSourse.PlayOneShot(audioClip);
+        }
+
+        public void PlayOneAsteroidExplosionSourse(AudioClip audioClip)
+        {
+            asteroidExplosionSourse.PlayOneShot(audioClip);
+        }
+        public void PlayOneShipExplosionSourse(AudioClip audioClip)
+        {
+            shipExplosionSourse.PlayOneShot(audioClip);
+        }
+        public void PlayOneAsteroidHitsSourse(AudioClip audioClip)
+        {
+            asteroidHitsSourse.PlayOneShot(audioClip);
+        }
         public void SetSourseVolume(float volume)
         {
             shotWeaponSourse.volume = volume;
+            armorHitsSourse.volume = volume;
+            asteroidExplosionSourse.volume = volume;
+            shipExplosionSourse.volume = volume;
         }
     }
 }

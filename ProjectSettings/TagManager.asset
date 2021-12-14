@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Ammo
   - SpaceObject
+  - Ship
+  - Asteroid
   layers:
   - Default
   - TransparentFX
