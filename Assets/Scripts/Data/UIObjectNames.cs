@@ -2,6 +2,7 @@ namespace AsteroidS
 {
     public static class UIObjectNames
     {
+        public const string UIRoot = nameof(UIRoot);
         public const string UIDisplay = nameof(UIDisplay);
         public const string ScoreCount = nameof(ScoreCount);
         public const string PlayerHP = nameof(PlayerHP);

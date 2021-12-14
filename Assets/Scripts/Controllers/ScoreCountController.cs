@@ -5,22 +5,22 @@ namespace AsteroidS
 {
     public class ScoreCountController:IInitialization, IExecute
     {
-        private UIInitializer _uiInitialize;
+        private UIComponentInitializer _uiObjectGetter;
         private ScoreCountView _scoreCountView;
         private TextMeshProUGUI _scoreDisplay;
         private int _score;
         private string _message;
 
-        public ScoreCountController(GameData gameData, UIInitializer uiInitialize)
+        public ScoreCountController(GameData gameData, UIComponentInitializer uiObjectGetter)
         {
-            _uiInitialize = uiInitialize;
+            _uiObjectGetter = uiObjectGetter;
             _message = gameData.UIData.ScoreMessage;
             _score = gameData.UIData.ScoreHolder;
         }
 
         public void Initialize()
         {
-            _scoreCountView = _uiInitialize.GetScoreCount();
+            _scoreCountView = _uiObjectGetter.ScoreCount;
             _scoreDisplay = _scoreCountView.GetComponent<TextMeshProUGUI>();
         }
 

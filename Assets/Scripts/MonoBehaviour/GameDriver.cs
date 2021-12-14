@@ -13,6 +13,7 @@ namespace AsteroidS
         {
             _controllers = new ControllersProxy();
             new GameInitializer(_controllers, _gameData);
+            _controllers.Configure();
         }
 
         void Start()
