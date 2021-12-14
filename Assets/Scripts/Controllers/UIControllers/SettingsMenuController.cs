@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace AsteroidS
 {
@@ -12,28 +14,31 @@ namespace AsteroidS
         private Button _backButton;
         private Slider _volumeSlider;
         private Dropdown _screenResolutoionDropDown;
+        private UIComponentInitializer _uiComponentInitializer;
+
         public event Action<float> OnSoundVolumeChangebackground;
         public event Action<float> OnSoundVolume;
         public event Action<int> OnGraphicsChange;
 
-        public SettingsMenuController (UIComponentInitializer uIComponentInitializer, GameStateController gameStateController)
+        public SettingsMenuController (UIComponentInitializer uiComponentInitializer, GameStateController gameStateController)
         {
-            _gameStateController = gameStateController;            
+            _gameStateController = gameStateController;
+            _uiComponentInitializer = uiComponentInitializer;
         }
         public void Initialize()
         {
-            _backButton = uIComponentInitializer.BackButton.GetComponent<Button>();
-            _volumeSlider = uIComponentInitializer.VolumeSlider.GetComponent<Slider>();
-            _screenResolutoionDropDown = uIComponentInitializer.ScreenResolutionDropdown.GetComponent<Dropdown>();
+            _backButton = _uiComponentInitializer.BackButton.GetComponent<Button>();
+            _volumeSlider = _uiComponentInitializer.VolumeSlider.GetComponent<Slider>();
+            _screenResolutoionDropDown = _uiComponentInitializer.ScreenResolutionDropdown.GetComponent<Dropdown>();
             _backButton.onClick.AddListener(GoBackToMainMenu);
             _volumeSlider.onValueChanged.AddListener(ChangeVolumeLevel);
-            _screenResolutoionDropDown.onValueChanged.AddListener(ChangeGraphicsPreset);
+            //_screenResolutoionDropDown.onValueChanged.AddListener(ChangeGraphicsPreset);
         }
 
         public void Cleanup()
         {
             _backButton.onClick.RemoveAllListeners();
-            _volumeSlider.onValueChanged.RemoveAllListners();
+            _volumeSlider.onValueChanged.RemoveAllListeners();
         }
 
         private void GoBackToMainMenu()
@@ -41,14 +46,14 @@ namespace AsteroidS
             _gameStateController.ChangeGameState(GameState.Default);
         }
 
-        private void ChangeVolumeLevel()
+        private void ChangeVolumeLevel(float value)
         {
-            OnSoundVolume?.Invoke(_volumeSlider.value);
+            OnSoundVolume?.Invoke(value);
         }
 
-        private void ChangeGraphicsPreset() 
+        private void ChangeGraphicsPreset(int value) 
         {
-            OnGraphicsChange?.Invoke(_screenResolutoionDropDown.value);
+            OnGraphicsChange?.Invoke(value);
         }
     }
 }

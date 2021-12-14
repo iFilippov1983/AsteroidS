@@ -6,6 +6,7 @@ namespace AsteroidS
     {
         public IUserInputProxy _pcInputHorizontal;
         public IUserInputProxy _pcInputVertical;
+        public IUserInputProxy _pcInputStrafe;
         public IUserInputProxy _pcInputCancel;
 
         public InputInitializer()
@@ -17,16 +18,30 @@ namespace AsteroidS
             }
             _pcInputHorizontal = new PCInputHorizontal();
             _pcInputVertical = new PCInputVertical();
+            _pcInputStrafe = new PCInputStrafe();
             _pcInputCancel = new PCInputCancel();
         }
 
         public (
             IUserInputProxy inputHorizontal, 
-            IUserInputProxy inputVertical, 
-            IUserInputProxy inputCancel) GetInput()
+            IUserInputProxy inputVertical,
+            IUserInputProxy inputStrafe,
+            IUserInputProxy inputCancel
+                )GetInput()
         {
-            (IUserInputProxy inputHorizontal, IUserInputProxy inpurVertical, IUserInputProxy inputCancel) result =
-                (_pcInputHorizontal, _pcInputVertical, _pcInputCancel);
+            (
+                IUserInputProxy inputHorizontal, 
+                IUserInputProxy inputVertical,
+                IUserInputProxy inpetStrafe,
+                IUserInputProxy inputCancel
+            ) 
+            result = 
+            (
+                _pcInputHorizontal, 
+                _pcInputVertical,
+                _pcInputStrafe,
+                _pcInputCancel
+            );
 
             return result;
         }

@@ -38,7 +38,5 @@ namespace AsteroidS
         {
             _scoreDisplay.text = $"{_message} {_score}";
         }
-
-        
     }
 }

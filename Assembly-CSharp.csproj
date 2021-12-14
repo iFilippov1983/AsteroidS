@@ -8,7 +8,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <RootNamespace></RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <ProjectGuid>{F9D749D9-5A46-BC59-480D-2484549DA0A4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -53,6 +54,7 @@
     <UnityVersion>2020.3.16f1</UnityVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\Data\Input\PCInputStrafe.cs" />
     <Compile Include="Assets\Scripts\Interface\ICleanup.cs" />
     <Compile Include="Assets\Scripts\Data\Input\PCInputVertical.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\BackButtonView.cs" />
@@ -108,7 +110,7 @@
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\TimerCountView.cs" />
     <Compile Include="Assets\Scripts\Data\Input\PCInputHorizontal.cs" />
     <Compile Include="Assets\Scripts\Interface\IUserInputProxy.cs" />
-    <Compile Include="Assets\Scripts\Data\AxisManager.cs" />
+    <Compile Include="Assets\Scripts\Data\InputHolder.cs" />
     <Compile Include="Assets\Scripts\Data\GameProgressData.cs" />
     <Compile Include="Assets\Scripts\Data\Input\MobileInputFactory.cs" />
     <Compile Include="Assets\Scripts\Controllers\ShootingController.cs" />
@@ -127,6 +129,7 @@
     <Compile Include="Assets\Scripts\Data\SpaceObjectsData.cs" />
     <Compile Include="Assets\Scripts\Data\SpaceObjectProperties.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIControllers\TimerController.cs" />
+    <Compile Include="Assets\Scripts\Temp\DateTimeCatcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

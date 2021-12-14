@@ -21,6 +21,6 @@ MonoBehaviour:
   maxLifeTime: 20
   isPickable: 0
   isBreakable: 0
-  isChild: 1
+  isChild: 0
   canBeChild: 1
   isShooting: 0
