@@ -36,13 +36,13 @@ namespace AsteroidS
         {
             if (normal > 0)
             {
-                Vector2 vectorUP = rigidbodyToStrafe.transform.right * moveSpeed;
-                rigidbodyToStrafe.AddForce(vectorUP);
+                Vector2 vectorRIGHT = rigidbodyToStrafe.transform.right * moveSpeed;
+                rigidbodyToStrafe.AddForce(vectorRIGHT);
             }
             if (normal < 0)
             {
-                Vector2 vectorDOWN = -rigidbodyToStrafe.transform.right * moveSpeed;
-                rigidbodyToStrafe.AddForce(vectorDOWN);
+                Vector2 vectorLEFT = -rigidbodyToStrafe.transform.right * moveSpeed;
+                rigidbodyToStrafe.AddForce(vectorLEFT);
             }
         }
     }

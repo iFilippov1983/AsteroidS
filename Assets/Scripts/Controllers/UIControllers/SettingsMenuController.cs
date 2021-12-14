@@ -29,10 +29,10 @@ namespace AsteroidS
         {
             _backButton = _uiComponentInitializer.BackButton.GetComponent<Button>();
             _volumeSlider = _uiComponentInitializer.VolumeSlider.GetComponent<Slider>();
-            //_screenResolutoionDropDown = _uiComponentInitializer.ScreenResolutionDropdown<Dropdown>();
+            _screenResolutoionDropDown = _uiComponentInitializer.ScreenResolutionDropdown.GetComponent<Dropdown>();
             _backButton.onClick.AddListener(GoBackToMainMenu);
-            //_volumeSlider.onValueChanged.AddListener(ChangeVolumeLevel());
-            //_screenResolutoionDropDown.onValueChanged.AddListener(ChangeGraphicsPreset());
+            _volumeSlider.onValueChanged.AddListener(ChangeVolumeLevel);
+            //_screenResolutoionDropDown.onValueChanged.AddListener(ChangeGraphicsPreset);
         }
 
         public void Cleanup()
@@ -46,14 +46,14 @@ namespace AsteroidS
             _gameStateController.ChangeGameState(GameState.Default);
         }
 
-        private void ChangeVolumeLevel()
+        private void ChangeVolumeLevel(float value)
         {
-            OnSoundVolume?.Invoke(_volumeSlider.value);
+            OnSoundVolume?.Invoke(value);
         }
 
-        private void ChangeGraphicsPreset() 
+        private void ChangeGraphicsPreset(int value) 
         {
-            OnGraphicsChange?.Invoke(_screenResolutoionDropDown.value);
+            OnGraphicsChange?.Invoke(value);
         }
     }
 }

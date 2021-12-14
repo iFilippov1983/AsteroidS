@@ -9,7 +9,7 @@ namespace AsteroidS
 
         public void GetAxis()
         {
-            OnAxisChange.Invoke(Input.GetAxis(AxisManager.Horizontal));
+            OnAxisChange.Invoke(Input.GetAxis(InputHolder.Horizontal));
         }
     }
 }
