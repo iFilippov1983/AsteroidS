@@ -64,9 +64,8 @@
     <Compile Include="Assets\Scripts\Controllers\PlayerInitializer.cs" />
     <Compile Include="Assets\Scripts\Data\ButtonTextEnum.cs" />
     <Compile Include="Assets\Scripts\Data\GameState.cs" />
-    <Compile Include="Assets\Scripts\Controllers\MenuController.cs" />
     <Compile Include="Assets\Scripts\Interface\ILateExecute.cs" />
-    <Compile Include="Assets\Scripts\Controllers\DefaultStateController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\UIControllers\DefaultStateController.cs" />
     <Compile Include="Assets\Scripts\Controllers\SpaceObjectBuilder.cs" />
     <Compile Include="Assets\Scripts\Controllers\SpaceObjectsSpawner.cs" />
     <Compile Include="Assets\Scripts\Interface\IInitialization.cs" />
@@ -77,27 +76,30 @@
     <Compile Include="Assets\Scripts\Controllers\AudioSourceHandler.cs" />
     <Compile Include="Assets\Scripts\Controllers\InputInitializer.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\VolumeSliderView.cs" />
+    <Compile Include="Assets\Scripts\Controllers\UIControllers\SettingsMenuController.cs" />
     <Compile Include="Assets\Scripts\Controllers\CoroutinesController.cs" />
     <Compile Include="Assets\Scripts\Controllers\InputController.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviour\SpaceObject.cs" />
-    <Compile Include="Assets\Scripts\Controllers\GameStateController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\UIControllers\GameStateController.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\ExitButtonView.cs" />
     <Compile Include="Assets\Scripts\Data\AmmoType.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\ScreenResolutionView.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIComponentInitializer.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\StartButtonView.cs" />
-    <Compile Include="Assets\Scripts\Controllers\ScoreCountController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\UIControllers\ScoreCountController.cs" />
     <Compile Include="Assets\Scripts\Controllers\AmmoDriver.cs" />
-    <Compile Include="Assets\Scripts\Controllers\MainMenuController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\UIControllers\MainMenuController.cs" />
     <Compile Include="Assets\Scripts\Data\MasksHolder.cs" />
     <Compile Include="Assets\Scripts\Data\SpaceObjectType.cs" />
     <Compile Include="Assets\Scripts\Data\UIObjectNames.cs" />
+    <Compile Include="Assets\Scripts\Controllers\UIControllers\SettingsStateController.cs" />
     <Compile Include="Assets\Scripts\Data\TagsHolder.cs" />
     <Compile Include="Assets\Scripts\Controllers\EscapeKeyHandler.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerMovementController.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Interface\IController.cs" />
     <Compile Include="Assets\Scripts\Controllers\SpaceObjectDriver.cs" />
+    <Compile Include="Assets\Scripts\Controllers\UIControllers\MenuManagmentController.cs" />
     <Compile Include="Assets\Scripts\Data\Input\PCInputCancel.cs" />
     <Compile Include="Assets\Scripts\Controllers\AudioController.cs" />
     <Compile Include="Assets\Scripts\Data\SceneData.cs" />
@@ -110,7 +112,7 @@
     <Compile Include="Assets\Scripts\Data\GameProgressData.cs" />
     <Compile Include="Assets\Scripts\Data\Input\MobileInputFactory.cs" />
     <Compile Include="Assets\Scripts\Controllers\ShootingController.cs" />
-    <Compile Include="Assets\Scripts\Controllers\StartGameController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\UIControllers\StartGameStateController.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameProgressController.cs" />
     <Compile Include="Assets\Scripts\Data\GameLevelProperties.cs" />
     <Compile Include="Assets\Scripts\Data\AmmoProperties.cs" />
@@ -124,7 +126,7 @@
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\ScoreCountView.cs" />
     <Compile Include="Assets\Scripts\Data\SpaceObjectsData.cs" />
     <Compile Include="Assets\Scripts\Data\SpaceObjectProperties.cs" />
-    <Compile Include="Assets\Scripts\Controllers\TimerController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\UIControllers\TimerController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
