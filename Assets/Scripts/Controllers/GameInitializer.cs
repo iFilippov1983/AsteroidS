@@ -13,7 +13,6 @@
             var spaceObjectsController = new SpaceObjectsController(gameData);
             var scoreCountController = new ScoreCountController(gameData, uiComponentInitializer);
             var timerController = new TimerController(gameData, uiComponentInitializer);
-            var menuController = new MenuController();
             var shootingController = new ShootingController(gameData, playerInitializer.Player.transform);
 
             controllers.Add(uiComponentInitializer);

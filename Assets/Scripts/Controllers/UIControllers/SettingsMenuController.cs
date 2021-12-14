@@ -24,7 +24,7 @@ namespace AsteroidS
         {
             _backButton = uIComponentInitializer.BackButton.GetComponent<Button>();
             _volumeSlider = uIComponentInitializer.VolumeSlider.GetComponent<Slider>();
-            _screenResolutoionDropDown = uIComponentInitializer.ScreenResolutionDropdown<Dropdown>();
+            _screenResolutoionDropDown = uIComponentInitializer.ScreenResolutionDropdown.GetComponent<Dropdown>();
             _backButton.onClick.AddListener(GoBackToMainMenu);
             _volumeSlider.onValueChanged.AddListener(ChangeVolumeLevel);
             _screenResolutoionDropDown.onValueChanged.AddListener(ChangeGraphicsPreset);
