@@ -17,20 +17,19 @@ namespace AsteroidS
         private float _moveSpeed;
         private float _rotationSpeed;
 
-
         public PlayerMovementController(
             GameData gameData,
             Transform player,
-            (IUserInputProxy horizontalMovement, IUserInputProxy verticalMovement, IUserInputProxy cancel) input,
+            InputInitializer inputInitializer,
             GameStateController gameStateController)
         {
             _movement = new PlayerMovement();
             _escapeKeyHandler = new EscapeKeyHandler(gameStateController);
             _rigidbodyToMove = player.GetComponent<Rigidbody2D>();
 
-            _horizontalMovement = input.horizontalMovement;
-            _verticalMovement = input.verticalMovement;
-            _cancelInput = input.cancel;
+            _horizontalMovement = inputInitializer.GetInput().inputHorizontal;
+            _verticalMovement = inputInitializer.GetInput().inputVertical;
+            _cancelInput = inputInitializer.GetInput().inputCancel;
 
             _moveSpeed = gameData.PlayerData.PlayerMovementSpeed;
             _rotationSpeed = gameData.PlayerData.PlayerRotationSpeed;

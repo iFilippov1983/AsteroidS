@@ -4,9 +4,9 @@ namespace AsteroidS
     public class MenuManagmentController:IInitialization, ICleanup
     {
         private MainMenuController _mainMenuController;
-        private SettingsMenuController _settingsMenuController; 
+        private SettingsMenuController _settingsMenuController;
 
-
+        public SettingsMenuController SettingsMenuController => _settingsMenuController;
 
         public MenuManagmentController(UIComponentInitializer uIComponentInitializer, GameStateController gameStateController) 
         {
@@ -25,8 +25,5 @@ namespace AsteroidS
             _mainMenuController.Cleanup();
             _settingsMenuController.Cleanup();
         }
-
-        public SettingsMenuController SettingsMenuController => _settingsMenuController;
-
     }
 }

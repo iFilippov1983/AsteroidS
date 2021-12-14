@@ -20,7 +20,10 @@ namespace AsteroidS
             _pcInputCancel = new PCInputCancel();
         }
 
-        public (IUserInputProxy inputHorizontal, IUserInputProxy inputVertical, IUserInputProxy inputCancel) GetInput()
+        public (
+            IUserInputProxy inputHorizontal, 
+            IUserInputProxy inputVertical, 
+            IUserInputProxy inputCancel) GetInput()
         {
             (IUserInputProxy inputHorizontal, IUserInputProxy inpurVertical, IUserInputProxy inputCancel) result =
                 (_pcInputHorizontal, _pcInputVertical, _pcInputCancel);

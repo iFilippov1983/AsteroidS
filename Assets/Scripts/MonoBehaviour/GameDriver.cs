@@ -7,8 +7,6 @@ namespace AsteroidS
         [SerializeField] private GameData _gameData;
         private ControllersProxy _controllers;
 
-     
-        
         private void Awake()
         {
             _controllers = new ControllersProxy();

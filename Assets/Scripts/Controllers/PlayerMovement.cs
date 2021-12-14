@@ -31,5 +31,19 @@ namespace AsteroidS
                 rigidbodyToRotate.AddTorque(_direction * rotationSpeed);
             }
         }
+
+        public void Starfe(float normal, Rigidbody2D rigidbodyToStrafe, float moveSpeed)
+        {
+            if (normal > 0)
+            {
+                Vector2 vectorUP = rigidbodyToStrafe.transform.right * moveSpeed;
+                rigidbodyToStrafe.AddForce(vectorUP);
+            }
+            if (normal < 0)
+            {
+                Vector2 vectorDOWN = -rigidbodyToStrafe.transform.right * moveSpeed;
+                rigidbodyToStrafe.AddForce(vectorDOWN);
+            }
+        }
     }
 }

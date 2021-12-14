@@ -28,6 +28,7 @@ namespace AsteroidS
 
         private void OnEnable()
         {
+            _lifeTimeCounter = 0;
             //_desactivationTimer = CoroutinesController.StartRoutine(LifeTimer(Properties.LifeTime));
         }
 
