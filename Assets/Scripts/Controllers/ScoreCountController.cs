@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AsteroidS
 {
-    public class ScoreCountController:IInitialization, IExecute, ICleanup
+    public class ScoreCountController:IInitialization, IExecute
     {
         private UIInitializer _uiInitialize;
         private ScoreCountView _scoreCountView;
@@ -29,17 +29,12 @@ namespace AsteroidS
             DisplayScores();
         }
 
-        public void Cleanup()
-        {
-
-        }
-
         public void AddScore(int scoreToAdd)
         {
+            _score += scoreToAdd;
+
             //temp
             Debug.Log($"Got scores: {_score}");
-            
-            _score += scoreToAdd;
         }
 
         private void DisplayScores()

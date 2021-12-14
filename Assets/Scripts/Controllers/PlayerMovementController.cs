@@ -14,7 +14,6 @@ namespace AsteroidS
         private float _moveSpeed;
         private float _rotationSpeed;
 
-
         public PlayerMovementController(
             GameData gameData,
             Transform player,

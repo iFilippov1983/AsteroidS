@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ammoType: 1
   damage: 30
-  reloadTime: 2
-  shotDistance: 20
+  reloadTime: 1
+  shotDistance: 10
   speedRate: 10
   timeMultiplier: 1
