@@ -19,8 +19,10 @@ namespace AsteroidS
         private Ammo _ammo;
         private AmmoType _currentAmmoType;
         private bool _ammoReloaded = true;
-
         private Coroutine _coroutineTimer;
+
+        private LayerMask _mask;
+        private bool _stackNotEmpty;
 
         public event Action OnShot;
 
@@ -40,20 +42,23 @@ namespace AsteroidS
             _ammo = _gameData.PlayerData.currentAmmo;
             _currentAmmoType = _ammo.Properties.ammoType;
             _ammoPool = _spawner.MakeSpawnedAmmoDictionary();
+
+            _mask = LayerMask.GetMask(MasksHolder.SpaceObject);
+            _stackNotEmpty = (_ammoPool[_currentAmmoType].Count != 0);
+
             SubscribeToEvents(_ammoPool);
+            
         }
 
         public void FixedExecute()
         {
 
-            int mask = LayerMask.GetMask(MasksHolder.SpaceObject);
-            var hit = Physics2D.Raycast(_player.position, _player.up, _shotDistance, mask);
+            var hit = Physics2D.Raycast(_player.position, _player.up, _shotDistance, _mask);
+
             //temp
             Debug.DrawRay(_player.position, _player.up * _shotDistance, Color.red);
 
-            bool stackNotEmpty = (_ammoPool[_currentAmmoType].Count != 0);
-
-            if (hit && _ammoReloaded && stackNotEmpty)
+            if (hit && _ammoReloaded && _stackNotEmpty)
             {
                 _ammoReloaded = false;
 

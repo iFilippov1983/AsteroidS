@@ -37,10 +37,18 @@ namespace AsteroidS
             //temp 
             Debug.Log($"Ammo hits object: {collision.gameObject.name}");
 
-            if (collision.gameObject.tag == TagsHolder.SpaceObject)
+            if (collision.gameObject.tag == TagsHolder.Asteroid ||
+                collision.gameObject.tag == TagsHolder.Ship)
             {
+                //gameObject.SetActive(false);    //!!!
                 LifeTerminationEvent?.Invoke(this);
             }
+
+            //if (collision.TryGetComponent(out SpaceObject spaceObject))
+            //{
+            //    gameObject.SetActive(false);    //!!!
+            //    LifeTerminationEvent?.Invoke(this);
+            //}
         }
 
         private void FixedUpdate()
@@ -57,7 +65,7 @@ namespace AsteroidS
         {
             _lifeTimeCounter += Time.deltaTime;
 
-            if (_lifeTimeCounter > _ammoProperties.LifeTime)
+            if (_lifeTimeCounter >= _ammoProperties.LifeTime)
             {
                 _lifeTimeCounter = 0;
                 LifeTerminationEvent?.Invoke(this);

@@ -65,6 +65,7 @@ namespace AsteroidS
         private void OnDisable()
         {
             _lifeTimeCounter = 0;
+            if (Properties.isChild) Properties.isChild = false;
         }
 
         private void Live()

@@ -28,10 +28,9 @@ namespace AsteroidS
             _gameProgressData = gameData.GameProgressData;
         }
 
-        public Action<int> OnObjectDestroyEvent;
+        public Action<SpaceObject> OnObjectDestroyEvent;
         public Action OnPlayerDestroyEvent;
         public Action<string> OnObjectHitEvent;
-        public Action<string> OnObjectDestroy;
 
         public void Initialize()
         {
@@ -99,10 +98,9 @@ namespace AsteroidS
 
                 if (spaceObject.Properties.isBreakable) SpawnChildAsteroids(spaceObject.transform);
 
-                DestructSO(spaceObject);
+                LifeTermination(spaceObject);
 
-                OnObjectDestroyEvent?.Invoke(scores);
-                OnObjectDestroy?.Invoke(spaceObject.tag);
+                OnObjectDestroyEvent?.Invoke(spaceObject);
             }
             else
             {
@@ -147,14 +145,6 @@ namespace AsteroidS
                 so.OnLifeTimeTermination -= LifeTermination;
                 so.OnPlayerHit -= PlayerDestroy;
             }
-        }
-
-        private void DestructSO(SpaceObject spaceObject)
-        {
-            
-
-            _objectDriver.Stop(spaceObject);
-            _soStack.Push(spaceObject);
         }
 
         private void SpawnChildAsteroids(Transform transform)

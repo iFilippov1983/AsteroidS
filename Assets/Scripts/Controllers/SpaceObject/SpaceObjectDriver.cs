@@ -10,11 +10,15 @@ namespace AsteroidS
 
             var rb = spaceObject.gameObject.GetComponent<Rigidbody2D>();
             var speed = spaceObject.Properties.speed;
+            if (spaceObject.Properties.isChild) speed *= spaceObject.Properties.ChildSpeedMiltiplyer;
+
             rb.AddForce(SetTrajectory(spaceObject) * speed);
         }
 
         public void Stop(SpaceObject spaceObject)
         {
+            if (spaceObject.Properties.isChild) spaceObject.Properties.isChild = false;
+            
             spaceObject.gameObject.SetActive(false);
             spaceObject.transform.position = Vector2.zero;
             spaceObject.gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;

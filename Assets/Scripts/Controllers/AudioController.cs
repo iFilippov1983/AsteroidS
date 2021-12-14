@@ -24,9 +24,10 @@ namespace AsteroidS
         {
             _audioSourceHandler.SetAudioSources();
             _audioSourceHandler.SetAudioClips();
+            _audioSourceHandler.PlayBackgroundMusic();
+
             _settingsMenuController.OnSoundVolume += AudioGroupVolume;
             _shootingController.OnShot += AudioShotWeaponSource;
-            _audioSourceHandler.PlayBackgroundMusic();
         }
         
         private void AudioShotWeaponSource()
@@ -36,7 +37,6 @@ namespace AsteroidS
 
         private void AudioGroupVolume(float volume)
         {
-            
             _audioMixer.SetFloat(_exposedAudioParameter, volume);
         }
 

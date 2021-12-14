@@ -7,6 +7,7 @@ namespace AsteroidS
     {
         public SpaceObjectType type;
         public int hitPoints;
+        public int armorPoints;
         public int scoresForDestruction;
         public float mass;
         public int amountOnScene;
@@ -18,5 +19,23 @@ namespace AsteroidS
         public bool isChild;
         public bool canBeChild;
         public bool isShooting;
+
+        public bool HasArmor
+        {
+            get
+            {
+                if (armorPoints != 0) return true;
+                else return false;
+            }
+        }
+
+        public float ChildSpeedMiltiplyer
+        {
+            get
+            {
+                if (isChild) return Random.Range(1.2f, 2);
+                else return 1f;
+            }
+        }
     }
 }

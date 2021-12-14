@@ -17,7 +17,14 @@ namespace AsteroidS
 
         public void Stop(Ammo ammo)
         {
+            //temp
+            Debug.Log($"Stop: {Time.time}");
+
             ammo.gameObject.SetActive(false);
+
+            //temp
+            Debug.Log($"{ammo.gameObject.active}: {Time.time}");
+
             ammo.transform.position = Vector3.zero;
             ammo.gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;
         }
