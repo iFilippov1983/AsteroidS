@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace AsteroidS
@@ -7,13 +8,16 @@ namespace AsteroidS
         [SerializeField] private GameData _gameData;
         private ControllersProxy _controllers;
 
-     
-        
         private void Awake()
         {
             _controllers = new ControllersProxy();
             new GameInitializer(_controllers, _gameData);
             _controllers.Configure();
+
+            //temp
+            //DateTime dt = DateTimeCatcher.GetNetworkTime();
+            //TimeSpan ts = dt.TimeOfDay;
+            //Debug.Log(ts);
         }
 
         void Start()

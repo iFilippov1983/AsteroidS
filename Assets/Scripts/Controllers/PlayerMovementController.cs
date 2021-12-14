@@ -10,27 +10,30 @@ namespace AsteroidS
 
         private IUserInputProxy _horizontalMovement;
         private IUserInputProxy _verticalMovement;
+        private IUserInputProxy _strafeMovement;
         private IUserInputProxy _cancelInput;
+
         private float _horizontal;
         private float _vertical;
+        private float _strafe;
         private float _cancel;
         private float _moveSpeed;
         private float _rotationSpeed;
 
-
         public PlayerMovementController(
             GameData gameData,
             Transform player,
-            (IUserInputProxy horizontalMovement, IUserInputProxy verticalMovement, IUserInputProxy cancel) input,
+            InputInitializer inputInitializer,
             GameStateController gameStateController)
         {
             _movement = new PlayerMovement();
             _escapeKeyHandler = new EscapeKeyHandler(gameStateController);
             _rigidbodyToMove = player.GetComponent<Rigidbody2D>();
 
-            _horizontalMovement = input.horizontalMovement;
-            _verticalMovement = input.verticalMovement;
-            _cancelInput = input.cancel;
+            _horizontalMovement = inputInitializer.GetInput().inputHorizontal;
+            _verticalMovement = inputInitializer.GetInput().inputVertical;
+            _strafeMovement = inputInitializer.GetInput().inputStrafe;
+            _cancelInput = inputInitializer.GetInput().inputCancel;
 
             _moveSpeed = gameData.PlayerData.PlayerMovementSpeed;
             _rotationSpeed = gameData.PlayerData.PlayerRotationSpeed;
@@ -40,6 +43,7 @@ namespace AsteroidS
         {
             _horizontalMovement.OnAxisChange += OnHorizontalAxisChange;
             _verticalMovement.OnAxisChange += OnVerticalAxisChange;
+            _strafeMovement.OnAxisChange += OnStrafeButtonsPressed;
             _cancelInput.OnAxisChange += OnEscapePressed;
         }
 
@@ -47,6 +51,7 @@ namespace AsteroidS
         {
             _movement.Move(_vertical, _rigidbodyToMove, _moveSpeed);
             _movement.Rotate(_horizontal, _rigidbodyToMove, _rotationSpeed);
+            _movement.Starfe(_strafe, _rigidbodyToMove, _moveSpeed);
             _escapeKeyHandler.EscapeKeyPressed(_cancel);
         }
 
@@ -54,6 +59,7 @@ namespace AsteroidS
         {
             _horizontalMovement.OnAxisChange -= OnHorizontalAxisChange;
             _verticalMovement.OnAxisChange -= OnVerticalAxisChange;
+            _strafeMovement.OnAxisChange -= OnStrafeButtonsPressed;
             _cancelInput.OnAxisChange -= OnEscapePressed;
         }
 
@@ -65,6 +71,11 @@ namespace AsteroidS
         private void OnHorizontalAxisChange(float value)
         {
             _horizontal = value;
+        }
+
+        private void OnStrafeButtonsPressed(float value)
+        {
+            _strafe = value;
         }
 
         private void OnEscapePressed(float value)

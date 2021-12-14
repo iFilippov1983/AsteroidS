@@ -6,7 +6,6 @@ namespace AsteroidS
 {
     public class UIComponentInitializer:IInitialization
     {
-        private readonly UIInitializer _uiInitializer;
         private GameObject _mainMenu;
         private GameObject _settingsMenu;
         private GameObject _playerUI;
@@ -20,13 +19,21 @@ namespace AsteroidS
         private VolumeSliderView _volumeSlider;
         private ScreenResolutionView _dropdownScreenResolution;
 
+        public ScoreCountView ScoreCount => _scoreCount;
+        public TimerCountView TimerCounter => _timerCountView;
+        public StartButtonView StartButton => _startButton;
+        public SettingsMenuButtonView SettingsButton => _settingsButton;
+        public ExitButtonView ExitButton => _exitButton;
+        public BackButtonView BackButton => _backButton;
+        public VolumeSliderView VolumeSlider => _volumeSlider;
+        public ScreenResolutionView ScreenResolutionDropdown => _dropdownScreenResolution;
+
         public UIComponentInitializer(UIInitializer uiInitializer)
         { 
             _mainMenu = uiInitializer.MainMenu;
             _settingsMenu = uiInitializer.SettingsMenu;
             _playerUI = uiInitializer.PlayerUI;
         }
-
 
         public void Initialize()
         {
@@ -39,15 +46,5 @@ namespace AsteroidS
             _volumeSlider = _settingsMenu.GetComponentInChildren<VolumeSliderView>();
             _dropdownScreenResolution = _settingsMenu.GetComponentInChildren<ScreenResolutionView>();
         }
-
-
-        public ScoreCountView ScoreCount => _scoreCount;
-        public TimerCountView TimerCounter => _timerCountView;
-        public StartButtonView StartButton => _startButton;
-        public SettingsMenuButtonView SettingsButton => _settingsButton;
-        public ExitButtonView ExitButton => _exitButton;
-        public BackButtonView BackButton => _backButton;
-        public VolumeSliderView VolumeSlider => _volumeSlider;
-        public ScreenResolutionView ScreenResolutionDropdown => _dropdownScreenResolution;
     }
 }
