@@ -17,7 +17,7 @@ namespace AsteroidS
         private Dropdown _screenResolutoionDropDown;
         private UIComponentInitializer _uiComponentInitializer;
 
-        public event Action<float> OnSoundVolumeChangebackground;
+        //public event Action<float> OnSoundVolumeChangebackground;
         public event Action<float> OnSoundVolume;
         public event Action<int> OnGraphicsChange;
 

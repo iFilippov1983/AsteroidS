@@ -1,11 +1,10 @@
-﻿using NUnit.Framework;
-using System;
+﻿using System;
 using UnityEngine;
 
 
 namespace AsteroidS
 {
-    [TestFixture]
+
     public class SpaceObject : MonoBehaviour
     {
         [SerializeField] private Sprite[] _sprites;
