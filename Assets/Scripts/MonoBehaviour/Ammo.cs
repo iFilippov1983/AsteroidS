@@ -35,20 +35,13 @@ namespace AsteroidS
         private void OnTriggerEnter2D(Collider2D collision)
         {
             //temp 
-            Debug.Log($"Ammo hits object: {collision.gameObject.name}");
+            //Debug.Log($"Ammo hits object: {collision.gameObject.name}");
 
             if (collision.gameObject.tag == TagsHolder.Asteroid ||
                 collision.gameObject.tag == TagsHolder.Ship)
             {
-                //gameObject.SetActive(false);    //!!!
                 LifeTerminationEvent?.Invoke(this);
             }
-
-            //if (collision.TryGetComponent(out SpaceObject spaceObject))
-            //{
-            //    gameObject.SetActive(false);    //!!!
-            //    LifeTerminationEvent?.Invoke(this);
-            //}
         }
 
         private void FixedUpdate()

@@ -11,9 +11,7 @@ namespace AsteroidS
         private Dictionary<SpaceObjectType, SpaceObject> _spaceObjects;
         private float _spawnDistanceMultiplier;
         private float _trajectoryVariance;
-        private List<SpaceObject> _childsPrefabs;
-
-        public List<SpaceObject> SetChildPrefabs { set { _childsPrefabs = value; } }
+        private SpaceObject[] _childsPrefabs;
 
         public SpaceObjectsSpawner(GameData gameData)
         {
@@ -27,13 +25,13 @@ namespace AsteroidS
         public Stack<SpaceObject> CreateUnactiveSpaceObjectsStack()
         {
             _spaceObjects = _gameProgressData.CurrentLevelProperties.SpaceObjectsPrefabsDictionary;
-            _childsPrefabs = GetChilds(_spaceObjects);
+            _childsPrefabs = _gameProgressData.CurrentLevelProperties.ChildsPrefabs;
 
             var stack = new Stack<SpaceObject>();
 
-            for (int typeIndex = 1; typeIndex <= _spaceObjects.Count; typeIndex++)
+            foreach(SpaceObjectType t in _spaceObjects.Keys)
             {
-                var spaceObjectType = (SpaceObjectType)typeIndex;
+                var spaceObjectType = t;
                 var prefab = _spaceObjects[spaceObjectType];
                 var amount = prefab.Properties.amountOnScene;
 
@@ -87,23 +85,10 @@ namespace AsteroidS
             return rotation;
         }
 
-        private List<SpaceObject> GetChilds(Dictionary<SpaceObjectType, SpaceObject> dictionary)
-        {
-            var list = new List<SpaceObject>();
-            foreach (SpaceObject so in dictionary.Values)
-            {
-                if (so.Properties.canBeChild) list.Add(so);
-            }
-
-            return list;
-        }
-
         public SpaceObject[] SpawnChilds(int amount, Transform transform)
         {
-            
-            
             var childs = new SpaceObject[amount];
-            var prefab = _childsPrefabs[Random.Range(0, _childsPrefabs.Count)];
+            var prefab = _childsPrefabs[Random.Range(0, _childsPrefabs.Length)];
 
             for (int index = 0; index < amount; index++)
             {

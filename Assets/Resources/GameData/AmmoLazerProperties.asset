@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e50018818d4e2e4488239822ad752603, type: 3}
   m_Name: AmmoLazerProperties
   m_EditorClassIdentifier: 
-  ammoType: 1
+  ammoType: 2
   damage: 100
   reloadTime: 3
   shotDistance: 30

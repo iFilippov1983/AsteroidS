@@ -13,6 +13,19 @@ MonoBehaviour:
   m_Name: PlayerData
   m_EditorClassIdentifier: 
   _playerPrefab: {fileID: 174634665004576624, guid: fa4d4652efd501c40b48e95fe654a720, type: 3}
+  _playerViewSprites:
+  - {fileID: 21300000, guid: e1d97070fd4c2e741b2b51db96321653, type: 3}
+  - {fileID: 21300000, guid: d0ce5ab3dc3e77346b371ce891d07fa7, type: 3}
+  - {fileID: 21300000, guid: 462d418107222d64f908a89e1732f313, type: 3}
+  - {fileID: 21300000, guid: 5260d1994c972bb41a21221ffbc40dec, type: 3}
+  - {fileID: 21300000, guid: 7297bec98ae59ba4789adfb5037cd4ac, type: 3}
+  - {fileID: 21300000, guid: ef1ebfe5e66b40944b8e7639839f14bb, type: 3}
+  - {fileID: 21300000, guid: 627ffaad2c850334bb2d4bad95fce95a, type: 3}
+  - {fileID: 21300000, guid: 59577c25c65895d40805969255b9c80e, type: 3}
+  - {fileID: 21300000, guid: e2be389aa7791d54cb87960721fe7ef8, type: 3}
+  - {fileID: 21300000, guid: 7e23cf56a159d264ea3796b635d22502, type: 3}
+  - {fileID: 21300000, guid: 1b2a2e2c4464ebd4083a849ed71072f9, type: 3}
+  - {fileID: 21300000, guid: a61a9750d9d721449b0952e4f7bd11dc, type: 3}
   _ammoPrefabs:
   - {fileID: 8985725271236679985, guid: 62fe094ae0bd81f46bbdd1c9767709e4, type: 3}
   _moveSpeed: 1.5

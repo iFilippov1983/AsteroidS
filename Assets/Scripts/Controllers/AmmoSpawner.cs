@@ -21,6 +21,7 @@ namespace AsteroidS
                 var ammoType = (AmmoType)prefabIndex;
                 var prefab = _ammoPrefabsDictionary[ammoType];
                 var amount = prefab.Properties.AmmoAmount;
+
                 dictionary.Add(ammoType, new Stack<Ammo>());
 
                 for (int index = 0; index < amount; index++)

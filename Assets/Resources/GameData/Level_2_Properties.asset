@@ -15,7 +15,10 @@ MonoBehaviour:
   _spaceObjectsPrefabs:
   - {fileID: 8620990933213323889, guid: 67b2ce987f2852347a663e698f755752, type: 3}
   - {fileID: 3757296140655742042, guid: 8746202606efc404fae5de06bcb1241f, type: 3}
-  _spawnRate: 2
-  _spawnDistanceMultiplier: 15
+  _levelDuration: 120
+  _spawnRate: 1
+  _spawnDistanceMultiplier: 17
   _trajectoryVariance: 15
+  _chidlsPrefabs:
+  - {fileID: -5019846699432843175, guid: 5fac5dc1f55be7f41a8ac9b748edb1b6, type: 3}
   _maxChildsAmount: 3

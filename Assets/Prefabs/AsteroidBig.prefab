@@ -74,15 +74,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 67a83810eaafd394c88b317d22a8fa9d, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.96, y: 0.96}
+  m_Size: {x: 1.2, y: 0.98}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &8691047103285353371
@@ -135,6 +135,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprites:
-  - {fileID: 21300000, guid: 67a83810eaafd394c88b317d22a8fa9d, type: 3}
-  - {fileID: 21300000, guid: 69dc6aa050c638b43a85e22addd1af44, type: 3}
+  - {fileID: 21300000, guid: 284c4e20ae8ecf548be5063135811708, type: 3}
+  - {fileID: 21300000, guid: a78c8c8947dbc7f4aba8692075720d61, type: 3}
+  - {fileID: 21300000, guid: 54da0b8ccc1d62c429e32fc3814dfca6, type: 3}
+  - {fileID: 21300000, guid: ebe43978098867d43867c4020f670e36, type: 3}
+  - {fileID: 21300000, guid: d4e2c588ca744cc499d51c078dd2fb7e, type: 3}
+  - {fileID: 21300000, guid: 40b8bae26ef14cc4a876ccc7658046c9, type: 3}
+  - {fileID: 21300000, guid: 98e8ad2331538e94c8e6423da35abbb4, type: 3}
+  - {fileID: 21300000, guid: a3f5933ecb2c60a4e88977387c25b431, type: 3}
   _spaceObjectPropertiesPath: AsteroidBigProperties

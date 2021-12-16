@@ -7,12 +7,14 @@ namespace AsteroidS
     public class PlayerData : ScriptableObject
     {
         [SerializeField] private GameObject _playerPrefab;
+        [SerializeField] private Sprite[] _playerViewSprites;
         [SerializeField] private List<Ammo> _ammoPrefabs;
         [SerializeField] private float _moveSpeed;
         [SerializeField] private float _rotationSpeed;
+
         public Ammo currentAmmo;
 
-        public GameObject PlayerPrefab => _playerPrefab;
+        public GameObject PlayerPrefab => SetPlayerSpriteBeforeReturn();
         public Dictionary<AmmoType,Ammo> AmmoPrefabsDictionary => MakePrefabsDictionary();
         public float PlayerMovementSpeed => _moveSpeed;
         public float PlayerRotationSpeed => _rotationSpeed;
@@ -28,6 +30,15 @@ namespace AsteroidS
             }
 
             return dictionary;
+        }
+
+        private GameObject SetPlayerSpriteBeforeReturn()
+        {
+            var randomSprite = _playerViewSprites[Random.Range(0, _playerViewSprites.Length)];
+            var spriteRenderer = _playerPrefab.GetComponent<SpriteRenderer>();
+            spriteRenderer.sprite = randomSprite;
+
+            return _playerPrefab;
         }
     }
 }

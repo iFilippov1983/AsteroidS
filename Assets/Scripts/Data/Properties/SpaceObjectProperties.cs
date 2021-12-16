@@ -24,7 +24,7 @@ namespace AsteroidS
         {
             get
             {
-                if (armorPoints != 0) return true;
+                if (armorPoints > 0) return true;
                 else return false;
             }
         }

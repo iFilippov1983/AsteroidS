@@ -26,7 +26,6 @@ namespace AsteroidS
 
         public event Action OnShot;
 
-
         public ShootingController(GameData gameData, Transform player)
         {
             _gameData = gameData;

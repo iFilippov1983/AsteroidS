@@ -12,6 +12,7 @@ namespace AsteroidS
         [SerializeField] private float _spawnRate = 2.0f;
         [SerializeField] private float _spawnDistanceMultiplier = 15.0f;
         [SerializeField] private float _trajectoryVariance = 15.0f;
+        [SerializeField] private SpaceObject[] _chidlsPrefabs;
         [SerializeField] private int _maxChildsAmount = 3;
 
         public Dictionary<SpaceObjectType, SpaceObject> SpaceObjectsPrefabsDictionary => MakePrefabsDictionary();
@@ -19,6 +20,7 @@ namespace AsteroidS
         public float SpawnRate => _spawnRate;
         public float DistanceMultiplier => _spawnDistanceMultiplier;
         public float TrajectoryVariance => _trajectoryVariance;
+        public SpaceObject[] ChildsPrefabs => _chidlsPrefabs;
         public int MaxChildsAmount => _maxChildsAmount;
 
         private Dictionary<SpaceObjectType, SpaceObject> MakePrefabsDictionary()

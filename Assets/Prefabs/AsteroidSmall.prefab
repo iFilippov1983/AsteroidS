@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &6404076905906547734
+--- !u!1 &9207827501409667217
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,11 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 786715291249546978}
-  - component: {fileID: 316931294240787667}
-  - component: {fileID: 7390841553921010186}
-  - component: {fileID: 1143050732896133225}
-  - component: {fileID: 3757296140655742042}
+  - component: {fileID: 5026558373629472889}
+  - component: {fileID: 5165799930486742989}
+  - component: {fileID: 507959051357465200}
+  - component: {fileID: 5853498346575912465}
+  - component: {fileID: -5019846699432843175}
   m_Layer: 7
   m_Name: AsteroidSmall
   m_TagString: Asteroid
@@ -20,13 +20,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &786715291249546978
+--- !u!4 &5026558373629472889
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6404076905906547734}
+  m_GameObject: {fileID: 9207827501409667217}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -34,13 +34,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &316931294240787667
+--- !u!212 &5165799930486742989
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6404076905906547734}
+  m_GameObject: {fileID: 9207827501409667217}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -74,25 +74,25 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d85b8c3bc47298640a5630b8220a0acb, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.64, y: 0.64}
+  m_Size: {x: 0.28, y: 0.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &7390841553921010186
+--- !u!50 &507959051357465200
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6404076905906547734}
+  m_GameObject: {fileID: 9207827501409667217}
   m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
@@ -106,13 +106,13 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!58 &1143050732896133225
+--- !u!58 &5853498346575912465
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6404076905906547734}
+  m_GameObject: {fileID: 9207827501409667217}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -121,21 +121,22 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.25
---- !u!114 &3757296140655742042
+  m_Radius: 0.14
+--- !u!114 &-5019846699432843175
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6404076905906547734}
+  m_GameObject: {fileID: 9207827501409667217}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c2a64dfc0b18de441b5b10b80f315541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _sprites:
-  - {fileID: 21300000, guid: d85b8c3bc47298640a5630b8220a0acb, type: 3}
-  - {fileID: 21300000, guid: 8f98caf7148726744b6774e05088ed0c, type: 3}
-  - {fileID: 21300000, guid: f640af2931a58d544ab0e91ca7050b41, type: 3}
+  - {fileID: 21300000, guid: 89c02059f5b411c4bae91d0c691edfb1, type: 3}
+  - {fileID: 21300000, guid: efb4432ec99510342be5775baaca31ab, type: 3}
+  - {fileID: 21300000, guid: 3e6591a0d9c7b4549918b7d28bd32ea9, type: 3}
+  - {fileID: 21300000, guid: 539b6f33370b1094d9c32b285e71cade, type: 3}
   _spaceObjectPropertiesPath: AsteroidSmallProperties

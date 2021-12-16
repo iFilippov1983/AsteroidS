@@ -12,6 +12,7 @@ namespace AsteroidS
         private SpaceObjectsSpawner _spawner;
         private SpaceObjectDriver _objectDriver;
         private Stack<SpaceObject> _soStack;
+        private Stack<SpaceObject> _outdatedStack;
         private GameLevelProperties _currentLevelProperties;
         private int _levelSpaceObjectsAmount;
         private float _spawnRate;
@@ -62,7 +63,9 @@ namespace AsteroidS
 
         private void SpawnObjects()
         {
-            if (_timeCounter >= _spawnRate && _soStack.Count != 0 && !_levelTransition)
+            if (_timeCounter >= _spawnRate && 
+                _soStack.Count != 0 && 
+                !_levelTransition)
             {
                 _timeCounter = 0;
 
@@ -80,11 +83,17 @@ namespace AsteroidS
 
                 if (stackIsFull)
                 {
+                    _outdatedStack = _soStack;
+                    
                     UnsubscribeFromSOEvents();
 
                     _soStack = _spawner.CreateUnactiveSpaceObjectsStack();
                     _levelSpaceObjectsAmount = _soStack.Count;
+
                     SubscribeOnSOEvents();
+
+                    DestroyOutdatedStack();
+
                     _levelTransition = false;
                 }
             }
@@ -160,6 +169,16 @@ namespace AsteroidS
 
                 _objectDriver.Drive(so);
             }
+        }
+
+        private void DestroyOutdatedStack()
+        {
+            foreach (SpaceObject so in _outdatedStack)
+            {
+                Object.Destroy(so.gameObject);
+            }
+
+            _outdatedStack.Clear();
         }
     }
 }
