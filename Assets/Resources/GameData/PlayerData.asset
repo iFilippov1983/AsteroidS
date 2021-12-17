@@ -28,6 +28,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a61a9750d9d721449b0952e4f7bd11dc, type: 3}
   _ammoPrefabs:
   - {fileID: 8985725271236679985, guid: 62fe094ae0bd81f46bbdd1c9767709e4, type: 3}
+  - {fileID: -4956048596519119058, guid: 747c5e3d7a437744b86c998c7ec7eab1, type: 3}
   _moveSpeed: 1.5
   _rotationSpeed: 0.3
-  currentAmmo: {fileID: 8985725271236679985, guid: 62fe094ae0bd81f46bbdd1c9767709e4, type: 3}
+  _currentAmmo: {fileID: -4956048596519119058, guid: 747c5e3d7a437744b86c998c7ec7eab1, type: 3}

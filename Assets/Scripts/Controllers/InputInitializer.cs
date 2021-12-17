@@ -7,7 +7,9 @@ namespace AsteroidS
         public IUserInputProxy _pcInputHorizontal;
         public IUserInputProxy _pcInputVertical;
         public IUserInputProxy _pcInputStrafe;
+        public IUserInputProxy _pcInputSwitch;
         public IUserInputProxy _pcInputCancel;
+        public IUserInputProxy _pcInputNumbers;
 
         public InputInitializer()
         {
@@ -19,28 +21,36 @@ namespace AsteroidS
             _pcInputHorizontal = new PCInputHorizontal();
             _pcInputVertical = new PCInputVertical();
             _pcInputStrafe = new PCInputStrafe();
+            _pcInputSwitch = new PCInputSwitch();
             _pcInputCancel = new PCInputCancel();
+            _pcInputNumbers = new PCInputNumbers();
         }
 
         public (
             IUserInputProxy inputHorizontal, 
             IUserInputProxy inputVertical,
             IUserInputProxy inputStrafe,
-            IUserInputProxy inputCancel
+            IUserInputProxy inputSwitch,
+            IUserInputProxy inputCancel,
+            IUserInputProxy inputNumbers
                 )GetInput()
         {
             (
                 IUserInputProxy inputHorizontal, 
                 IUserInputProxy inputVertical,
                 IUserInputProxy inpetStrafe,
-                IUserInputProxy inputCancel
+                IUserInputProxy inputSwitch,
+                IUserInputProxy inputCancel,
+                IUserInputProxy inputNumbers
             ) 
             result = 
             (
                 _pcInputHorizontal, 
                 _pcInputVertical,
                 _pcInputStrafe,
-                _pcInputCancel
+                _pcInputSwitch,
+                _pcInputCancel,
+                _pcInputNumbers
             );
 
             return result;

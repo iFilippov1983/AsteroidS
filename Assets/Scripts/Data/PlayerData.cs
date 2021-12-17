@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace AsteroidS
 {
@@ -8,22 +10,38 @@ namespace AsteroidS
     {
         [SerializeField] private GameObject _playerPrefab;
         [SerializeField] private Sprite[] _playerViewSprites;
-        [SerializeField] private List<Ammo> _ammoPrefabs;
+        [SerializeField] private Ammo[] _ammoPrefabs;
         [SerializeField] private float _moveSpeed;
         [SerializeField] private float _rotationSpeed;
-
-        public Ammo currentAmmo;
+        [SerializeField] private Ammo _currentAmmo;
 
         public GameObject PlayerPrefab => SetPlayerSpriteBeforeReturn();
         public Dictionary<AmmoType,Ammo> AmmoPrefabsDictionary => MakePrefabsDictionary();
         public float PlayerMovementSpeed => _moveSpeed;
         public float PlayerRotationSpeed => _rotationSpeed;
+        public Ammo CurrentAmmo => _currentAmmo;
+
+        public Action OnAmmoSwitched;
+
+        public void SwitchAmmoTo(int number)
+        {
+            if (number > _ammoPrefabs.Length || number == 0) return;
+
+            _currentAmmo = _ammoPrefabs[number - 1];
+
+            OnAmmoSwitched?.Invoke();
+        }
+
+        public void SetDefaultAmmo()
+        {
+            _currentAmmo = _ammoPrefabs[0];
+        }
 
         private Dictionary<AmmoType, Ammo> MakePrefabsDictionary()
         {
             var dictionary = new Dictionary<AmmoType, Ammo>();
 
-            for (int index = 0; index < _ammoPrefabs.Count; index++)
+            for (int index = 0; index < _ammoPrefabs.Length; index++)
             {
                 var type = _ammoPrefabs[index].Properties.ammoType;
                 dictionary[type] = _ammoPrefabs[index];

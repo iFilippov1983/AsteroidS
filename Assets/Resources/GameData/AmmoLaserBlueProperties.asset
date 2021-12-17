@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e50018818d4e2e4488239822ad752603, type: 3}
-  m_Name: AmmoLazerProperties
+  m_Name: AmmoLaserBlueProperties
   m_EditorClassIdentifier: 
   ammoType: 2
   damage: 100
-  reloadTime: 3
+  reloadTime: 2
   shotDistance: 30
-  speedRate: 10
+  speedRate: 30
   timeMultiplier: 1

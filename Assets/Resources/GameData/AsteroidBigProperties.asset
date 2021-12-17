@@ -18,8 +18,8 @@ MonoBehaviour:
   scoresForDestruction: 1
   mass: 1
   amountOnScene: 6
-  speed: 5
-  maxLifeTime: 15
+  speed: 6
+  maxLifeTime: 20
   isPickable: 0
   isBreakable: 1
   isChild: 0
