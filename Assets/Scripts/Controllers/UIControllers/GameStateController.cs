@@ -6,8 +6,6 @@ namespace AsteroidS
 {
     public class GameStateController:IInitialization
     {
-        private const int MainMenuIndex = 0;
-        private const int PauseMenuIndex = 1;
         private readonly StartGameStateController _startGameController;
         private readonly DefaultStateController _defaultStateController;
         private readonly SettingsStateController _settingsStateController;
@@ -27,8 +25,8 @@ namespace AsteroidS
 
         public void Initialize()
         {
-            ChangeGameState(GameState.Default);
             _defaultStateController.Init();
+            ChangeGameState(GameState.Default);
         }
 
         public void ChangeGameState(GameState gameState)
@@ -42,13 +40,13 @@ namespace AsteroidS
                     _settingsStateController.SettingsMenu(_mainMenu, _settingsMenu, _playerUI);
                     break;
                 case GameState.Pause:
-                    _defaultStateController.DefaultState(_mainMenu, _settingsMenu, _playerUI, PauseMenuIndex);
+                    _defaultStateController.DefaultState(_mainMenu, _settingsMenu, _playerUI, gameState);
                     break;
                 case GameState.Exit:
                     Application.Quit();
                     break;
                 case GameState.Default:
-                    _defaultStateController.DefaultState(_mainMenu, _settingsMenu, _playerUI, MainMenuIndex);
+                    _defaultStateController.DefaultState(_mainMenu, _settingsMenu, _playerUI, gameState);
                     break;
             }
         }

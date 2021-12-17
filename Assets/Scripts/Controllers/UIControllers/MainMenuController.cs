@@ -1,4 +1,6 @@
-﻿using UnityEngine.UI;
+﻿using TMPro;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace AsteroidS
 {
@@ -9,7 +11,8 @@ namespace AsteroidS
         private Button _startButton;
         private Button _settingsButton;
         private Button _exitButton;
-        
+        private TMP_Text _exitButtonText;
+
         public MainMenuController(UIComponentInitializer uiComponentInitializer, GameStateController gameStateController)
         {
             _gameStateController = gameStateController;
@@ -21,6 +24,7 @@ namespace AsteroidS
             _startButton = _uiComponentInitializer.StartButton.GetComponent<Button>();
             _settingsButton = _uiComponentInitializer.SettingsButton.GetComponent<Button>();
             _exitButton = _uiComponentInitializer.ExitButton.GetComponent<Button>();
+            _exitButtonText = _exitButton.GetComponentInChildren<TMP_Text>();
             _startButton.onClick.AddListener(ChangeStateToStart);
             _settingsButton.onClick.AddListener(ChangeStateToSettings);
             _exitButton.onClick.AddListener(ChangeStateToExit);
@@ -45,7 +49,16 @@ namespace AsteroidS
 
         private void ChangeStateToExit() 
         {
-            _gameStateController.ChangeGameState(GameState.Exit);
+            if (_exitButtonText.text == UIObjectNames.Exit)
+            {
+                Debug.Log("Exit");
+                _gameStateController.ChangeGameState(GameState.Exit);
+            }
+            else
+            {
+                Debug.Log("MainMenu");
+                _gameStateController.ChangeGameState(GameState.Default);
+            }
         }
     }
 }

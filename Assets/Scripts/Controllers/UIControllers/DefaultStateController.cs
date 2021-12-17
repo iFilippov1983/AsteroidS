@@ -11,8 +11,8 @@ namespace AsteroidS
         private Button _startButton;
         private Button _settingsButton;
         private Button _exitButton;
-        private TextMeshProUGUI _startButtonText;
-        private TextMeshProUGUI _exitButtonText;
+        private TMP_Text _startButtonText;
+        private TMP_Text _exitButtonText;
 
         public DefaultStateController(UIComponentInitializer uiComponentInitializer)
         {
@@ -24,28 +24,30 @@ namespace AsteroidS
             _startButton = _uiComponentInitializer.StartButton.GetComponent<Button>();
             _settingsButton = _uiComponentInitializer.SettingsButton.GetComponent<Button>();
             _exitButton = _uiComponentInitializer.ExitButton.GetComponent<Button>();
-            _startButtonText = _startButton.GetComponentInChildren<TextMeshProUGUI>();
-            _exitButtonText = _exitButton.GetComponentInChildren<TextMeshProUGUI>();
+            
+            _startButtonText = _startButton.gameObject.GetComponentInChildren<TMP_Text>();
+            _exitButtonText = _exitButton.gameObject.GetComponentInChildren<TMP_Text>();
         }
 
-        internal void DefaultState(GameObject mainMenu, GameObject settingsMenu, GameObject playerUI, int index)
+        internal void DefaultState(GameObject mainMenu, GameObject settingsMenu, GameObject playerUI, GameState gameState)
         {
             Time.timeScale = 0;
             mainMenu.SetActive(true);
             settingsMenu.SetActive(false);
             playerUI.SetActive(false);
+            SetButtons(gameState);
         }
         
-        private void SetButtons(int index)
+        private void SetButtons(GameState gameState)
         {
-            switch (index)
+            switch (gameState)
             {
-                case 0:
+                case GameState.Default:
                     _startButtonText.text = UIObjectNames.Start;
                     _exitButtonText.text = UIObjectNames.Exit;
                     _settingsButton.gameObject.SetActive(true);
                     break;
-                case 1:
+                case GameState.Pause:
                     _startButtonText.text = UIObjectNames.Continue;
                     _exitButtonText.text = UIObjectNames.ToMainMenu;
                     _settingsButton.gameObject.SetActive(false);
