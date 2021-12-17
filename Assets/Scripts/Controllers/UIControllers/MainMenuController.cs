@@ -4,8 +4,8 @@ namespace AsteroidS
 {
     public class MainMenuController: IInitialization, ICleanup
     {
-        private GameStateController _gameStateController;
-        private UIComponentInitializer _uiComponentInitializer;
+        private readonly GameStateController _gameStateController;
+        private readonly UIComponentInitializer _uiComponentInitializer;
         private Button _startButton;
         private Button _settingsButton;
         private Button _exitButton;

@@ -8,7 +8,7 @@
             var playerInitializer = new PlayerInitializer(gameData);
             var uiInitialize = new UIInitializer(gameData);
             var uiComponentInitializer = new UIComponentInitializer(uiInitialize);
-            var gameStateController = new GameStateController(uiInitialize);
+            var gameStateController = new GameStateController(uiInitialize, uiComponentInitializer);
             var menuManagmentController = new MenuManagmentController(uiComponentInitializer, gameStateController);
             var spaceObjectsController = new SpaceObjectsController(gameData);
             var scoreCountController = new ScoreCountController(gameData, uiComponentInitializer);
