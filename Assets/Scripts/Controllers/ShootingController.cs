@@ -8,7 +8,7 @@ namespace AsteroidS
 {
     public class ShootingController : IInitialization, IFixedExecute, ICleanup
     {
-        private GameData _gameData;
+        private PlayerData _playerData;
         private Transform _player;
         private AmmoSpawner _spawner;
         private AmmoDriver _ammoDriver;
@@ -28,17 +28,19 @@ namespace AsteroidS
 
         public ShootingController(GameData gameData, Transform player)
         {
-            _gameData = gameData;
+            _playerData = gameData.PlayerData;
+            _playerData.SetDefaultAmmo();
             _player = player;
-            _spawner = new AmmoSpawner(gameData.PlayerData.AmmoPrefabsDictionary);
+            _spawner = new AmmoSpawner(_playerData.AmmoPrefabsDictionary);
             _ammoDriver = new AmmoDriver();
         }
 
         public void Initialize()
         {
-            _reloadTime = _gameData.PlayerData.currentAmmo.Properties.reloadTime;
-            _shotDistance = _gameData.PlayerData.currentAmmo.Properties.shotDistance;
-            _ammo = _gameData.PlayerData.currentAmmo;
+            
+            _reloadTime = _playerData.CurrentAmmo.Properties.reloadTime;
+            _shotDistance = _playerData.CurrentAmmo.Properties.shotDistance;
+            _ammo = _playerData.CurrentAmmo;
             _currentAmmoType = _ammo.Properties.ammoType;
             _ammoPool = _spawner.MakeSpawnedAmmoDictionary();
 
@@ -46,7 +48,8 @@ namespace AsteroidS
             _stackNotEmpty = (_ammoPool[_currentAmmoType].Count != 0);
 
             SubscribeToEvents(_ammoPool);
-            
+
+            _playerData.OnAmmoSwitched += SwitchAmmo;
         }
 
         public void FixedExecute()
@@ -76,7 +79,8 @@ namespace AsteroidS
             }
 
             UnsubscribeFromEvents(_ammoPool);
-            
+
+            _playerData.OnAmmoSwitched -= SwitchAmmo;
         }
 
         private void OnLifeTermination(Ammo ammo)
@@ -120,6 +124,12 @@ namespace AsteroidS
                     a.LifeTerminationEvent -= OnLifeTermination;
                 }
             }
+        }
+
+        private void SwitchAmmo()
+        {
+            _ammo = _playerData.CurrentAmmo;
+            _currentAmmoType = _ammo.Properties.ammoType;
         }
 
         IEnumerator FireRateTimer(float timeInSec)

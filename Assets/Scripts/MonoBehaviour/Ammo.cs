@@ -9,6 +9,7 @@ namespace AsteroidS
         
         private AmmoProperties _ammoProperties;
         private float _lifeTimeCounter;
+
         //private Coroutine _desactivationTimer;
 
         public AmmoProperties Properties
@@ -28,7 +29,6 @@ namespace AsteroidS
 
         private void OnEnable()
         {
-            _lifeTimeCounter = 0;
             //_desactivationTimer = CoroutinesController.StartRoutine(LifeTimer(Properties.LifeTime));
         }
 
@@ -36,6 +36,8 @@ namespace AsteroidS
         {
             //temp 
             //Debug.Log($"Ammo hits object: {collision.gameObject.name}");
+
+            if (Properties.ammoType.Equals(AmmoType.Laser)) return;
 
             if (collision.gameObject.tag == TagsHolder.Asteroid ||
                 collision.gameObject.tag == TagsHolder.Ship)
