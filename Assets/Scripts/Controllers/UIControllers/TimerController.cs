@@ -6,7 +6,7 @@ namespace AsteroidS
     public class TimerController: IExecute, IInitialization, ICleanup
     {
         private UIComponentInitializer _uiComponentInitializer;
-        private PlayerUIView _playerUIView;
+        private TimerCountView _timerCountView;
         private TextMeshProUGUI _timerDisplay;
         private TimeSpan _time;
         private float _seconds;
@@ -24,8 +24,8 @@ namespace AsteroidS
 
         public void Initialize()
         {
-            _playerUIView = _uiComponentInitializer.PlayerUIView;
-            _timerDisplay = _playerUIView.TimerCount;
+            _timerCountView = _uiComponentInitializer.TimerCounter;
+            _timerDisplay = _timerCountView.GetComponent<TextMeshProUGUI>();
         }
 
         public void Execute(float deltaTime)

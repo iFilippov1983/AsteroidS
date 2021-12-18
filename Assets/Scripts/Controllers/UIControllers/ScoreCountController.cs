@@ -6,7 +6,7 @@ namespace AsteroidS
     public class ScoreCountController:IInitialization, IExecute
     {
         private UIComponentInitializer _uiObjectGetter;
-        private PlayerUIView _playerUIView;
+        private ScoreCountView _scoreCountView;
         private TextMeshProUGUI _scoreDisplay;
         private int _score;
         private string _message;
@@ -20,8 +20,8 @@ namespace AsteroidS
 
         public void Initialize()
         {
-            _playerUIView = _uiObjectGetter.PlayerUIView;
-            _scoreDisplay = _playerUIView.ScoreCount;
+            _scoreCountView = _uiObjectGetter.ScoreCount;
+            _scoreDisplay = _scoreCountView.GetComponent<TextMeshProUGUI>();
         }
 
         public void Execute(float deltaTime)

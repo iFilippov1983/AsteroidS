@@ -17,7 +17,7 @@ namespace AsteroidS
         public void EscapeKeyPressed(float cancel)
         {
             if (cancel == 0) return;
-            _gameStateController.ChangeGameState(GameState.Pause);
+            _gameStateController.ChangeGameState(GameState.Default);
         }
 
         public void NubmerPressed(ref int number)
