@@ -237,7 +237,6 @@ GameObject:
   - component: {fileID: 7270217313234928446}
   - component: {fileID: 7270217313234928417}
   - component: {fileID: 7270217313234928416}
-  - component: {fileID: 2291220430501028625}
   m_Layer: 5
   m_Name: Dropdown
   m_TagString: Untagged
@@ -366,18 +365,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_AlphaFadeSpeed: 0.15
---- !u!114 &2291220430501028625
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7270217313234928418}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e25f0dca042aa5b499073510c4c02f2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7270217313310890686
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,7 +485,6 @@ GameObject:
   - component: {fileID: 7270217313367319560}
   - component: {fileID: 7270217313367319563}
   - component: {fileID: 7270217313367319562}
-  - component: {fileID: 4510697760745329021}
   m_Layer: 5
   m_Name: BackButton
   m_TagString: Untagged
@@ -583,7 +569,7 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
+  m_Transition: 2
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -593,10 +579,10 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: 21300000, guid: d69a30f8253d97546948ac7b8aab150b, type: 3}
+    m_PressedSprite: {fileID: 21300000, guid: 7162a97322a5a0945907ed117e4d8b24, type: 3}
+    m_SelectedSprite: {fileID: 21300000, guid: 0f795d455a0ac33459e8c650fca47410, type: 3}
+    m_DisabledSprite: {fileID: 21300000, guid: d32e162fc33ba6544a4ac5cd0d3fc09c, type: 3}
   m_AnimationTriggers:
     m_NormalTrigger: Normal
     m_HighlightedTrigger: Highlighted
@@ -608,18 +594,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &4510697760745329021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7270217313367319564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 857e431835825fc448ced997943e1135, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7270217313455079851
 GameObject:
   m_ObjectHideFlags: 0
@@ -1700,6 +1674,7 @@ GameObject:
   - component: {fileID: 7270217314291406965}
   - component: {fileID: 7270217314291406964}
   - component: {fileID: 7270217314291406967}
+  - component: {fileID: 9014052153963319702}
   m_Layer: 5
   m_Name: SettingsMenu
   m_TagString: Untagged
@@ -1791,6 +1766,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &9014052153963319702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7270217314291406966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 829a10d877927a14ba777d4462fbebf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _backButton: {fileID: 7270217313367319562}
+  _volumeSlider: {fileID: 7270217314493441331}
+  _graphicsDropdown: {fileID: 7270217313234928416}
 --- !u!1 &7270217314324565232
 GameObject:
   m_ObjectHideFlags: 0
@@ -1891,7 +1881,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7270217314493441330}
   - component: {fileID: 7270217314493441331}
-  - component: {fileID: 3339762809715938928}
   m_Layer: 5
   m_Name: VolumeSlider
   m_TagString: Untagged
@@ -1973,18 +1962,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &3339762809715938928
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7270217314493441333}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6424d155430113b4892ced71e1ffe4a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7270217314851715630
 GameObject:
   m_ObjectHideFlags: 0
