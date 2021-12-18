@@ -8,6 +8,7 @@ namespace AsteroidS
     {
         private readonly GameStateController _gameStateController;
         private readonly UIComponentInitializer _uiComponentInitializer;
+        private MainMenuView _mainMenuView;
         private Button _startButton;
         private Button _settingsButton;
         private Button _exitButton;
@@ -21,6 +22,7 @@ namespace AsteroidS
 
         public void Initialize()
         {
+            _mainMenuView = _uiComponentInitializer.MainMenuView;
             GetUIComponents();
             AddListenerToComponents();
         }
@@ -32,10 +34,10 @@ namespace AsteroidS
 
         private void GetUIComponents()
         {
-            _startButton = _uiComponentInitializer.StartButton.GetComponent<Button>();
-            _settingsButton = _uiComponentInitializer.SettingsButton.GetComponent<Button>();
-            _exitButton = _uiComponentInitializer.ExitButton.GetComponent<Button>();
-            _exitButtonText = _exitButton.GetComponentInChildren<TMP_Text>();
+            _startButton = _mainMenuView.StartButton;
+            _settingsButton = _mainMenuView.SettingsButton;
+            _exitButton = _mainMenuView.ExitButton;
+            _exitButtonText = _mainMenuView.ExitButtonText;
         }
 
         private void AddListenerToComponents()

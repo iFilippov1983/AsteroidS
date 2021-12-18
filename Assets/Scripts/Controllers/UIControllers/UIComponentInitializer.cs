@@ -1,6 +1,4 @@
-﻿using AsteroidS.UIView;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 namespace AsteroidS
 {
@@ -11,24 +9,16 @@ namespace AsteroidS
         private readonly GameObject _playerUI;
         private readonly GameObject _deathScreen;
 
+        private MainMenuView _mainMenuView;
+        private SettingMenuView _settingMenuView;
+        private PlayerUIView _playerUIView;
         private ScoreCountView _scoreCount;
         private TimerCountView _timerCountView;
-        private StartButtonView _startButton;
-        private SettingsMenuButtonView _settingsButton;
-        private ExitButtonView _exitButton;
-        private BackButtonView _backButton;
-        private VolumeSliderView _volumeSlider;
-        private ScreenResolutionView _dropdownScreenResolution;
         private DeathScreenView _deathScreenView;
 
-        public ScoreCountView ScoreCount => _scoreCount;
-        public TimerCountView TimerCounter => _timerCountView;
-        public StartButtonView StartButton => _startButton;
-        public SettingsMenuButtonView SettingsButton => _settingsButton;
-        public ExitButtonView ExitButton => _exitButton;
-        public BackButtonView BackButton => _backButton;
-        public VolumeSliderView VolumeSlider => _volumeSlider;
-        public ScreenResolutionView ScreenResolutionDropdown => _dropdownScreenResolution;
+        public MainMenuView MainMenuView => _mainMenuView;
+        public SettingMenuView SettingMenuView => _settingMenuView;
+        public PlayerUIView PlayerUIView => _playerUIView;
         public DeathScreenView DeathScreenView => _deathScreenView;
 
         public UIComponentInitializer(UIInitializer uiInitializer)
@@ -41,14 +31,9 @@ namespace AsteroidS
 
         public void Initialize()
         {
-            _scoreCount = _playerUI.GetComponentInChildren<ScoreCountView>();
-            _timerCountView = _playerUI.GetComponentInChildren<TimerCountView>();
-            _startButton = _mainMenu.GetComponentInChildren<StartButtonView>();
-            _settingsButton = _mainMenu.GetComponentInChildren<SettingsMenuButtonView>();
-            _exitButton = _mainMenu.GetComponentInChildren<ExitButtonView>();
-            _backButton = _settingsMenu.GetComponentInChildren<BackButtonView>();
-            _volumeSlider = _settingsMenu.GetComponentInChildren<VolumeSliderView>();
-            _dropdownScreenResolution = _settingsMenu.GetComponentInChildren<ScreenResolutionView>();
+            _mainMenuView = _mainMenu.GetComponent<MainMenuView>();
+            _settingMenuView = _settingsMenu.GetComponent<SettingMenuView>();
+            _playerUIView = _playerUI.GetComponent<PlayerUIView>();
             _deathScreenView = _deathScreen.GetComponent<DeathScreenView>();
         }
     }

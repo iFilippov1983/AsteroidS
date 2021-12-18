@@ -1,5 +1,4 @@
-﻿using AsteroidS.UIView;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace AsteroidS
 {

@@ -7,10 +7,9 @@ namespace AsteroidS
     internal class DefaultStateController
     {
         private readonly UIComponentInitializer _uiComponentInitializer;
-        
-        private Button _startButton;
+
+        private MainMenuView _mainMenuView;
         private Button _settingsButton;
-        private Button _exitButton;
         private TMP_Text _startButtonText;
         private TMP_Text _exitButtonText;
 
@@ -21,6 +20,7 @@ namespace AsteroidS
 
         public void Init()
         {
+            _mainMenuView = _uiComponentInitializer.MainMenuView;
             GetUIComponents();
         }
 
@@ -36,12 +36,9 @@ namespace AsteroidS
 
         private void GetUIComponents()
         {
-            _startButton = _uiComponentInitializer.StartButton.GetComponent<Button>();
-            _settingsButton = _uiComponentInitializer.SettingsButton.GetComponent<Button>();
-            _exitButton = _uiComponentInitializer.ExitButton.GetComponent<Button>();
-
-            _startButtonText = _startButton.gameObject.GetComponentInChildren<TMP_Text>();
-            _exitButtonText = _exitButton.gameObject.GetComponentInChildren<TMP_Text>();
+            _settingsButton = _mainMenuView.SettingsButton;
+            _startButtonText = _mainMenuView.StartButtonText;
+            _exitButtonText = _mainMenuView.ExitButtonText;
         }
 
         private void SetButtons(GameState gameState)

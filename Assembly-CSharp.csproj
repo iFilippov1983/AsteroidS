@@ -54,7 +54,6 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Interface\ICleanup.cs" />
      <Compile Include="Assets\Scripts\Data\Input\PCInputVertical.cs" />
-     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\BackButtonView.cs" />
      <Compile Include="Assets\Scripts\Data\UIData.cs" />
      <Compile Include="Assets\Scripts\Data\Input\PCInputSwitch.cs" />
      <Compile Include="Assets\Scripts\Data\SoundData.cs" />
@@ -76,17 +75,13 @@
      <Compile Include="Assets\Scripts\Controllers\AudioSourceHandler.cs" />
      <Compile Include="Assets\Scripts\Data\Input\PCInputStrafe.cs" />
      <Compile Include="Assets\Scripts\Controllers\InputInitializer.cs" />
-     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\VolumeSliderView.cs" />
      <Compile Include="Assets\Scripts\Controllers\UIControllers\SettingsMenuController.cs" />
      <Compile Include="Assets\Scripts\Controllers\CoroutinesController.cs" />
      <Compile Include="Assets\Scripts\Controllers\InputController.cs" />
      <Compile Include="Assets\Scripts\MonoBehaviour\SpaceObject.cs" />
      <Compile Include="Assets\Scripts\Controllers\UIControllers\GameStateController.cs" />
-     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\ExitButtonView.cs" />
      <Compile Include="Assets\Scripts\Data\Enum\AmmoType.cs" />
-     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\ScreenResolutionView.cs" />
      <Compile Include="Assets\Scripts\Controllers\UIControllers\UIComponentInitializer.cs" />
-     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\StartButtonView.cs" />
      <Compile Include="Assets\Scripts\Data\Input\PCInputNumbers.cs" />
      <Compile Include="Assets\Scripts\Controllers\UIControllers\ScoreCountController.cs" />
      <Compile Include="Assets\Scripts\Controllers\AmmoDriver.cs" />
@@ -125,7 +120,6 @@
      <Compile Include="Assets\Scripts\Controllers\AnimationController.cs" />
      <Compile Include="Assets\Scripts\Interface\IConfigure.cs" />
      <Compile Include="Assets\Scripts\Interface\IExecute.cs" />
-     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\SettingsMenuButtonView.cs" />
      <Compile Include="Assets\Scripts\MonoBehaviour\UIView\ScoreCountView.cs" />
      <Compile Include="Assets\Scripts\Data\SpaceObjectsData.cs" />
      <Compile Include="Assets\Scripts\Data\Properties\SpaceObjectProperties.cs" />
@@ -135,6 +129,8 @@
      <Compile Include="Assets\Scripts\Controllers\UIControllers\DeathStateController.cs" />
      <Compile Include="Assets\Scripts\MonoBehaviour\UIView\DeathScreenView.cs" />
      <Compile Include="Assets\Scripts\Controllers\SceneInitializer.cs" />
+     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\SettingMenuView.cs" />
+     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\PlayerUIView.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
