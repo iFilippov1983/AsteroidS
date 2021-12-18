@@ -24,6 +24,10 @@ namespace AsteroidS
 
         [Tooltip("Drag&drop here SettingsMenu object")] [SerializeField]
         private GameObject _settingsMenu;
+        
+        [Tooltip("Drag&drop here Death screen object")] [SerializeField]
+        private GameObject _deathScreen;
+
 
 
         private int _scoreHolder;
@@ -34,6 +38,7 @@ namespace AsteroidS
         public GameObject PlayerUI => _playerUI;
         public GameObject MainMenu => _mainMenu;
         public GameObject SettingsMenu => _settingsMenu;
+        public GameObject DeathScreen => _deathScreen;
 
         public int ScoreHolder
         {
