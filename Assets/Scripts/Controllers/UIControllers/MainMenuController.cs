@@ -21,16 +21,31 @@ namespace AsteroidS
 
         public void Initialize()
         {
+            GetUIComponents();
+            AddListenerToComponents();
+        }
+
+        public void Cleanup()
+        {
+            RemoveListenersFromComponents();
+        }
+
+        private void GetUIComponents()
+        {
             _startButton = _uiComponentInitializer.StartButton.GetComponent<Button>();
             _settingsButton = _uiComponentInitializer.SettingsButton.GetComponent<Button>();
             _exitButton = _uiComponentInitializer.ExitButton.GetComponent<Button>();
             _exitButtonText = _exitButton.GetComponentInChildren<TMP_Text>();
+        }
+
+        private void AddListenerToComponents()
+        {
             _startButton.onClick.AddListener(ChangeStateToStart);
             _settingsButton.onClick.AddListener(ChangeStateToSettings);
             _exitButton.onClick.AddListener(ChangeStateToExit);
         }
 
-        public void Cleanup()
+        private void RemoveListenersFromComponents()
         {
             _startButton.onClick.RemoveAllListeners();
             _settingsButton.onClick.RemoveAllListeners();
@@ -51,12 +66,10 @@ namespace AsteroidS
         {
             if (_exitButtonText.text == UIObjectNames.Exit)
             {
-                Debug.Log("Exit");
                 _gameStateController.ChangeGameState(GameState.Exit);
             }
             else
             {
-                Debug.Log("MainMenu");
                 _gameStateController.ChangeGameState(GameState.Default);
             }
         }

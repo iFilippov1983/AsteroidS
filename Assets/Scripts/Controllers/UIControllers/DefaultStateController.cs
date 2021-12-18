@@ -21,23 +21,29 @@ namespace AsteroidS
 
         public void Init()
         {
-            _startButton = _uiComponentInitializer.StartButton.GetComponent<Button>();
-            _settingsButton = _uiComponentInitializer.SettingsButton.GetComponent<Button>();
-            _exitButton = _uiComponentInitializer.ExitButton.GetComponent<Button>();
-            
-            _startButtonText = _startButton.gameObject.GetComponentInChildren<TMP_Text>();
-            _exitButtonText = _exitButton.gameObject.GetComponentInChildren<TMP_Text>();
+            GetUIComponents();
         }
 
-        internal void DefaultState(GameObject mainMenu, GameObject settingsMenu, GameObject playerUI, GameState gameState)
+        internal void DefaultState(GameObject mainMenu, GameObject settingsMenu, GameObject playerUI, GameObject deathScreen, GameState gameState)
         {
             Time.timeScale = 0;
             mainMenu.SetActive(true);
             settingsMenu.SetActive(false);
             playerUI.SetActive(false);
+            deathScreen.SetActive(false);
             SetButtons(gameState);
         }
-        
+
+        private void GetUIComponents()
+        {
+            _startButton = _uiComponentInitializer.StartButton.GetComponent<Button>();
+            _settingsButton = _uiComponentInitializer.SettingsButton.GetComponent<Button>();
+            _exitButton = _uiComponentInitializer.ExitButton.GetComponent<Button>();
+
+            _startButtonText = _startButton.gameObject.GetComponentInChildren<TMP_Text>();
+            _exitButtonText = _exitButton.gameObject.GetComponentInChildren<TMP_Text>();
+        }
+
         private void SetButtons(GameState gameState)
         {
             switch (gameState)

@@ -28,18 +28,33 @@ namespace AsteroidS
         }
         public void Initialize()
         {
-            _backButton = _uiComponentInitializer.BackButton.GetComponent<Button>();
-            _volumeSlider = _uiComponentInitializer.VolumeSlider.GetComponent<Slider>();
-            _screenResolutoionDropDown = _uiComponentInitializer.ScreenResolutionDropdown.GetComponent<Dropdown>();
+            GetUIComponents();
+            AddListenersToComponents();
+        }
+
+        public void Cleanup()
+        {
+            RemoveListenersFromComponents();
+        }
+
+        private void RemoveListenersFromComponents()
+        {
+            _backButton.onClick.RemoveAllListeners();
+            _volumeSlider.onValueChanged.RemoveAllListeners();
+        }
+
+        private void AddListenersToComponents()
+        {
             _backButton.onClick.AddListener(GoBackToMainMenu);
             _volumeSlider.onValueChanged.AddListener(ChangeVolumeLevel);
             //_screenResolutoionDropDown.onValueChanged.AddListener(ChangeGraphicsPreset);
         }
 
-        public void Cleanup()
+        private void GetUIComponents()
         {
-            _backButton.onClick.RemoveAllListeners();
-            _volumeSlider.onValueChanged.RemoveAllListeners();
+            _backButton = _uiComponentInitializer.BackButton.GetComponent<Button>();
+            _volumeSlider = _uiComponentInitializer.VolumeSlider.GetComponent<Slider>();
+            _screenResolutoionDropDown = _uiComponentInitializer.ScreenResolutionDropdown.GetComponent<Dropdown>();
         }
 
         private void GoBackToMainMenu()

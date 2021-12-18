@@ -121,7 +121,6 @@
      <Compile Include="Assets\Scripts\Controllers\SpaceObjectsController.cs" />
      <Compile Include="Assets\Scripts\Interface\IMobileInputFactory.cs" />
      <Compile Include="Assets\Scripts\Temp\DateTimeCatcher.cs" />
-     <Compile Include="Assets\Scripts\Controllers\UIControllers\SceneInitializer.cs" />
      <Compile Include="Assets\Scripts\MonoBehaviour\GameDriver.cs" />
      <Compile Include="Assets\Scripts\Controllers\AnimationController.cs" />
      <Compile Include="Assets\Scripts\Interface\IConfigure.cs" />
@@ -131,6 +130,11 @@
      <Compile Include="Assets\Scripts\Data\SpaceObjectsData.cs" />
      <Compile Include="Assets\Scripts\Data\Properties\SpaceObjectProperties.cs" />
      <Compile Include="Assets\Scripts\Controllers\UIControllers\TimerController.cs" />
+     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\MainMenuView.cs" />
+     <Compile Include="Assets\Scripts\Controllers\UIControllers\DeathScreenController.cs" />
+     <Compile Include="Assets\Scripts\Controllers\UIControllers\DeathStateController.cs" />
+     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\DeathScreenView.cs" />
+     <Compile Include="Assets\Scripts\Controllers\SceneInitializer.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -755,6 +759,36 @@
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.Sprite.Editor">
+ <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.Path.Editor">
+ <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Mathematics.Editor">
+ <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.Common.Editor">
+ <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Mathematics">
+ <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.Common.Runtime">
+ <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.SpriteShape.Runtime">
+ <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.InternalAPIEngineBridge.001">
+ <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.InternalAPIEditorBridge.001">
+ <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.SpriteShape.Editor">
+ <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.2D.SpriteShape.Editor.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

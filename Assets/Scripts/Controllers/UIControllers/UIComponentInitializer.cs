@@ -6,9 +6,10 @@ namespace AsteroidS
 {
     public class UIComponentInitializer:IInitialization
     {
-        private GameObject _mainMenu;
-        private GameObject _settingsMenu;
-        private GameObject _playerUI;
+        private readonly GameObject _mainMenu;
+        private readonly GameObject _settingsMenu;
+        private readonly GameObject _playerUI;
+        private readonly GameObject _deathScreen;
 
         private ScoreCountView _scoreCount;
         private TimerCountView _timerCountView;
@@ -18,6 +19,7 @@ namespace AsteroidS
         private BackButtonView _backButton;
         private VolumeSliderView _volumeSlider;
         private ScreenResolutionView _dropdownScreenResolution;
+        private DeathScreenView _deathScreenView;
 
         public ScoreCountView ScoreCount => _scoreCount;
         public TimerCountView TimerCounter => _timerCountView;
@@ -27,12 +29,14 @@ namespace AsteroidS
         public BackButtonView BackButton => _backButton;
         public VolumeSliderView VolumeSlider => _volumeSlider;
         public ScreenResolutionView ScreenResolutionDropdown => _dropdownScreenResolution;
+        public DeathScreenView DeathScreenView => _deathScreenView;
 
         public UIComponentInitializer(UIInitializer uiInitializer)
         { 
             _mainMenu = uiInitializer.MainMenu;
             _settingsMenu = uiInitializer.SettingsMenu;
             _playerUI = uiInitializer.PlayerUI;
+            _deathScreen = uiInitializer.DeathScreen;
         }
 
         public void Initialize()
@@ -45,6 +49,7 @@ namespace AsteroidS
             _backButton = _settingsMenu.GetComponentInChildren<BackButtonView>();
             _volumeSlider = _settingsMenu.GetComponentInChildren<VolumeSliderView>();
             _dropdownScreenResolution = _settingsMenu.GetComponentInChildren<ScreenResolutionView>();
+            _deathScreenView = _deathScreen.GetComponent<DeathScreenView>();
         }
     }
 }

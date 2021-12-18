@@ -21,7 +21,7 @@ namespace AsteroidS
         public void Initialize()
         {
             _scoreCountView = _uiObjectGetter.ScoreCount;
-            _scoreDisplay = _scoreCountView.GetComponent<TextMeshProUGUI>();
+            _scoreDisplay = _scoreCountView.ScoreCount;
         }
 
         public void Execute(float deltaTime)
