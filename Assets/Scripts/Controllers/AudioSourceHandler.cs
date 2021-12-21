@@ -13,7 +13,6 @@ namespace AsteroidS
         private AudioSource _asteroidExplosionSource;
         private AudioSource _shipExplosionSource;
         private AudioSource _asteroidHitsSource;
-        
         private AudioClip _backgroundMusicClip;
         private AudioClip _shotWeaponSourceClip;
         private AudioClip _armorHitSourceClip;
@@ -21,25 +20,31 @@ namespace AsteroidS
         private AudioClip _shipExplosionClip;
         private AudioClip _asteroidHitClip;
         
-        private AudioMixerGroup _audioMixerGroup;
+        private AudioMixerGroup _audioMainMixerGroup;
+        private AudioMixerGroup _audioMixerGroupEffects;
         private GameObject _parent;
 
         public AudioSourceHandler(GameData gameData)
         {
-            _audioMixerGroup = gameData.SoundData.AudioMixerGroup;
+            _audioMainMixerGroup = gameData.SoundData.AudioMixerGroup;
             _parent = new GameObject(ParentName);
             _backgroundMusicClip = gameData.SoundData.BackgroundMusicClip;
             _shotWeaponSourceClip = gameData.SoundData.ShotWeaponClip;
+            _armorHitSourceClip = gameData.SoundData.ArmorHitsClip;
+            _asteroidExplosionClip = gameData.SoundData.AsteroidExplosionClip;
+            _shipExplosionClip = gameData.SoundData.ShipExplosionClip;
+            _asteroidHitClip = gameData.SoundData.AsteroidHitsClip;
+            _audioMixerGroupEffects = gameData.SoundData.EffectsMixerGroup;
         }
 
         public void SetAudioSources()
         {
-            _backgroundMusicSource = SetParentAndMixerGroup();
-            _shotWeaponSource = SetParentAndMixerGroup();
-            _armorHitsSource = SetParentAndMixerGroup();
-            _asteroidExplosionSource = SetParentAndMixerGroup();
-            _shipExplosionSource = SetParentAndMixerGroup();
-            _asteroidHitsSource = SetParentAndMixerGroup();
+            _backgroundMusicSource = SetParentAndMixerGroup(_audioMainMixerGroup);
+            _shotWeaponSource = SetParentAndMixerGroup(_audioMixerGroupEffects);
+            _armorHitsSource = SetParentAndMixerGroup(_audioMixerGroupEffects);
+            _asteroidExplosionSource = SetParentAndMixerGroup(_audioMixerGroupEffects);
+            _shipExplosionSource = SetParentAndMixerGroup(_audioMixerGroupEffects);
+            _asteroidHitsSource = SetParentAndMixerGroup(_audioMixerGroupEffects);
         }
 
         public void PlayBackgroundMusic()
@@ -51,6 +56,10 @@ namespace AsteroidS
         {
             _backgroundMusicSource.clip = _backgroundMusicClip;
             _shotWeaponSource.clip = _shotWeaponSourceClip;
+            _armorHitsSource.clip = _armorHitSourceClip;
+            _asteroidExplosionSource.clip = _asteroidExplosionClip;
+            _shipExplosionSource.clip = _shipExplosionClip;
+            _asteroidHitsSource.clip = _asteroidExplosionClip;
         }
 
         public void PlayOneShotShotWeaponSource()
@@ -78,10 +87,10 @@ namespace AsteroidS
             _asteroidHitsSource.PlayOneShot(_asteroidHitClip);
         }
 
-        private AudioSource SetParentAndMixerGroup()
+        private AudioSource SetParentAndMixerGroup( AudioMixerGroup audioMixerGroup)
         {
             var audioSource = _parent.AddComponent<AudioSource>();
-            audioSource.outputAudioMixerGroup = _audioMixerGroup;
+            audioSource.outputAudioMixerGroup = audioMixerGroup;
             return audioSource;
         }
     }

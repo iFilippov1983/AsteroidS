@@ -1,15 +1,14 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 
 namespace AsteroidS
 {
-    public class UIComponentInitializer:IInitialization
+    public class UIComponentInitializer : IInitialization
     {
+        private readonly SceneData _sceneData;
         private readonly GameObject _mainMenu;
         private readonly GameObject _settingsMenu;
         private readonly GameObject _playerUI;
         private readonly GameObject _deathScreen;
-        private readonly SceneData _sceneData;
 
         private MainMenuView _mainMenuView;
         private SettingMenuView _settingMenuView;
@@ -21,6 +20,7 @@ namespace AsteroidS
         public PlayerUIView PlayerUIView => _playerUIView;
         public DeathScreenView DeathScreenView => _deathScreenView;
 
+
         public UIComponentInitializer(GameData gameData, UIInitializer uiInitializer)
         {
             _sceneData = gameData.SceneData;
@@ -28,6 +28,7 @@ namespace AsteroidS
             _settingsMenu = uiInitializer.SettingsMenu;
             _playerUI = uiInitializer.PlayerUI;
             _deathScreen = uiInitializer.DeathScreen;
+            
         }
 
         public void Initialize()
@@ -41,15 +42,14 @@ namespace AsteroidS
 
         private void SetMenuBackground()
         {
-            var sprite = _sceneData.Background.GetComponentInChildren<SpriteRenderer>().sprite;
-            
+            var backgroundSprite = _sceneData.Background.GetComponent<SpriteRenderer>().sprite;
             var mainMenuBackground = _mainMenuView.BackgroundImage;
             var settingsMenuBackground = _settingMenuView.BackgroundImage;
             var deathScreenBackground = _deathScreenView.BackgroundImage;
-            
-            mainMenuBackground.sprite = sprite;
-            settingsMenuBackground.sprite = sprite;
-            deathScreenBackground.sprite = sprite;
+
+            mainMenuBackground.sprite = backgroundSprite;
+            settingsMenuBackground.sprite = backgroundSprite;
+            deathScreenBackground.sprite = backgroundSprite;
         }
     }
 }
