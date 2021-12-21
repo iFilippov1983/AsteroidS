@@ -1,31 +1,20 @@
 ﻿using System;
-<<<<<<< HEAD
-using TMPro;
+using UnityEngine;
 using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
+using Image = UnityEngine.UI.Image;
 using Slider = UnityEngine.UI.Slider;
-=======
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.UI;
->>>>>>> parent of 778962c4 (Merge branch 'UI_by_Nikita_M' into IvanF_work_branch2)
 
 namespace AsteroidS
 {
     public class SettingsMenuController: IInitialization, ICleanup
     {
-        private GameStateController _gameStateController;
-<<<<<<< HEAD
+        private readonly GameStateController _gameStateController;
         private SettingMenuView _settingMenuView;
-=======
->>>>>>> parent of 778962c4 (Merge branch 'UI_by_Nikita_M' into IvanF_work_branch2)
+
         private Button _backButton;
         private Slider _volumeSlider;
-        private Dropdown _screenResolutoionDropDown;
+        private DropdownMenu _graphicsDropdown;
         private UIComponentInitializer _uiComponentInitializer;
 
         //public event Action<float> OnSoundVolumeChangebackground;
@@ -39,15 +28,31 @@ namespace AsteroidS
         }
         public void Initialize()
         {
-            _backButton = _uiComponentInitializer.BackButton.GetComponent<Button>();
-            _volumeSlider = _uiComponentInitializer.VolumeSlider.GetComponent<Slider>();
-            _screenResolutoionDropDown = _uiComponentInitializer.ScreenResolutionDropdown.GetComponent<Dropdown>();
+            _settingMenuView = _uiComponentInitializer.SettingMenuView;
+            GetUIComponents();
+            AddListenersToComponents();
+        }
+
+        public void Cleanup()
+        {
+            RemoveListenersFromComponents();
+        }
+
+        private void GetUIComponents()
+        {
+            _backButton = _settingMenuView.BackButton;
+            _volumeSlider = _settingMenuView.VolumeSlider;
+            _graphicsDropdown = _settingMenuView.GraphicsDropdown;
+        }
+
+        private void AddListenersToComponents()
+        {
             _backButton.onClick.AddListener(GoBackToMainMenu);
             _volumeSlider.onValueChanged.AddListener(ChangeVolumeLevel);
             //_screenResolutoionDropDown.onValueChanged.AddListener(ChangeGraphicsPreset);
         }
 
-        public void Cleanup()
+        private void RemoveListenersFromComponents()
         {
             _backButton.onClick.RemoveAllListeners();
             _volumeSlider.onValueChanged.RemoveAllListeners();

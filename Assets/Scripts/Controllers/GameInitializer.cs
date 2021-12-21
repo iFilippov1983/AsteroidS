@@ -6,20 +6,17 @@
         {
             var inputInitialiser = new InputInitializer();
             var playerInitializer = new PlayerInitializer(gameData);
+            var sceneInitializer = new SceneInitializer(gameData);
             var uiInitialize = new UIInitializer(gameData);
-            var uiComponentInitializer = new UIComponentInitializer(uiInitialize);
-<<<<<<< HEAD
+            var uiComponentInitializer = new UIComponentInitializer(gameData, uiInitialize);
             var gameStateController = new GameStateController(uiInitialize, uiComponentInitializer);
             var menuManagmentController = new MenuManagmentController(gameData, uiComponentInitializer, gameStateController);
-=======
-            var gameStateController = new GameStateController(uiInitialize);
-            var menuManagmentController = new MenuManagmentController(uiComponentInitializer, gameStateController);
->>>>>>> parent of 778962c4 (Merge branch 'UI_by_Nikita_M' into IvanF_work_branch2)
             var spaceObjectsController = new SpaceObjectsController(gameData);
             var scoreCountController = new ScoreCountController(gameData, uiComponentInitializer);
             var timerController = new TimerController(gameData, uiComponentInitializer);
             var shootingController = new ShootingController(gameData, playerInitializer.Player.transform);
 
+            controllers.Add(sceneInitializer);
             controllers.Add(uiComponentInitializer);
             controllers.Add(gameStateController);
             controllers.Add(menuManagmentController);
@@ -28,10 +25,9 @@
             controllers.Add(timerController);
             controllers.Add(shootingController);
 
-            controllers.Add(new SceneInitializer(gameData));
             controllers.Add(new InputController(inputInitialiser));
             controllers.Add(new PlayerController(gameData, playerInitializer.Player, inputInitialiser, gameStateController));
-            controllers.Add(new GameProgressController(gameData, spaceObjectsController, scoreCountController));
+            controllers.Add(new GameProgressController(gameData, spaceObjectsController, scoreCountController, gameStateController));
             controllers.Add(new AudioController(gameData, menuManagmentController, shootingController));
         }
     }
