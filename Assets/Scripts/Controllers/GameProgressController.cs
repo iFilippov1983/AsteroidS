@@ -48,14 +48,7 @@ namespace AsteroidS
 
         public void LateExecute()
         {
-            if (TimeSpan.FromSeconds(_levelDurationTimer) > _levelDuration)
-            {
-                _currentLevel += 1;
-
-                _gameData.GameProgressData.CurrentLevel = _currentLevel;
-                _spaceObjectsController.LevelTransition = true;
-                _levelDurationTimer = 0;
-            }
+            ChangeLevelIfTerminated();
         }
 
         public void Cleanup()
@@ -75,6 +68,19 @@ namespace AsteroidS
         {
             _gameData.GameProgressData.CurrentLevel = _startLevel;
             _spaceObjectsController.LevelTransition = false;
+        }
+
+        private void ChangeLevelIfTerminated()
+        {
+            if (TimeSpan.FromSeconds(_levelDurationTimer) > _levelDuration)
+            {
+                _currentLevel += 1;
+
+                _gameData.GameProgressData.CurrentLevel = _currentLevel;
+                _levelDuration = _gameData.GameProgressData.LevelDuration;
+                _spaceObjectsController.LevelTransition = true;
+                _levelDurationTimer = 0;
+            }
         }
     }
 }

@@ -54,6 +54,7 @@ namespace AsteroidS
         {
             SpawnObjects();
             RefillStackIfTransition();
+            SetNewPropertiesIfTransition();
         }
 
         public void Cleanup()
@@ -72,6 +73,16 @@ namespace AsteroidS
                 var spaceObject = _soStack.Pop();
                 _spawner.Respawn(spaceObject);
                 _objectDriver.Drive(spaceObject);
+            }
+        }
+
+        private void SetNewPropertiesIfTransition()
+        {
+            if (_levelTransition)
+            {
+                _currentLevelProperties = _gameProgressData.CurrentLevelProperties;
+                _spawnRate = _currentLevelProperties.SpawnRate;
+                _maxChildsAmount = _currentLevelProperties.MaxChildsAmount;
             }
         }
 
