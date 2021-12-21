@@ -13,11 +13,6 @@ namespace AsteroidS
         [SerializeField] private Slider _volumeSlider;
         [SerializeField] private DropdownMenu _graphicsDropdown;
 
-<<<<<<< HEAD
-=======
-        
-        public Image BackgroundImage => _backgroundImage;
->>>>>>> UI_by_Nikita_M
         public Button BackButton => _backButton;
         public Slider VolumeSlider => _volumeSlider;
         public DropdownMenu GraphicsDropdown => _graphicsDropdown;
