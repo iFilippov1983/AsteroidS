@@ -207,7 +207,6 @@ GameObject:
   - component: {fileID: 2664380880033201781}
   - component: {fileID: 2664380880033201780}
   - component: {fileID: 2664380880033201779}
-  - component: {fileID: 697932381518672602}
   m_Layer: 0
   m_Name: ScoreCount
   m_TagString: Untagged
@@ -331,19 +330,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &697932381518672602
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2664380880033201778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1b6d154066fd68040a9ebaf80f4b3d13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _scoreCount: {fileID: 2664380880033201779}
 --- !u!1 &2664380880322006549
 GameObject:
   m_ObjectHideFlags: 0
@@ -430,7 +416,6 @@ GameObject:
   - component: {fileID: 2664380880362777345}
   - component: {fileID: 2664380880362777344}
   - component: {fileID: 2664380880362777471}
-  - component: {fileID: 8020407783602366353}
   m_Layer: 0
   m_Name: Timer
   m_TagString: Untagged
@@ -554,18 +539,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &8020407783602366353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2664380880362777470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86121b9bcec88ba4b9bcb35097932d66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2664380880534701077
 GameObject:
   m_ObjectHideFlags: 0

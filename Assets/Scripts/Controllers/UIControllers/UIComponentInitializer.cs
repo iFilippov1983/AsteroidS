@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace AsteroidS
 {
@@ -8,12 +9,11 @@ namespace AsteroidS
         private readonly GameObject _settingsMenu;
         private readonly GameObject _playerUI;
         private readonly GameObject _deathScreen;
+        private readonly SceneData _sceneData;
 
         private MainMenuView _mainMenuView;
         private SettingMenuView _settingMenuView;
         private PlayerUIView _playerUIView;
-        private ScoreCountView _scoreCount;
-        private TimerCountView _timerCountView;
         private DeathScreenView _deathScreenView;
 
         public MainMenuView MainMenuView => _mainMenuView;
@@ -21,8 +21,9 @@ namespace AsteroidS
         public PlayerUIView PlayerUIView => _playerUIView;
         public DeathScreenView DeathScreenView => _deathScreenView;
 
-        public UIComponentInitializer(UIInitializer uiInitializer)
-        { 
+        public UIComponentInitializer(GameData gameData, UIInitializer uiInitializer)
+        {
+            _sceneData = gameData.SceneData;
             _mainMenu = uiInitializer.MainMenu;
             _settingsMenu = uiInitializer.SettingsMenu;
             _playerUI = uiInitializer.PlayerUI;
@@ -35,6 +36,20 @@ namespace AsteroidS
             _settingMenuView = _settingsMenu.GetComponent<SettingMenuView>();
             _playerUIView = _playerUI.GetComponent<PlayerUIView>();
             _deathScreenView = _deathScreen.GetComponent<DeathScreenView>();
+            SetMenuBackground();
+        }
+
+        private void SetMenuBackground()
+        {
+            var sprite = _sceneData.Background.GetComponentInChildren<SpriteRenderer>().sprite;
+            
+            var mainMenuBackground = _mainMenuView.BackgroundImage;
+            var settingsMenuBackground = _settingMenuView.BackgroundImage;
+            var deathScreenBackground = _deathScreenView.BackgroundImage;
+            
+            mainMenuBackground.sprite = sprite;
+            settingsMenuBackground.sprite = sprite;
+            deathScreenBackground.sprite = sprite;
         }
     }
 }
