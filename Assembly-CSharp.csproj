@@ -724,6 +724,9 @@
  <Reference Include="System.Xml.Serialization">
  <HintPath>C:/Program Files/Unity/Editor/Data/NetStandard/compat/2.0.0/shims/netfx/System.Xml.Serialization.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.InternalAPIEngineBridge.001">
+ <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll</HintPath>
+ </Reference>
  <Reference Include="Unity.VSCode.Editor">
  <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
@@ -742,6 +745,21 @@
  <Reference Include="Unity.TextMeshPro">
  <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.Mathematics.Editor">
+ <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.Common.Runtime">
+ <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.Path.Editor">
+ <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.2D.Path.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.InternalAPIEditorBridge.001">
+ <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.Sprite.Editor">
+ <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
@@ -753,6 +771,18 @@
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.SpriteShape.Editor">
+ <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.2D.SpriteShape.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.Common.Editor">
+ <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.2D.Common.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.2D.SpriteShape.Runtime">
+ <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.2D.SpriteShape.Runtime.dll</HintPath>
+ </Reference>
+ <Reference Include="Unity.Mathematics">
+ <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
