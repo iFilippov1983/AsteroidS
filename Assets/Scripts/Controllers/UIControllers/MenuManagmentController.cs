@@ -1,5 +1,4 @@
-﻿
-namespace AsteroidS
+﻿namespace AsteroidS
 {
     public class MenuManagmentController:IInitialization, ICleanup
     {
