@@ -29,7 +29,7 @@ namespace AsteroidS
             _settingsMenuController.OnSoundVolume += AudioGroupVolume;
             _shootingController.OnShot += AudioShotWeaponSource;
             _spaceObjectsController.OnObjectDestroy += AudioShotDestroy;
-            _spaceObjectsController.OnObjectHitEvent += AudioShotHitsSourse;
+            _spaceObjectsController.OnObjectHitEvent += AudioShotHitsSource;
         }
         
         private void AudioShotWeaponSource()
@@ -41,7 +41,8 @@ namespace AsteroidS
         {
             _audioMixer.SetFloat(_exposedAudioParameter, volume);
         }
-        public void AudioShotHitsSourse(string tag)
+
+        private void AudioShotHitsSource(string tag)
         {
             if (tag == TagsHolder.Ship)
             {
@@ -52,7 +53,8 @@ namespace AsteroidS
                 _audioSourceHandler.PlayOneAsteroidHitsSource();
             }
         }
-        public void AudioShotDestroy(string tag)
+
+        private void AudioShotDestroy(string tag)
         {
             if (tag == TagsHolder.Ship)
             {
@@ -68,7 +70,7 @@ namespace AsteroidS
             _settingsMenuController.OnSoundVolume -= AudioGroupVolume;
             _shootingController.OnShot -= AudioShotWeaponSource;
             _spaceObjectsController.OnObjectDestroy -= AudioShotDestroy;
-            _spaceObjectsController.OnObjectHitEvent -= AudioShotHitsSourse;
+            _spaceObjectsController.OnObjectHitEvent -= AudioShotHitsSource;
         }
     }
 }

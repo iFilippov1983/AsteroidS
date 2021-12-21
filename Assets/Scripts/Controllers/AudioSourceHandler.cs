@@ -57,6 +57,7 @@ namespace AsteroidS
         {
             _backgroundMusicSource.clip = _backgroundMusicClip;
             _shotWeaponSource.clip = _shotWeaponSourceClip;
+            
         }
 
         public void PlayOneShotShotWeaponSource()
