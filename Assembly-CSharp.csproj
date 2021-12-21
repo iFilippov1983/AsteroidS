@@ -55,10 +55,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\Interface\ICleanup.cs" />
     <Compile Include="Assets\Scripts\Data\Input\PCInputVertical.cs" />
-<<<<<<< HEAD
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\BackButtonView.cs" />
-=======
->>>>>>> parent of 778962c4 (Merge branch 'UI_by_Nikita_M' into IvanF_work_branch2)
     <Compile Include="Assets\Scripts\Data\UIData.cs" />
     <Compile Include="Assets\Scripts\Data\Input\PCInputSwitch.cs" />
     <Compile Include="Assets\Scripts\Data\SoundData.cs" />
@@ -80,26 +77,18 @@
     <Compile Include="Assets\Scripts\Controllers\AudioSourceHandler.cs" />
     <Compile Include="Assets\Scripts\Data\Input\PCInputStrafe.cs" />
     <Compile Include="Assets\Scripts\Controllers\InputInitializer.cs" />
-<<<<<<< HEAD
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\VolumeSliderView.cs" />
-=======
->>>>>>> parent of 778962c4 (Merge branch 'UI_by_Nikita_M' into IvanF_work_branch2)
     <Compile Include="Assets\Scripts\Controllers\UIControllers\SettingsMenuController.cs" />
     <Compile Include="Assets\Scripts\Controllers\CoroutinesController.cs" />
     <Compile Include="Assets\Scripts\Controllers\InputController.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviour\SpaceObject.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIControllers\GameStateController.cs" />
-<<<<<<< HEAD
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\ExitButtonView.cs" />
     <Compile Include="Assets\Scripts\Data\Enum\AmmoType.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\ScreenResolutionView.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIControllers\UIComponentInitializer.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIControllers\DeathScreenController.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\StartButtonView.cs" />
-=======
-    <Compile Include="Assets\Scripts\Data\Enum\AmmoType.cs" />
-    <Compile Include="Assets\Scripts\Controllers\UIControllers\UIComponentInitializer.cs" />
->>>>>>> parent of 778962c4 (Merge branch 'UI_by_Nikita_M' into IvanF_work_branch2)
     <Compile Include="Assets\Scripts\Data\Input\PCInputNumbers.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIControllers\ScoreCountController.cs" />
     <Compile Include="Assets\Scripts\Controllers\AmmoDriver.cs" />
@@ -121,19 +110,13 @@
     <Compile Include="Assets\Scripts\Data\SceneData.cs" />
     <Compile Include="Assets\Scripts\Interface\IFixedExecute.cs" />
     <Compile Include="Assets\Scripts\Controllers\AmmoSpawner.cs" />
-<<<<<<< HEAD
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\SettingMenuView.cs" />
-=======
->>>>>>> parent of 778962c4 (Merge branch 'UI_by_Nikita_M' into IvanF_work_branch2)
     <Compile Include="Assets\Scripts\Data\Input\PCInputHorizontal.cs" />
     <Compile Include="Assets\Scripts\Interface\IUserInputProxy.cs" />
     <Compile Include="Assets\Scripts\Data\GameProgressData.cs" />
     <Compile Include="Assets\Scripts\Data\Input\MobileInputFactory.cs" />
     <Compile Include="Assets\Scripts\Controllers\ShootingController.cs" />
-<<<<<<< HEAD
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\MainMenuView.cs" />
-=======
->>>>>>> parent of 778962c4 (Merge branch 'UI_by_Nikita_M' into IvanF_work_branch2)
     <Compile Include="Assets\Scripts\Controllers\UIControllers\StartGameStateController.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameProgressController.cs" />
     <Compile Include="Assets\Scripts\Data\Properties\GameLevelProperties.cs" />
@@ -141,34 +124,16 @@
     <Compile Include="Assets\Scripts\Controllers\SpaceObjectsController.cs" />
     <Compile Include="Assets\Scripts\Interface\IMobileInputFactory.cs" />
     <Compile Include="Assets\Scripts\Temp\DateTimeCatcher.cs" />
-<<<<<<< HEAD
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\DeathScreenView.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIControllers\SceneInitializer.cs" />
-=======
->>>>>>> parent of 778962c4 (Merge branch 'UI_by_Nikita_M' into IvanF_work_branch2)
     <Compile Include="Assets\Scripts\MonoBehaviour\GameDriver.cs" />
     <Compile Include="Assets\Scripts\Controllers\AnimationController.cs" />
     <Compile Include="Assets\Scripts\Interface\IConfigure.cs" />
     <Compile Include="Assets\Scripts\Interface\IExecute.cs" />
-<<<<<<< HEAD
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\SettingsMenuButtonView.cs" />
     <Compile Include="Assets\Scripts\Data\SpaceObjectsData.cs" />
     <Compile Include="Assets\Scripts\Data\Properties\SpaceObjectProperties.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIControllers\TimerController.cs" />
-=======
-    <Compile Include="Assets\Scripts\Data\SpaceObjectsData.cs" />
-    <Compile Include="Assets\Scripts\Data\Properties\SpaceObjectProperties.cs" />
-    <Compile Include="Assets\Scripts\Controllers\UIControllers\TimerController.cs" />
-    <Compile Include="Assets\Scripts\MonoBehaviour\UIView\ExitButtonView.cs" />
-    <Compile Include="Assets\Scripts\MonoBehaviour\UIView\SettingsMenuButtonView.cs" />
-    <Compile Include="Assets\Scripts\MonoBehaviour\UIView\StartButtonView.cs" />
-    <Compile Include="Assets\Scripts\MonoBehaviour\UIView\ScreenResolutionView.cs" />
-    <Compile Include="Assets\Scripts\MonoBehaviour\UIView\BackButtonView.cs" />
-    <Compile Include="Assets\Scripts\MonoBehaviour\UIView\VolumeSliderView.cs" />
-    <Compile Include="Assets\Scripts\MonoBehaviour\UIView\ScoreCountView.cs" />
-    <Compile Include="Assets\Scripts\MonoBehaviour\UIView\TimerCountView.cs" />
-    <Compile Include="Assets\Scripts\Controllers\UIControllers\SceneInitializer.cs" />
->>>>>>> parent of 778962c4 (Merge branch 'UI_by_Nikita_M' into IvanF_work_branch2)
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
@@ -774,12 +739,6 @@
     <Reference Include="System.Xml.Serialization">
       <HintPath>d:\Unity\2020.3.16f1\Editor\Data\NetStandard\compat\2.0.0\shims\netfx\System.Xml.Serialization.dll</HintPath>
     </Reference>
-<<<<<<< HEAD
-=======
-    <Reference Include="Unity.InternalAPIEngineBridge.001">
-      <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEngineBridge.001.dll</HintPath>
-    </Reference>
->>>>>>> parent of 778962c4 (Merge branch 'UI_by_Nikita_M' into IvanF_work_branch2)
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
@@ -798,24 +757,6 @@
     <Reference Include="Unity.TextMeshPro">
       <HintPath>Library\ScriptAssemblies\Unity.TextMeshPro.dll</HintPath>
     </Reference>
-<<<<<<< HEAD
-=======
-    <Reference Include="Unity.Mathematics.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Common.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Common.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Path.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Path.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.InternalAPIEditorBridge.001">
-      <HintPath>Library\ScriptAssemblies\Unity.InternalAPIEditorBridge.001.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Sprite.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Sprite.Editor.dll</HintPath>
-    </Reference>
->>>>>>> parent of 778962c4 (Merge branch 'UI_by_Nikita_M' into IvanF_work_branch2)
     <Reference Include="UnityEditor.UI">
       <HintPath>Library\ScriptAssemblies\UnityEditor.UI.dll</HintPath>
     </Reference>
@@ -828,21 +769,6 @@
     <Reference Include="UnityEngine.UI">
       <HintPath>Library\ScriptAssemblies\UnityEngine.UI.dll</HintPath>
     </Reference>
-<<<<<<< HEAD
-=======
-    <Reference Include="Unity.2D.SpriteShape.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.SpriteShape.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.Common.Editor">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.Common.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.2D.SpriteShape.Runtime">
-      <HintPath>Library\ScriptAssemblies\Unity.2D.SpriteShape.Runtime.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.Mathematics">
-      <HintPath>Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
-    </Reference>
->>>>>>> parent of 778962c4 (Merge branch 'UI_by_Nikita_M' into IvanF_work_branch2)
   </ItemGroup>
   <ItemGroup>
   </ItemGroup>

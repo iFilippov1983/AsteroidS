@@ -13,6 +13,7 @@ namespace AsteroidS
         private AudioSource _asteroidExplosionSource;
         private AudioSource _shipExplosionSource;
         private AudioSource _asteroidHitsSource;
+        
         private AudioClip _backgroundMusicClip;
         private AudioClip _shotWeaponSourceClip;
         private AudioClip _armorHitSourceClip;
