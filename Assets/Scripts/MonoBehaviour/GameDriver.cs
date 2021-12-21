@@ -27,7 +27,7 @@ namespace AsteroidS
 
         void Update()
         {
-            var deltaTime = Time.deltaTime;
+            var deltaTime = Time.unscaledDeltaTime;
             _controllers.Execute(deltaTime);
         }
 

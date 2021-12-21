@@ -10,7 +10,6 @@ namespace AsteroidS
         private GameData _gameData;
         private SpaceObjectsController _spaceObjectsController;
         private ScoreCountController _scoreCountController;
-        private readonly GameStateController _gameStateController;
 
         private const int _startLevel = 1;
         private int _currentLevel;
@@ -21,12 +20,11 @@ namespace AsteroidS
         public GameProgressController(
             GameData gameData, 
             SpaceObjectsController spaceObjectsController,
-            ScoreCountController scoreCountController, GameStateController gameStateController)
+            ScoreCountController scoreCountController)
         {
             _gameData = gameData;
             _spaceObjectsController = spaceObjectsController;
             _scoreCountController = scoreCountController;
-            _gameStateController = gameStateController;
         }
         
         public void Initialize()
@@ -50,14 +48,7 @@ namespace AsteroidS
 
         public void LateExecute()
         {
-            if (TimeSpan.FromSeconds(_levelDurationTimer) > _levelDuration)
-            {
-                _currentLevel += 1;
-
-                _gameData.GameProgressData.CurrentLevel = _currentLevel;
-                _spaceObjectsController.LevelTransition = true;
-                _levelDurationTimer = 0;
-            }
+            ChangeLevelIfTerminated();
         }
 
         public void Cleanup()
@@ -70,14 +61,26 @@ namespace AsteroidS
 
         private void RestartScene()
         {
-            _gameStateController.ChangeGameState(GameState.Death);
-            //SceneManager.LoadScene(_gameData.SceneData.SceneName);
+            SceneManager.LoadScene(_gameData.SceneData.SceneName);
         }
 
         private void ResetProperties()
         {
             _gameData.GameProgressData.CurrentLevel = _startLevel;
             _spaceObjectsController.LevelTransition = false;
+        }
+
+        private void ChangeLevelIfTerminated()
+        {
+            if (TimeSpan.FromSeconds(_levelDurationTimer) > _levelDuration)
+            {
+                _currentLevel += 1;
+
+                _gameData.GameProgressData.CurrentLevel = _currentLevel;
+                _levelDuration = _gameData.GameProgressData.LevelDuration;
+                _spaceObjectsController.LevelTransition = true;
+                _levelDurationTimer = 0;
+            }
         }
     }
 }

@@ -17,4 +17,3 @@ MonoBehaviour:
   _playerUI: {fileID: 2664380880930773836, guid: d8038c506985b7d4fa16cac65f77d460, type: 3}
   _mainMenu: {fileID: 2288312635020981950, guid: f8bf2c414390f8b47b3f2e28ca86f619, type: 3}
   _settingsMenu: {fileID: 7270217314291406966, guid: 451ea7c6cc3ba87409e8a53088b84338, type: 3}
-  _deathScreen: {fileID: 1296749060868175105, guid: 9e3ecf2150588cc4489cf60a37522369, type: 3}
