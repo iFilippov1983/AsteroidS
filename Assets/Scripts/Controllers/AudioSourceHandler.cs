@@ -13,7 +13,6 @@ namespace AsteroidS
         private AudioSource _asteroidExplosionSource;
         private AudioSource _shipExplosionSource;
         private AudioSource _asteroidHitsSource;
-        
         private AudioClip _backgroundMusicClip;
         private AudioClip _shotWeaponSourceClip;
         private AudioClip _armorHitSourceClip;
@@ -57,7 +56,10 @@ namespace AsteroidS
         {
             _backgroundMusicSource.clip = _backgroundMusicClip;
             _shotWeaponSource.clip = _shotWeaponSourceClip;
-            
+            _armorHitsSource.clip = _armorHitSourceClip;
+            _asteroidExplosionSource.clip = _asteroidExplosionClip;
+            _shipExplosionSource.clip = _shipExplosionClip;
+            _asteroidHitsSource.clip = _asteroidExplosionClip;
         }
 
         public void PlayOneShotShotWeaponSource()
