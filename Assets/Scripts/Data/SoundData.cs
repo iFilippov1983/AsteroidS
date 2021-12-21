@@ -13,6 +13,7 @@ namespace Assets.Scripts.Data
     {
         [SerializeField] private AudioMixer _audioMixer;
         [SerializeField] private AudioMixerGroup _audioMixerGroup;
+        [SerializeField] private AudioMixerGroup _effectsMixerGroup;
         [SerializeField] private AudioClip _backgroundMusicClip;
         [SerializeField] private AudioClip _shotWeaponClip;
         [SerializeField] private AudioClip _armorHitsClip;
@@ -23,6 +24,7 @@ namespace Assets.Scripts.Data
 
         public AudioMixer AudioMixer => _audioMixer;
         public AudioMixerGroup AudioMixerGroup => _audioMixerGroup;
+        public AudioMixerGroup EffectsMixerGroup => _effectsMixerGroup;
         public AudioClip BackgroundMusicClip => _backgroundMusicClip;
         public AudioClip ShotWeaponClip => _shotWeaponClip;
         public AudioClip ArmorHitsClip => _armorHitsClip;
