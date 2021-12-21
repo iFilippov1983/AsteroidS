@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: SceneData
   m_EditorClassIdentifier: 
   _boundaries:
-  - {fileID: 5294852264021908868, guid: 2f61ce264e96d014283eab4ebca4a5b6, type: 3}
-  - {fileID: 4180875843550618004, guid: bec013ee37f83d34eade28c57ba28e3c, type: 3}
-  - {fileID: 4012242704266265938, guid: 5994b7f8ded58814d9a6e6c696013e06, type: 3}
-  - {fileID: 7355628925219913166, guid: 52e9939035b417e4abf4092ab108e47b, type: 3}
+  - {fileID: 6040814774262870412, guid: 2f61ce264e96d014283eab4ebca4a5b6, type: 3}
+  - {fileID: 1692356316781374178, guid: bec013ee37f83d34eade28c57ba28e3c, type: 3}
+  - {fileID: 7541682694085794784, guid: 5994b7f8ded58814d9a6e6c696013e06, type: 3}
+  - {fileID: 9187332232946403660, guid: 52e9939035b417e4abf4092ab108e47b, type: 3}
   _gameCamera: {fileID: 6419770970540005439, guid: 1d189ff4a929f3348bf3ae4126261339, type: 3}
-  _backgroundPrefab: {fileID: 364691045313532273, guid: e710bad16f793ab4f8bacc279b3c3f52, type: 3}
+  _backgroundPrefab: {fileID: 5655042279457368858, guid: c6c208825af4bba45bf7744fd2284cdf, type: 3}
   _backgroundPictures:
   - {fileID: 21300000, guid: 6338902add47b3e45bf0f5f7a0e9bbf1, type: 3}
   - {fileID: 21300000, guid: f16a329fe729bfd4c8969f23bbe0e8b9, type: 3}

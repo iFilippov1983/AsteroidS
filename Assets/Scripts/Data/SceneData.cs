@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace AsteroidS
 {
@@ -10,13 +11,13 @@ namespace AsteroidS
         [Header("Assets to place on scene")]
         [SerializeField] private GameObject[] _boundaries;
         [SerializeField] private Camera _gameCamera;
-        [SerializeField] private GameObject _backgroundPrefab;
+        [SerializeField] private Canvas _backgroundPrefab;
         [SerializeField] private Sprite[] _backgroundPictures;
 
         public string SceneName => _sceneName;
         public GameObject[] Boundaries => _boundaries;
         public Camera Camera => _gameCamera;
-        public GameObject Background => _backgroundPrefab; 
+        public Canvas Background => _backgroundPrefab; 
 
         public List<Object> GetAllPrefabs()
         {
@@ -31,10 +32,10 @@ namespace AsteroidS
             return prefabs;
         }
 
-        private GameObject SetBackground()
+        private Canvas SetBackground()
         {
             var randomSprite = _backgroundPictures[Random.Range(0, _backgroundPictures.Length)];
-            _backgroundPrefab.GetComponent<SpriteRenderer>().sprite = randomSprite;
+            _backgroundPrefab.GetComponentInChildren<Image>().sprite = randomSprite;
 
             return _backgroundPrefab;
         }

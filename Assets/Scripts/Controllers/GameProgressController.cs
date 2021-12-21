@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace AsteroidS
 {
@@ -15,7 +12,7 @@ namespace AsteroidS
         private const int _startLevel = 1;
         private int _currentLevel;
         private TimeSpan _levelDuration;
-        private float _levelDurationTimer;
+        private float _levelDurationTimer = 0;
 
 
         public GameProgressController(
@@ -50,14 +47,7 @@ namespace AsteroidS
 
         public void LateExecute()
         {
-            if (TimeSpan.FromSeconds(_levelDurationTimer) > _levelDuration)
-            {
-                _currentLevel += 1;
-
-                _gameData.GameProgressData.CurrentLevel = _currentLevel;
-                _spaceObjectsController.LevelTransition = true;
-                _levelDurationTimer = 0;
-            }
+            SetTransitionIfLevelTimeTerminated();
         }
 
         public void Cleanup()
@@ -78,6 +68,19 @@ namespace AsteroidS
         {
             _gameData.GameProgressData.CurrentLevel = _startLevel;
             _spaceObjectsController.LevelTransition = false;
+        }
+
+        private void SetTransitionIfLevelTimeTerminated()
+        {
+            if (TimeSpan.FromSeconds(_levelDurationTimer) > _levelDuration)
+            {
+                _currentLevel += 1;
+
+                _gameData.GameProgressData.CurrentLevel = _currentLevel;
+                _levelDuration = _gameData.GameProgressData.LevelDuration;
+                _spaceObjectsController.LevelTransition = true;
+                _levelDurationTimer = 0;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 namespace AsteroidS
 {
@@ -42,7 +43,8 @@ namespace AsteroidS
 
         private void SetMenuBackground()
         {
-            var backgroundSprite = _sceneData.Background.GetComponent<SpriteRenderer>().sprite;
+            //var backgroundSprite = _sceneData.Background.GetComponent<SpriteRenderer>().sprite;
+            var backgroundSprite = _sceneData.Background.GetComponentInChildren<Image>().sprite;
             var mainMenuBackground = _mainMenuView.BackgroundImage;
             var settingsMenuBackground = _settingMenuView.BackgroundImage;
             var deathScreenBackground = _deathScreenView.BackgroundImage;

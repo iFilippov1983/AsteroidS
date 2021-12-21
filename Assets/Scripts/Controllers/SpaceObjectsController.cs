@@ -54,7 +54,7 @@ namespace AsteroidS
         public void FixedExecute()
         {
             SpawnObjects();
-            RefillStackIfTransition();
+            ReinitializeIfTransition();
         }
 
         public void Cleanup()
@@ -76,7 +76,7 @@ namespace AsteroidS
             }
         }
 
-        private void RefillStackIfTransition()
+        private void ReinitializeIfTransition()
         {
             if (_levelTransition)
             {
@@ -85,7 +85,9 @@ namespace AsteroidS
                 if (stackIsFull)
                 {
                     _outdatedStack = _soStack;
-                    
+                    _spawnRate = _currentLevelProperties.SpawnRate;
+                    _maxChildsAmount = _currentLevelProperties.MaxChildsAmount;
+
                     UnsubscribeFromSOEvents();
 
                     _soStack = _spawner.CreateUnactiveSpaceObjectsStack();
