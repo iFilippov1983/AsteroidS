@@ -1,17 +1,15 @@
 ﻿using System;
-using UnityEngine;
+using TMPro;
 using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
-using Image = UnityEngine.UI.Image;
 using Slider = UnityEngine.UI.Slider;
 
 namespace AsteroidS
 {
     public class SettingsMenuController: IInitialization, ICleanup
     {
-        private readonly GameStateController _gameStateController;
+        private GameStateController _gameStateController;
         private SettingMenuView _settingMenuView;
-
         private Button _backButton;
         private Slider _volumeSlider;
         private DropdownMenu _graphicsDropdown;

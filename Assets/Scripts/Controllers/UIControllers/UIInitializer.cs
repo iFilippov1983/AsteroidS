@@ -4,12 +4,11 @@ namespace AsteroidS
 {
     public class UIInitializer
     {
-        private readonly SceneData _sceneData;
         private readonly GameObject _mainMenuPrefab;
         private readonly GameObject _settingsMenuPrefab;
         private readonly GameObject _playerUIPrefab;
         private readonly GameObject _deathScreenPrefab;
-
+        
         private GameObject _uiRoot;
         private GameObject _mainMenu;
         private GameObject _settingsMenu;

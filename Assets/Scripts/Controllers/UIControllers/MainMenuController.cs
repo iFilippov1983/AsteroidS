@@ -1,7 +1,6 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using Button = UnityEngine.UI.Button;
 
 namespace AsteroidS
 {
@@ -10,7 +9,6 @@ namespace AsteroidS
         private readonly GameStateController _gameStateController;
         private readonly UIComponentInitializer _uiComponentInitializer;
         private MainMenuView _mainMenuView;
-
         private Button _startButton;
         private Button _settingsButton;
         private Button _exitButton;

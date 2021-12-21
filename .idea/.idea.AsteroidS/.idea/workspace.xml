@@ -20,10 +20,10 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/ShootingController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7117d168a9ec4e518e0de7d9c98bd09af200/09/22512be6/AudioMixerGroup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Controllers/GameInitializer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../MyFirst2DPlatformer/Assets/Scripts/Controller/EndGameHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/UIData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/MonoBehaviour/UIView/TimerCountView.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7117d168a9ec4e518e0de7d9c98bd09af200/dc/c79b41ed/AudioSource.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d962c48d73ca455889390bf9d50d28ad6600/c1/98eda7eb/Canvas.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/SpaceObjectsData.cs" root0="FORCE_HIGHLIGHTING" />
@@ -84,9 +84,6 @@
       <workItem from="1639742067952" duration="3595000" />
       <workItem from="1639755394751" duration="3154000" />
       <workItem from="1639767678643" duration="9935000" />
-      <workItem from="1639993271811" duration="4228000" />
-      <workItem from="1640018416298" duration="1544000" />
-      <workItem from="1640077449993" duration="1691000" />
     </task>
     <servers />
   </component>

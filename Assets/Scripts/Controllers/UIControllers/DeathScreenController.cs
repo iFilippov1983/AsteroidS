@@ -6,7 +6,7 @@ namespace AsteroidS
 {
     public class DeathScreenController:IInitialization, ICleanup
     {
-        private readonly SceneData _sceneData;
+        private readonly GameData _gameData;
         private readonly UIComponentInitializer _uiComponentInitializer;
         private readonly GameStateController _gameStateController;
         private DeathScreenView _deathScreenView;
@@ -18,7 +18,7 @@ namespace AsteroidS
         public DeathScreenController(GameData gameData, UIComponentInitializer uiComponentInitializer,
             GameStateController gameStateController)
         {
-            _sceneData = gameData.SceneData;
+            _gameData = gameData;
             _uiComponentInitializer = uiComponentInitializer;
             _gameStateController = gameStateController;
         }
@@ -64,7 +64,7 @@ namespace AsteroidS
 
         private void ResetGame()
         {
-            SceneManager.LoadScene(_sceneData.SceneName);
+            SceneManager.LoadScene(_gameData.SceneData.SceneName);
         }
 
         private void ReturnToMenu()
