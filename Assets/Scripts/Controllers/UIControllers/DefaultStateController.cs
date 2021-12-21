@@ -48,12 +48,10 @@ namespace AsteroidS
                 case GameState.Default:
                     _startButtonText.text = UIObjectNames.Start;
                     _exitButtonText.text = UIObjectNames.Exit;
-                    _settingsButton.gameObject.SetActive(true);
                     break;
                 case GameState.Pause:
                     _startButtonText.text = UIObjectNames.Continue;
                     _exitButtonText.text = UIObjectNames.ToMainMenu;
-                    _settingsButton.gameObject.SetActive(false);
                     break;
             }
         }
