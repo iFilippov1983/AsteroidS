@@ -96,7 +96,7 @@
      <Compile Include="Assets\Scripts\Controllers\UIControllers\DeathScreenController.cs" />
      <Compile Include="Assets\Scripts\Controllers\UIControllers\SettingsStateController.cs" />
      <Compile Include="Assets\Scripts\Data\Holder\TagsHolder.cs" />
-     <Compile Include="Assets\Scripts\Controllers\UIControllers\KeysHandler.cs" />
+     <Compile Include="Assets\Scripts\Controllers\KeysHandler.cs" />
      <Compile Include="Assets\Scripts\MonoBehaviour\UIView\SettingMenuView.cs" />
      <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
      <Compile Include="Assets\Scripts\Data\Holder\InputHolder.cs" />

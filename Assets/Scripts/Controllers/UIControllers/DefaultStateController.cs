@@ -1,42 +1,47 @@
 ﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace AsteroidS
 {
     internal class DefaultStateController
     {
         private readonly UIComponentInitializer _uiComponentInitializer;
-
+        private readonly GameObject _mainMenu;
+        private readonly GameObject _settingsMenu;
+        private readonly GameObject _playerUI;
+        private readonly GameObject _deathScreen;
+        
         private MainMenuView _mainMenuView;
-        private Button _settingsButton;
         private TMP_Text _startButtonText;
         private TMP_Text _exitButtonText;
 
-        public DefaultStateController(UIComponentInitializer uiComponentInitializer)
+        internal DefaultStateController(UIInitializer uiInitializer,UIComponentInitializer uiComponentInitializer)
         {
             _uiComponentInitializer = uiComponentInitializer;
+            _mainMenu = uiInitializer.MainMenu;
+            _settingsMenu = uiInitializer.SettingsMenu;
+            _playerUI = uiInitializer.PlayerUI;
+            _deathScreen = uiInitializer.DeathScreen;
         }
 
-        public void Init()
+        internal void Init()
         {
             _mainMenuView = _uiComponentInitializer.MainMenuView;
             GetUIComponents();
         }
 
-        internal void DefaultState(GameObject mainMenu, GameObject settingsMenu, GameObject playerUI, GameObject deathScreen, GameState gameState)
+        internal void DefaultState(GameState gameState)
         {
             Time.timeScale = 0;
-            mainMenu.SetActive(true);
-            settingsMenu.SetActive(false);
-            playerUI.SetActive(false);
-            deathScreen.SetActive(false);
+            _mainMenu.SetActive(true);
+            _settingsMenu.SetActive(false);
+            _playerUI.SetActive(false);
+            _deathScreen.SetActive(false);
             SetButtons(gameState);
         }
 
         private void GetUIComponents()
         {
-            _settingsButton = _mainMenuView.SettingsButton;
             _startButtonText = _mainMenuView.StartButtonText;
             _exitButtonText = _mainMenuView.ExitButtonText;
         }
