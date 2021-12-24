@@ -33,7 +33,7 @@ namespace AsteroidS
             _shootingController.OnShot += AudioShotWeaponSource;
             _spaceObjectsController.OnObjectDestroy += AudioShotDestroy;
             _spaceObjectsController.OnObjectHitEvent += AudioShotHitsSource;
-            _onButtonEnterProxy.OnButtonSelected += AudioButtonClick;
+            _onButtonEnterProxy.OnButtonSelected += AudioButtonSelected;
         }
 
         public void Cleanup()
@@ -42,12 +42,12 @@ namespace AsteroidS
             _shootingController.OnShot -= AudioShotWeaponSource;
             _spaceObjectsController.OnObjectDestroy -= AudioShotDestroy;
             _spaceObjectsController.OnObjectHitEvent -= AudioShotHitsSource;
-            _onButtonEnterProxy.OnButtonSelected -= AudioButtonClick;
+            _onButtonEnterProxy.OnButtonSelected -= AudioButtonSelected;
         }
 
-        private void AudioButtonClick()
+        private void AudioButtonSelected()
         {
-            Debug.LogError("ButtonSelected");
+            Debug.Log("Button Selected");
         }
 
         private void AudioShotWeaponSource()

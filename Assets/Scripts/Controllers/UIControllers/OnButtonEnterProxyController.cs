@@ -20,9 +20,12 @@ namespace AsteroidS
         public void Initialize()
         {
             GetUIComponents();
-            _mainMenuView.OnButtonEnter += OnButtonSelected;
-            _settingMenuView.OnButtonEnter += OnButtonSelected;
-            _deathScreenView.OnButtonEnter += OnButtonSelected;
+            AddSubscriptions();
+        }
+
+        public void Cleanup()
+        {
+            RemoveSubscriptions();
         }
 
         private void GetUIComponents()
@@ -32,11 +35,23 @@ namespace AsteroidS
             _deathScreenView = _uiComponentInitializer.DeathScreenView;
         }
 
-        public void Cleanup()
+        private void AddSubscriptions()
         {
-            _mainMenuView.OnButtonEnter -= OnButtonSelected;
-            _settingMenuView.OnButtonEnter -= OnButtonSelected;
-            _deathScreenView.OnButtonEnter -= OnButtonSelected;
+            _mainMenuView.OnButtonEnter += ButtonSelected;
+            _settingMenuView.OnButtonEnter += ButtonSelected;
+            _deathScreenView.OnButtonEnter += ButtonSelected;
+        }
+
+        private void RemoveSubscriptions()
+        {
+            _mainMenuView.OnButtonEnter -= ButtonSelected;
+            _settingMenuView.OnButtonEnter -= ButtonSelected;
+            _deathScreenView.OnButtonEnter -= ButtonSelected;
+        }
+
+        private void ButtonSelected()
+        {
+            OnButtonSelected?.Invoke();
         }
     }
 }
