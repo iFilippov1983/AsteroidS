@@ -12,9 +12,12 @@ namespace AsteroidS
         [SerializeField] private int _currentScores;
 
         public TimeSpan LevelDuration => TimeSpan.FromSeconds(CurrentLevelProperties.LevelDuration);
-        public int CurrentLevel { get => _currentLevel; set => _currentLevel = value; }
+
         public GameLevelProperties[] LevelPropetiesList => _levelsPropertiesList;
+
         public int CurrentScores { get => _currentScores; set => _currentScores = value; }
+
+        public int CurrentLevel { get => _currentLevel; set => _currentLevel = value; }
 
         public GameLevelProperties CurrentLevelProperties
         {

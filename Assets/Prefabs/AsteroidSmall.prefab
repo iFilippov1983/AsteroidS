@@ -135,8 +135,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _sprites:
-  - {fileID: 21300000, guid: 89c02059f5b411c4bae91d0c691edfb1, type: 3}
-  - {fileID: 21300000, guid: efb4432ec99510342be5775baaca31ab, type: 3}
-  - {fileID: 21300000, guid: 3e6591a0d9c7b4549918b7d28bd32ea9, type: 3}
-  - {fileID: 21300000, guid: 539b6f33370b1094d9c32b285e71cade, type: 3}
+  - {fileID: 21300000, guid: c8c17f61d49a0f645bd08a4053fb635d, type: 3}
+  - {fileID: 21300000, guid: 5b70268a0659c2646949b6b27dc904ee, type: 3}
+  - {fileID: 21300000, guid: 557205d5ab41cb04bae4cade12686543, type: 3}
+  - {fileID: 21300000, guid: e2f6593e7cf097b458231bdc56577ada, type: 3}
   _spaceObjectPropertiesPath: AsteroidSmallProperties

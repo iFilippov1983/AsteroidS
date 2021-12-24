@@ -1,4 +1,6 @@
-﻿using Object = UnityEngine.Object;
+﻿using UnityEngine;
+using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 namespace AsteroidS
 {
@@ -20,10 +22,19 @@ namespace AsteroidS
         {
             var sceneData = gameData.SceneData;
             var prefabs = sceneData.GetAllPrefabs();
-            foreach (Object obj in prefabs)
+
+            foreach (Object p in prefabs)
             {
-                Object.Instantiate(obj);
+                var obj = Object.Instantiate(p);
+
+                if (obj is Canvas) SetCameraForBackground(obj);
             }
+        }
+
+        private void SetCameraForBackground(Object obj)
+        {
+            var back = (Canvas)obj;
+            back.worldCamera = Object.FindObjectOfType<Camera>();
         }
     }
 }

@@ -40,6 +40,9 @@ namespace AsteroidS
             _spawnRate = _currentLevelProperties.SpawnRate;
             _maxChildsAmount = _currentLevelProperties.MaxChildsAmount;
 
+            //temp
+            Debug.Log("ch: "+_maxChildsAmount);
+
             _soStack = _spawner.CreateUnactiveSpaceObjectsStack();
             _levelSpaceObjectsAmount = _soStack.Count;
 
@@ -54,7 +57,7 @@ namespace AsteroidS
         public void FixedExecute()
         {
             SpawnObjects();
-            RefillStackIfTransition();
+            ReinitializeIfTransition();
         }
 
         public void Cleanup()
@@ -76,7 +79,7 @@ namespace AsteroidS
             }
         }
 
-        private void RefillStackIfTransition()
+        private void ReinitializeIfTransition()
         {
             if (_levelTransition)
             {
@@ -85,7 +88,13 @@ namespace AsteroidS
                 if (stackIsFull)
                 {
                     _outdatedStack = _soStack;
-                    
+                    _currentLevelProperties = _gameProgressData.CurrentLevelProperties;
+                    _spawnRate = _currentLevelProperties.SpawnRate;
+                    _maxChildsAmount = _currentLevelProperties.MaxChildsAmount;
+
+                    //temp
+                    Debug.Log("chtr: " + _maxChildsAmount);
+
                     UnsubscribeFromSOEvents();
 
                     _soStack = _spawner.CreateUnactiveSpaceObjectsStack();

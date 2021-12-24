@@ -60,7 +60,7 @@ namespace AsteroidS
         {
             _movement.Move(_vertical, _rigidbodyToMove, _moveSpeed);
             _movement.Rotate(_horizontal, _rigidbodyToMove, _rotationSpeed);
-            _movement.Starfe(_strafe, _rigidbodyToMove, _moveSpeed);
+            _movement.Strafe(_strafe, _rigidbodyToMove, _moveSpeed);
             _keysHandler.SwitchKeyPressed(_switch);
             _keysHandler.EscapeKeyPressed(_cancel);
             _keysHandler.NubmerPressed(ref _numberButton);

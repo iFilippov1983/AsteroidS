@@ -7,5 +7,6 @@ namespace AsteroidS
         public const string Exit = nameof(Exit);
         public const string Continue = nameof(Continue);
         public const string ToMainMenu = "Main Menu";
+        public const string BackgroundCanvas = "BackgroundCanvas";
     }
 }

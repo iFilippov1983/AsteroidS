@@ -32,7 +32,7 @@ namespace AsteroidS
             }
         }
 
-        public void Starfe(float normal, Rigidbody2D rigidbodyToStrafe, float moveSpeed)
+        public void Strafe(float normal, Rigidbody2D rigidbodyToStrafe, float moveSpeed)
         {
             if (normal > 0)
             {
