@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Images/Asteroids/meteorBrown_big3.png.meta
 guid: 54da0b8ccc1d62c429e32fc3814dfca6
+=======
+guid: 4ec647e0f6702614d95af2e94b5c3454
+>>>>>>> Stashed changes:Assets/Images/Asteroids/meteorGrey_small4.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
