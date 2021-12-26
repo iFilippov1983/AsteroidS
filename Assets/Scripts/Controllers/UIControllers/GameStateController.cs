@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace AsteroidS
 {
@@ -40,6 +41,9 @@ namespace AsteroidS
                     _deathStateController.DeathState();
                     break;
                 case GameState.Exit:
+#if UNITY_EDITOR
+                    EditorApplication.isPlaying = false;
+#endif
                     Application.Quit();
                     break;
                 case GameState.Default:

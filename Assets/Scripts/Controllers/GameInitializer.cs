@@ -11,6 +11,7 @@
             var uiComponentInitializer = new UIComponentInitializer(gameData, uiInitialize);
             var gameStateController = new GameStateController(uiInitialize, uiComponentInitializer);
             var menuManagmentController = new MenuManagmentController(gameData, uiComponentInitializer, gameStateController);
+            var onButtonEnterProxy = new OnButtonEnterProxyController(uiComponentInitializer);
             var spaceObjectsController = new SpaceObjectsController(gameData);
             var scoreCountController = new ScoreCountController(gameData, uiComponentInitializer);
             var timerController = new TimerController(gameData, uiComponentInitializer);
@@ -20,6 +21,7 @@
             controllers.Add(uiComponentInitializer);
             controllers.Add(gameStateController);
             controllers.Add(menuManagmentController);
+            controllers.Add(onButtonEnterProxy);
             controllers.Add(spaceObjectsController);
             controllers.Add(scoreCountController);
             controllers.Add(timerController);
@@ -28,7 +30,7 @@
             controllers.Add(new InputController(inputInitialiser));
             controllers.Add(new PlayerController(gameData, playerInitializer.Player, inputInitialiser, gameStateController));
             controllers.Add(new GameProgressController(gameData, spaceObjectsController, scoreCountController, gameStateController));
-            controllers.Add(new AudioController(gameData, menuManagmentController, shootingController, spaceObjectsController));
+            controllers.Add(new AudioController(gameData, menuManagmentController, shootingController, spaceObjectsController, onButtonEnterProxy));
         }
     }
 }

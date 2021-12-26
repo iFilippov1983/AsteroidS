@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DeathScreenView : MonoBehaviour
+public class DeathScreenView : MonoBehaviour, IPointerEnterHandler
 {
     [SerializeField] private Image _backgroundImage;
     [SerializeField] private Button _continueButton;
@@ -13,4 +15,10 @@ public class DeathScreenView : MonoBehaviour
     public Button ContinueButton => _continueButton;
     public Button RestartButton => _restartButton;
     public Button MainMenuButton => _mainMenuButton;
+    public event Action OnButtonEnter; 
+    
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        OnButtonEnter?.Invoke();
+    }
 }

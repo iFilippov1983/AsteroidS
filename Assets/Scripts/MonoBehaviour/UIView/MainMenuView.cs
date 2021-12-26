@@ -1,9 +1,11 @@
+using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Button = UnityEngine.UI.Button;
 
-public class MainMenuView : MonoBehaviour
+public class MainMenuView : MonoBehaviour, IPointerEnterHandler
 {
     [SerializeField] private Image _backgroundImage;
     [SerializeField] private Button _startButton;
@@ -18,4 +20,11 @@ public class MainMenuView : MonoBehaviour
     public Button ExitButton => _exitButton;
     public TMP_Text StartButtonText => _startButtonText;
     public TMP_Text ExitButtonText => _exitButtomText;
+
+    public event Action OnButtonEnter;
+    
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        OnButtonEnter?.Invoke();
+    }
 }

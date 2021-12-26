@@ -13,13 +13,16 @@ namespace AsteroidS
         private AudioSource _asteroidExplosionSource;
         private AudioSource _shipExplosionSource;
         private AudioSource _asteroidHitsSource;
+        private AudioSource _buttonSource;
         private AudioClip _backgroundMusicClip;
         private AudioClip _shotWeaponSourceClip;
         private AudioClip _armorHitSourceClip;
         private AudioClip _asteroidExplosionClip;
         private AudioClip _shipExplosionClip;
         private AudioClip _asteroidHitClip;
-        
+        private AudioClip _buttonClip;
+
+
         private AudioMixerGroup _audioMainMixerGroup;
         private AudioMixerGroup _audioMixerGroupEffects;
         private GameObject _parent;
@@ -34,6 +37,7 @@ namespace AsteroidS
             _asteroidExplosionClip = gameData.SoundData.AsteroidExplosionClip;
             _shipExplosionClip = gameData.SoundData.ShipExplosionClip;
             _asteroidHitClip = gameData.SoundData.AsteroidHitsClip;
+            _buttonClip = gameData.SoundData.ButtonClip;
             _audioMixerGroupEffects = gameData.SoundData.EffectsMixerGroup;
         }
 
@@ -45,6 +49,7 @@ namespace AsteroidS
             _asteroidExplosionSource = SetParentAndMixerGroup(_audioMixerGroupEffects);
             _shipExplosionSource = SetParentAndMixerGroup(_audioMixerGroupEffects);
             _asteroidHitsSource = SetParentAndMixerGroup(_audioMixerGroupEffects);
+            _buttonSource = SetParentAndMixerGroup(_audioMixerGroupEffects);
         }
 
         public void PlayBackgroundMusic()
@@ -92,6 +97,11 @@ namespace AsteroidS
             var audioSource = _parent.AddComponent<AudioSource>();
             audioSource.outputAudioMixerGroup = audioMixerGroup;
             return audioSource;
+        }
+
+        public void PlayOneButtonSource()
+        {
+            _buttonSource.PlayOneShot(_buttonClip);
         }
     }
 }

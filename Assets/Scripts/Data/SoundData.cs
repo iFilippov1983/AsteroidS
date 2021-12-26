@@ -20,6 +20,7 @@ namespace Assets.Scripts.Data
         [SerializeField] private AudioClip _asteroidExplosionClip;
         [SerializeField] private AudioClip _shipExplosionClip;
         [SerializeField] private AudioClip _asteroidHitsClip;
+        [SerializeField] private AudioClip _buttonClip;
         [SerializeField] private string _exposedAudioParameter;
 
         public AudioMixer AudioMixer => _audioMixer;
@@ -31,6 +32,7 @@ namespace Assets.Scripts.Data
         public AudioClip AsteroidExplosionClip => _asteroidExplosionClip;
         public AudioClip ShipExplosionClip => _shipExplosionClip;
         public AudioClip AsteroidHitsClip => _asteroidHitsClip;
+        public AudioClip ButtonClip => _buttonClip;
         public string ExposedAudioParameter => _exposedAudioParameter;
     }
 }

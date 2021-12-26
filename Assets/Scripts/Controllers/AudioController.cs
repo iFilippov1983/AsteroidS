@@ -1,4 +1,5 @@
-﻿using UnityEngine.Audio;
+﻿using UnityEngine;
+using UnityEngine.Audio;
 
 namespace AsteroidS
 {
@@ -9,9 +10,10 @@ namespace AsteroidS
         private readonly string _exposedAudioParameter;
         private readonly AudioMixer _audioMixer;
         private readonly AudioSourceHandler _audioSourceHandler;
+        private readonly OnButtonEnterProxyController _onButtonEnterProxy;
         private SpaceObjectsController _spaceObjectsController;
 
-        public AudioController(GameData gameData, MenuManagmentController menuManagementsController, ShootingController shootingController, SpaceObjectsController spaceObjectsController)
+        public AudioController(GameData gameData, MenuManagmentController menuManagementsController, ShootingController shootingController, SpaceObjectsController spaceObjectsController, OnButtonEnterProxyController onButtonEnterProxy)
         {
             _audioSourceHandler = new AudioSourceHandler(gameData);
             _audioMixer = gameData.SoundData.AudioMixer;
@@ -19,6 +21,7 @@ namespace AsteroidS
             _shootingController = shootingController;
             _exposedAudioParameter = gameData.SoundData.ExposedAudioParameter;
             _spaceObjectsController = spaceObjectsController;
+            _onButtonEnterProxy = onButtonEnterProxy;
         } 
 
         public void Initialize()
@@ -30,8 +33,23 @@ namespace AsteroidS
             _shootingController.OnShot += AudioShotWeaponSource;
             _spaceObjectsController.OnObjectDestroy += AudioShotDestroy;
             _spaceObjectsController.OnObjectHitEvent += AudioShotHitsSource;
+            _onButtonEnterProxy.OnButtonSelected += AudioButtonSelected;
         }
-        
+
+        public void Cleanup()
+        {
+            _settingsMenuController.OnSoundVolume -= AudioGroupVolume;
+            _shootingController.OnShot -= AudioShotWeaponSource;
+            _spaceObjectsController.OnObjectDestroy -= AudioShotDestroy;
+            _spaceObjectsController.OnObjectHitEvent -= AudioShotHitsSource;
+            _onButtonEnterProxy.OnButtonSelected -= AudioButtonSelected;
+        }
+
+        private void AudioButtonSelected()
+        {
+            _audioSourceHandler.PlayOneButtonSource();
+        }
+
         private void AudioShotWeaponSource()
         {
             _audioSourceHandler.PlayOneShotShotWeaponSource();
@@ -64,13 +82,6 @@ namespace AsteroidS
             {
                 _audioSourceHandler.PlayOneAsteroidExplosionSource();
             }
-        }
-        public void Cleanup()
-        {
-            _settingsMenuController.OnSoundVolume -= AudioGroupVolume;
-            _shootingController.OnShot -= AudioShotWeaponSource;
-            _spaceObjectsController.OnObjectDestroy -= AudioShotDestroy;
-            _spaceObjectsController.OnObjectHitEvent -= AudioShotHitsSource;
         }
     }
 }
