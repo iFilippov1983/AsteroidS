@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\Data\Input\PCInputSwitch.cs" />
      <Compile Include="Assets\Scripts\Data\SoundData.cs" />
      <Compile Include="Assets\Scripts\Controllers\GameInitializer.cs" />
+     <Compile Include="Assets\Scripts\Controllers\UIControllers\ExitStateController.cs" />
      <Compile Include="Assets\Scripts\Data\Input\MobileInput.cs" />
      <Compile Include="Assets\Scripts\Controllers\UIControllers\UIInitializer.cs" />
      <Compile Include="Assets\Scripts\Controllers\PlayerInitializer.cs" />

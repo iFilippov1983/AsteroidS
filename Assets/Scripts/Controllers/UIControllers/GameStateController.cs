@@ -9,6 +9,10 @@ namespace AsteroidS
         private readonly StartGameStateController _startGameController;
         private readonly SettingsStateController _settingsStateController;
         private readonly DeathStateController _deathStateController;
+        private readonly ExitStateController _exitStateController;
+
+        private GameState _currentGameState;
+        private GameState _previousGameState;
 
         public GameStateController(UIInitializer uiInitializer, UIComponentInitializer uiComponentInitializer)
         {
@@ -16,6 +20,7 @@ namespace AsteroidS
             _startGameController = new StartGameStateController(uiInitializer);
             _settingsStateController = new SettingsStateController(uiInitializer);
             _deathStateController = new DeathStateController(uiInitializer);
+            _exitStateController = new ExitStateController();
         }
 
         public void Initialize()
@@ -41,15 +46,14 @@ namespace AsteroidS
                     _deathStateController.DeathState();
                     break;
                 case GameState.Exit:
-#if UNITY_EDITOR
-                    EditorApplication.isPlaying = false;
-#endif
-                    Application.Quit();
+                    _exitStateController.ExitGame();
                     break;
                 case GameState.Default:
                     _defaultStateController.DefaultState(gameState);
                     break;
             }
         }
+
+        
     }
 }
