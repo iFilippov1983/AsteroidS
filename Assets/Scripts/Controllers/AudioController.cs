@@ -47,7 +47,7 @@ namespace AsteroidS
 
         private void AudioButtonSelected()
         {
-            Debug.Log("Button Selected");
+            _audioSourceHandler.PlayOneButtonSource();
         }
 
         private void AudioShotWeaponSource()

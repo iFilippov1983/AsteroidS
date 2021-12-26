@@ -21,4 +21,5 @@ MonoBehaviour:
   _asteroidExplosionClip: {fileID: 8300000, guid: d940aef4f2fb6ea48a9ab4d321ba1754, type: 3}
   _shipExplosionClip: {fileID: 8300000, guid: 9bdd63ed345c44e469535c54f59e8c3f, type: 3}
   _asteroidHitsClip: {fileID: 8300000, guid: f566d93ba1b105540a8e58b3f43f9e61, type: 3}
+  _buttonClip: {fileID: 8300000, guid: eca8850ea0bea2040bc961e49d172fec, type: 3}
   _exposedAudioParameter: SceneVolume
