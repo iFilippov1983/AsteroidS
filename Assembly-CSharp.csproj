@@ -62,7 +62,6 @@
      <Compile Include="Assets\Scripts\Data\Input\MobileInput.cs" />
      <Compile Include="Assets\Scripts\Controllers\UIControllers\UIInitializer.cs" />
      <Compile Include="Assets\Scripts\Controllers\PlayerInitializer.cs" />
-     <Compile Include="Assets\Scripts\Data\Enum\ButtonTextEnum.cs" />
      <Compile Include="Assets\Scripts\Data\Enum\GameState.cs" />
      <Compile Include="Assets\Scripts\Interface\ILateExecute.cs" />
      <Compile Include="Assets\Scripts\Controllers\UIControllers\DefaultStateController.cs" />

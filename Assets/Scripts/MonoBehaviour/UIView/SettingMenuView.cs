@@ -8,7 +8,7 @@ using Slider = UnityEngine.UI.Slider;
 
 namespace AsteroidS
 {
-    public class SettingMenuView:MonoBehaviour, IPointerEnterHandler
+    public sealed class SettingMenuView:MonoBehaviour, IPointerEnterHandler
     {
         [SerializeField] private Image _backgroundImage;
         [SerializeField] private Button _backButton;

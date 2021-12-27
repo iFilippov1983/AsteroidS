@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace AsteroidS
 {
-    public class UIComponentInitializer : IInitialization
+    public sealed class UIComponentInitializer : IInitialization
     {
         private readonly SceneData _sceneData;
         private readonly GameObject _mainMenu;
@@ -34,16 +34,20 @@ namespace AsteroidS
 
         public void Initialize()
         {
+            GetUIComponents();
+            SetMenuBackground();
+        }
+
+        private void GetUIComponents()
+        {
             _mainMenuView = _mainMenu.GetComponent<MainMenuView>();
             _settingMenuView = _settingsMenu.GetComponent<SettingMenuView>();
             _playerUIView = _playerUI.GetComponent<PlayerUIView>();
             _deathScreenView = _deathScreen.GetComponent<DeathScreenView>();
-            SetMenuBackground();
         }
 
         private void SetMenuBackground()
         {
-            //var backgroundSprite = _sceneData.Background.GetComponent<SpriteRenderer>().sprite;
             var backgroundSprite = _sceneData.Background.GetComponentInChildren<Image>().sprite;
             var mainMenuBackground = _mainMenuView.BackgroundImage;
             var settingsMenuBackground = _settingMenuView.BackgroundImage;

@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DeathScreenView : MonoBehaviour, IPointerEnterHandler
+public sealed class DeathScreenView : MonoBehaviour, IPointerEnterHandler
 {
     [SerializeField] private Image _backgroundImage;
     [SerializeField] private Button _continueButton;
