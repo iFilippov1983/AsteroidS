@@ -1,13 +1,11 @@
 ﻿using System;
-using UnityEngine;
 using UnityEngine.UIElements;
 using Button = UnityEngine.UI.Button;
-using Image = UnityEngine.UI.Image;
 using Slider = UnityEngine.UI.Slider;
 
 namespace AsteroidS
 {
-    public class SettingsMenuController: IInitialization, ICleanup
+    public sealed class SettingsMenuController: IInitialization, ICleanup
     {
         private readonly GameStateController _gameStateController;
         private SettingMenuView _settingMenuView;
@@ -17,7 +15,6 @@ namespace AsteroidS
         private DropdownMenu _graphicsDropdown;
         private UIComponentInitializer _uiComponentInitializer;
 
-        //public event Action<float> OnSoundVolumeChangebackground;
         public event Action<float> OnSoundVolume;
         public event Action<int> OnGraphicsChange;
 

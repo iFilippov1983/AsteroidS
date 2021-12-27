@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AsteroidS
 {
-    public class PlayerUIView:MonoBehaviour
+    public sealed class PlayerUIView:MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI _scoreCounter;
         [SerializeField] private TextMeshProUGUI _timerCounter;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AsteroidS
 {
-    public class GameStateController:IInitialization
+    public sealed class GameStateController:IInitialization
     {
         private readonly DefaultStateController _defaultStateController;
         private readonly StartGameStateController _startGameController;
@@ -16,7 +16,7 @@ namespace AsteroidS
 
         public GameStateController(UIInitializer uiInitializer, UIComponentInitializer uiComponentInitializer)
         {
-            _defaultStateController = new DefaultStateController(uiInitializer, uiComponentInitializer);
+            _defaultStateController = new DefaultStateController(uiInitializer, uiComponentInitializer, this);
             _startGameController = new StartGameStateController(uiInitializer);
             _settingsStateController = new SettingsStateController(uiInitializer);
             _deathStateController = new DeathStateController(uiInitializer);
@@ -34,26 +34,35 @@ namespace AsteroidS
             switch (gameState)
             {
                 case GameState.Start:
+                    GetPreviousState(gameState);
                     _startGameController.StartGame();
                     break;
                 case GameState.Settings:
                     _settingsStateController.SettingsMenu();
                     break;
                 case GameState.Pause:
-                    _defaultStateController.DefaultState(gameState);
+                    GetPreviousState(gameState);
+                    _defaultStateController.DefaultState(gameState, _previousGameState);
                     break;
                 case GameState.Death:
+                    GetPreviousState(gameState);
                     _deathStateController.DeathState();
                     break;
                 case GameState.Exit:
                     _exitStateController.ExitGame();
                     break;
                 case GameState.Default:
-                    _defaultStateController.DefaultState(gameState);
+                    GetPreviousState(gameState);
+                    _defaultStateController.DefaultState(gameState, _previousGameState);
                     break;
             }
         }
 
-        
+        private void GetPreviousState(GameState gameState)
+        {
+            _previousGameState = _currentGameState;
+            _currentGameState = gameState;
+            Debug.LogWarning($"{_currentGameState}, {_previousGameState}");
+        }
     }
 }

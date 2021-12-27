@@ -2,7 +2,7 @@
 
 namespace AsteroidS
 {
-    internal class DeathStateController
+    internal sealed class DeathStateController
     {
         private readonly GameObject _mainMenu;
         private readonly GameObject _settingsMenu;

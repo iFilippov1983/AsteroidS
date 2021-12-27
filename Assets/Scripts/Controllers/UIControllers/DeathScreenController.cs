@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace AsteroidS
 {
-    public class DeathScreenController:IInitialization, ICleanup
+    public sealed class DeathScreenController:IInitialization, ICleanup
     {
         private readonly SceneData _sceneData;
         private readonly UIComponentInitializer _uiComponentInitializer;

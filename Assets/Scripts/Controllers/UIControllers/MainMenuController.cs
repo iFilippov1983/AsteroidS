@@ -6,7 +6,7 @@ using Button = UnityEngine.UI.Button;
 
 namespace AsteroidS
 {
-    public class MainMenuController: IInitialization, ICleanup, IPointerEnterHandler
+    public sealed class MainMenuController: IInitialization, ICleanup, IPointerEnterHandler
     {
         private readonly GameStateController _gameStateController;
         private readonly UIComponentInitializer _uiComponentInitializer;
@@ -19,8 +19,8 @@ namespace AsteroidS
 
         public MainMenuController(UIComponentInitializer uiComponentInitializer, GameStateController gameStateController)
         {
-            _gameStateController = gameStateController;
             _uiComponentInitializer = uiComponentInitializer;
+            _gameStateController = gameStateController;
         }
 
         public void Initialize()

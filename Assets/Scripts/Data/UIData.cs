@@ -1,11 +1,10 @@
 using System;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace AsteroidS
 {
     [CreateAssetMenu(menuName = "GameData/UIData", fileName = "UIData")]
-    public class UIData : ScriptableObject
+    public sealed class UIData : ScriptableObject
     {
         [Header("Text constant")] 
         [SerializeField]
