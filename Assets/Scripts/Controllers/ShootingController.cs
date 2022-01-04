@@ -29,7 +29,6 @@ namespace AsteroidS
         public ShootingController(GameData gameData, Transform player)
         {
             _playerData = gameData.PlayerData;
-            _playerData.SetDefaultAmmo();
             _player = player;
             _spawner = new AmmoSpawner(_playerData.AmmoPrefabsDictionary);
             _ammoDriver = new AmmoDriver();
@@ -38,10 +37,10 @@ namespace AsteroidS
         public void Initialize()
         {
             
-            _reloadTime = _playerData.CurrentAmmo.Properties.reloadTime;
-            _shotDistance = _playerData.CurrentAmmo.Properties.shotDistance;
+            _reloadTime = _playerData.CurrentAmmo.Properties.ReloadTime;
+            _shotDistance = _playerData.CurrentAmmo.Properties.ShotDistance;
             _ammo = _playerData.CurrentAmmo;
-            _currentAmmoType = _ammo.Properties.ammoType;
+            _currentAmmoType = _ammo.Properties.AmmoType;
             _ammoPool = _spawner.MakeSpawnedAmmoDictionary();
 
             _mask = LayerMask.GetMask(MasksHolder.SpaceObject);
@@ -85,7 +84,7 @@ namespace AsteroidS
 
         private void OnLifeTermination(Ammo ammo)
         {
-            var type = ammo.Properties.ammoType;
+            var type = ammo.Properties.AmmoType;
 
             _ammoDriver.Stop(ammo);
             _ammoPool[type].Push(ammo);
@@ -129,7 +128,7 @@ namespace AsteroidS
         private void SwitchAmmo()
         {
             _ammo = _playerData.CurrentAmmo;
-            _currentAmmoType = _ammo.Properties.ammoType;
+            _currentAmmoType = _ammo.Properties.AmmoType;
         }
 
         IEnumerator FireRateTimer(float timeInSec)

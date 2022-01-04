@@ -31,7 +31,7 @@ namespace AsteroidS
 
         public void AddScore(SpaceObject so)
         {
-            _score += so.Properties.scoresForDestruction;
+            _score += so.Properties.ScoresForDestrustion;
         }
 
         private void DisplayScores()

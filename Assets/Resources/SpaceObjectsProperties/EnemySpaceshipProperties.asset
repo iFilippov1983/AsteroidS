@@ -12,16 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5abace8c29ecc746a98433fe3b8bb3b, type: 3}
   m_Name: EnemySpaceshipProperties
   m_EditorClassIdentifier: 
-  type: 5
+  _type: 5
+  _scoresForDestruction: 2
+  _mass: 2
+  _isPickable: 0
+  _isBreakable: 0
+  _isShooting: 0
   hitPoints: 30
   armorPoints: 30
-  scoresForDestruction: 2
-  mass: 1
   amountOnScene: 2
   speed: 7
   maxLifeTime: 15
-  isPickable: 0
-  isBreakable: 0
   isChild: 0
-  canBeChild: 0
-  isShooting: 0

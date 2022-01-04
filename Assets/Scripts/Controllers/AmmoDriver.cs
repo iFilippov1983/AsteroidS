@@ -11,7 +11,7 @@ namespace AsteroidS
             ammo.transform.rotation = transform.rotation;
 
             var rb = ammo.gameObject.GetComponent<Rigidbody2D>();
-            var speed = ammo.Properties.speedRate;
+            var speed = ammo.Properties.SpeedRate;
             rb.AddForce(transform.up * speed, ForceMode2D.Impulse);
         }
 

@@ -16,7 +16,7 @@ namespace AsteroidS
         private float _lifeTimeCounter = 0;
         private int _hitPoints;
         private int _armorPoints;
-
+        private SpriteRenderer _renderer;
 
         public Sprite[] GetSprites => _sprites;
         public int HitPoints => _hitPoints;
@@ -39,6 +39,11 @@ namespace AsteroidS
         public Action<SpaceObject> OnLifeTimeTermination;
         public Action OnPlayerHit;
 
+        private void Awake()
+        {
+            _renderer = GetComponent<SpriteRenderer>();
+        }
+
         private void OnEnable()
         {
             _hitPoints = Properties.hitPoints;
@@ -50,7 +55,7 @@ namespace AsteroidS
             if (collision.gameObject.GetComponent<Ammo>())
             {
                 var ammo = collision.gameObject;
-                var damage = ammo.GetComponent<Ammo>().Properties.damage;
+                var damage = ammo.GetComponent<Ammo>().Properties.Damage;
 
                 if (_armorPoints > 0) _armorPoints -= damage;
                 else _hitPoints -= damage;
@@ -75,6 +80,10 @@ namespace AsteroidS
         private void OnDisable()
         {
             _lifeTimeCounter = 0;
+        }
+
+        private void OnDestroy()
+        {
             if (Properties.isChild) Properties.isChild = false;
         }
 
@@ -82,7 +91,7 @@ namespace AsteroidS
         {
             _lifeTimeCounter += Time.deltaTime;
 
-            if (_lifeTimeCounter >= _spaceObjectProperties.maxLifeTime)
+            if (_lifeTimeCounter >= _spaceObjectProperties.maxLifeTime)// && _renderer.isVisible == false)
             {
                 _lifeTimeCounter = 0;
                 OnLifeTimeTermination?.Invoke(this);

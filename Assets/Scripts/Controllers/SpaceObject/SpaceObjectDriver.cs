@@ -17,8 +17,6 @@ namespace AsteroidS
 
         public void Stop(SpaceObject spaceObject)
         {
-            if (spaceObject.Properties.isChild) spaceObject.Properties.isChild = false;
-            
             spaceObject.gameObject.SetActive(false);
             spaceObject.transform.position = Vector2.zero;
             spaceObject.gameObject.GetComponent<Rigidbody2D>().velocity = Vector3.zero;

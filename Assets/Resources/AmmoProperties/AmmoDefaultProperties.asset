@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e50018818d4e2e4488239822ad752603, type: 3}
   m_Name: AmmoDefaultProperties
   m_EditorClassIdentifier: 
-  ammoType: 1
-  damage: 30
-  reloadTime: 1
-  shotDistance: 10
-  speedRate: 10
-  timeMultiplier: 1
+  _ammoSpritePath: laserGreen10
+  _ammoType: 1
+  _damage: 30
+  _reloadTime: 1
+  _shotDistance: 10
+  _speedRate: 15
+  _timeMultiplyer: 1

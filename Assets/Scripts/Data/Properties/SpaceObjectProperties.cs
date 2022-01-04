@@ -5,20 +5,29 @@ namespace AsteroidS
     [CreateAssetMenu(menuName = "GameData/Properties/SO_Properties", fileName = "NameOfSpaceObject_Properties")]
     public class SpaceObjectProperties : ScriptableObject
     {
-        public SpaceObjectType type;
+        [SerializeField] private SpaceObjectType _type;
+        [SerializeField] private int _scoresForDestruction;
+        [SerializeField] private float _mass;
+
+        [SerializeField] private bool _isPickable;
+        [SerializeField] private bool _isBreakable;
+        [SerializeField] private bool _isShooting;
+
         public int hitPoints;
         public int armorPoints;
-        public int scoresForDestruction;
-        public float mass;
         public int amountOnScene;
         public float speed;
         public float maxLifeTime;
 
-        public bool isPickable;
-        public bool isBreakable;
         public bool isChild;
-        public bool canBeChild;
-        public bool isShooting;
+
+        public SpaceObjectType Type => _type;
+        public int ScoresForDestrustion => _scoresForDestruction;
+        public float Mass => _mass;
+
+        public bool IsPickable => _isPickable;
+        public bool IsBreakable => _isBreakable;
+        public bool IsShooting => _isShooting;
 
         public bool HasArmor
         {
