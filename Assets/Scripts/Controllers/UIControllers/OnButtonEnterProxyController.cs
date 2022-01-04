@@ -2,7 +2,7 @@
 
 namespace AsteroidS
 {
-    public class OnButtonEnterProxyController : IInitialization, ICleanup
+    public sealed class OnButtonEnterProxyController : IInitialization, ICleanup
     {
         private readonly UIComponentInitializer _uiComponentInitializer;
         private MainMenuView _mainMenuView;

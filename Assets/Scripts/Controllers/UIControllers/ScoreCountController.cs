@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AsteroidS
 {
-    public class ScoreCountController:IInitialization, IExecute
+    public sealed class ScoreCountController:IInitialization, IExecute
     {
         private UIComponentInitializer _uiObjectGetter;
         private PlayerUIView _playerUIView;

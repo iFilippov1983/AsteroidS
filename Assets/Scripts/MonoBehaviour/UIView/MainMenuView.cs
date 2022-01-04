@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using Button = UnityEngine.UI.Button;
 
-public class MainMenuView : MonoBehaviour, IPointerEnterHandler
+public sealed class MainMenuView : MonoBehaviour, IPointerEnterHandler
 {
     [SerializeField] private Image _backgroundImage;
     [SerializeField] private Button _startButton;

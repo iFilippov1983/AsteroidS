@@ -3,7 +3,7 @@ using TMPro;
 
 namespace AsteroidS
 {
-    public class TimerController: IExecute, IInitialization, ICleanup
+    public sealed class TimerController: IExecute, IInitialization, ICleanup
     {
         private UIComponentInitializer _uiComponentInitializer;
         private PlayerUIView _playerUIView;
