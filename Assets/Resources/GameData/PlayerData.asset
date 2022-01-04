@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca5bf73e8ea653d4fbea7254ce5056b6, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  _playerPrefab: {fileID: 174634665004576624, guid: fa4d4652efd501c40b48e95fe654a720, type: 3}
+  _playerPrefabPath: Player
   _playerViewSprites:
   - {fileID: 21300000, guid: e1d97070fd4c2e741b2b51db96321653, type: 3}
   - {fileID: 21300000, guid: d0ce5ab3dc3e77346b371ce891d07fa7, type: 3}

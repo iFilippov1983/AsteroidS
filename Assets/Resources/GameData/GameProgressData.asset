@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: GameProgressData
   m_EditorClassIdentifier: 
   _currentLevel: 1
-  _levelsPropertiesList:
-  - {fileID: 11400000, guid: 76acbfb3fe61c27409bcf0b09c8fc93e, type: 2}
-  - {fileID: 11400000, guid: 57d0fd063e5bc194bb095a0ed289415e, type: 2}
-  - {fileID: 11400000, guid: b07dbcc47a63d8c4c9f6b47dc85dfffc, type: 2}
+  _levelPropertiesPathArray:
+  - Level_1_Properties
+  - Level_2_Properties
+  - Level_3_Properties
   _currentScores: 0

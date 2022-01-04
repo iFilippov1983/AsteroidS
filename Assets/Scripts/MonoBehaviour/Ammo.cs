@@ -5,6 +5,8 @@ namespace AsteroidS
 {
     public class Ammo : MonoBehaviour
     {
+        private const string AmmoPropertiesPath = "AmmoProperties/";
+
         [SerializeField] private string _ammoPropertiesPath;
         
         private AmmoProperties _ammoProperties;
@@ -18,7 +20,7 @@ namespace AsteroidS
             {
                 if (_ammoProperties == null)
                 {
-                    _ammoProperties = Resources.Load<AmmoProperties>("GameData/" + _ammoPropertiesPath);
+                    _ammoProperties = Resources.Load<AmmoProperties>(AmmoPropertiesPath + _ammoPropertiesPath);
                 }
 
                 return _ammoProperties;
@@ -35,14 +37,10 @@ namespace AsteroidS
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            //temp 
-            //Debug.Log($"Ammo hits object: {collision.gameObject.name}");
-
             //temp
             if (Properties.ammoType.Equals(AmmoType.Laser)) return;
 
-            if (collision.gameObject.tag == TagsHolder.Asteroid ||
-                collision.gameObject.tag == TagsHolder.Ship)
+            if (collision.gameObject.GetComponent<SpaceObject>())
             {
                 LifeTerminationEvent?.Invoke(this);
             }
