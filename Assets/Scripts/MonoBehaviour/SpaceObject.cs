@@ -7,6 +7,8 @@ namespace AsteroidS
 
     public class SpaceObject : MonoBehaviour
     {
+        private const string PropertiesPath = "SpaceObjectsProperties/";
+        
         [SerializeField] private Sprite[] _sprites;
         [SerializeField] private string _spaceObjectPropertiesPath;
 
@@ -26,7 +28,7 @@ namespace AsteroidS
             {
                 if (_spaceObjectProperties == null)
                 {
-                    _spaceObjectProperties = Resources.Load<SpaceObjectProperties>("GameData/" + _spaceObjectPropertiesPath);
+                    _spaceObjectProperties = Resources.Load<SpaceObjectProperties>(PropertiesPath + _spaceObjectPropertiesPath);
                 }
 
                 return _spaceObjectProperties;
@@ -45,7 +47,7 @@ namespace AsteroidS
 
         private void OnTriggerEnter2D(Collider2D collision)
         {
-            if (collision.gameObject.tag == TagsHolder.Ammo)
+            if (collision.gameObject.GetComponent<Ammo>())
             {
                 var ammo = collision.gameObject;
                 var damage = ammo.GetComponent<Ammo>().Properties.damage;

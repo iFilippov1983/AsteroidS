@@ -2,7 +2,7 @@
 
 namespace AsteroidS
 {
-    public class UIInitializer
+    public sealed class UIInitializer
     {
         private readonly SceneData _sceneData;
         private readonly GameObject _mainMenuPrefab;

@@ -2,7 +2,7 @@
 
 namespace AsteroidS
 {
-    internal class StartGameStateController
+    internal sealed class StartGameStateController
     {
         private readonly GameObject _mainMenu;
         private readonly GameObject _settingsMenu;

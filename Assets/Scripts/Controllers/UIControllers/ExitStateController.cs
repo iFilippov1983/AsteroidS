@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AsteroidS
 {
-    internal class ExitStateController
+    internal sealed class ExitStateController
     {
         internal void ExitGame()
         {

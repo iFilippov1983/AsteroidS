@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2ed1b1b27e61b84db946e0be2277dd9, type: 3}
   m_Name: Level_2_Properties
   m_EditorClassIdentifier: 
-  _spaceObjectsPrefabs:
-  - {fileID: 8620990933213323889, guid: 67b2ce987f2852347a663e698f755752, type: 3}
-  - {fileID: 3757296140655742042, guid: 8746202606efc404fae5de06bcb1241f, type: 3}
-  _levelDuration: 120
+  _spaceObjectsPrefabsPath:
+  - AsteroidBig
+  - AsteroidMed
+  _levelDuration: 30
   _spawnRate: 1
   _spawnDistanceMultiplier: 17
   _trajectoryVariance: 15
-  _chidlsPrefabs:
-  - {fileID: -5019846699432843175, guid: 5fac5dc1f55be7f41a8ac9b748edb1b6, type: 3}
-  _maxChildsAmount: 3
+  _childsPrefabsPath:
+  - AsteroidSmall
+  _maxChildsAmount: 5

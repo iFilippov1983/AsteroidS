@@ -36,15 +36,16 @@ namespace AsteroidS
 
         public void Initialize()
         {
+            _levelTransition = false;
             _currentLevelProperties = _gameProgressData.CurrentLevelProperties;
             _spawnRate = _currentLevelProperties.SpawnRate;
             _maxChildsAmount = _currentLevelProperties.MaxChildsAmount;
 
-            //temp
-            Debug.Log("ch: "+_maxChildsAmount);
-
             _soStack = _spawner.CreateUnactiveSpaceObjectsStack();
             _levelSpaceObjectsAmount = _soStack.Count;
+
+            //temp
+            Debug.Log("SO amount:" + _levelSpaceObjectsAmount);
 
             SubscribeOnSOEvents();
         }
@@ -81,9 +82,15 @@ namespace AsteroidS
 
         private void ReinitializeIfTransition()
         {
+            //temp
+            Debug.Log("transition:" + _levelTransition);
+
             if (_levelTransition)
             {
                 bool stackIsFull = (_soStack.Count == _levelSpaceObjectsAmount);
+
+                //temp
+                Debug.Log("full:" + stackIsFull);
 
                 if (stackIsFull)
                 {
@@ -92,13 +99,13 @@ namespace AsteroidS
                     _spawnRate = _currentLevelProperties.SpawnRate;
                     _maxChildsAmount = _currentLevelProperties.MaxChildsAmount;
 
-                    //temp
-                    Debug.Log("chtr: " + _maxChildsAmount);
-
                     UnsubscribeFromSOEvents();
 
                     _soStack = _spawner.CreateUnactiveSpaceObjectsStack();
                     _levelSpaceObjectsAmount = _soStack.Count;
+
+                    //temp
+                    Debug.Log("SO amount:" + _levelSpaceObjectsAmount);
 
                     SubscribeOnSOEvents();
 
@@ -157,6 +164,8 @@ namespace AsteroidS
                 so.OnSpaceObjectHit -= Hit;
                 so.OnLifeTimeTermination -= LifeTermination;
                 so.OnPlayerHit -= PlayerDestroy;
+
+                Object.Destroy(so);
             }
 
             foreach (SpaceObject so in _soStack)
