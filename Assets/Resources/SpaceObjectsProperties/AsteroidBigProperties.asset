@@ -18,6 +18,13 @@ MonoBehaviour:
   _isPickable: 0
   _isBreakable: 1
   _isShooting: 0
+  _soSpritesPath:
+  - meteorBrown_big1
+  - meteorBrown_big2
+  - meteorBrown_big4
+  - meteorGrey_big1
+  - meteorGrey_big2
+  - meteorGrey_big4
   hitPoints: 30
   armorPoints: 0
   amountOnScene: 6

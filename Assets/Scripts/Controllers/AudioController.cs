@@ -31,7 +31,7 @@ namespace AsteroidS
             _audioSourceHandler.PlayBackgroundMusic();
             _settingsMenuController.OnSoundVolume += AudioGroupVolume;
             _shootingController.OnShot += AudioShotWeaponSource;
-            _spaceObjectsController.OnObjectDestroy += AudioShotDestroy;
+            _spaceObjectsController.OnObjectDestroySound += AudioShotDestroy;
             _spaceObjectsController.OnObjectHitEvent += AudioShotHitsSource;
             _onButtonEnterProxy.OnButtonSelected += AudioButtonSelected;
         }
@@ -40,7 +40,7 @@ namespace AsteroidS
         {
             _settingsMenuController.OnSoundVolume -= AudioGroupVolume;
             _shootingController.OnShot -= AudioShotWeaponSource;
-            _spaceObjectsController.OnObjectDestroy -= AudioShotDestroy;
+            _spaceObjectsController.OnObjectDestroySound -= AudioShotDestroy;
             _spaceObjectsController.OnObjectHitEvent -= AudioShotHitsSource;
             _onButtonEnterProxy.OnButtonSelected -= AudioButtonSelected;
         }

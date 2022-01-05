@@ -33,7 +33,7 @@ namespace AsteroidS
         public Action<SpaceObject> OnObjectDestroyEvent;
         public Action OnPlayerDestroyEvent;
         public Action<string> OnObjectHitEvent;
-        public Action<string> OnObjectDestroy;
+        public Action<string> OnObjectDestroySound;
 
         public void Initialize()
         {
@@ -121,7 +121,7 @@ namespace AsteroidS
                 LifeTermination(spaceObject);
 
                 OnObjectDestroyEvent?.Invoke(spaceObject);
-                OnObjectDestroy?.Invoke(spaceObject.tag);
+                OnObjectDestroySound?.Invoke(spaceObject.tag);
             }
             else
             {

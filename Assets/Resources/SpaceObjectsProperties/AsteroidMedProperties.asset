@@ -18,6 +18,9 @@ MonoBehaviour:
   _isPickable: 0
   _isBreakable: 0
   _isShooting: 0
+  _soSpritesPath:
+  - meteorBrown_med1
+  - meteorGrey_med2
   hitPoints: 30
   armorPoints: 0
   amountOnScene: 5

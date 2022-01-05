@@ -8,17 +8,15 @@ namespace AsteroidS
     public class SpaceObject : MonoBehaviour
     {
         private const string PropertiesPath = "SpaceObjectsProperties/";
-        
-        [SerializeField] private Sprite[] _sprites;
+
         [SerializeField] private string _spaceObjectPropertiesPath;
 
         private SpaceObjectProperties _spaceObjectProperties;
         private float _lifeTimeCounter = 0;
         private int _hitPoints;
         private int _armorPoints;
-        private SpriteRenderer _renderer;
 
-        public Sprite[] GetSprites => _sprites;
+        public Sprite[] GetSprites => Properties.SpaceObjectSprites;
         public int HitPoints => _hitPoints;
         public int ArmorPoints => _armorPoints;
 
@@ -38,11 +36,6 @@ namespace AsteroidS
         public Action<SpaceObject> OnSpaceObjectHit;
         public Action<SpaceObject> OnLifeTimeTermination;
         public Action OnPlayerHit;
-
-        private void Awake()
-        {
-            _renderer = GetComponent<SpriteRenderer>();
-        }
 
         private void OnEnable()
         {
@@ -91,12 +84,11 @@ namespace AsteroidS
         {
             _lifeTimeCounter += Time.deltaTime;
 
-            if (_lifeTimeCounter >= _spaceObjectProperties.maxLifeTime)// && _renderer.isVisible == false)
+            if (_lifeTimeCounter >= _spaceObjectProperties.maxLifeTime)
             {
                 _lifeTimeCounter = 0;
                 OnLifeTimeTermination?.Invoke(this);
             }
         }
-
     }
 }

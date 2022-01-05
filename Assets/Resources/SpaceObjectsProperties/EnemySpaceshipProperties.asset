@@ -18,6 +18,11 @@ MonoBehaviour:
   _isPickable: 0
   _isBreakable: 0
   _isShooting: 0
+  _soSpritesPath:
+  - ufoBlue
+  - ufoGreen
+  - ufoRed
+  - ufoYellow
   hitPoints: 30
   armorPoints: 30
   amountOnScene: 2

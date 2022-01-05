@@ -100,7 +100,7 @@
     <Compile Include="Assets\Scripts\Controllers\KeysHandler.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\SettingMenuView.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\Data\Holder\InputHolder.cs" />
+    <Compile Include="Assets\Scripts\Data\Holder\InputName.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\Interface\IController.cs" />
     <Compile Include="Assets\Scripts\Controllers\SpaceObject\SpaceObjectDriver.cs" />
@@ -130,6 +130,9 @@
     <Compile Include="Assets\Scripts\Interface\IExecute.cs" />
     <Compile Include="Assets\Scripts\Data\Properties\SpaceObjectProperties.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIControllers\TimerController.cs" />
+    <Compile Include="Assets\Scripts\Data\Input\PCInputMouseX.cs" />
+    <Compile Include="Assets\Scripts\Data\Input\PCInputMouseY.cs" />
+    <Compile Include="Assets\Scripts\Data\Input\PCInputStructure.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
