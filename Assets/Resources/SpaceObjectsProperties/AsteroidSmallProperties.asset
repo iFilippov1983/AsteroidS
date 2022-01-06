@@ -12,16 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5abace8c29ecc746a98433fe3b8bb3b, type: 3}
   m_Name: AsteroidSmallProperties
   m_EditorClassIdentifier: 
-  type: 2
+  _type: 2
+  _scoresForDestruction: 1
+  _mass: 1
+  _isPickable: 0
+  _isBreakable: 0
+  _isShooting: 0
+  _soSpritesPath:
+  - meteorBrown_small1
+  - meteorBrown_small2
+  - meteorGrey_small3
+  - meteorGrey_small4
   hitPoints: 30
   armorPoints: 0
-  scoresForDestruction: 1
-  mass: 1
   amountOnScene: 6
   speed: 8
   maxLifeTime: 20
-  isPickable: 0
-  isBreakable: 0
   isChild: 0
-  canBeChild: 1
-  isShooting: 0

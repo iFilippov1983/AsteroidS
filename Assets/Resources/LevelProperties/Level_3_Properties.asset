@@ -16,7 +16,7 @@ MonoBehaviour:
   - AsteroidBig
   - AsteroidMed
   - EnemySpaceship
-  _levelDuration: 90
+  _levelDuration: 30
   _spawnRate: 1
   _spawnDistanceMultiplier: 17
   _trajectoryVariance: 15

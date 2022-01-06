@@ -62,7 +62,6 @@ namespace AsteroidS
         {
             _previousGameState = _currentGameState;
             _currentGameState = gameState;
-            Debug.LogWarning($"{_currentGameState}, {_previousGameState}");
         }
     }
 }

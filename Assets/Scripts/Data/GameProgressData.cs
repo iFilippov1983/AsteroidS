@@ -6,7 +6,7 @@ namespace AsteroidS
     [CreateAssetMenu(menuName = "GameData/GameProgressData", fileName = "GameProgressData")]
     public class GameProgressData : ScriptableObject
     {
-        private const string LevelPropetriesDataPath = "LevelProperties/";
+        private const string LevelPropetriesFolderPath = "LevelProperties/";
 
         [Range(1, 100)]
         [SerializeField] private int _currentLevel;
@@ -44,7 +44,7 @@ namespace AsteroidS
                     _levelsPropertiesArray = new GameLevelProperties[_levelPropertiesPathArray.Length];
                     for (int index = 0; index < _levelPropertiesPathArray.Length; index++)
                     {
-                        _levelsPropertiesArray[index] = Resources.Load<GameLevelProperties>(LevelPropetriesDataPath + _levelPropertiesPathArray[index]);
+                        _levelsPropertiesArray[index] = Resources.Load<GameLevelProperties>(LevelPropetriesFolderPath + _levelPropertiesPathArray[index]);
                     }
                 }
 

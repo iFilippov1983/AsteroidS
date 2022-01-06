@@ -1,10 +1,11 @@
 ﻿namespace AsteroidS
 {
-    public static class InputHolder
+    public static class InputName
     {
-        //Axis
+        //Axes
         public const string Horizontal = "Horizontal";
         public const string Vertical = "Vertical";
+        public const string PrimaryFire = "PrimaryFire";
         public const string Switch = "Switch";
         public const string Cancel = "Cancel";
     }

@@ -11,7 +11,7 @@ namespace AsteroidS
         
         private AmmoProperties _ammoProperties;
         private float _lifeTimeCounter;
-
+        private SpriteRenderer _renderer;
         //private Coroutine _desactivationTimer;
 
         public AmmoProperties Properties
@@ -29,6 +29,12 @@ namespace AsteroidS
 
         public Action<Ammo> LifeTerminationEvent;
 
+        private void Awake()
+        {
+            _renderer = GetComponentInChildren<SpriteRenderer>();
+            _renderer.sprite = Properties.AmmoSprite;
+        }
+
         private void OnEnable()
         {
             _lifeTimeCounter = 0;
@@ -38,7 +44,7 @@ namespace AsteroidS
         private void OnTriggerEnter2D(Collider2D collision)
         {
             //temp
-            if (Properties.ammoType.Equals(AmmoType.Laser)) return;
+            if (Properties.AmmoType.Equals(AmmoType.Laser)) return;
 
             if (collision.gameObject.GetComponent<SpaceObject>())
             {
@@ -63,7 +69,7 @@ namespace AsteroidS
 
         private void Live()
         {
-            if (_lifeTimeCounter >= _ammoProperties.LifeTime)
+            if (_lifeTimeCounter >= _ammoProperties.LifeTime || _renderer.isVisible != true)
             {
                 _lifeTimeCounter = 0;
                 LifeTerminationEvent?.Invoke(this);

@@ -54,6 +54,29 @@ namespace AsteroidS
             return spaceObject;
         }
 
+        public SpaceObject[] SpawnChilds(int amount, Transform transform)
+        {
+            var childs = new SpaceObject[amount];
+            var prefab = _childsPrefabs[Random.Range(0, _childsPrefabs.Length)];
+
+            for (int index = 0; index < amount; index++)
+            {
+                var soChild = _builder
+                    .MakeInstance(prefab)
+                    .SetPosition(transform.position)
+                    .SetRotation(CalculetaRandomRotation())
+                    .SetRandomObjectView(prefab.GetSprites)
+                    .SetActivityState(false)
+                    .Build();
+
+                soChild.Properties.isChild = true;
+
+                childs[index] = soChild;
+            }
+
+            return childs;
+        }
+
         private SpaceObject SpawnUnactive(SpaceObjectType type)
         {
             var prefab = _spaceObjects[type];
@@ -83,29 +106,6 @@ namespace AsteroidS
             Quaternion rotation = Quaternion.AngleAxis(variance, Vector3.forward);
 
             return rotation;
-        }
-
-        public SpaceObject[] SpawnChilds(int amount, Transform transform)
-        {
-            var childs = new SpaceObject[amount];
-            var prefab = _childsPrefabs[Random.Range(0, _childsPrefabs.Length)];
-
-            for (int index = 0; index < amount; index++)
-            {
-                var soChild = _builder
-                    .MakeInstance(prefab)
-                    .SetPosition(transform.position)
-                    .SetRotation(CalculetaRandomRotation())
-                    .SetRandomObjectView(prefab.GetSprites)
-                    .SetActivityState(false)
-                    .Build();
-
-                soChild.Properties.isChild = true;
-
-                childs[index] = soChild;
-            }
-
-            return childs;
         }
     }
 }

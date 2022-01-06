@@ -8,8 +8,7 @@ namespace AsteroidS
     public class SpaceObject : MonoBehaviour
     {
         private const string PropertiesPath = "SpaceObjectsProperties/";
-        
-        [SerializeField] private Sprite[] _sprites;
+
         [SerializeField] private string _spaceObjectPropertiesPath;
 
         private SpaceObjectProperties _spaceObjectProperties;
@@ -17,8 +16,7 @@ namespace AsteroidS
         private int _hitPoints;
         private int _armorPoints;
 
-
-        public Sprite[] GetSprites => _sprites;
+        public Sprite[] GetSprites => Properties.SpaceObjectSprites;
         public int HitPoints => _hitPoints;
         public int ArmorPoints => _armorPoints;
 
@@ -50,7 +48,7 @@ namespace AsteroidS
             if (collision.gameObject.GetComponent<Ammo>())
             {
                 var ammo = collision.gameObject;
-                var damage = ammo.GetComponent<Ammo>().Properties.damage;
+                var damage = ammo.GetComponent<Ammo>().Properties.Damage;
 
                 if (_armorPoints > 0) _armorPoints -= damage;
                 else _hitPoints -= damage;
@@ -61,7 +59,7 @@ namespace AsteroidS
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.tag == TagsHolder.Player)
+            if (collision.gameObject.tag == TagOrName.Player)
             {
                 OnPlayerHit?.Invoke();
             }
@@ -75,6 +73,10 @@ namespace AsteroidS
         private void OnDisable()
         {
             _lifeTimeCounter = 0;
+        }
+
+        private void OnDestroy()
+        {
             if (Properties.isChild) Properties.isChild = false;
         }
 
@@ -88,6 +90,5 @@ namespace AsteroidS
                 OnLifeTimeTermination?.Invoke(this);
             }
         }
-
     }
 }

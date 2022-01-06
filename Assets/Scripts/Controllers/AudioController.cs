@@ -31,7 +31,7 @@ namespace AsteroidS
             _audioSourceHandler.PlayBackgroundMusic();
             _settingsMenuController.OnSoundVolume += AudioGroupVolume;
             _shootingController.OnShot += AudioShotWeaponSource;
-            _spaceObjectsController.OnObjectDestroy += AudioShotDestroy;
+            _spaceObjectsController.OnObjectDestroySound += AudioShotDestroy;
             _spaceObjectsController.OnObjectHitEvent += AudioShotHitsSource;
             _onButtonEnterProxy.OnButtonSelected += AudioButtonSelected;
         }
@@ -40,7 +40,7 @@ namespace AsteroidS
         {
             _settingsMenuController.OnSoundVolume -= AudioGroupVolume;
             _shootingController.OnShot -= AudioShotWeaponSource;
-            _spaceObjectsController.OnObjectDestroy -= AudioShotDestroy;
+            _spaceObjectsController.OnObjectDestroySound -= AudioShotDestroy;
             _spaceObjectsController.OnObjectHitEvent -= AudioShotHitsSource;
             _onButtonEnterProxy.OnButtonSelected -= AudioButtonSelected;
         }
@@ -62,7 +62,7 @@ namespace AsteroidS
 
         private void AudioShotHitsSource(string tag)
         {
-            if (tag == TagsHolder.Ship)
+            if (tag == TagOrName.Ship)
             {
                 _audioSourceHandler.PlayOneArmorHitsSource();
             }
@@ -74,7 +74,7 @@ namespace AsteroidS
 
         private void AudioShotDestroy(string tag)
         {
-            if (tag == TagsHolder.Ship)
+            if (tag == TagOrName.Ship)
             {
                 _audioSourceHandler.PlayOneShipExplosionSource();
             }

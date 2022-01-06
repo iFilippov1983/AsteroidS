@@ -9,7 +9,7 @@ namespace AsteroidS
     public class ShootingController : IInitialization, IFixedExecute, ICleanup
     {
         private PlayerData _playerData;
-        private Transform _player;
+        private Transform _playerGun;
         private AmmoSpawner _spawner;
         private AmmoDriver _ammoDriver;
         private Dictionary<AmmoType, Stack<Ammo>> _ammoPool;
@@ -29,8 +29,7 @@ namespace AsteroidS
         public ShootingController(GameData gameData, Transform player)
         {
             _playerData = gameData.PlayerData;
-            _playerData.SetDefaultAmmo();
-            _player = player;
+            _playerGun = player.transform.Find(TagOrName.Gun);
             _spawner = new AmmoSpawner(_playerData.AmmoPrefabsDictionary);
             _ammoDriver = new AmmoDriver();
         }
@@ -38,10 +37,10 @@ namespace AsteroidS
         public void Initialize()
         {
             
-            _reloadTime = _playerData.CurrentAmmo.Properties.reloadTime;
-            _shotDistance = _playerData.CurrentAmmo.Properties.shotDistance;
+            _reloadTime = _playerData.CurrentAmmo.Properties.ReloadTime;
+            _shotDistance = _playerData.CurrentAmmo.Properties.ShotDistance;
             _ammo = _playerData.CurrentAmmo;
-            _currentAmmoType = _ammo.Properties.ammoType;
+            _currentAmmoType = _ammo.Properties.AmmoType;
             _ammoPool = _spawner.MakeSpawnedAmmoDictionary();
 
             _mask = LayerMask.GetMask(MasksHolder.SpaceObject);
@@ -54,20 +53,8 @@ namespace AsteroidS
 
         public void FixedExecute()
         {
-
-            var hit = Physics2D.Raycast(_player.position, _player.up, _shotDistance, _mask);
-
             //temp
-            Debug.DrawRay(_player.position, _player.up * _shotDistance, Color.red);
-
-            if (hit && _ammoReloaded && _stackNotEmpty)
-            {
-                _ammoReloaded = false;
-
-                Shoot(_player);
-                OnShot?.Invoke();
-                _coroutineTimer = CoroutinesController.StartRoutine(FireRateTimer(_reloadTime));
-            }
+            Debug.DrawRay(_playerGun.position, _playerGun.up * _shotDistance, Color.red);
         }
 
         public void Cleanup()
@@ -83,16 +70,29 @@ namespace AsteroidS
             _playerData.OnAmmoSwitched -= SwitchAmmo;
         }
 
+        public void HandleShooting(float value)
+        {
+            if (value <= 0) return;
+            if (_ammoReloaded && _stackNotEmpty)
+            {
+                _ammoReloaded = false;
+
+                ShootPrimary(_playerGun);
+                OnShot?.Invoke();
+                _coroutineTimer = CoroutinesController.StartRoutine(FireRateTimer(_reloadTime));
+            }
+        }
+
         private void OnLifeTermination(Ammo ammo)
         {
-            var type = ammo.Properties.ammoType;
+            var type = ammo.Properties.AmmoType;
 
             _ammoDriver.Stop(ammo);
             _ammoPool[type].Push(ammo);
 
         }
 
-        private void Shoot(Transform transform)
+        private void ShootPrimary(Transform transform)
         {
             var ammo = _ammoPool[_currentAmmoType].Pop();
             _ammoDriver.Drive(ammo, transform);
@@ -129,7 +129,7 @@ namespace AsteroidS
         private void SwitchAmmo()
         {
             _ammo = _playerData.CurrentAmmo;
-            _currentAmmoType = _ammo.Properties.ammoType;
+            _currentAmmoType = _ammo.Properties.AmmoType;
         }
 
         IEnumerator FireRateTimer(float timeInSec)

@@ -6,7 +6,7 @@ namespace AsteroidS
     [CreateAssetMenu(menuName = "GameData/Properties/LevelPropeties", fileName = "Level_number_Properties")]
     public class GameLevelProperties : ScriptableObject
     {
-        private const string SpaceObjectsPrefabsPath = "SpaceObjectsPrefabs/";
+        private const string SpaceObjectsPrefabsFolderPath = "SpaceObjectsPrefabs/";
 
         [SerializeField] private string[] _spaceObjectsPrefabsPath;
         [Range(0, 1000)]
@@ -36,7 +36,7 @@ namespace AsteroidS
 
                 for (int index = 0; index < _childsPrefabsPath.Length; index++)
                 {
-                    _chidlsPrefabs[index] = Resources.Load<SpaceObject>(SpaceObjectsPrefabsPath + _childsPrefabsPath[index]);
+                    _chidlsPrefabs[index] = Resources.Load<SpaceObject>(SpaceObjectsPrefabsFolderPath + _childsPrefabsPath[index]);
                 }
             }
 
@@ -51,7 +51,7 @@ namespace AsteroidS
 
                 for (int index = 0; index < _spaceObjectsPrefabsPath.Length; index++)
                 {
-                    _spaceObjectsPrefabs[index] = Resources.Load<SpaceObject>(SpaceObjectsPrefabsPath + _spaceObjectsPrefabsPath[index]);
+                    _spaceObjectsPrefabs[index] = Resources.Load<SpaceObject>(SpaceObjectsPrefabsFolderPath + _spaceObjectsPrefabsPath[index]);
                 }
             }
 
@@ -65,7 +65,7 @@ namespace AsteroidS
 
             for (int prefabIndex = 0; prefabIndex < prefabsArray.Length; prefabIndex++)
             {
-                var type = prefabsArray[prefabIndex].Properties.type;
+                var type = prefabsArray[prefabIndex].Properties.Type;
                 dictionary[type] = prefabsArray[prefabIndex];
             }
 
