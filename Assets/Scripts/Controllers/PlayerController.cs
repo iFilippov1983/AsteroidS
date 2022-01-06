@@ -4,12 +4,15 @@ namespace AsteroidS
 {
     public class PlayerController : IInitialization, IFixedExecute, ICleanup
     {
-        private Rigidbody2D _rigidbodyToMove;
-        private PlayerMovement _movement;
+        private Rigidbody2D _playerRB;
+        private Transform _gunTransform;
+        private ShootingController _shooting;
+        private PlayerMover _movement;
         private KeysHandler _keysHandler;
 
         private IUserInputProxy _horizontalMovement;
         private IUserInputProxy _verticalMovement;
+        private IUserInputProxy _primaryFire;
         private IUserInputProxy _strafeMovement;
         private IUserInputProxy _switchInput;
         private IUserInputProxy _cancelInput;
@@ -17,6 +20,7 @@ namespace AsteroidS
 
         private float _horizontal;
         private float _vertical;
+        private float _firePrimary;
         private float _strafe;
         private float _switch;
         private float _cancel;
@@ -25,18 +29,23 @@ namespace AsteroidS
         private float _moveSpeed;
         private float _rotationSpeed;
 
-        public PlayerController(
+        public PlayerController
+            (
             GameData gameData,
             Transform player,
             InputInitializer inputInitializer,
-            GameStateController gameStateController)
+            GameStateController gameStateController
+            )
         {
-            _movement = new PlayerMovement();
+            _shooting = new ShootingController(gameData, player);
+            _movement = new PlayerMover();
             _keysHandler = new KeysHandler(gameData, gameStateController);
-            _rigidbodyToMove = player.GetComponent<Rigidbody2D>();
+            _playerRB = player.GetComponent<Rigidbody2D>();
+            _gunTransform = player.Find(TagOrName.Gun);
 
             _horizontalMovement = inputInitializer.GetInput().inputHorizontal;
             _verticalMovement = inputInitializer.GetInput().inputVertical;
+            _primaryFire = inputInitializer.GetInput().inputPrimaryFire;
             _strafeMovement = inputInitializer.GetInput().inputStrafe;
             _switchInput = inputInitializer.GetInput().inputSwitch;
             _cancelInput = inputInitializer.GetInput().inputCancel;
@@ -46,34 +55,46 @@ namespace AsteroidS
             _rotationSpeed = gameData.PlayerData.PlayerRotationSpeed;
         }
 
+        public ShootingController ShootingController => _shooting;
+
         public void Initialize()
         {
             _horizontalMovement.OnAxisChange += OnHorizontalAxisChange;
             _verticalMovement.OnAxisChange += OnVerticalAxisChange;
+            _primaryFire.OnAxisChange += OnPrimaryShot;
             _strafeMovement.OnAxisChange += OnStrafeButtonsPressed;
             _switchInput.OnAxisChange += OnSwitchButtonPressed;
             _cancelInput.OnAxisChange += OnEscapePressed;
             _numberInput.OnAxisChange += OnNumberButtonPressed;
+
+            _shooting.Initialize();
         }
 
         public void FixedExecute()
         {
-            _movement.Move(_vertical, _rigidbodyToMove, _moveSpeed);
-            _movement.Rotate(_horizontal, _rigidbodyToMove, _rotationSpeed);
-            _movement.Strafe(_strafe, _rigidbodyToMove, _moveSpeed);
+            _movement.Move(_vertical, _playerRB, _moveSpeed);
+            _movement.Rotate(_horizontal, _playerRB, _rotationSpeed);
+            _movement.Strafe(_strafe, _playerRB, _moveSpeed);
+            _movement.Aim(_gunTransform);
             _keysHandler.SwitchKeyPressed(_switch);
             _keysHandler.EscapeKeyPressed(_cancel);
             _keysHandler.NubmerPressed(ref _numberButton);
+
+            _shooting.HandleShooting(_firePrimary);
+            _shooting.FixedExecute();
         }
 
         public void Cleanup()
         {
             _horizontalMovement.OnAxisChange -= OnHorizontalAxisChange;
             _verticalMovement.OnAxisChange -= OnVerticalAxisChange;
+            _primaryFire.OnAxisChange -= OnPrimaryShot;
             _strafeMovement.OnAxisChange -= OnStrafeButtonsPressed;
             _switchInput.OnAxisChange -= OnSwitchButtonPressed;
             _cancelInput.OnAxisChange -= OnEscapePressed;
             _numberInput.OnAxisChange -= OnNumberButtonPressed;
+
+            _shooting.Cleanup();
         }
 
         private void OnVerticalAxisChange(float value)
@@ -84,6 +105,11 @@ namespace AsteroidS
         private void OnHorizontalAxisChange(float value)
         {
             _horizontal = value;
+        }
+
+        private void OnPrimaryShot(float value)
+        {
+            _firePrimary = value;
         }
 
         private void OnStrafeButtonsPressed(float value)

@@ -2,7 +2,7 @@
 
 namespace AsteroidS
 {
-    public class PlayerMovement
+    public class PlayerMover
     {
         private float _direction;
 
@@ -44,6 +44,29 @@ namespace AsteroidS
                 Vector2 vectorLEFT = -rigidbodyToStrafe.transform.right * moveSpeed;
                 rigidbodyToStrafe.AddForce(vectorLEFT);
             }
+        }
+
+        public void Aim(Transform gunTransform)
+        {
+            Vector3 mousePosition = GetMouseWorldPosition();
+
+            Vector3 aimDirection = (mousePosition - gunTransform.position).normalized;
+            float angle = -Mathf.Atan2(aimDirection.x, aimDirection.y) * Mathf.Rad2Deg;
+            gunTransform.eulerAngles = new Vector3(0, 0, angle);
+        }
+
+        //Get mouse position in World with Z = 0f
+        private Vector3 GetMouseWorldPosition()
+        {
+            Vector3 vector = GetMoseWorldPositionV3(Input.mousePosition, Camera.main);
+            vector.z = 0f;
+            return vector;
+        }
+
+        private Vector3 GetMoseWorldPositionV3(Vector3 screenPosition, Camera worldCamera)
+        {
+            Vector3 worldPosition = worldCamera.ScreenToWorldPoint(screenPosition);
+            return worldPosition;
         }
     }
 }

@@ -1,58 +1,29 @@
-﻿using UnityEngine;
-
-namespace AsteroidS
+﻿namespace AsteroidS
 {
     public class InputInitializer
     {
-        public IUserInputProxy _pcInputHorizontal;
-        public IUserInputProxy _pcInputVertical;
-        public IUserInputProxy _pcInputStrafe;
-        public IUserInputProxy _pcInputSwitch;
-        public IUserInputProxy _pcInputCancel;
-        public IUserInputProxy _pcInputNumbers;
+        private InputStructure _pcInputStructure;
 
         public InputInitializer()
         {
-            if (Application.platform == RuntimePlatform.Android)
-            {
-                _pcInputHorizontal = new MobileInput();
-                return;
-            }
-            _pcInputHorizontal = new PCInputHorizontal();
-            _pcInputVertical = new PCInputVertical();
-            _pcInputStrafe = new PCInputStrafe();
-            _pcInputSwitch = new PCInputSwitch();
-            _pcInputCancel = new PCInputCancel();
-            _pcInputNumbers = new PCInputNumbers();
+            //if (Application.platform == RuntimePlatform.Android)
+            //{
+            //    _pcInputHorizontal = new MobileInput();
+            //    return;
+            //}
+
+            _pcInputStructure.inputHorizontal = new PCInputHorizontal();
+            _pcInputStructure.inputVertical = new PCInputVertical();
+            _pcInputStructure.inputPrimaryFire = new PCInputPrimaryFire();
+            _pcInputStructure.inputStrafe = new PCInputStrafe();
+            _pcInputStructure.inputSwitch = new PCInputSwitch();
+            _pcInputStructure.inputCancel = new PCInputCancel();
+            _pcInputStructure.inputNumbers = new PCInputNumbers();
         }
 
-        public (
-            IUserInputProxy inputHorizontal, 
-            IUserInputProxy inputVertical,
-            IUserInputProxy inputStrafe,
-            IUserInputProxy inputSwitch,
-            IUserInputProxy inputCancel,
-            IUserInputProxy inputNumbers
-                )GetInput()
+        public InputStructure GetInput()
         {
-            (
-                IUserInputProxy inputHorizontal, 
-                IUserInputProxy inputVertical,
-                IUserInputProxy inpetStrafe,
-                IUserInputProxy inputSwitch,
-                IUserInputProxy inputCancel,
-                IUserInputProxy inputNumbers
-            ) 
-            result = 
-            (
-                _pcInputHorizontal, 
-                _pcInputVertical,
-                _pcInputStrafe,
-                _pcInputSwitch,
-                _pcInputCancel,
-                _pcInputNumbers
-            );
-
+            InputStructure result = _pcInputStructure;
             return result;
         }
     }

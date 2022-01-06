@@ -69,7 +69,7 @@ namespace AsteroidS
 
         private void ChangeStateToExit() 
         {
-            if (_exitButtonText.text == UIObjectNames.Exit)
+            if (_exitButtonText.text == UIObjectName.Exit)
             {
                 _gameStateController.ChangeGameState(GameState.Exit);
             }

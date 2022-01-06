@@ -93,15 +93,14 @@
     <Compile Include="Assets\Scripts\Data\Holder\MasksHolder.cs" />
     <Compile Include="Assets\Scripts\Data\Enum\SpaceObjectType.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\MainMenuView.cs" />
-    <Compile Include="Assets\Scripts\Data\Holder\UIObjectNames.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIControllers\DeathScreenController.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIControllers\SettingsStateController.cs" />
-    <Compile Include="Assets\Scripts\Data\Holder\TagsHolder.cs" />
+    <Compile Include="Assets\Scripts\Data\Holder\TagOrName.cs" />
     <Compile Include="Assets\Scripts\Controllers\KeysHandler.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\SettingMenuView.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Data\Holder\InputName.cs" />
-    <Compile Include="Assets\Scripts\Controllers\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\Controllers\PlayerMover.cs" />
     <Compile Include="Assets\Scripts\Interface\IController.cs" />
     <Compile Include="Assets\Scripts\Controllers\SpaceObject\SpaceObjectDriver.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIControllers\MenuManagmentController.cs" />
@@ -130,9 +129,9 @@
     <Compile Include="Assets\Scripts\Interface\IExecute.cs" />
     <Compile Include="Assets\Scripts\Data\Properties\SpaceObjectProperties.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIControllers\TimerController.cs" />
-    <Compile Include="Assets\Scripts\Data\Input\PCInputMouseX.cs" />
-    <Compile Include="Assets\Scripts\Data\Input\PCInputMouseY.cs" />
-    <Compile Include="Assets\Scripts\Data\Input\PCInputStructure.cs" />
+    <Compile Include="Assets\Scripts\Data\Holder\UIObjectName.cs" />
+    <Compile Include="Assets\Scripts\Data\Input\InputStructure.cs" />
+    <Compile Include="Assets\Scripts\Data\Input\PCInputPrimaryFire.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

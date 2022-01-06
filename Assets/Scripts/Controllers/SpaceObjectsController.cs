@@ -206,7 +206,7 @@ namespace AsteroidS
         {
             foreach (SpaceObject so in spaceObjects)
             {
-                Object.Destroy(so.gameObject);
+                if(so) Object.Destroy(so.gameObject);
             }
 
             spaceObjects = null;

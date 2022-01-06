@@ -59,7 +59,7 @@ namespace AsteroidS
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.tag == TagsHolder.Player)
+            if (collision.gameObject.tag == TagOrName.Player)
             {
                 OnPlayerHit?.Invoke();
             }

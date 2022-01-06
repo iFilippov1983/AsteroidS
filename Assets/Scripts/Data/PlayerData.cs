@@ -27,7 +27,7 @@ namespace AsteroidS
         public Dictionary<AmmoType,Ammo> AmmoPrefabsDictionary => MakeAmmoPrefabsDictionary();
         public float PlayerMovementSpeed => _moveSpeed;
         public float PlayerRotationSpeed => _rotationSpeed;
-        
+
         public Ammo CurrentAmmo
         {
             get
@@ -72,10 +72,9 @@ namespace AsteroidS
         {
             get
             {
-                if (_playerPrefab == null)
-                {
-                    _playerPrefab = Resources.Load<GameObject>(PlayerPrefabsFolderPath + _playerPrefabPath);
-                }
+                if (_playerPrefab == null) _playerPrefab = 
+                        Resources.Load<GameObject>(PlayerPrefabsFolderPath + _playerPrefabPath);
+
                 return _playerPrefab;
             }
         }

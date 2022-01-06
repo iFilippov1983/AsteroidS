@@ -34,7 +34,7 @@ namespace AsteroidS
         {
             if (_uiRoot is null)
             {
-                _uiRoot = new GameObject(UIObjectNames.UIRoot);
+                _uiRoot = new GameObject(UIObjectName.UIRoot);
                 _mainMenu = GetMainMenu();
                 _playerUI = GetPlayerUI();
                 _settingsMenu = GetSettingsMenu();

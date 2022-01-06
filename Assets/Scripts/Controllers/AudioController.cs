@@ -62,7 +62,7 @@ namespace AsteroidS
 
         private void AudioShotHitsSource(string tag)
         {
-            if (tag == TagsHolder.Ship)
+            if (tag == TagOrName.Ship)
             {
                 _audioSourceHandler.PlayOneArmorHitsSource();
             }
@@ -74,7 +74,7 @@ namespace AsteroidS
 
         private void AudioShotDestroy(string tag)
         {
-            if (tag == TagsHolder.Ship)
+            if (tag == TagOrName.Ship)
             {
                 _audioSourceHandler.PlayOneShipExplosionSource();
             }

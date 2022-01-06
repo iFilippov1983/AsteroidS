@@ -1,6 +1,6 @@
 namespace AsteroidS
 {
-    public static class UIObjectNames
+    public static class UIObjectName
     {
         public const string UIRoot = nameof(UIRoot);
         public const string Start = nameof(Start);
