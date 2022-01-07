@@ -6,7 +6,7 @@
         {
             var inputInitialiser = new InputInitializer();
             var playerInitializer = new PlayerInitializer(gameData);
-            var sceneInitializer = new SceneInitializer(gameData);
+            var sceneController = new SceneController(gameData, playerInitializer.Player);
             var uiInitialize = new UIInitializer(gameData);
             var uiComponentInitializer = new UIComponentInitializer(gameData, uiInitialize);
             var gameStateController = new GameStateController(uiInitialize, uiComponentInitializer);
@@ -17,7 +17,7 @@
             var timerController = new TimerController(gameData, uiComponentInitializer);
             var playerController = new PlayerController(gameData, playerInitializer.Player, inputInitialiser, gameStateController);
 
-            controllers.Add(sceneInitializer);
+            controllers.Add(sceneController);
             controllers.Add(uiComponentInitializer);
             controllers.Add(gameStateController);
             controllers.Add(menuManagmentController);

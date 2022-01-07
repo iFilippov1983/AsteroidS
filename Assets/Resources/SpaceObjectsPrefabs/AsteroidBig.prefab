@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8691047103285353371}
   - component: {fileID: 8691047103285353370}
   - component: {fileID: 8620990933213323889}
+  - component: {fileID: 5449588082183766268}
   m_Layer: 7
   m_Name: AsteroidBig
   m_TagString: Asteroid
@@ -134,11 +135,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a64dfc0b18de441b5b10b80f315541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sprites:
-  - {fileID: 21300000, guid: 284c4e20ae8ecf548be5063135811708, type: 3}
-  - {fileID: 21300000, guid: a78c8c8947dbc7f4aba8692075720d61, type: 3}
-  - {fileID: 21300000, guid: ebe43978098867d43867c4020f670e36, type: 3}
-  - {fileID: 21300000, guid: d4e2c588ca744cc499d51c078dd2fb7e, type: 3}
-  - {fileID: 21300000, guid: 40b8bae26ef14cc4a876ccc7658046c9, type: 3}
-  - {fileID: 21300000, guid: a3f5933ecb2c60a4e88977387c25b431, type: 3}
   _spaceObjectPropertiesPath: AsteroidBigProperties
+--- !u!111 &5449588082183766268
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8691047103285353369}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: d20d327c810bdd14e917907a02e3e3a2, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: d20d327c810bdd14e917907a02e3e3a2, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

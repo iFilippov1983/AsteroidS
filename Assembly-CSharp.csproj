@@ -56,6 +56,7 @@
     <Compile Include="Assets\Scripts\Interface\ICleanup.cs" />
     <Compile Include="Assets\Scripts\Data\Input\PCInputVertical.cs" />
     <Compile Include="Assets\Scripts\Data\UIData.cs" />
+    <Compile Include="Assets\Scripts\Data\Input\PCInputPrimaryFire.cs" />
     <Compile Include="Assets\Scripts\Data\Input\PCInputSwitch.cs" />
     <Compile Include="Assets\Scripts\Data\SoundData.cs" />
     <Compile Include="Assets\Scripts\Controllers\GameInitializer.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="Assets\Scripts\Controllers\UIControllers\UIInitializer.cs" />
     <Compile Include="Assets\Scripts\Controllers\PlayerInitializer.cs" />
     <Compile Include="Assets\Scripts\Data\Enum\GameState.cs" />
+    <Compile Include="Assets\Scripts\Data\Input\InputStructure.cs" />
     <Compile Include="Assets\Scripts\Interface\ILateExecute.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIControllers\DefaultStateController.cs" />
     <Compile Include="Assets\Scripts\Controllers\SpaceObject\SpaceObjectBuilder.cs" />
@@ -128,10 +130,10 @@
     <Compile Include="Assets\Scripts\Interface\IConfigure.cs" />
     <Compile Include="Assets\Scripts\Interface\IExecute.cs" />
     <Compile Include="Assets\Scripts\Data\Properties\SpaceObjectProperties.cs" />
-    <Compile Include="Assets\Scripts\Controllers\UIControllers\TimerController.cs" />
     <Compile Include="Assets\Scripts\Data\Holder\UIObjectName.cs" />
-    <Compile Include="Assets\Scripts\Data\Input\InputStructure.cs" />
-    <Compile Include="Assets\Scripts\Data\Input\PCInputPrimaryFire.cs" />
+    <Compile Include="Assets\Scripts\Controllers\UIControllers\TimerController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\CameraFollowController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\SceneController.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

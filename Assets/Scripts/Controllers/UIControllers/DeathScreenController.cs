@@ -63,7 +63,7 @@ namespace AsteroidS
 
         private void ResetGame()
         {
-            SceneManager.LoadScene(_sceneData.SceneName);
+            SceneManager.LoadScene(_sceneData.ThisSceneName);
         }
 
         private void ReturnToMenu()

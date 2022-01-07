@@ -80,7 +80,7 @@ namespace AsteroidS
             _keysHandler.EscapeKeyPressed(_cancel);
             _keysHandler.NubmerPressed(ref _numberButton);
 
-            _shooting.HandleShooting(_firePrimary);
+            _shooting.HandlePrimaryShooting(_firePrimary);
             _shooting.FixedExecute();
         }
 

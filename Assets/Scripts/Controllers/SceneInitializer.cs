@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using Object = UnityEngine.Object;
 
 namespace AsteroidS
 {
@@ -33,7 +32,7 @@ namespace AsteroidS
         private void SetCameraForBackground(Object obj)
         {
             var back = (Canvas)obj;
-            back.worldCamera = Object.FindObjectOfType<Camera>();
+            back.worldCamera = Camera.main;
         }
     }
 }

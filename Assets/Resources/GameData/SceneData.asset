@@ -12,6 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61f65afd2bfce8e4f8aa04949a8d8592, type: 3}
   m_Name: SceneData
   m_EditorClassIdentifier: 
+  _boundariesPrefabsPath: 
+  _cameraPrefabPath: 
+  _cameraMinSize: 4
+  _cameraMaxSize: 12
+  _backgroundPrefabPath: 
+  _backgroundPicturesPath: 
   _boundaries:
   - {fileID: 6040814774262870412, guid: 2f61ce264e96d014283eab4ebca4a5b6, type: 3}
   - {fileID: 1692356316781374178, guid: bec013ee37f83d34eade28c57ba28e3c, type: 3}

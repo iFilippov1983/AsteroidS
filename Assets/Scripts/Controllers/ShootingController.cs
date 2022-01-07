@@ -51,6 +51,7 @@ namespace AsteroidS
             _playerData.OnAmmoSwitched += SwitchAmmo;
         }
 
+        //temp
         public void FixedExecute()
         {
             //temp
@@ -70,7 +71,7 @@ namespace AsteroidS
             _playerData.OnAmmoSwitched -= SwitchAmmo;
         }
 
-        public void HandleShooting(float value)
+        public void HandlePrimaryShooting(float value)
         {
             if (value <= 0) return;
             if (_ammoReloaded && _stackNotEmpty)
