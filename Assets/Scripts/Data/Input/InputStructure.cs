@@ -9,5 +9,6 @@
         public IUserInputProxy inputSwitch;
         public IUserInputProxy inputCancel;
         public IUserInputProxy inputNumbers;
+        public IUserInputProxy inputAim;
     }
 }

@@ -13,9 +13,13 @@ namespace AsteroidS
         [SerializeField] 
         private string _timerMessage = "Time alive:";
 
-        [Header("UIRoot reference")]
+        [Header("Player UI for Windows")]
         [Tooltip("Drad&drop here UIRootView")] [SerializeField]
         private GameObject _playerUI;
+
+        [Header("Player UI for Android")]
+        [Tooltip("Drad&drop here UIRootView for Android")] [SerializeField]
+        private GameObject _playerUIAndroid;
 
         [Header("Menu objects")] 
         [Tooltip("Drag&drop here MainMenu object")] [SerializeField]
@@ -34,7 +38,19 @@ namespace AsteroidS
 
         public string ScoreMessage => _scoreMessage;
         public string TimerMessage => _timerMessage;
-        public GameObject PlayerUI => _playerUI;
+        
+        public GameObject PlayerUI
+        {
+            get
+            {
+#if UNITY_ANDROID
+                return _playerUIAndroid;
+#elif UNITY_STANDALONE
+                return _playerUI;
+#endif
+            }
+        }
+
         public GameObject MainMenu => _mainMenu;
         public GameObject SettingsMenu => _settingsMenu;
         public GameObject DeathScreen => _deathScreen;

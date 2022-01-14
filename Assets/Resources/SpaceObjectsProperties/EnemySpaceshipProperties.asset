@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5abace8c29ecc746a98433fe3b8bb3b, type: 3}
   m_Name: EnemySpaceshipProperties
   m_EditorClassIdentifier: 
-  _type: 5
+  _type: 2
+  _name: 3
   _scoresForDestruction: 2
-  _mass: 2
+  _massMin: 0
+  _massMax: 0
   _isPickable: 0
   _isBreakable: 0
   _isShooting: 0
@@ -25,7 +27,6 @@ MonoBehaviour:
   - ufoYellow
   hitPoints: 30
   armorPoints: 30
-  amountOnScene: 2
-  speed: 7
+  amountOnScene: 5
+  speed: 110
   maxLifeTime: 15
-  isChild: 0

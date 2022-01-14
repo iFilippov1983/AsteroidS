@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 507959051357465200}
   - component: {fileID: 5853498346575912465}
   - component: {fileID: -5019846699432843175}
+  - component: {fileID: -5944113675559653842}
   m_Layer: 7
   m_Name: AsteroidSmall
   m_TagString: Asteroid
@@ -134,9 +135,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a64dfc0b18de441b5b10b80f315541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sprites:
-  - {fileID: 21300000, guid: 5b70268a0659c2646949b6b27dc904ee, type: 3}
-  - {fileID: 21300000, guid: c8c17f61d49a0f645bd08a4053fb635d, type: 3}
-  - {fileID: 21300000, guid: e2f6593e7cf097b458231bdc56577ada, type: 3}
-  - {fileID: 21300000, guid: 8a4a25a2565d04f47b213525e19e80c2, type: 3}
   _spaceObjectPropertiesPath: AsteroidSmallProperties
+--- !u!111 &-5944113675559653842
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9207827501409667217}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: d20d327c810bdd14e917907a02e3e3a2, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: d20d327c810bdd14e917907a02e3e3a2, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

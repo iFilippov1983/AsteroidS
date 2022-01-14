@@ -34,19 +34,13 @@ namespace AsteroidS
 
         internal void DefaultState(GameState gameState, GameState previousState)
         {
-            if (previousState == GameState.Death)
-            {
-                _gameStateController.ChangeGameState(GameState.Start);
-            }
-            else
-            {
+            
                 Time.timeScale = 0;
                 _mainMenu.SetActive(true);
                 _settingsMenu.SetActive(false);
                 _playerUI.SetActive(false);
                 _deathScreen.SetActive(false);
                 SetButtons(gameState);
-            }
         }
 
         private void GetUIComponents()

@@ -48,7 +48,7 @@ namespace AsteroidS
 
         private void SetMenuBackground()
         {
-            var backgroundSprite = _sceneData.Background.GetComponentInChildren<Image>().sprite;
+            var backgroundSprite = _sceneData.CameraBackgroundCanvas.GetComponentInChildren<Image>().sprite;
             var mainMenuBackground = _mainMenuView.BackgroundImage;
             var settingsMenuBackground = _settingMenuView.BackgroundImage;
             var deathScreenBackground = _deathScreenView.BackgroundImage;

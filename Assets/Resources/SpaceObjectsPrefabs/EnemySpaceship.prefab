@@ -95,8 +95,6 @@ GameObject:
   - component: {fileID: 7882183644225758856}
   - component: {fileID: 2396804762356615999}
   - component: {fileID: 8939195867027018344}
-  - component: {fileID: -971812999392011806}
-  - component: {fileID: -3848570936607485588}
   m_Layer: 7
   m_Name: EnemySpaceship
   m_TagString: Ship
@@ -219,44 +217,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a64dfc0b18de441b5b10b80f315541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sprites:
-  - {fileID: 21300000, guid: af0b404eeb2389c41b48df648933e34e, type: 3}
-  - {fileID: 21300000, guid: 4d5f4a77cb91e6d47a3ebcced07f3236, type: 3}
-  - {fileID: 21300000, guid: 22338f7873dde714e847286a35a430b3, type: 3}
-  - {fileID: 21300000, guid: 664fe09823eda354aac2ca18a8d62881, type: 3}
   _spaceObjectPropertiesPath: EnemySpaceshipProperties
---- !u!95 &-971812999392011806
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6203241187076899511}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!111 &-3848570936607485588
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6203241187076899511}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations:
-  - {fileID: 7400000, guid: dba4778c8f8ed3045bde04a9184f4426, type: 2}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 1

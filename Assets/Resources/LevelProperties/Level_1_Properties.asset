@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _spaceObjectsPrefabsPath:
   - AsteroidMed
+  - AsteroidBig
   _levelDuration: 30
   _spawnRate: 1
-  _spawnDistanceMultiplier: 17
+  _spawnAmount: 1
+  _spawnDistanceMultiplier: 25
   _trajectoryVariance: 15
-  _childsPrefabsPath: []
-  _maxChildsAmount: 0
+  _splitSpawnOffset: 0.3

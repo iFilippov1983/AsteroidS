@@ -12,9 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5abace8c29ecc746a98433fe3b8bb3b, type: 3}
   m_Name: AsteroidSmallProperties
   m_EditorClassIdentifier: 
-  _type: 2
+  _type: 1
+  _name: 0
   _scoresForDestruction: 1
-  _mass: 1
+  _massMin: 0.5
+  _massMax: 0.5
   _isPickable: 0
   _isBreakable: 0
   _isShooting: 0
@@ -26,6 +28,5 @@ MonoBehaviour:
   hitPoints: 30
   armorPoints: 0
   amountOnScene: 6
-  speed: 8
-  maxLifeTime: 20
-  isChild: 0
+  speed: 120
+  maxLifeTime: 15

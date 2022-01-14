@@ -29,5 +29,5 @@ MonoBehaviour:
   - playerShip3_green
   - playerShip3_orange
   - playerShip3_red
-  _moveSpeed: 1.5
+  _moveSpeed: 1.8
   _rotationSpeed: 0.3
