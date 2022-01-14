@@ -97,6 +97,7 @@
     <Compile Include="Assets\Scripts\Data\Holder\MasksHolder.cs" />
     <Compile Include="Assets\Scripts\Data\Enum\SpaceObjectType.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\MainMenuView.cs" />
+    <Compile Include="Assets\Scripts\Data\Input\PCInputAim.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIControllers\DeathScreenController.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIControllers\SettingsStateController.cs" />
     <Compile Include="Assets\Scripts\Data\Holder\TagOrName.cs" />
@@ -118,6 +119,7 @@
     <Compile Include="Assets\Scripts\ExternalTools\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
     <Compile Include="Assets\Scripts\Data\Input\PCInputHorizontal.cs" />
     <Compile Include="Assets\Scripts\Interface\IUserInputProxy.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Scene\ParallaxBackgroundController.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIControllers\OnButtonEnterProxyController.cs" />
     <Compile Include="Assets\Scripts\Data\GameProgressData.cs" />
     <Compile Include="Assets\Scripts\Data\Input\MobileInputFactory.cs" />
@@ -137,8 +139,7 @@
     <Compile Include="Assets\Scripts\Data\Properties\SpaceObjectProperties.cs" />
     <Compile Include="Assets\Scripts\Data\Holder\UIObjectName.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIControllers\TimerController.cs" />
-    <Compile Include="Assets\Scripts\Data\Input\PCInputAim.cs" />
-    <Compile Include="Assets\Scripts\Controllers\Scene\ParallaxBackgroundController.cs" />
+    <Compile Include="Assets\Scripts\Data\Enum\SpaceObjectName.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -12,13 +12,14 @@ namespace AsteroidS
         [SerializeField] private string _spaceObjectPropertiesPath;
 
         private SpaceObjectProperties _spaceObjectProperties;
-        private float _lifeTimeCounter = 0;
         private int _hitPoints;
         private int _armorPoints;
+        private SpriteRenderer _spriteRenderer;
 
         public Sprite[] GetSprites => Properties.SpaceObjectSprites;
         public int HitPoints => _hitPoints;
         public int ArmorPoints => _armorPoints;
+        public float lifeTimeCounter = 0;
 
         public SpaceObjectProperties Properties
         {
@@ -36,6 +37,11 @@ namespace AsteroidS
         public Action<SpaceObject> OnSpaceObjectHit;
         public Action<SpaceObject> OnLifeTimeTermination;
         public Action OnPlayerHit;
+
+        private void Awake()
+        {
+            _spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+        }
 
         private void OnEnable()
         {
@@ -59,7 +65,7 @@ namespace AsteroidS
 
         private void OnCollisionEnter2D(Collision2D collision)
         {
-            if (collision.gameObject.tag == TagOrName.Player)
+            if (collision.gameObject.tag.Equals(TagOrName.Player))
             {
                 OnPlayerHit?.Invoke();
             }
@@ -72,21 +78,16 @@ namespace AsteroidS
 
         private void OnDisable()
         {
-            _lifeTimeCounter = 0;
-        }
-
-        private void OnDestroy()
-        {
-            if (Properties.isChild) Properties.isChild = false;
+            lifeTimeCounter = 0;
         }
 
         private void Live()
         {
-            _lifeTimeCounter += Time.deltaTime;
+            lifeTimeCounter += Time.deltaTime;
 
-            if (_lifeTimeCounter >= _spaceObjectProperties.maxLifeTime)
+            if (lifeTimeCounter >= _spaceObjectProperties.maxLifeTime && !_spriteRenderer.isVisible)
             {
-                _lifeTimeCounter = 0;
+                lifeTimeCounter = 0;
                 OnLifeTimeTermination?.Invoke(this);
             }
         }

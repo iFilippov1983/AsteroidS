@@ -8,8 +8,10 @@ namespace AsteroidS
         private const string SOSpritesFolderPath = "Sprites/SpaceObjects/";
 
         [SerializeField] private SpaceObjectType _type;
+        [SerializeField] private SpaceObjectName _name;
         [SerializeField] private int _scoresForDestruction;
-        [SerializeField] private float _mass;
+        [SerializeField] private float _massMin;
+        [SerializeField] private float _massMax;
 
         [SerializeField] private bool _isPickable;
         [SerializeField] private bool _isBreakable;
@@ -24,11 +26,11 @@ namespace AsteroidS
         public float speed;
         public float maxLifeTime;
 
-        public bool isChild;
-
         public SpaceObjectType Type => _type;
+        public SpaceObjectName Name => _name;
         public int ScoresForDestrustion => _scoresForDestruction;
-        public float Mass => _mass;
+        public float Mass => Random.Range(_massMin, _massMax);
+        public float MassMin => _massMin;
 
         public bool IsPickable => _isPickable;
         public bool IsBreakable => _isBreakable;
@@ -42,15 +44,6 @@ namespace AsteroidS
             {
                 if (armorPoints > 0) return true;
                 else return false;
-            }
-        }
-
-        public float ChildSpeedMiltiplyer
-        {
-            get
-            {
-                if (isChild) return Random.Range(1.2f, 2);
-                else return 1f;
             }
         }
 

@@ -18,8 +18,7 @@ MonoBehaviour:
   - EnemySpaceship
   _levelDuration: 30
   _spawnRate: 1
-  _spawnDistanceMultiplier: 17
+  _spawnAmount: 3
+  _spawnDistanceMultiplier: 25
   _trajectoryVariance: 15
-  _childsPrefabsPath:
-  - AsteroidSmall
-  _maxChildsAmount: 8
+  _splitSpawnOffset: 0.3

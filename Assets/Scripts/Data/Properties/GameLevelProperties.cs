@@ -12,36 +12,40 @@ namespace AsteroidS
         [Range(0, 1000)]
         [SerializeField] private float _levelDuration = 30f;
         [SerializeField] private float _spawnRate = 2.0f;
+        [SerializeField] private int _spawnAmount = 1;
         [SerializeField] private float _spawnDistanceMultiplier = 15.0f;
         [SerializeField] private float _trajectoryVariance = 15.0f;
-        [SerializeField] private string[] _childsPrefabsPath;
-        [SerializeField] private int _maxChildsAmount = 3;
+        [SerializeField] private float _splitSpawnOffset = 0.3f;
+        //[SerializeField] private string[] _childsPrefabsPath;
+        //[SerializeField] private int _maxChildsAmount = 3;
         private SpaceObject[] _spaceObjectsPrefabs = null;
-        private SpaceObject[] _chidlsPrefabs = null;
+        //private SpaceObject[] _chidlsPrefabs = null;
 
-        public Dictionary<SpaceObjectType, SpaceObject> SpaceObjectsPrefabsDictionary => MakePrefabsDictionary();
+        public Dictionary<SpaceObjectName, SpaceObject> SpaceObjectsPrefabsDictionary => MakePrefabsDictionary();
         public float LevelDuration => _levelDuration;
         public float SpawnRate => _spawnRate;
+        public int SpawnAmount => _spawnAmount;
         public float DistanceMultiplier => _spawnDistanceMultiplier;
         public float TrajectoryVariance => _trajectoryVariance;
-        public SpaceObject[] ChildsPrefabs => GetChildsPrefabs();
-        public int MaxChildsAmount => _maxChildsAmount;
+        public float SplitOffset => _splitSpawnOffset;
+        //public SpaceObject[] ChildsPrefabs => GetChildsPrefabs();
+        //public int MaxChildsAmount => _maxChildsAmount;
 
 
-        private SpaceObject[] GetChildsPrefabs()
-        {
-            if (_chidlsPrefabs == null || _chidlsPrefabs.Length == 0)
-            {
-                _chidlsPrefabs = new SpaceObject[_childsPrefabsPath.Length];
+        //private SpaceObject[] GetChildsPrefabs()
+        //{
+        //    if (_chidlsPrefabs == null || _chidlsPrefabs.Length == 0)
+        //    {
+        //        _chidlsPrefabs = new SpaceObject[_childsPrefabsPath.Length];
 
-                for (int index = 0; index < _childsPrefabsPath.Length; index++)
-                {
-                    _chidlsPrefabs[index] = Resources.Load<SpaceObject>(SpaceObjectsPrefabsFolderPath + _childsPrefabsPath[index]);
-                }
-            }
+        //        for (int index = 0; index < _childsPrefabsPath.Length; index++)
+        //        {
+        //            _chidlsPrefabs[index] = Resources.Load<SpaceObject>(SpaceObjectsPrefabsFolderPath + _childsPrefabsPath[index]);
+        //        }
+        //    }
 
-            return _chidlsPrefabs;
-        }
+        //    return _chidlsPrefabs;
+        //}
 
         private SpaceObject[] GetSpaceObjectsPrefabs()
         {
@@ -58,15 +62,15 @@ namespace AsteroidS
             return _spaceObjectsPrefabs;
         }
 
-        private Dictionary<SpaceObjectType, SpaceObject> MakePrefabsDictionary()
+        private Dictionary<SpaceObjectName, SpaceObject> MakePrefabsDictionary()
         {
-            var dictionary = new Dictionary<SpaceObjectType, SpaceObject>();
+            var dictionary = new Dictionary<SpaceObjectName, SpaceObject>();
             var prefabsArray = GetSpaceObjectsPrefabs();
 
             for (int prefabIndex = 0; prefabIndex < prefabsArray.Length; prefabIndex++)
             {
-                var type = prefabsArray[prefabIndex].Properties.Type;
-                dictionary[type] = prefabsArray[prefabIndex];
+                var name = prefabsArray[prefabIndex].Properties.Name;
+                dictionary[name] = prefabsArray[prefabIndex];
             }
 
             return dictionary;

@@ -11,15 +11,16 @@ namespace AsteroidS
         private GameProgressData _gameProgressData;
         private SpaceObjectsSpawner _spawner;
         private SpaceObjectDriver _objectDriver;
-        private Stack<SpaceObject> _soStack;
-        private Stack<SpaceObject> _childsStack;
-        private Stack<SpaceObject> _outdatedStack;
+
+        private Stack<SpaceObject> _soPassive;
+        private Stack<SpaceObject> _soOnScene;
+        //private Stack<SpaceObject> _outdatedStack;
         private GameLevelProperties _currentLevelProperties;
         private int _levelSpaceObjectsAmount;
         private float _spawnRate;
+        private int _spawnAmount;
         private float _timeCounter;
         private bool _levelTransition = false;
-        private int _maxChildsAmount;
 
         public bool LevelTransition { get => _levelTransition; set => _levelTransition = value; }
 
@@ -37,17 +38,9 @@ namespace AsteroidS
 
         public void Initialize()
         {
-            _levelTransition = false;
-            _currentLevelProperties = _gameProgressData.CurrentLevelProperties;
-            _spawnRate = _currentLevelProperties.SpawnRate;
-            _maxChildsAmount = _currentLevelProperties.MaxChildsAmount;
-
-            _soStack = _spawner.CreateUnactiveSpaceObjectsStack();
-            _levelSpaceObjectsAmount = _soStack.Count;
-
-            _childsStack = new Stack<SpaceObject>();
-
-            SubscribeOnAllSOEvents(_soStack);
+            _soOnScene = new Stack<SpaceObject>();
+            InitLevel();
+            foreach (SpaceObject s in _soPassive) _soOnScene.Push(s);
         }
 
         public void Execute(float deltaTime)
@@ -56,27 +49,44 @@ namespace AsteroidS
         }
 
         public void FixedExecute()
-        {
+        {   
             SpawnObjects();
             ReinitializeIfTransition();
         }
 
         public void Cleanup()
         {
-            UnsubscribeFromAllSOEvents(_soStack);
+            UnsubscribeFromAllSOEvents(_soPassive);
+        }
+
+        private void InitLevel()
+        {
+            _levelTransition = false;
+            _currentLevelProperties = _gameProgressData.CurrentLevelProperties;
+            _spawnRate = _currentLevelProperties.SpawnRate;
+            _spawnAmount = _currentLevelProperties.SpawnAmount;
+
+            _soPassive = _spawner.CreateUnactiveSpaceObjectsStack();
+            SubscribeOnAllSOEvents(_soPassive);
+
+            _levelSpaceObjectsAmount = _soPassive.Count;
         }
 
         private void SpawnObjects()
         {
-            if (_timeCounter >= _spawnRate && 
-                _soStack.Count != 0 && 
-                !_levelTransition)
+            if (_timeCounter >= _spawnRate && !_levelTransition)
             {
                 _timeCounter = 0;
 
-                var spaceObject = _soStack.Pop();
-                _spawner.Respawn(spaceObject);
-                _objectDriver.Drive(spaceObject);
+                for (int i = 0; i < _spawnAmount; i++)
+                {
+                    if (_soPassive.Count != 0)
+                    {
+                        var spaceObject = _soPassive.Pop();
+                        _spawner.Respawn(spaceObject);
+                        _objectDriver.Drive(spaceObject);
+                    }
+                }
             }
         }
 
@@ -84,41 +94,29 @@ namespace AsteroidS
         {
             if (_levelTransition)
             {
-                bool stackIsFull = (_soStack.Count == _levelSpaceObjectsAmount);
+                InitLevel();
+                ResetSceneSoStack();
+            }
+        }
 
-                if (stackIsFull)
+        private void ResetSceneSoStack()
+        {
+            foreach (SpaceObject so in _soOnScene)
+            {
+                if (so)
                 {
-                    _outdatedStack = _soStack;
-                    _currentLevelProperties = _gameProgressData.CurrentLevelProperties;
-                    _spawnRate = _currentLevelProperties.SpawnRate;
-                    _maxChildsAmount = _currentLevelProperties.MaxChildsAmount;
-
-                    _soStack = _spawner.CreateUnactiveSpaceObjectsStack();
-                    _levelSpaceObjectsAmount = _soStack.Count;
-
-                    SubscribeOnAllSOEvents(_soStack);
-
-                    UnsubscribeFromAllSOEvents(_outdatedStack);
-                    DestroyStack(_outdatedStack);
-
-                    if (_childsStack != null)
-                    {
-                        UnsubscribeFromAllSOEvents(_childsStack);
-                        DestroyStack(_childsStack);
-                    }
-
-                    _levelTransition = false;
+                    so.lifeTimeCounter = float.MaxValue;
+                    if (so.gameObject.GetComponent<Rigidbody2D>().velocity.Equals(Vector2.zero)) Object.Destroy(so.gameObject);
                 }
             }
+            foreach (SpaceObject s in _soPassive) _soOnScene.Push(s);
         }
 
         private void Hit(SpaceObject spaceObject)
         {
             if (spaceObject.HitPoints <= 0)
             {
-                if (spaceObject.Properties.IsBreakable) SpawnChildAsteroids(spaceObject.transform);
-
-                LifeTermination(spaceObject);
+                TerminateLifeOf(spaceObject);
 
                 OnObjectDestroyEvent?.Invoke(spaceObject);
                 OnObjectDestroySound?.Invoke(spaceObject.tag);
@@ -131,17 +129,8 @@ namespace AsteroidS
 
         private void LifeTermination(SpaceObject spaceObject)
         {
-            if (spaceObject.Properties.isChild)
-            {
-                UnsubscribeFromSOEnents(spaceObject);
-                Object.Destroy(spaceObject);
-            }
-            else
-            {
-                _objectDriver.Stop(spaceObject);
-                _soStack.Push(spaceObject);
-            }
-            
+            _objectDriver.Stop(spaceObject);
+            _soPassive.Push(spaceObject);
         }
 
         private void PlayerDestroy()
@@ -159,33 +148,42 @@ namespace AsteroidS
 
         private void UnsubscribeFromAllSOEvents(IEnumerable<SpaceObject> spaceObjects)
         {
-            //var liveObjects = Object.FindObjectsOfType(typeof(SpaceObject));
-
-            //foreach (SpaceObject so in liveObjects)
-            //{
-            //    UnsubscribeFromSOEnents(so);
-
-            //    Object.Destroy(so);
-            //}
-
             foreach (SpaceObject so in spaceObjects)
             {
                 UnsubscribeFromSOEnents(so);
             }
         }
 
-        private void SpawnChildAsteroids(Transform transform)
+        private void TerminateLifeOf(SpaceObject spaceObject)
         {
-            var childsAmount = Random.Range(1, _maxChildsAmount + 1);
-            var childs = _spawner.SpawnChilds(childsAmount, transform);
-
-            foreach (SpaceObject so in childs)
+            if (spaceObject.Properties.Type.Equals(SpaceObjectType.Asteroid))
             {
-                SubscribeOnSOEvents(so);
-                _objectDriver.Drive(so);
-                _childsStack.Push(so);
-            }
 
+                Rigidbody2D rb = spaceObject.gameObject.GetComponent<Rigidbody2D>();
+                float mass = rb.mass;
+                float minMass = spaceObject.Properties.MassMin;
+
+                if ((mass * 0.5f) >= minMass)
+                {
+                    var childs = _spawner.SpawnSplit(spaceObject);
+                    foreach (SpaceObject c in childs)
+                    {
+                        SubscribeOnSOEvents(c);
+                        _soOnScene.Push(c);
+                        _objectDriver.Redrive(c, rb.velocity);
+                    }
+
+                    LifeTermination(spaceObject);
+                }
+                else if (mass < minMass)
+                {
+                    UnsubscribeFromSOEnents(spaceObject);
+                    Object.Destroy(spaceObject.gameObject);
+                    Debug.Log("Hit");
+                }
+                else LifeTermination(spaceObject);
+            }
+            else LifeTermination(spaceObject);
         }
 
         private void SubscribeOnSOEvents(SpaceObject spaceObject)
@@ -208,8 +206,6 @@ namespace AsteroidS
             {
                 if(so) Object.Destroy(so.gameObject);
             }
-
-            spaceObjects = null;
         }
     }
 }

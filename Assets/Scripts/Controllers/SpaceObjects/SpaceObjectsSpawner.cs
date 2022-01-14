@@ -8,36 +8,35 @@ namespace AsteroidS
     {
         private GameProgressData _gameProgressData;
         private SpaceObjectBuilder _builder;
-        private Dictionary<SpaceObjectType, SpaceObject> _spaceObjects;
+        private Dictionary<SpaceObjectName, SpaceObject> _spaceObjects;
         private float _spawnDistanceMultiplier;
         private float _trajectoryVariance;
-        private SpaceObject[] _childsPrefabs;
+        private float _splitSpawnOffset;
 
         public SpaceObjectsSpawner(GameData gameData)
         {
             _builder = new SpaceObjectBuilder();
 
             _gameProgressData = gameData.GameProgressData;
-            _spawnDistanceMultiplier = gameData.GameProgressData.CurrentLevelProperties.DistanceMultiplier;
-            _trajectoryVariance = gameData.GameProgressData.CurrentLevelProperties.TrajectoryVariance;
+            _spawnDistanceMultiplier = _gameProgressData.CurrentLevelProperties.DistanceMultiplier;
+            _trajectoryVariance = _gameProgressData.CurrentLevelProperties.TrajectoryVariance;
+            _splitSpawnOffset = _gameProgressData.CurrentLevelProperties.SplitOffset;
         }
 
         public Stack<SpaceObject> CreateUnactiveSpaceObjectsStack()
         {
             _spaceObjects = _gameProgressData.CurrentLevelProperties.SpaceObjectsPrefabsDictionary;
-            _childsPrefabs = _gameProgressData.CurrentLevelProperties.ChildsPrefabs;
 
             var stack = new Stack<SpaceObject>();
 
-            foreach(SpaceObjectType t in _spaceObjects.Keys)
+            foreach(SpaceObjectName t in _spaceObjects.Keys)
             {
-                var spaceObjectType = t;
-                var prefab = _spaceObjects[spaceObjectType];
+                var prefab = _spaceObjects[t];
                 var amount = prefab.Properties.amountOnScene;
 
                 for (int index = 0; index < amount ; index++)
                 {
-                    var obj = SpawnUnactive(spaceObjectType);
+                    var obj = SpawnUnactive(t);
                     stack.Push(obj);
                 }
             }
@@ -54,40 +53,42 @@ namespace AsteroidS
             return spaceObject;
         }
 
-        public SpaceObject[] SpawnChilds(int amount, Transform transform)
+        public SpaceObject[] SpawnSplit(SpaceObject spaceObject)
         {
+            int amount = 2;
             var childs = new SpaceObject[amount];
-            var prefab = _childsPrefabs[Random.Range(0, _childsPrefabs.Length)];
+            float mass = spaceObject.gameObject.GetComponent<Rigidbody2D>().mass;
 
             for (int index = 0; index < amount; index++)
             {
+                Vector2 position = spaceObject.transform.position;
+                position += Random.insideUnitCircle * _splitSpawnOffset;
+
                 var soChild = _builder
-                    .MakeInstance(prefab)
-                    .SetPosition(transform.position)
+                    .MakeInstance(spaceObject, mass / amount)
+                    .SetPosition(position)
                     .SetRotation(CalculetaRandomRotation())
-                    .SetRandomObjectView(prefab.GetSprites)
-                    .SetActivityState(false)
                     .Build();
 
-                soChild.Properties.isChild = true;
-
+                soChild.gameObject.SetActive(true);
                 childs[index] = soChild;
             }
 
             return childs;
         }
 
-        private SpaceObject SpawnUnactive(SpaceObjectType type)
+        private SpaceObject SpawnUnactive(SpaceObjectName name)
         {
-            var prefab = _spaceObjects[type];
+            var prefab = _spaceObjects[name];
 
             var spaceObject = _builder
                                 .MakeInstance(prefab)
                                 .SetPosition(CalculateRandomPosition())
                                 .SetRotation(CalculetaRandomRotation())
                                 .SetRandomObjectView(prefab.GetSprites)
-                                .SetActivityState(false)
                                 .Build();
+
+            spaceObject.gameObject.SetActive(false);
 
             return spaceObject;
         }
@@ -95,7 +96,8 @@ namespace AsteroidS
         private Vector3 CalculateRandomPosition()
         {
             Vector3 spawnDirection = Random.insideUnitCircle.normalized * _spawnDistanceMultiplier;
-            Vector3 spawnPoint = Vector3.zero + spawnDirection;
+            Vector3 spawnPoint = Camera.main.transform.position + spawnDirection;
+            spawnPoint.z = 0f;
 
             return spawnPoint;
         }
