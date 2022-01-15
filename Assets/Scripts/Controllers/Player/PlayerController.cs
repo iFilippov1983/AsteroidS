@@ -99,7 +99,6 @@ namespace AsteroidS
             _cancelInput.OnAxisChange -= OnEscapePressed;
             _numberInput.OnAxisChange -= OnNumberButtonPressed;
             _aimInput.OnAxisChange += OnAiming;
-
             _shooting.Cleanup();
         }
 

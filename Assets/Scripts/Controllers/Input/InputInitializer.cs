@@ -2,10 +2,11 @@
 {
     public sealed class InputInitializer
     {
-        private InputStructure _inputStructure;
-
+        private readonly InputStructure _inputStructure;
+        
         public InputInitializer()
         {
+#if UNITY_STANDALONE
             _inputStructure.inputHorizontal = new PCInputHorizontal();
             _inputStructure.inputVertical = new PCInputVertical();
             _inputStructure.inputPrimaryFire = new PCInputPrimaryFire();
@@ -14,6 +15,10 @@
             _inputStructure.inputCancel = new PCInputCancel();
             _inputStructure.inputNumbers = new PCInputNumbers();
             _inputStructure.inputAim = new PCInputAim();
+#elif UNITY_ANDROID
+            _inputStructure.inputHorizontal = new AndroidMovementInputHorizontal();
+            _inputStructure.inputVertical = new AndroidMovementInputVertical();
+#endif
         }
 
         public InputStructure GetInput()
