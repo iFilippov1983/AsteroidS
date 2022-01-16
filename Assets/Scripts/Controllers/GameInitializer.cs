@@ -12,19 +12,28 @@
             var gameStateController = new GameStateController(uiInitialize, uiComponentInitializer);
             var menuManagementController = new MenuManagementController(gameData, uiComponentInitializer, gameStateController);
             var onButtonEnterProxy = new OnButtonEnterProxyController(uiComponentInitializer);
+#if UNITY_ANDROID
             var androidPlayerUIController =
                 new AndroidPLayerUIController(uiComponentInitializer, gameStateController, gameData);
+#endif
             var spaceObjectsController = new SpaceObjectsController(gameData);
             var scoreCountController = new ScoreCountController(gameData, uiComponentInitializer);
             var timerController = new TimerController(gameData, uiComponentInitializer);
-            var playerController = new PlayerController(gameData, playerInitializer.Player, inputInitializer, gameStateController, androidPlayerUIController);
-
+            
+#if UNITY_STANDALONE
+            
+            var playerController = new PlayerController(gameData, playerInitializer.Player, inputInitializer, gameStateController);
+#elif UNITY_ANDROID
+var playerController = new PlayerController(gameData, playerInitializer.Player, inputInitializer, gameStateController, androidPlayerUIController);
+#endif
             controllers.Add(sceneController);
             controllers.Add(uiComponentInitializer);
             controllers.Add(gameStateController);
             controllers.Add(menuManagementController);
             controllers.Add(onButtonEnterProxy);
-            controllers.Add(androidPlayerUIController);
+#if UNITY_ANDROID
+            controllers.Add(androidPlayerUIController);      
+#endif
             controllers.Add(spaceObjectsController);
             controllers.Add(scoreCountController);
             controllers.Add(timerController);

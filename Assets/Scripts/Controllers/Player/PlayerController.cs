@@ -9,8 +9,9 @@ namespace AsteroidS
         private readonly ShootingController _shooting;
         private readonly PlayerMover _movement;
         private readonly KeysHandler _keysHandler;
+#if UNITY_ANDROID
         private readonly AndroidPLayerUIController _androidPlayerUIContorller;
-
+#endif
         private IUserInputProxy _horizontalMovement;
         private IUserInputProxy _verticalMovement;
         private IUserInputProxy _primaryFire;
@@ -37,8 +38,10 @@ namespace AsteroidS
             GameData gameData,
             Transform player,
             InputInitializer inputInitializer,
-            GameStateController gameStateController,
-            AndroidPLayerUIController androidPLayerUiController
+            GameStateController gameStateController
+#if UNITY_ANDROID
+            , AndroidPLayerUIController androidPLayerUiController
+#endif
             )
         {
             _shooting = new ShootingController(gameData, player);

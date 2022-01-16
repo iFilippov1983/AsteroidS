@@ -1,5 +1,6 @@
 ﻿namespace AsteroidS
 {
+#if UNITY_ANDROID
     public sealed class AndroidInputProxy
     {
         private FloatingJoystick _movementJoystick;
@@ -25,4 +26,5 @@
             _androidFireInput = new AndroidFireInput(_targetingJoystick);
         }
     }
+#endif
 }

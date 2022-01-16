@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 namespace AsteroidS
 {
+#if UNITY_ANDROID
     public class AndroidPLayerUIController: IInitialization, ICleanup
     {
         private const float AmmoNumber = 1;
@@ -18,9 +19,11 @@ namespace AsteroidS
         {
             _gameStateController = gameStateController;
             _playerData = gameData.PlayerData;
+
             _pauseButton = uiComponentInitializer.PlayerUIView.PauseButton;
             _switchAmmoButton = uiComponentInitializer.PlayerUIView.SwitchAmmoButton;
-        }
+
+            }
 
         public void Initialize()
         {
@@ -44,4 +47,5 @@ namespace AsteroidS
             OnAmmoSwitch?.Invoke(AmmoNumber);
         }
     }
+#endif
 }
