@@ -143,6 +143,7 @@
      <Compile Include="Assets\Scripts\Controllers\UIControllers\MenuManagementController.cs" />
      <Compile Include="Assets\Scripts\Data\Input\AndroidInput\AndroidInputAim.cs" />
      <Compile Include="Assets\Scripts\Data\Input\AndroidFireInput.cs" />
+     <Compile Include="Assets\Scripts\Controllers\UIControllers\AndroidPLayerUIController.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

@@ -20,16 +20,11 @@ public sealed class FloatingJoystick : Joystick
         FingerOnTheScreen(eventData);
     }
 
-    private void FingerOnTheScreen(PointerEventData eventData)
-    {
-        var fingerOnscreen = background.gameObject.activeInHierarchy;
-        _screenTapped = fingerOnscreen ? 1 : 0;
-    }
-
     public override void OnPointerUp(PointerEventData eventData)
     {
         background.gameObject.SetActive(false);
         base.OnPointerUp(eventData);
+        FingerOnTheScreen(eventData);
     }
 
     internal override float GetHorizontal()
@@ -48,5 +43,11 @@ public sealed class FloatingJoystick : Joystick
     {
         var direction = this.Direction;
         return direction;
+    }
+
+    private void FingerOnTheScreen(PointerEventData eventData)
+    {
+        var fingerOnscreen = background.gameObject.activeInHierarchy;
+        _screenTapped = fingerOnscreen ? 1 : 0;
     }
 }
