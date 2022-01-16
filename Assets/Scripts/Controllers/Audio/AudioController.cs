@@ -13,7 +13,7 @@ namespace AsteroidS
         private readonly OnButtonEnterProxyController _onButtonEnterProxy;
         private SpaceObjectsController _spaceObjectsController;
 
-        public AudioController(GameData gameData, MenuManagmentController menuManagementsController, ShootingController shootingController, SpaceObjectsController spaceObjectsController, OnButtonEnterProxyController onButtonEnterProxy)
+        public AudioController(GameData gameData, MenuManagementController menuManagementsController, ShootingController shootingController, SpaceObjectsController spaceObjectsController, OnButtonEnterProxyController onButtonEnterProxy)
         {
             _audioSourceHandler = new AudioSourceHandler(gameData);
             _audioMixer = gameData.SoundData.AudioMixer;

@@ -29,12 +29,11 @@ namespace AsteroidS
             _settingsMenu = uiInitializer.SettingsMenu;
             _playerUI = uiInitializer.PlayerUI;
             _deathScreen = uiInitializer.DeathScreen;
-            
+            GetUIComponents();
         }
 
         public void Initialize()
         {
-            GetUIComponents();
             SetMenuBackground();
         }
 

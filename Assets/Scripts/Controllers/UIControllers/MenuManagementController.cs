@@ -1,6 +1,6 @@
 ﻿namespace AsteroidS
 {
-    public sealed class MenuManagmentController:IInitialization, ICleanup
+    public sealed class MenuManagementController:IInitialization, ICleanup
     {
         private readonly MainMenuController _mainMenuController;
         private readonly SettingsMenuController _settingsMenuController;
@@ -9,7 +9,7 @@
 
         public SettingsMenuController SettingsMenuController => _settingsMenuController;
 
-        public MenuManagmentController(GameData gameData, UIComponentInitializer uIComponentInitializer, GameStateController gameStateController) 
+        public MenuManagementController(GameData gameData, UIComponentInitializer uIComponentInitializer, GameStateController gameStateController) 
         {
             _mainMenuController = new MainMenuController(uIComponentInitializer, gameStateController);
             _settingsMenuController = new SettingsMenuController(uIComponentInitializer, gameStateController);
