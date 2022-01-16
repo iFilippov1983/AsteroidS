@@ -25,6 +25,7 @@
         
         public void Execute(float deltaTime)
         {
+#if UNITY_STANDALONE
             _horizontal.GetAxis();
             _vertical.GetAxis();
             _primaryFire.GetAxis();
@@ -33,6 +34,12 @@
             _cancel.GetAxis();
             _numberPressed.GetAxis();
             _aim.GetAxis();
+#elif UNITY_ANDROID
+            _horizontal.GetAxis();
+            _vertical.GetAxis();
+            _primaryFire.GetAxis();
+            _aim.GetAxis();
+#endif
         }
     }
 }

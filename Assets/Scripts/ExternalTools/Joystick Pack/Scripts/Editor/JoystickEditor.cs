@@ -1,7 +1,9 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(MovementJoystick), true)]
+[CustomEditor(typeof(Joystick), true)]
 public class JoystickEditor : Editor
 {
     private SerializedProperty handleRange;

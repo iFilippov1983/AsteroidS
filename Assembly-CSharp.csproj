@@ -52,13 +52,6 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Data\Enum\AxisOptions.cs" />
-     <Compile Include="Assets\Scripts\Data\Input\AndroidInput\AndroidMovementInputHorizontal.cs" />
-     <Compile Include="Assets\Scripts\Data\Input\AndroidInput\AndroidMovementInputVertical.cs" />
-     <Compile Include="Assets\Scripts\Data\Input\AndroidInput\AndroidTargetingInputHorizontal.cs" />
-     <Compile Include="Assets\Scripts\Data\Input\AndroidInput\AndroidTargetingInputVertical.cs" />
-     <Compile Include="Assets\Scripts\ExternalTools\Joystick Pack\Scripts\Base\TargetJoystick.cs" />
-     <Compile Include="Assets\Scripts\ExternalTools\Joystick Pack\Scripts\Joysticks\FloatingTargetJoystick.cs" />
      <Compile Include="Assets\Scripts\Interface\ICleanup.cs" />
      <Compile Include="Assets\Scripts\Data\Input\PCInputVertical.cs" />
      <Compile Include="Assets\Scripts\Data\Enum\SpaceObjectName.cs" />
@@ -67,7 +60,6 @@
      <Compile Include="Assets\Scripts\Data\Input\PCInputSwitch.cs" />
      <Compile Include="Assets\Scripts\Data\SoundData.cs" />
      <Compile Include="Assets\Scripts\Controllers\GameInitializer.cs" />
-     <Compile Include="Assets\Scripts\ExternalTools\Joystick Pack\Scripts\Base\MovementJoystick.cs" />
      <Compile Include="Assets\Scripts\Controllers\UIControllers\ExitStateController.cs" />
      <Compile Include="Assets\Scripts\Data\Input\MobileInput.cs" />
      <Compile Include="Assets\Scripts\Controllers\UIControllers\UIInitializer.cs" />
@@ -115,14 +107,12 @@
      <Compile Include="Assets\Scripts\Controllers\Scene\SceneController.cs" />
      <Compile Include="Assets\Scripts\Interface\IController.cs" />
      <Compile Include="Assets\Scripts\Controllers\SpaceObjects\SpaceObjectDriver.cs" />
-     <Compile Include="Assets\Scripts\Controllers\UIControllers\MenuManagmentController.cs" />
      <Compile Include="Assets\Scripts\MonoBehaviour\UIView\PlayerUIView.cs" />
      <Compile Include="Assets\Scripts\Data\Input\PCInputCancel.cs" />
      <Compile Include="Assets\Scripts\Controllers\Audio\AudioController.cs" />
      <Compile Include="Assets\Scripts\Data\SceneData.cs" />
      <Compile Include="Assets\Scripts\Interface\IFixedExecute.cs" />
      <Compile Include="Assets\Scripts\Controllers\Player\AmmoSpawner.cs" />
-     <Compile Include="Assets\Scripts\ExternalTools\Joystick Pack\Scripts\Joysticks\FloatingMovementJoystick.cs" />
      <Compile Include="Assets\Scripts\Data\Input\PCInputHorizontal.cs" />
      <Compile Include="Assets\Scripts\Interface\IUserInputProxy.cs" />
      <Compile Include="Assets\Scripts\Controllers\Scene\ParallaxBackgroundController.cs" />
@@ -145,6 +135,14 @@
      <Compile Include="Assets\Scripts\Data\Properties\SpaceObjectProperties.cs" />
      <Compile Include="Assets\Scripts\Data\Holder\UIObjectName.cs" />
      <Compile Include="Assets\Scripts\Controllers\UIControllers\TimerController.cs" />
+     <Compile Include="Assets\Scripts\ExternalTools\Joystick Pack\Scripts\Joysticks\FloatingJoystick.cs" />
+     <Compile Include="Assets\Scripts\ExternalTools\Joystick Pack\Scripts\Base\Joystick.cs" />
+     <Compile Include="Assets\Scripts\Data\Input\AndroidInput\AndroidInputVertical.cs" />
+     <Compile Include="Assets\Scripts\Data\Input\AndroidInput\AndroidInputProxy.cs" />
+     <Compile Include="Assets\Scripts\Data\Input\AndroidInput\AndroidInputHorizontal.cs" />
+     <Compile Include="Assets\Scripts\Controllers\UIControllers\MenuManagementController.cs" />
+     <Compile Include="Assets\Scripts\Data\Input\AndroidInput\AndroidInputAim.cs" />
+     <Compile Include="Assets\Scripts\Data\Input\AndroidFireInput.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -791,6 +789,8 @@
  <Reference Include="Unity.Mathematics">
  <HintPath>F:/repository/AsteroidS/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
  </Reference>
+  </ItemGroup>
+  <ItemGroup>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

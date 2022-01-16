@@ -3,8 +3,8 @@
     public sealed class InputInitializer
     {
         private readonly InputStructure _inputStructure;
-        
-        public InputInitializer()
+
+        public InputInitializer(UIComponentInitializer uiComponentInitializer)
         {
 #if UNITY_STANDALONE
             _inputStructure.inputHorizontal = new PCInputHorizontal();
@@ -16,8 +16,11 @@
             _inputStructure.inputNumbers = new PCInputNumbers();
             _inputStructure.inputAim = new PCInputAim();
 #elif UNITY_ANDROID
-            _inputStructure.inputHorizontal = new AndroidMovementInputHorizontal();
-            _inputStructure.inputVertical = new AndroidMovementInputVertical();
+            var androidInputProxy = new AndroidInputProxy(uiComponentInitializer);
+            _inputStructure.inputHorizontal = androidInputProxy.AndroidMovementInputHorizontal;
+            _inputStructure.inputVertical = androidInputProxy.AndroidMovementInputVertical;
+            _inputStructure.inputAim = androidInputProxy.AndroidInputAim;
+            _inputStructure.inputPrimaryFire = androidInputProxy.AndroidFireInput;
 #endif
         }
 

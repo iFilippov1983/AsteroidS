@@ -44,7 +44,7 @@ namespace AsteroidS
             _keysHandler = new KeysHandler(gameData, gameStateController);
             _playerRB = player.GetComponent<Rigidbody2D>();
             _gunTransform = player.Find(TagOrName.Gun);
-
+#if UNITY_STANDALONE
             _horizontalMovement = inputInitializer.GetInput().inputHorizontal;
             _verticalMovement = inputInitializer.GetInput().inputVertical;
             _primaryFire = inputInitializer.GetInput().inputPrimaryFire;
@@ -53,7 +53,12 @@ namespace AsteroidS
             _cancelInput = inputInitializer.GetInput().inputCancel;
             _numberInput = inputInitializer.GetInput().inputNumbers;
             _aimInput = inputInitializer.GetInput().inputAim;
-
+#elif UNITY_ANDROID
+            _horizontalMovement = inputInitializer.GetInput().inputHorizontal;
+            _verticalMovement = inputInitializer.GetInput().inputVertical;
+            _primaryFire = inputInitializer.GetInput().inputPrimaryFire;
+            _aimInput = inputInitializer.GetInput().inputAim;
+#endif
             _moveSpeed = gameData.PlayerData.PlayerMovementSpeed;
             _rotationSpeed = gameData.PlayerData.PlayerRotationSpeed;
         }
@@ -62,6 +67,7 @@ namespace AsteroidS
 
         public void Initialize()
         {
+#if UNITY_STANDALONE
             _horizontalMovement.OnAxisChange += OnHorizontalAxisChange;
             _verticalMovement.OnAxisChange += OnVerticalAxisChange;
             _primaryFire.OnAxisChange += OnPrimaryShot;
@@ -72,6 +78,13 @@ namespace AsteroidS
             _aimInput.OnAxisChange += OnAiming;
 
             _shooting.Initialize();
+#elif UNITY_ANDROID
+            _horizontalMovement.OnAxisChange += OnHorizontalAxisChange;
+            _verticalMovement.OnAxisChange += OnVerticalAxisChange;
+            _aimInput.OnAxisChange += OnAiming;
+            _primaryFire.OnAxisChange += OnPrimaryShot;
+            _shooting.Initialize();
+#endif
         }
 
         public void FixedExecute()
@@ -91,6 +104,7 @@ namespace AsteroidS
 
         public void Cleanup()
         {
+#if UNITY_STANDALONE
             _horizontalMovement.OnAxisChange -= OnHorizontalAxisChange;
             _verticalMovement.OnAxisChange -= OnVerticalAxisChange;
             _primaryFire.OnAxisChange -= OnPrimaryShot;
@@ -100,6 +114,13 @@ namespace AsteroidS
             _numberInput.OnAxisChange -= OnNumberButtonPressed;
             _aimInput.OnAxisChange += OnAiming;
             _shooting.Cleanup();
+#elif UNITY_ANDROID
+            _horizontalMovement.OnAxisChange -= OnHorizontalAxisChange;
+            _verticalMovement.OnAxisChange -= OnVerticalAxisChange;
+            _aimInput.OnAxisChange += OnAiming;
+            _primaryFire.OnAxisChange -= OnPrimaryShot;
+            _shooting.Cleanup();
+#endif
         }
 
         private void OnVerticalAxisChange(float value)
