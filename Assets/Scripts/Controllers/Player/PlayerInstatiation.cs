@@ -3,13 +3,13 @@ using Object = UnityEngine.Object;
 
 namespace AsteroidS
 {
-    public sealed class PlayerInitializer
+    public sealed class PlayerInstatiation
     {
         private readonly GameObject _player;
 
         public Transform Player => _player.transform;
 
-        public PlayerInitializer(GameData gameData)
+        public PlayerInstatiation(GameData gameData)
         {
             var playerPrefab = gameData.PlayerData.PlayerPrefab;
             _player = Object.Instantiate(playerPrefab);

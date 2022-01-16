@@ -1,17 +1,17 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace AsteroidS
 {
-    public sealed class SceneInitializer : IInitialization
+    public sealed class BackgroundInitializer : IInitialization
     {
         private GameData _gameData;
         private Canvas _cameraBackgroundCanvas;
         private Transform _parallaxBackground;
 
-        public SceneInitializer(GameData gameData)
+        public BackgroundInitializer(GameData gameData)
         {
             _gameData = gameData;
+            Object.Instantiate(gameData.SceneData.Camera);
         }
 
         public Transform ParallaxBackground => _parallaxBackground.transform;
@@ -24,11 +24,9 @@ namespace AsteroidS
         private void InitScene(GameData gameData)
         {
             var sceneData = gameData.SceneData;
-            Object.Instantiate(sceneData.Camera);
             _parallaxBackground = Object.Instantiate(sceneData.ParallaxBackground);
             _cameraBackgroundCanvas = Object.Instantiate(sceneData.CameraBackgroundCanvas);
             _cameraBackgroundCanvas.worldCamera = Camera.main;
-            
         }
     }
 }

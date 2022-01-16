@@ -7,11 +7,12 @@ namespace AsteroidS
     {
         [SerializeField] private GameData _gameData;
         private ControllersProxy _controllers;
-
+        private GameInitializer _gameInitializer;
         private void Awake()
         {
             _controllers = new ControllersProxy();
-            new GameInitializer(_controllers, _gameData);
+            _gameInitializer = new GameInitializer(_controllers, _gameData);
+            _gameInitializer.LateInit();
             _controllers.Configure();
 
             //temp

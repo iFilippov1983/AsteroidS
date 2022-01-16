@@ -5,7 +5,7 @@ namespace AsteroidS
     public sealed class SceneController : IInitialization, IExecute, IFixedExecute, ILateExecute
     {
         private SceneData _sceneData;
-        private SceneInitializer _sceneInitializer;
+        private BackgroundInitializer _backgroundInitializer;
         private CameraFollowController _cameraFollowController;
         private ParallaxBackgroundController _parallaxController;
         private Transform _transformToFollow;
@@ -19,13 +19,13 @@ namespace AsteroidS
         {
             _sceneData = gameData.SceneData;
             _transformToFollow = transformToFollow;
-            _sceneInitializer = new SceneInitializer(gameData);
+            _backgroundInitializer = new BackgroundInitializer(gameData);
             _cameraFollowController = new CameraFollowController();
         }
 
         public void Initialize()
         {
-            _sceneInitializer.Initialize();
+            _backgroundInitializer.Initialize();
             _cameraSizeDefault = Camera.main.orthographicSize;
             _zoom = _cameraSizeDefault;
             _cameraSizeMin = _sceneData.CameraMinSize;
@@ -33,7 +33,7 @@ namespace AsteroidS
 
             _cameraFollowController.Setup(() => _transformToFollow.position, () => _zoom, Camera.main);
             _parallaxController = new ParallaxBackgroundController(
-                _sceneInitializer.ParallaxBackground, _sceneData.ParallaxEffectMultiplier);
+                _backgroundInitializer.ParallaxBackground, _sceneData.ParallaxEffectMultiplier);
             _parallaxController.Initialize();
         }
 

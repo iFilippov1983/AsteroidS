@@ -88,7 +88,7 @@ namespace AsteroidS
             _verticalMovement.OnAxisChange += OnVerticalAxisChange;
             _aimInput.OnAxisChange += OnAiming;
             _primaryFire.OnAxisChange += OnPrimaryShot;
-            _androidPlayerUIContorller.OnAmmoSwitch += OnSwitchButtonPressed;
+            _androidPlayerUIController.OnAmmoSwitch += OnSwitchButtonPressed;
             _shooting.Initialize();
 #endif
         }
@@ -125,7 +125,7 @@ namespace AsteroidS
             _verticalMovement.OnAxisChange -= OnVerticalAxisChange;
             _aimInput.OnAxisChange += OnAiming;
             _primaryFire.OnAxisChange -= OnPrimaryShot;
-            _androidPlayerUIContorller.OnAmmoSwitch -= OnSwitchButtonPressed;
+            _androidPlayerUIController.OnAmmoSwitch -= OnSwitchButtonPressed;
             _shooting.Cleanup();
 #endif
         }
