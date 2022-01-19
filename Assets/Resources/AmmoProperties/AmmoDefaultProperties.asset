@@ -17,5 +17,6 @@ MonoBehaviour:
   _damage: 30
   _reloadTime: 1
   _shotDistance: 10
+  _gunAngleOfView: 90
   _speedRate: 15
   _timeMultiplyer: 1

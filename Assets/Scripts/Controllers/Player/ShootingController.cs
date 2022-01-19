@@ -2,17 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CustomUtilities;
 using Object = UnityEngine.Object;
 
 namespace AsteroidS
 {
-    public sealed class ShootingController : IInitialization, IFixedExecute, ICleanup
+    public sealed class ShootingController : IInitialization, IFixedExecute, IExecute, ILateExecute, ICleanup
     {
         private PlayerData _playerData;
         private Transform _playerGun;
+        private Transform _player;
         private AmmoSpawner _spawner;
         private AmmoDriver _ammoDriver;
         private Dictionary<AmmoType, Stack<Ammo>> _ammoPool;
+        private FieldOfViewHandler _fovHandler;
+        private Mesh _fovMesh;
 
         private float _reloadTime;
         private float _shotDistance;
@@ -21,30 +25,30 @@ namespace AsteroidS
         private bool _ammoReloaded = true;
         private Coroutine _coroutineTimer;
 
-        private LayerMask _mask;
         private bool _stackNotEmpty;
 
         public event Action OnShot;
 
         public ShootingController(GameData gameData, Transform player)
         {
+            _player = player;
             _playerData = gameData.PlayerData;
             _playerGun = player.transform.Find(TagOrName.Gun);
+
             _spawner = new AmmoSpawner(_playerData.AmmoPrefabsDictionary);
             _ammoDriver = new AmmoDriver();
         }
 
         public void Initialize()
         {
-            
             _reloadTime = _playerData.CurrentAmmo.Properties.ReloadTime;
             _shotDistance = _playerData.CurrentAmmo.Properties.ShotDistance;
             _ammo = _playerData.CurrentAmmo;
             _currentAmmoType = _ammo.Properties.AmmoType;
             _ammoPool = _spawner.MakeSpawnedAmmoDictionary();
-
-            _mask = LayerMask.GetMask(MasksHolder.SpaceObject);
             _stackNotEmpty = (_ammoPool[_currentAmmoType].Count != 0);
+            _fovMesh = _ammo.transform.Find(TagOrName.FoV).GetComponent<Mesh>();
+            _fovHandler = new FieldOfViewHandler(_fovMesh, _shotDistance, _ammo.Properties.FieldOfView);
 
             SubscribeToEvents(_ammoPool);
 
@@ -56,6 +60,20 @@ namespace AsteroidS
         {
             //temp
             Debug.DrawRay(_playerGun.position, _playerGun.up * _shotDistance, Color.red);
+        }
+
+        public void Execute(float deltatime)
+        {
+            Vector3 position = Utilities.GetMouseWorldPosition();
+            Vector3 aimDir = (position - _player.position).normalized;
+
+            _fovHandler.SetAimDerection(aimDir);
+            _fovHandler.SetOrigin(_playerGun.position);
+        }
+
+        public void LateExecute()
+        {
+            _fovHandler.LateExecute();
         }
 
         public void Cleanup()
@@ -90,7 +108,6 @@ namespace AsteroidS
 
             _ammoDriver.Stop(ammo);
             _ammoPool[type].Push(ammo);
-
         }
 
         private void ShootPrimary(Transform transform)
@@ -131,6 +148,8 @@ namespace AsteroidS
         {
             _ammo = _playerData.CurrentAmmo;
             _currentAmmoType = _ammo.Properties.AmmoType;
+            _fovMesh = _ammo.gameObject.GetComponentInChildren<Mesh>();
+            _fovHandler.ReInitialize(_fovMesh, _ammo.Properties.ShotDistance, _ammo.Properties.FieldOfView);
         }
 
         IEnumerator FireRateTimer(float timeInSec)

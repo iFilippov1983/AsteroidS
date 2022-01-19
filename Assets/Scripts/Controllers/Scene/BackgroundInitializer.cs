@@ -18,10 +18,10 @@ namespace AsteroidS
 
         public void Initialize()
         {
-            InitScene(_gameData);
+            InitBackground(_gameData);
         }
 
-        private void InitScene(GameData gameData)
+        private void InitBackground(GameData gameData)
         {
             var sceneData = gameData.SceneData;
             _parallaxBackground = Object.Instantiate(sceneData.ParallaxBackground);

@@ -105,7 +105,6 @@ namespace AsteroidS
 
             _shooting.HandlePrimaryShooting(_firePrimary);
             _shooting.FixedExecute();
-
         }
 
         public void Cleanup()

@@ -19,6 +19,7 @@ namespace AsteroidS
         public Sprite[] GetSprites => Properties.SpaceObjectSprites;
         public int HitPoints => _hitPoints;
         public int ArmorPoints => _armorPoints;
+        [HideInInspector]
         public float lifeTimeCounter = 0;
 
         public SpaceObjectProperties Properties

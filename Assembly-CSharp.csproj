@@ -73,6 +73,7 @@
     <Compile Include="Assets\Scripts\Controllers\UIControllers\DefaultStateController.cs" />
     <Compile Include="Assets\Scripts\Controllers\SpaceObjects\SpaceObjectBuilder.cs" />
     <Compile Include="Assets\Scripts\Controllers\SpaceObjects\SpaceObjectsSpawner.cs" />
+    <Compile Include="Assets\Scripts\Controllers\SceneInitializer.cs" />
     <Compile Include="Assets\Scripts\Interface\IInitialization.cs" />
     <Compile Include="Assets\Scripts\Controllers\ControllersProxy.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviour\Ammo.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Assets\Scripts\Controllers\Audio\AudioSourceHandler.cs" />
     <Compile Include="Assets\Scripts\Data\Input\PCInputStrafe.cs" />
     <Compile Include="Assets\Scripts\Controllers\Input\InputInitializer.cs" />
+    <Compile Include="Assets\Scripts\CustomTools\Utilities.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIControllers\SettingsMenuController.cs" />
     <Compile Include="Assets\Scripts\Controllers\CoroutinesController.cs" />
     <Compile Include="Assets\Scripts\Controllers\Input\InputController.cs" />
@@ -96,20 +98,24 @@
     <Compile Include="Assets\Scripts\Controllers\UIControllers\ScoreCountController.cs" />
     <Compile Include="Assets\Scripts\Controllers\Player\AmmoDriver.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIControllers\MainMenuController.cs" />
-    <Compile Include="Assets\Scripts\Data\Holder\MasksHolder.cs" />
+    <Compile Include="Assets\Scripts\Controllers\GameProcessInitializer.cs" />
+    <Compile Include="Assets\Scripts\Data\Hanlers\MasksHolder.cs" />
     <Compile Include="Assets\Scripts\Data\Enum\SpaceObjectType.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\MainMenuView.cs" />
     <Compile Include="Assets\Scripts\Data\Input\PCInputAim.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIControllers\DeathScreenController.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviour\FieldOfView.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIControllers\SettingsStateController.cs" />
-    <Compile Include="Assets\Scripts\Data\Holder\TagOrName.cs" />
+    <Compile Include="Assets\Scripts\CustomTools\FunctionUpdater.cs" />
+    <Compile Include="Assets\Scripts\Data\Hanlers\TagOrName.cs" />
     <Compile Include="Assets\Scripts\Controllers\Input\KeysHandler.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\SettingMenuView.cs" />
     <Compile Include="Assets\Scripts\Controllers\Player\PlayerController.cs" />
-    <Compile Include="Assets\Scripts\Data\Holder\InputName.cs" />
+    <Compile Include="Assets\Scripts\Data\Hanlers\InputName.cs" />
     <Compile Include="Assets\Scripts\Controllers\Player\PlayerMover.cs" />
     <Compile Include="Assets\Scripts\Controllers\Scene\SceneController.cs" />
     <Compile Include="Assets\Scripts\Data\Input\AndroidInput\AndroidInputProxy.cs" />
+    <Compile Include="Assets\Scripts\CustomTools\FunctionTimer.cs" />
     <Compile Include="Assets\Scripts\Interface\IController.cs" />
     <Compile Include="Assets\Scripts\Controllers\SpaceObjects\SpaceObjectDriver.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\PlayerUIView.cs" />
@@ -143,10 +149,11 @@
     <Compile Include="Assets\Scripts\Interface\IExecute.cs" />
     <Compile Include="Assets\Scripts\Controllers\Scene\CameraFollowController.cs" />
     <Compile Include="Assets\Scripts\Data\Properties\SpaceObjectProperties.cs" />
-    <Compile Include="Assets\Scripts\Data\Holder\UIObjectName.cs" />
+    <Compile Include="Assets\Scripts\Data\Hanlers\UIObjectName.cs" />
+    <Compile Include="Assets\Scripts\CustomTools\FunctionPeriodic.cs" />
     <Compile Include="Assets\Scripts\Controllers\UIControllers\TimerController.cs" />
-    <Compile Include="Assets\Scripts\Controllers\SceneInitializer.cs" />
-    <Compile Include="Assets\Scripts\Controllers\GameProcessInitializer.cs" />
+    <Compile Include="Assets\Scripts\MonoBehaviour\Player.cs" />
+    <Compile Include="Assets\Scripts\Data\Hanlers\FieldOfViewHandler.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />

@@ -14,9 +14,7 @@ namespace AsteroidS
 
         private Stack<SpaceObject> _soPassive;
         private Stack<SpaceObject> _soOnScene;
-        //private Stack<SpaceObject> _outdatedStack;
         private GameLevelProperties _currentLevelProperties;
-        private int _levelSpaceObjectsAmount;
         private float _spawnRate;
         private int _spawnAmount;
         private float _timeCounter;
@@ -68,8 +66,6 @@ namespace AsteroidS
 
             _soPassive = _spawner.CreateUnactiveSpaceObjectsStack();
             SubscribeOnAllSOEvents(_soPassive);
-
-            _levelSpaceObjectsAmount = _soPassive.Count;
         }
 
         private void SpawnObjects()
@@ -106,7 +102,8 @@ namespace AsteroidS
                 if (so)
                 {
                     so.lifeTimeCounter = float.MaxValue;
-                    if (so.gameObject.GetComponent<Rigidbody2D>().velocity.Equals(Vector2.zero)) Object.Destroy(so.gameObject);
+                    if (so.gameObject.GetComponent<Rigidbody2D>().velocity.Equals(Vector2.zero)) 
+                        Object.Destroy(so.gameObject);
                 }
             }
             foreach (SpaceObject s in _soPassive) _soOnScene.Push(s);
@@ -158,30 +155,34 @@ namespace AsteroidS
         {
             if (spaceObject.Properties.Type.Equals(SpaceObjectType.Asteroid))
             {
+                SplitIfBig(spaceObject);
+            }
+            else LifeTermination(spaceObject);
+        }
 
-                Rigidbody2D rb = spaceObject.gameObject.GetComponent<Rigidbody2D>();
-                float mass = rb.mass;
-                float minMass = spaceObject.Properties.MassMin;
+        private void SplitIfBig(SpaceObject spaceObject)
+        {
+            Rigidbody2D rb = spaceObject.gameObject.GetComponent<Rigidbody2D>();
+            float mass = rb.mass;
+            float minMass = spaceObject.Properties.MassMin;
 
-                if ((mass * 0.5f) >= minMass)
+            if ((mass * 0.5f) > minMass)
+            {
+                var childs = _spawner.SpawnSplit(spaceObject);
+                foreach (SpaceObject c in childs)
                 {
-                    var childs = _spawner.SpawnSplit(spaceObject);
-                    foreach (SpaceObject c in childs)
-                    {
-                        SubscribeOnSOEvents(c);
-                        _soOnScene.Push(c);
-                        _objectDriver.Redrive(c, rb.velocity);
-                    }
+                    SubscribeOnSOEvents(c);
+                    _soOnScene.Push(c);
+                    _objectDriver.Redrive(c, rb.velocity);
+                }
 
-                    LifeTermination(spaceObject);
-                }
-                else if (mass < minMass)
-                {
-                    UnsubscribeFromSOEnents(spaceObject);
-                    Object.Destroy(spaceObject.gameObject);
-                    Debug.Log("Hit");
-                }
-                else LifeTermination(spaceObject);
+                LifeTermination(spaceObject);
+            }
+            else if (mass < minMass)
+            {
+                UnsubscribeFromSOEnents(spaceObject);
+                Object.Destroy(spaceObject.gameObject);
+                Debug.Log("Hit");
             }
             else LifeTermination(spaceObject);
         }

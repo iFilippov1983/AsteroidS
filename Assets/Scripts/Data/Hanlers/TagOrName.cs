@@ -9,5 +9,6 @@
         public const string Ship = "Ship";
         public const string Asteroid = "Asteroid";
         public const string Gun = "Gun";
+        public const string FoV = "FoV";
     }
 }

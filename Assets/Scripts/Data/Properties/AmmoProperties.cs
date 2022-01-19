@@ -13,8 +13,9 @@ namespace AsteroidS
         [SerializeField, Range(1f, 30f)]
                          private float _reloadTime;
         [SerializeField] private float _shotDistance;
+        [SerializeField] private float _gunAngleOfView;
         [SerializeField] private float _speedRate;
-        [SerializeField, Range(1, int.MaxValue), Header("Time multiplier for different lifetime counters")]
+        [SerializeField, Range(1, int.MaxValue), Header("(Temp) Time multiplier for different ammo lifetime counters")]
                          private int _timeMultiplyer;
 
         private Sprite _ammoSprite;
@@ -32,6 +33,7 @@ namespace AsteroidS
         public int Damage => _damage;
         public float ReloadTime => _reloadTime;
         public float ShotDistance => _shotDistance;
+        public float FieldOfView => _gunAngleOfView;
         public float SpeedRate => _speedRate;
         public float AmmoAmount => _shotDistance / _speedRate + 1;
         public float LifeTime => _shotDistance / _speedRate * _timeMultiplyer;

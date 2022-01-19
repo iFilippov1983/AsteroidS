@@ -18,7 +18,7 @@ MonoBehaviour:
   _massMin: 0.5
   _massMax: 2
   _isPickable: 0
-  _isBreakable: 0
+  _isBreakable: 1
   _isShooting: 0
   _soSpritesPath:
   - meteorBrown_big1
