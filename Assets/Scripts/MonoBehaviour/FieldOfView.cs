@@ -77,7 +77,7 @@ namespace AsteroidS
 
         public void SetAimDerection(Vector3 direction)
         {
-            _startingAngle = Utilities.GetAngleFromVectorFloat(direction) + _fov / 2;
+            _startingAngle = Utilities.GetAngleFromVectorFloat(direction) + _fov / 2f;
         }
 
         public void SetFoV(float fov)

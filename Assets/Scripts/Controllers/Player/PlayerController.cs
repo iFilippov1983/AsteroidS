@@ -2,7 +2,7 @@
 
 namespace AsteroidS
 {
-    public sealed class PlayerController : IInitialization, IFixedExecute, ICleanup
+    public sealed class PlayerController : IInitialization, IFixedExecute, IExecute, ILateExecute,  ICleanup
     {
         private readonly Rigidbody2D _playerRB;
         private readonly Transform _gunTransform;
@@ -105,6 +105,16 @@ namespace AsteroidS
 
             _shooting.HandlePrimaryShooting(_firePrimary);
             _shooting.FixedExecute();
+        }
+
+        public void Execute(float deltatime)
+        {
+            _shooting.Execute();
+        }
+
+        public void LateExecute()
+        {
+            _shooting.LateExecute();
         }
 
         public void Cleanup()

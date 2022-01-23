@@ -7,7 +7,7 @@ using Object = UnityEngine.Object;
 
 namespace AsteroidS
 {
-    public sealed class ShootingController : IInitialization, IFixedExecute, IExecute, ILateExecute, ICleanup
+    public sealed class ShootingController : IInitialization, IFixedExecute, ILateExecute, ICleanup
     {
         private PlayerData _playerData;
         private Transform _playerGun;
@@ -16,7 +16,7 @@ namespace AsteroidS
         private AmmoDriver _ammoDriver;
         private Dictionary<AmmoType, Stack<Ammo>> _ammoPool;
         private FieldOfViewHandler _fovHandler;
-        private Mesh _fovMesh;
+        private MeshFilter _fovMeshFilter;
 
         private float _reloadTime;
         private float _shotDistance;
@@ -33,7 +33,7 @@ namespace AsteroidS
         {
             _player = player;
             _playerData = gameData.PlayerData;
-            _playerGun = player.transform.Find(TagOrName.Gun);
+            
 
             _spawner = new AmmoSpawner(_playerData.AmmoPrefabsDictionary);
             _ammoDriver = new AmmoDriver();
@@ -47,8 +47,9 @@ namespace AsteroidS
             _currentAmmoType = _ammo.Properties.AmmoType;
             _ammoPool = _spawner.MakeSpawnedAmmoDictionary();
             _stackNotEmpty = (_ammoPool[_currentAmmoType].Count != 0);
-            _fovMesh = _ammo.transform.Find(TagOrName.FoV).GetComponent<Mesh>();
-            _fovHandler = new FieldOfViewHandler(_fovMesh, _shotDistance, _ammo.Properties.FieldOfView);
+            _playerGun = _player.Find(TagOrName.Gun);
+            _fovMeshFilter = _playerGun.Find(TagOrName.FoV).GetComponent<MeshFilter>();
+            _fovHandler = new FieldOfViewHandler(_fovMeshFilter, _shotDistance, _ammo.Properties.FieldOfView);
 
             SubscribeToEvents(_ammoPool);
 
@@ -62,7 +63,7 @@ namespace AsteroidS
             Debug.DrawRay(_playerGun.position, _playerGun.up * _shotDistance, Color.red);
         }
 
-        public void Execute(float deltatime)
+        public void Execute()
         {
             Vector3 position = Utilities.GetMouseWorldPosition();
             Vector3 aimDir = (position - _player.position).normalized;
@@ -148,8 +149,7 @@ namespace AsteroidS
         {
             _ammo = _playerData.CurrentAmmo;
             _currentAmmoType = _ammo.Properties.AmmoType;
-            _fovMesh = _ammo.gameObject.GetComponentInChildren<Mesh>();
-            _fovHandler.ReInitialize(_fovMesh, _ammo.Properties.ShotDistance, _ammo.Properties.FieldOfView);
+            _fovHandler.ReInitialize(_fovMeshFilter, _ammo.Properties.ShotDistance, _ammo.Properties.FieldOfView);
         }
 
         IEnumerator FireRateTimer(float timeInSec)

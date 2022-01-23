@@ -15,18 +15,20 @@ namespace AsteroidS
         public float _startingAngle;
         private float _angleIncrease;
 
-        public FieldOfViewHandler(Mesh mesh, float viewDistance, float viewAngle)
+        public FieldOfViewHandler(MeshFilter filter, float viewDistance, float viewAngle)
         {
-            _mesh = mesh;
+            _mesh = new Mesh();
+            filter.mesh = _mesh;
             _fov = viewAngle;
             _viewDistance = viewDistance;
             _origin = Vector3.zero;
             _angleIncrease = _fov / _rayCount;
         }
 
-        public void ReInitialize(Mesh mesh, float viewDistance, float viewAngle)
+        public void ReInitialize(MeshFilter filter, float viewDistance, float viewAngle)
         {
-            _mesh = mesh;
+            _mesh = new Mesh(); 
+            filter.mesh = _mesh;
             _fov = viewAngle;
             _viewDistance = viewDistance;
             _angleIncrease = _fov / _rayCount;
@@ -38,11 +40,6 @@ namespace AsteroidS
         public void LateExecute()
         {
             CalculateMesh();
-        }
-
-        public void SetLayerMask(LayerMask layerMask)
-        {
-            _layerMask = layerMask;
         }
 
         public void SetOrigin(Vector3 origin)
@@ -63,6 +60,11 @@ namespace AsteroidS
         public void SetViewDistance(float distance)
         {
             _viewDistance = distance;
+        }
+
+        public void SetLayerMask(LayerMask layerMask)
+        {
+            _layerMask = layerMask;
         }
 
         private void CalculateMesh()
