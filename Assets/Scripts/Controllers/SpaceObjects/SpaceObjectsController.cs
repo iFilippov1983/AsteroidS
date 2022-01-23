@@ -76,12 +76,9 @@ namespace AsteroidS
 
                 for (int i = 0; i < _spawnAmount; i++)
                 {
-                    if (_soPassive.Count != 0)
-                    {
-                        var spaceObject = _soPassive.Pop();
-                        _spawner.Respawn(spaceObject);
-                        _objectDriver.Drive(spaceObject);
-                    }
+                    var spaceObject = _soPassive.Pop();
+                    _spawner.Respawn(spaceObject);
+                    _objectDriver.Drive(spaceObject);
                 }
             }
         }
