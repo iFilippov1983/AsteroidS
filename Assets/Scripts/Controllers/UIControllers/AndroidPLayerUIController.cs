@@ -4,21 +4,19 @@ using UnityEngine.UI;
 namespace AsteroidS
 {
 #if UNITY_ANDROID
-    public class AndroidPLayerUIController: IInitialization, ICleanup
+    public class AndroidPlayerUIController: IInitialization, ICleanup
     {
         private const float AmmoNumber = 1;
         private readonly GameStateController _gameStateController;
-        private readonly PlayerData _playerData;
         private readonly Button _pauseButton;
         private readonly Button _switchAmmoButton;
 
         public event Action<float> OnAmmoSwitch;
 
-        public AndroidPLayerUIController(UIComponentInitializer uiComponentInitializer,
-            GameStateController gameStateController, GameData gameData)
+        public AndroidPlayerUIController(UIComponentInitializer uiComponentInitializer,
+            GameStateController gameStateController)
         {
             _gameStateController = gameStateController;
-            _playerData = gameData.PlayerData;
 
             _pauseButton = uiComponentInitializer.PlayerUIView.PauseButton;
             _switchAmmoButton = uiComponentInitializer.PlayerUIView.SwitchAmmoButton;

@@ -2,15 +2,16 @@
 {
     public class GameInitializer
     {
-        private SceneInitializer _sceneInitializer;
-        private GameProcessInitializer _gameProcessInitializer;
+        private readonly SceneInitializer _sceneInitializer;
+        private readonly GameProcessInitializer _gameProcessInitializer;
 
         public GameInitializer(ControllersProxy controllers, GameData gameData)
         {
             _sceneInitializer = new SceneInitializer(controllers, gameData);
             _gameProcessInitializer = new GameProcessInitializer(controllers, gameData);
 
-#region Old version
+            #region Old version
+
             //var uiInitialize = new UIInitializer(gameData);
             //var uiComponentInitializer = new UIComponentInitializer(gameData, uiInitialize);
             //var playerInstance = new PlayerInstatiation(gameData);
@@ -26,9 +27,9 @@
             //var spaceObjectsController = new SpaceObjectsController(gameData);
             //var scoreCountController = new ScoreCountController(gameData, uiComponentInitializer);
             //var timerController = new TimerController(gameData, uiComponentInitializer);
-            
+
 //#if UNITY_STANDALONE
-            
+
 //            var playerController = new PlayerController(gameData, playerInstance.Player, inputInitializer, gameStateController);
 //#elif UNITY_ANDROID
 //var playerController = new PlayerController(gameData, playerInitializer.Player, inputInitializer, gameStateController, androidPlayerUIController);
@@ -49,7 +50,8 @@
             //controllers.Add(new InputController(inputInitializer));
             //controllers.Add(new GameProgressController(gameData, spaceObjectsController, scoreCountController, gameStateController));
             //controllers.Add(new AudioController(gameData, menuManagementController, playerController.ShootingController, spaceObjectsController, onButtonEnterProxy));
-#endregion
+
+            #endregion
 
         }
 
@@ -58,18 +60,18 @@
         {
             _gameProcessInitializer.LateInit
                 (
-                _sceneInitializer.uiComponentInitializer,
-                _sceneInitializer.gameStateController
+                _sceneInitializer.UIComponentInitializer,
+                _sceneInitializer.GameStateController
 #if UNITY_ANDROID
-                , _sceneInitializer.androidPLayerUiController
+                , _sceneInitializer.AndroidPlayerUIController
 #endif
                 );
 
             _sceneInitializer.LateInit
                 (
-                _gameProcessInitializer.playerInstance.Player,
-                _gameProcessInitializer.playerController,
-                _gameProcessInitializer.spaceObjectsController
+                _gameProcessInitializer.PlayerInstance.Player,
+                _gameProcessInitializer.PlayerController,
+                _gameProcessInitializer.SpaceObjectsController
                 );
         }
     }

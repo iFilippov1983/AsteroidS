@@ -10,7 +10,7 @@ namespace AsteroidS
         private readonly PlayerMover _movement;
         private readonly KeysHandler _keysHandler;
 #if UNITY_ANDROID
-        private readonly AndroidPLayerUIController _androidPlayerUIContorller;
+        private readonly AndroidPlayerUIController _androidPlayerUIController;
 #endif
         private IUserInputProxy _horizontalMovement;
         private IUserInputProxy _verticalMovement;
@@ -40,7 +40,7 @@ namespace AsteroidS
             InputInitializer inputInitializer,
             GameStateController gameStateController
 #if UNITY_ANDROID
-            , AndroidPLayerUIController androidPLayerUiController
+            , AndroidPlayerUIController androidPlayerUIController
 #endif
             )
         {
@@ -59,7 +59,7 @@ namespace AsteroidS
             _numberInput = inputInitializer.GetInput().inputNumbers;
             _aimInput = inputInitializer.GetInput().inputAim;
 #elif UNITY_ANDROID
-            _androidPlayerUIContorller = androidPLayerUiController;
+            _androidPlayerUIController = androidPlayerUIController;
             _horizontalMovement = inputInitializer.GetInput().inputHorizontal;
             _verticalMovement = inputInitializer.GetInput().inputVertical;
             _primaryFire = inputInitializer.GetInput().inputPrimaryFire;
