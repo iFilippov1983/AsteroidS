@@ -64,7 +64,6 @@
      <Compile Include="Assets\Scripts\ExternalTools\Joystick Pack\Scripts\Base\Joystick.cs" />
      <Compile Include="Assets\Scripts\Controllers\UIControllers\ExitStateController.cs" />
      <Compile Include="Assets\Scripts\Data\Input\MobileInput.cs" />
-     <Compile Include="Assets\Scripts\MonoBehaviour\Player.cs" />
      <Compile Include="Assets\Scripts\Controllers\UIControllers\UIInitializer.cs" />
      <Compile Include="Assets\Scripts\Controllers\Player\PlayerInstatiation.cs" />
      <Compile Include="Assets\Scripts\Data\Enum\GameState.cs" />
@@ -105,7 +104,6 @@
      <Compile Include="Assets\Scripts\MonoBehaviour\UIView\MainMenuView.cs" />
      <Compile Include="Assets\Scripts\Data\Input\PCInputAim.cs" />
      <Compile Include="Assets\Scripts\Controllers\UIControllers\DeathScreenController.cs" />
-     <Compile Include="Assets\Scripts\MonoBehaviour\FieldOfView.cs" />
      <Compile Include="Assets\Scripts\Controllers\UIControllers\SettingsStateController.cs" />
      <Compile Include="Assets\Scripts\CustomTools\FunctionUpdater.cs" />
      <Compile Include="Assets\Scripts\Data\Hanlers\TagOrName.cs" />
