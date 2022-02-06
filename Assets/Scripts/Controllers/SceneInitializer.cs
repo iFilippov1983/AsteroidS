@@ -43,8 +43,10 @@ namespace AsteroidS
             )
         {
             var sceneController = new SceneController(_gameData, player);
-
+            var playerHPManagmentController = new PlayerHPManagementController(UIComponentInitializer.PlayerUIView,
+                GameStateController, spaceObjectsController);
             _controllers.Add(sceneController);
+            _controllers.Add(playerHPManagmentController);
             _controllers.Add(new AudioController(_gameData, _menuManagementController, playerController.ShootingController, spaceObjectsController, _onButtonEnterProxy));
         }
     }

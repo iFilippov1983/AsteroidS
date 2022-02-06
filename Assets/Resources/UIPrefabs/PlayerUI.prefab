@@ -668,9 +668,9 @@ MonoBehaviour:
   _scoreCounter: {fileID: 2664380880033201779}
   _timerCounter: {fileID: 2664380880362777471}
   _playerHPList:
-  - {fileID: 1436701261864983498}
-  - {fileID: 3255660463661709125}
   - {fileID: 8946063466657895004}
+  - {fileID: 3255660463661709125}
+  - {fileID: 1436701261864983498}
 --- !u!1 &3255660463661709125
 GameObject:
   m_ObjectHideFlags: 0

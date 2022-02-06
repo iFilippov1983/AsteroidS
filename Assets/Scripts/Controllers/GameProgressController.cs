@@ -32,7 +32,6 @@ namespace AsteroidS
             _currentLevel = _gameData.GameProgressData.CurrentLevel;
 
             _spaceObjectsController.OnObjectDestroyEvent += _scoreCountController.AddScore;
-            _spaceObjectsController.OnPlayerDestroyEvent += RestartScene;
         }
 
         public void Execute(float deltaTime)
@@ -55,13 +54,6 @@ namespace AsteroidS
             ResetProperties();
 
             _spaceObjectsController.OnObjectDestroyEvent -= _scoreCountController.AddScore;
-            _spaceObjectsController.OnPlayerDestroyEvent -= RestartScene;
-        }
-
-        private void RestartScene()
-        {
-            _gameStateController.ChangeGameState(GameState.Death);
-            //SceneManager.LoadScene(_gameData.SceneData.SceneName);
         }
 
         private void ResetProperties()

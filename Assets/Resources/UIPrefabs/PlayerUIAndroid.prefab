@@ -1025,13 +1025,9 @@ MonoBehaviour:
   _scoreCounter: {fileID: 2664380880033201779}
   _timerCounter: {fileID: 2664380880362777471}
   _playerHPList:
-  - {fileID: 1436701261864983498}
-  - {fileID: 3255660463661709125}
   - {fileID: 8946063466657895004}
-  _movementJoystick: {fileID: 7044871884392562918}
-  _targetingJoystick: {fileID: 6073290996452997083}
-  _pauseButton: {fileID: 796732112828769318}
-  _switchAmmoButton: {fileID: 6332902135162214029}
+  - {fileID: 3255660463661709125}
+  - {fileID: 1436701261864983498}
 --- !u!1 &2925359067942455615
 GameObject:
   m_ObjectHideFlags: 0
