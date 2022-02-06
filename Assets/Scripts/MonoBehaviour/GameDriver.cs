@@ -1,9 +1,8 @@
-using System;
 using UnityEngine;
 
 namespace AsteroidS
 {
-    public class GameDriver : MonoBehaviour
+    public sealed class GameDriver : MonoBehaviour
     {
         [SerializeField] private GameData _gameData;
         private ControllersProxy _controllers;

@@ -4,14 +4,14 @@ namespace AsteroidS
 {
     public sealed class SceneInitializer
     {
-        private ControllersProxy _controllers;
-        private GameData _gameData;
-        private MenuManagementController _menuManagementController;
-        private OnButtonEnterProxyController _onButtonEnterProxy;
-        public UIComponentInitializer uiComponentInitializer;
-        public GameStateController gameStateController;
+        private readonly ControllersProxy _controllers;
+        private readonly GameData _gameData;
+        private readonly MenuManagementController _menuManagementController;
+        private readonly OnButtonEnterProxyController _onButtonEnterProxy;
+        internal readonly UIComponentInitializer UIComponentInitializer;
+        internal readonly GameStateController GameStateController;
 #if UNITY_ANDROID
-        public AndroidPlayerUIController androidPlayerUIController; 
+        internal readonly AndroidPlayerUIController AndroidPlayerUIController; 
 #endif
 
         public SceneInitializer(ControllersProxy controllers, GameData gameData)
@@ -20,15 +20,19 @@ namespace AsteroidS
             _gameData = gameData;
 
             var uiInitialize = new UIInitializer(gameData);
-            uiComponentInitializer = new UIComponentInitializer(gameData, uiInitialize);
-            gameStateController = new GameStateController(uiInitialize, uiComponentInitializer);
-            _menuManagementController = new MenuManagementController(gameData, uiComponentInitializer, gameStateController);
-            _onButtonEnterProxy = new OnButtonEnterProxyController(uiComponentInitializer);
+            UIComponentInitializer = new UIComponentInitializer(gameData, uiInitialize);
+            GameStateController = new GameStateController(uiInitialize, UIComponentInitializer);
+            _menuManagementController = new MenuManagementController(gameData, UIComponentInitializer, GameStateController);
+            _onButtonEnterProxy = new OnButtonEnterProxyController(UIComponentInitializer);
             
-            controllers.Add(uiComponentInitializer);
-            controllers.Add(gameStateController);
+            controllers.Add(UIComponentInitializer);
+            controllers.Add(GameStateController);
             controllers.Add(_menuManagementController);
             controllers.Add(_onButtonEnterProxy);
+#if UNITY_ANDROID
+            AndroidPlayerUIController = new AndroidPlayerUIController(UIComponentInitializer, GameStateController);
+            _controllers.Add(AndroidPlayerUIController);      
+#endif
         }
 
         public void LateInit
@@ -39,19 +43,11 @@ namespace AsteroidS
             )
         {
             var sceneController = new SceneController(_gameData, player);
-
+            var playerHPManagmentController = new PlayerHPManagementController(UIComponentInitializer.PlayerUIView,
+                GameStateController, spaceObjectsController);
             _controllers.Add(sceneController);
-
+            _controllers.Add(playerHPManagmentController);
             _controllers.Add(new AudioController(_gameData, _menuManagementController, playerController.ShootingController, spaceObjectsController, _onButtonEnterProxy));
-
-
-#if UNITY_ANDROID
-            androidPlayerUIController =
-                new AndroidPLayerUIController(_uiComponentInitializer, _gameStateController, _gameData);
-#endif
-#if UNITY_ANDROID
-            controllers.Add(androidPlayerUIController);      
-#endif
         }
     }
 }

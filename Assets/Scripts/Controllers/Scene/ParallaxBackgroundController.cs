@@ -4,11 +4,11 @@ namespace AsteroidS
 {
     public sealed class ParallaxBackgroundController : IInitialization, ILateExecute
     {
+        private readonly Transform _parallaxBGTransform;
+        private readonly Vector2 _parallaxEffectMultiplier;
         private Transform _cameraTransform;
         private Vector3 _lastCameraPosition;
         private Vector3 _deltaMovement;
-        private Transform _parallaxBGTransform;
-        private Vector2 _parallaxEffectMultiplier;
         private float _textureUnitSizeX;
         private float _textureUnitSizeY;
 
@@ -22,8 +22,8 @@ namespace AsteroidS
         {
             _cameraTransform = Camera.main.transform;
             _lastCameraPosition = _cameraTransform.position;
-            Sprite sprite = _parallaxBGTransform.GetComponent<SpriteRenderer>().sprite;
-            Texture2D texture = sprite.texture;
+            var sprite = _parallaxBGTransform.GetComponent<SpriteRenderer>().sprite;
+            var texture = sprite.texture;
             _textureUnitSizeX = texture.width / sprite.pixelsPerUnit;
             _textureUnitSizeY = texture.height / sprite.pixelsPerUnit;
         }

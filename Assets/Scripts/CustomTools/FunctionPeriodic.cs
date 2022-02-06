@@ -7,12 +7,12 @@ namespace CustomUtilities
     /// <summary>
     /// Executes a Function periodically
     /// </summary>
-    public class FunctionPeriodic 
+    public sealed class FunctionPeriodic 
     {
         /// <summary>
         /// Class to hook Actions into MonoBehaviour
         /// </summary>
-        private class MonoBehaviourHook : MonoBehaviour 
+        private sealed class MonoBehaviourHook : MonoBehaviour 
         {
 
             public Action OnUpdate;

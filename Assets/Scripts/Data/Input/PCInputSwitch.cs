@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AsteroidS
 {
-    class PCInputSwitch : IUserInputProxy
+    public sealed class PCInputSwitch : IUserInputProxy
     {
         public event Action<float> OnAxisChange = delegate { };
 

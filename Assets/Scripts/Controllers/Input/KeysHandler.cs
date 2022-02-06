@@ -1,12 +1,9 @@
-﻿using System;
-using UnityEngine;
-
-namespace AsteroidS
+﻿namespace AsteroidS
 {
     public sealed class KeysHandler
     {
-        private GameStateController _gameStateController;
-        private PlayerData _playerData;
+        private readonly GameStateController _gameStateController;
+        private readonly PlayerData _playerData;
 
         public KeysHandler(GameData gameData, GameStateController gameStateController)
         {

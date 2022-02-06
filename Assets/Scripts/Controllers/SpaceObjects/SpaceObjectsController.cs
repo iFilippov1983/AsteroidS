@@ -30,7 +30,7 @@ namespace AsteroidS
         }
 
         public Action<SpaceObject> OnObjectDestroyEvent;
-        public Action OnPlayerDestroyEvent;
+        public Action OnPlayerDamageEvent;
         public Action<string> OnObjectHitEvent;
         public Action<string> OnObjectDestroySound;
 
@@ -129,7 +129,7 @@ namespace AsteroidS
 
         private void PlayerDestroy()
         {
-            OnPlayerDestroyEvent?.Invoke();
+            OnPlayerDamageEvent?.Invoke();
         }
 
         private void SubscribeOnAllSOEvents(IEnumerable<SpaceObject> spaceObjects)

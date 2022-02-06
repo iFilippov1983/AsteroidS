@@ -4,7 +4,7 @@ using UnityEngine;
 namespace AsteroidS
 {
     [CreateAssetMenu(menuName = "GameData/Properties/LevelPropeties", fileName = "Level_number_Properties")]
-    public class GameLevelProperties : ScriptableObject
+    public sealed class GameLevelProperties : ScriptableObject
     {
         private const string SpaceObjectsPrefabsFolderPath = "SpaceObjectsPrefabs/";
 

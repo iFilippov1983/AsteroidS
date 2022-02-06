@@ -1,23 +1,24 @@
 namespace AsteroidS
 {
-    public class GameProcessInitializer
+    public sealed class GameProcessInitializer
     {
-        private GameData _gameData;
-        private ControllersProxy _controllers;
-        public SpaceObjectsController spaceObjectsController;
-        public PlayerInstatiation playerInstance;
-        public PlayerController playerController;
+        private readonly GameData _gameData;
+        private readonly ControllersProxy _controllers;
+        internal readonly SpaceObjectsController SpaceObjectsController;
+        internal readonly PlayerInstatiation PlayerInstance;
+        internal PlayerController PlayerController;
+        
 
         public GameProcessInitializer(ControllersProxy controllers, GameData gameData)
         {
             _gameData = gameData;
             _controllers = controllers;
 
-            playerInstance = new PlayerInstatiation(gameData);
-            spaceObjectsController = new SpaceObjectsController(gameData);
+            PlayerInstance = new PlayerInstatiation(gameData);
+            SpaceObjectsController = new SpaceObjectsController(gameData);
 
             
-            controllers.Add(spaceObjectsController);
+            controllers.Add(SpaceObjectsController);
         }
 
         public void LateInit
@@ -25,26 +26,26 @@ namespace AsteroidS
             UIComponentInitializer uiComponentInitializer, 
             GameStateController gameStateController
 #if UNITY_ANDROID
-            , AndroidPLayerUIController androidPLayerUiController
+            , AndroidPlayerUIController androidPlayerUIController
 #endif
             )
         {
             var inputInitializer = new InputInitializer(uiComponentInitializer);
             var scoreCountController = new ScoreCountController(_gameData, uiComponentInitializer);
             var timerController = new TimerController(_gameData, uiComponentInitializer);
-
 #if UNITY_STANDALONE
+            PlayerController = new PlayerController(_gameData, PlayerInstance.Player, inputInitializer, gameStateController);
 
-            playerController = new PlayerController(_gameData, playerInstance.Player, inputInitializer, gameStateController);
 #elif UNITY_ANDROID
-playerController = new PlayerController(_gameData, playerInstance.Player, inputInitializer, gameStateController, androidPlayerUIController);
+            PlayerController = new PlayerController(_gameData, PlayerInstance.Player, inputInitializer, gameStateController, androidPlayerUIController);
 #endif
 
-            _controllers.Add(playerController);
+            _controllers.Add(PlayerController);
             _controllers.Add(scoreCountController);
             _controllers.Add(timerController);
             _controllers.Add(new InputController(inputInitializer));
-            _controllers.Add(new GameProgressController(_gameData, spaceObjectsController, scoreCountController, gameStateController));
+            _controllers.Add(new GameProgressController(_gameData, SpaceObjectsController, scoreCountController,
+                gameStateController));
         }
     }
 }

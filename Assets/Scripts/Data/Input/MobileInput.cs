@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AsteroidS
 {
-    class MobileInput : IUserInputProxy
+    public sealed class MobileInput : IUserInputProxy
     {
         public event Action<float> OnAxisChange;
 

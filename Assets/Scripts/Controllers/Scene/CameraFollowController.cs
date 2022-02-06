@@ -5,8 +5,8 @@ namespace AsteroidS
 {
     public sealed class CameraFollowController : IFixedExecute
     {
-        private const float _cameraZoomSpeed = 1f;
-        private const float _cameraMoveSpeed = 1f;
+        private const float CameraZoomSpeed = 1f;
+        private const float CameraMoveSpeed = 1f;
         private Camera _camera;
         private Vector3 _cameraFollowPosition;
         private Vector3 _cameraMoveDirection;
@@ -56,7 +56,7 @@ namespace AsteroidS
         {
             _cameraZoom = GetCameraZoomFunc();
             _cameraZoomDifference = _cameraZoom - _camera.orthographicSize;
-            _camera.orthographicSize += _cameraZoomDifference * _cameraZoomSpeed * deltaTime;
+            _camera.orthographicSize += _cameraZoomDifference * CameraZoomSpeed * deltaTime;
 
             if (_cameraZoomDifference > 0)
             {
@@ -76,7 +76,7 @@ namespace AsteroidS
             _cameraMoveDirection = (_cameraFollowPosition - _camera.transform.position).normalized;
             _distance = Vector3.Distance(_cameraFollowPosition, _camera.transform.position);
 
-            _camera.transform.position += _cameraMoveDirection * _distance * _cameraMoveSpeed * deltaTime;
+            _camera.transform.position += _cameraMoveDirection * _distance * CameraMoveSpeed * deltaTime;
         }
     }
 }
