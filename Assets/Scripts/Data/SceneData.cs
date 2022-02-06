@@ -5,7 +5,7 @@ using UnityEngine.UI;
 namespace AsteroidS
 {
     [CreateAssetMenu(menuName = "GameData/SceneData", fileName = "SceneData")]
-    public class SceneData : ScriptableObject
+    public sealed class SceneData : ScriptableObject
     {
         private const string SceneDataFolderPath = "Scene/";
         private const string SceneName = "AsteroidS";

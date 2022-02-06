@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace AsteroidS
 {
-    public class PlayerHPManagementController: IInitialization, ICleanup
+    public sealed class PlayerHPManagementController : IInitialization, ICleanup
     {
         private readonly List<GameObject> _playerHPList;
-        private GameStateController _gameStateController;
+        private readonly GameStateController _gameStateController;
         private readonly SpaceObjectsController _spaceObjectsController;
         private readonly Stack<GameObject> _activeHP;
         private readonly Stack<GameObject> _deactivatedHP;
@@ -24,7 +24,7 @@ namespace AsteroidS
         public void Initialize()
         {
             _spaceObjectsController.OnPlayerDamageEvent += LooseHP;
-            
+
             foreach (var gameObject in _playerHPList)
             {
                 _activeHP.Push(gameObject);
@@ -33,7 +33,6 @@ namespace AsteroidS
 
         public void Cleanup()
         {
-            
             _spaceObjectsController.OnPlayerDamageEvent -= LooseHP;
         }
 
@@ -48,7 +47,7 @@ namespace AsteroidS
             }
         }
 
-        public void RestoreHP()
+        private void RestoreHP()
         {
             for (var i = 0; i < _playerHPList.Count; i++)
             {

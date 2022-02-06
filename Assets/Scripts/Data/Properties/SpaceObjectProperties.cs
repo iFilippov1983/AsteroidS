@@ -3,7 +3,7 @@
 namespace AsteroidS
 {
     [CreateAssetMenu(menuName = "GameData/Properties/SO_Properties", fileName = "NameOfSpaceObject_Properties")]
-    public class SpaceObjectProperties : ScriptableObject
+    public sealed class SpaceObjectProperties : ScriptableObject
     {
         private const string SOSpritesFolderPath = "Sprites/SpaceObjects/";
 

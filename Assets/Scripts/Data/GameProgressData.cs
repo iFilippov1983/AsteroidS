@@ -4,7 +4,7 @@ using UnityEngine;
 namespace AsteroidS
 {
     [CreateAssetMenu(menuName = "GameData/GameProgressData", fileName = "GameProgressData")]
-    public class GameProgressData : ScriptableObject
+    public sealed class GameProgressData : ScriptableObject
     {
         private const string LevelPropetriesFolderPath = "LevelProperties/";
 

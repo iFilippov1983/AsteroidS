@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 namespace AsteroidS
 {
     [CreateAssetMenu(menuName = "GameData/PlayerData", fileName = "PlayerData")]
-    public class PlayerData : ScriptableObject
+    public sealed class PlayerData : ScriptableObject
     {
         private const string PlayerPrefabsFolderPath = "PlayerPrefabs/";
         private const string AmmoPrefabsFolderPath = "AmmoPrefabs/";

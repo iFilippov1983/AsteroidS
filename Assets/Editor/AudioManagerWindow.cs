@@ -9,9 +9,9 @@ using UnityEngine.Audio;
 
 namespace Assets.Editor
 {
-    public class AudioManagerWindow : EditorWindow
+    public sealed class AudioManagerWindow : EditorWindow
     {
-        public static GameObject ObjectInstantiate;
+        private static GameObject ObjectInstantiate;
         private static AudioMixerGroup audioMixerGroup;
 
         private AudioMixer _audioMixer;

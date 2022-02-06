@@ -7,7 +7,7 @@ namespace CustomUtilities
     /// <summary>
     /// Calls function on every Update until it returns true
     /// </summary>
-    public class FunctionUpdater 
+    public sealed class FunctionUpdater 
     {
         /// <summary>
         /// Class to hook Actions into MonoBehaviour

@@ -14,18 +14,18 @@ namespace AsteroidS
         private AudioSource _shipExplosionSource;
         private AudioSource _asteroidHitsSource;
         private AudioSource _buttonSource;
-        private AudioClip _backgroundMusicClip;
-        private AudioClip _shotWeaponSourceClip;
-        private AudioClip _armorHitSourceClip;
-        private AudioClip _asteroidExplosionClip;
-        private AudioClip _shipExplosionClip;
-        private AudioClip _asteroidHitClip;
-        private AudioClip _buttonClip;
+        private readonly AudioClip _backgroundMusicClip;
+        private readonly AudioClip _shotWeaponSourceClip;
+        private readonly AudioClip _armorHitSourceClip;
+        private readonly AudioClip _asteroidExplosionClip;
+        private readonly AudioClip _shipExplosionClip;
+        private readonly AudioClip _asteroidHitClip;
+        private readonly AudioClip _buttonClip;
 
 
-        private AudioMixerGroup _audioMainMixerGroup;
-        private AudioMixerGroup _audioMixerGroupEffects;
-        private GameObject _parent;
+        private readonly AudioMixerGroup _audioMainMixerGroup;
+        private readonly AudioMixerGroup _audioMixerGroupEffects;
+        private readonly GameObject _parent;
 
         public AudioSourceHandler(GameData gameData)
         {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AsteroidS
 {
-    class PCInputStrafe : IUserInputProxy
+    public sealed class PCInputStrafe : IUserInputProxy
     {
         private float normal;
         

@@ -3,7 +3,7 @@ using CustomUtilities;
 
 namespace AsteroidS
 {
-    public class FieldOfViewHandler 
+    public sealed class FieldOfViewHandler 
     {
         private LayerMask _layerMask = 0;
         private int _rayCount = 50;

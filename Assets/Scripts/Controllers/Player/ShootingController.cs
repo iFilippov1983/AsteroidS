@@ -9,11 +9,11 @@ namespace AsteroidS
 {
     public sealed class ShootingController : IInitialization, IFixedExecute, ILateExecute, ICleanup
     {
-        private PlayerData _playerData;
+        private readonly PlayerData _playerData;
+        private readonly Transform _player;
+        private readonly AmmoSpawner _spawner;
+        private readonly AmmoDriver _ammoDriver;
         private Transform _playerGun;
-        private Transform _player;
-        private AmmoSpawner _spawner;
-        private AmmoDriver _ammoDriver;
         private Dictionary<AmmoType, Stack<Ammo>> _ammoPool;
         private FieldOfViewHandler _fovHandler;
         private MeshFilter _fovMeshFilter;
@@ -60,16 +60,16 @@ namespace AsteroidS
         public void FixedExecute()
         {
             //temp
-            Debug.DrawRay(_playerGun.position, _playerGun.up * _shotDistance, Color.red);
+            Debug.DrawRay(_playerGun.localPosition, _playerGun.up * _shotDistance, Color.red);
         }
 
         public void Execute()
         {
             Vector3 position = Utilities.GetMouseWorldPosition();
-            Vector3 aimDir = (position - _player.position).normalized;
+            Vector3 aimDir = (position - _player.localPosition).normalized;
 
             _fovHandler.SetAimDerection(aimDir);
-            _fovHandler.SetOrigin(_playerGun.position);
+            _fovHandler.SetOrigin(_playerGun.localPosition);
         }
 
         public void LateExecute()

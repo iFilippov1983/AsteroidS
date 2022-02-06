@@ -5,9 +5,9 @@ using UnityEngine;
 namespace AsteroidS
 {
     [CreateAssetMenu(menuName = "GameData/GameData", fileName = "GameData")]
-    public class GameData : ScriptableObject
+    public sealed class GameData : ScriptableObject
     {
-        private const string _gameDataFolder = "GameData/";
+        private const string GameDataFolder = "GameData/";
 
         [SerializeField] private string _playerDataPath;
         [SerializeField] private string _sceneDataPath;
@@ -26,7 +26,7 @@ namespace AsteroidS
             get 
             {
                 if (_playerData == null) _playerData = 
-                        LoadPath<PlayerData>(_gameDataFolder + _playerDataPath);
+                        LoadPath<PlayerData>(GameDataFolder + _playerDataPath);
                 return _playerData;
             }
         }
@@ -36,7 +36,7 @@ namespace AsteroidS
             get 
             {
                 if (_sceneData == null) _sceneData = 
-                        LoadPath<SceneData>(_gameDataFolder + _sceneDataPath);
+                        LoadPath<SceneData>(GameDataFolder + _sceneDataPath);
                 return _sceneData;
             }
         }
@@ -46,7 +46,7 @@ namespace AsteroidS
             get
             {
                 if (_uiData == null) _uiData = 
-                        LoadPath<UIData>(_gameDataFolder + _uiDataPath);
+                        LoadPath<UIData>(GameDataFolder + _uiDataPath);
                 return _uiData;
             }
         }
@@ -56,7 +56,7 @@ namespace AsteroidS
             get 
             {
                 if (_gameProgressData == null) _gameProgressData = 
-                        LoadPath<GameProgressData>(_gameDataFolder + _gameProgressDataPath);
+                        LoadPath<GameProgressData>(GameDataFolder + _gameProgressDataPath);
                 return _gameProgressData;
             }
         }
@@ -66,7 +66,7 @@ namespace AsteroidS
             get
             {
                 if (_soundData == null) _soundData = 
-                        LoadPath<SoundData>(_gameDataFolder + _soundDataPath);
+                        LoadPath<SoundData>(GameDataFolder + _soundDataPath);
                 return _soundData;
             }
         }

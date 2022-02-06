@@ -1,5 +1,4 @@
-﻿using UnityEngine;
-using UnityEngine.Audio;
+﻿using UnityEngine.Audio;
 
 namespace AsteroidS
 {
@@ -11,7 +10,7 @@ namespace AsteroidS
         private readonly AudioMixer _audioMixer;
         private readonly AudioSourceHandler _audioSourceHandler;
         private readonly OnButtonEnterProxyController _onButtonEnterProxy;
-        private SpaceObjectsController _spaceObjectsController;
+        private readonly SpaceObjectsController _spaceObjectsController;
 
         public AudioController(GameData gameData, MenuManagementController menuManagementsController, ShootingController shootingController, SpaceObjectsController spaceObjectsController, OnButtonEnterProxyController onButtonEnterProxy)
         {

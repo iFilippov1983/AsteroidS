@@ -4,7 +4,7 @@ namespace AsteroidS
 {
     public sealed class BackgroundInitializer : IInitialization
     {
-        private GameData _gameData;
+        private readonly GameData _gameData;
         private Canvas _cameraBackgroundCanvas;
         private Transform _parallaxBackground;
 

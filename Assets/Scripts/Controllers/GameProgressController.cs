@@ -2,14 +2,14 @@
 
 namespace AsteroidS
 {
-    class GameProgressController : IInitialization, IExecute, IFixedExecute, ILateExecute, ICleanup
+    public sealed class GameProgressController : IInitialization, IExecute, IFixedExecute, ILateExecute, ICleanup
     {
-        private GameData _gameData;
-        private SpaceObjectsController _spaceObjectsController;
-        private ScoreCountController _scoreCountController;
+        private readonly GameData _gameData;
+        private readonly SpaceObjectsController _spaceObjectsController;
+        private readonly ScoreCountController _scoreCountController;
         private readonly GameStateController _gameStateController;
 
-        private const int _startLevel = 1;
+        private const int StartLevel = 1;
         private int _currentLevel;
         private TimeSpan _levelDuration;
         private float _levelDurationTimer = 0;
@@ -58,7 +58,7 @@ namespace AsteroidS
 
         private void ResetProperties()
         {
-            _gameData.GameProgressData.CurrentLevel = _startLevel;
+            _gameData.GameProgressData.CurrentLevel = StartLevel;
             _spaceObjectsController.LevelTransition = false;
         }
 

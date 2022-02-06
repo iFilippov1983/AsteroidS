@@ -4,11 +4,11 @@ namespace AsteroidS
 {
     public sealed class SceneController : IInitialization, IExecute, IFixedExecute, ILateExecute
     {
-        private SceneData _sceneData;
-        private BackgroundInitializer _backgroundInitializer;
-        private CameraFollowController _cameraFollowController;
+        private readonly SceneData _sceneData;
+        private readonly BackgroundInitializer _backgroundInitializer;
+        private readonly CameraFollowController _cameraFollowController;
+        private readonly Transform _transformToFollow;
         private ParallaxBackgroundController _parallaxController;
-        private Transform _transformToFollow;
 
         private float _zoom;
         private float _cameraSizeDefault;

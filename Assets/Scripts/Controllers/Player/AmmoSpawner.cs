@@ -5,7 +5,7 @@ namespace AsteroidS
 {
     public sealed class AmmoSpawner
     {
-        private Dictionary<AmmoType, Ammo> _ammoPrefabsDictionary;
+        private readonly Dictionary<AmmoType, Ammo> _ammoPrefabsDictionary;
 
         public AmmoSpawner(Dictionary<AmmoType, Ammo> dictionary)
         {

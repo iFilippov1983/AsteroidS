@@ -4,8 +4,7 @@ using UnityEngine;
 
 namespace AsteroidS
 {
-
-    public class SpaceObject : MonoBehaviour
+    public sealed class SpaceObject : MonoBehaviour
     {
         private const string PropertiesPath = "SpaceObjectsProperties/";
 
@@ -19,16 +18,16 @@ namespace AsteroidS
         public Sprite[] GetSprites => Properties.SpaceObjectSprites;
         public int HitPoints => _hitPoints;
         public int ArmorPoints => _armorPoints;
-        [HideInInspector]
-        public float lifeTimeCounter = 0;
+        [HideInInspector] public float lifeTimeCounter = 0;
 
         public SpaceObjectProperties Properties
         {
-            get 
+            get
             {
                 if (_spaceObjectProperties == null)
                 {
-                    _spaceObjectProperties = Resources.Load<SpaceObjectProperties>(PropertiesPath + _spaceObjectPropertiesPath);
+                    _spaceObjectProperties =
+                        Resources.Load<SpaceObjectProperties>(PropertiesPath + _spaceObjectPropertiesPath);
                 }
 
                 return _spaceObjectProperties;

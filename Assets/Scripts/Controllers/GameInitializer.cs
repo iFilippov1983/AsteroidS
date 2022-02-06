@@ -1,6 +1,6 @@
 ﻿namespace AsteroidS
 {
-    public class GameInitializer
+    public sealed class GameInitializer
     {
         private readonly SceneInitializer _sceneInitializer;
         private readonly GameProcessInitializer _gameProcessInitializer;

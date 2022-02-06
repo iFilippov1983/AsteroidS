@@ -7,12 +7,12 @@ namespace CustomUtilities
     /// <summary>
     /// Triggers a Action after a certain time
     /// </summary>
-    public class FunctionTimer 
+    public sealed class FunctionTimer 
     {
         /// <summary>
         /// Class to hook Actions into MonoBehaviour
         /// </summary>
-        private class MonoBehaviourHook : MonoBehaviour 
+        private sealed class MonoBehaviourHook : MonoBehaviour 
         {
             public Action OnUpdate;
 

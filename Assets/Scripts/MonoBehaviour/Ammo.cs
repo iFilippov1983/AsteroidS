@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AsteroidS
 {
-    public class Ammo : MonoBehaviour
+    public sealed class Ammo : MonoBehaviour
     {
         private const string AmmoPropertiesPath = "AmmoProperties/";
 

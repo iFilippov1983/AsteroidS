@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AsteroidS
 {
-    public class ControllersProxy : IInitialization, IExecute, IFixedExecute, ILateExecute, ICleanup
+    public sealed class ControllersProxy : IInitialization, IExecute, IFixedExecute, ILateExecute, ICleanup
     {
         private readonly List<IConfigure> _configureController;
         private readonly List<IInitialization> _initializationControllers;

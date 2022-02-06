@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Audio;
 
 namespace Assets.Scripts.Data
 {
     [CreateAssetMenu(menuName = "GameData/SoundData", fileName = "SoundData")]
-    public class SoundData : ScriptableObject
+    public sealed class SoundData : ScriptableObject
     {
         [SerializeField] private AudioMixer _audioMixer;
         [SerializeField] private AudioMixerGroup _audioMixerGroup;

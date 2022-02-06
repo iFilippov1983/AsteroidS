@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AsteroidS
 {
-    class PCInputNumbers : IUserInputProxy
+    public sealed class PCInputNumbers : IUserInputProxy
     {
         private float number;
         private readonly int[] Alpha = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57 };

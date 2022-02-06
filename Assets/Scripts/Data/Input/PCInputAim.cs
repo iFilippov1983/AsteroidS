@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AsteroidS
 {
-    class PCInputAim : IUserInputProxy
+    public sealed class PCInputAim : IUserInputProxy
     {
         private float _aimAngle;
         private Vector3 _mousePosition;

@@ -3,7 +3,7 @@
 namespace AsteroidS
 {
     [CreateAssetMenu(menuName = "GameData/Properties/AmmoProperties", fileName = "AmmoProperties")]
-    public class AmmoProperties : ScriptableObject
+    public sealed class AmmoProperties : ScriptableObject
     {
         private const string AmmoSpritesFolderPath = "Sprites/Ammo/";
 
