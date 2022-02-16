@@ -5,32 +5,35 @@ using Slider = UnityEngine.UI.Slider;
 
 namespace AsteroidS
 {
-    public sealed class SettingsMenuController: IInitialization, ICleanup
+    public sealed class SettingsMenuController: MenuStateController
     {
-        private readonly GameStateController _gameStateController;
+        //private readonly GameStateController _gameStateController;
         private SettingMenuView _settingMenuView;
 
         private Button _backButton;
         private Slider _volumeSlider;
         private DropdownMenu _graphicsDropdown;
-        private UIComponentInitializer _uiComponentInitializer;
+        //private UIComponentInitializer _uiComponentInitializer;
 
         public event Action<float> OnSoundVolume;
         public event Action<int> OnGraphicsChange;
 
-        public SettingsMenuController (UIComponentInitializer uiComponentInitializer, GameStateController gameStateController)
+        //public SettingsMenuController (UIComponentInitializer uiComponentInitializer)
+        //    : base(uiComponentInitializer) //, GameStateController gameStateController)
+        public SettingsMenuController(SettingMenuView settingMenuView)
         {
-            _gameStateController = gameStateController;
-            _uiComponentInitializer = uiComponentInitializer;
+            _settingMenuView = settingMenuView;
+            //_settingMenuView = _uiComponentInitializer.SettingMenuView;
+            //_gameStateController = gameStateController;
+            //_uiComponentInitializer = uiComponentInitializer;
         }
-        public void Initialize()
+        public override void Initialize()
         {
-            _settingMenuView = _uiComponentInitializer.SettingMenuView;
             GetUIComponents();
             AddListenersToComponents();
         }
 
-        public void Cleanup()
+        public override void Cleanup()
         {
             RemoveListenersFromComponents();
         }
@@ -57,7 +60,8 @@ namespace AsteroidS
 
         private void GoBackToMainMenu()
         {
-            _gameStateController.ChangeGameState(GameState.Default);
+            StateChanged?.Invoke(GameState.Default);
+            //_gameStateController.ChangeGameState(GameState.Default);
         }
 
         private void ChangeVolumeLevel(float value)

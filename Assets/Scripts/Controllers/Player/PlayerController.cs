@@ -1,17 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace AsteroidS
 {
     public sealed class PlayerController : IInitialization, IFixedExecute, IExecute, ILateExecute,  ICleanup
     {
+        private readonly PlayerData _playerData;
         private readonly Rigidbody2D _playerRB;
         private readonly Transform _gunTransform;
         private readonly ShootingController _shooting;
         private readonly PlayerMover _movement;
-        private readonly KeysHandler _keysHandler;
-#if UNITY_ANDROID
-        private readonly AndroidPlayerUIController _androidPlayerUIController;
-#endif
+        //private readonly KeysHandler _keysHandler;
+
         private IUserInputProxy _horizontalMovement;
         private IUserInputProxy _verticalMovement;
         private IUserInputProxy _primaryFire;
@@ -39,17 +39,15 @@ namespace AsteroidS
             Transform player,
             InputInitializer inputInitializer,
             GameStateController gameStateController
-#if UNITY_ANDROID
-            , AndroidPlayerUIController androidPlayerUIController
-#endif
             )
         {
             _shooting = new ShootingController(gameData, player);
             _movement = new PlayerMover();
-            _keysHandler = new KeysHandler(gameData, gameStateController);
+            //_keysHandler = new KeysHandler(gameData, gameStateController);
             _playerRB = player.GetComponent<Rigidbody2D>();
             _gunTransform = player.Find(TagOrName.Gun);
-#if UNITY_STANDALONE
+            _playerData = gameData.PlayerData;
+
             _horizontalMovement = inputInitializer.GetInput().inputHorizontal;
             _verticalMovement = inputInitializer.GetInput().inputVertical;
             _primaryFire = inputInitializer.GetInput().inputPrimaryFire;
@@ -58,22 +56,17 @@ namespace AsteroidS
             _cancelInput = inputInitializer.GetInput().inputCancel;
             _numberInput = inputInitializer.GetInput().inputNumbers;
             _aimInput = inputInitializer.GetInput().inputAim;
-#elif UNITY_ANDROID
-            _androidPlayerUIController = androidPlayerUIController;
-            _horizontalMovement = inputInitializer.GetInput().inputHorizontal;
-            _verticalMovement = inputInitializer.GetInput().inputVertical;
-            _primaryFire = inputInitializer.GetInput().inputPrimaryFire;
-            _aimInput = inputInitializer.GetInput().inputAim;
-#endif
+
             _moveSpeed = gameData.PlayerData.PlayerMovementSpeed;
             _rotationSpeed = gameData.PlayerData.PlayerRotationSpeed;
         }
 
         public ShootingController ShootingController => _shooting;
 
+        public Action EscapePressed;
+
         public void Initialize()
         {
-#if UNITY_STANDALONE
             _horizontalMovement.OnAxisChange += OnHorizontalAxisChange;
             _verticalMovement.OnAxisChange += OnVerticalAxisChange;
             _primaryFire.OnAxisChange += OnPrimaryShot;
@@ -83,14 +76,6 @@ namespace AsteroidS
             _numberInput.OnAxisChange += OnNumberButtonPressed;
             _aimInput.OnAxisChange += OnAiming;
             _shooting.Initialize();
-#elif UNITY_ANDROID
-            _horizontalMovement.OnAxisChange += OnHorizontalAxisChange;
-            _verticalMovement.OnAxisChange += OnVerticalAxisChange;
-            _aimInput.OnAxisChange += OnAiming;
-            _primaryFire.OnAxisChange += OnPrimaryShot;
-            _androidPlayerUIController.OnAmmoSwitch += OnSwitchButtonPressed;
-            _shooting.Initialize();
-#endif
         }
 
         public void FixedExecute()
@@ -99,9 +84,9 @@ namespace AsteroidS
             _movement.Rotate(_horizontal, _playerRB, _rotationSpeed);
             _movement.Strafe(_strafe, _playerRB, _moveSpeed);
             _movement.Aim(_aimAngle, _gunTransform);
-            _keysHandler.SwitchKeyPressed(_switch);
-            _keysHandler.EscapeKeyPressed(_cancel);
-            _keysHandler.NubmerPressed(ref _numberButton);
+            //_keysHandler.SwitchKeyPressed(_switch);
+            //_keysHandler.EscapeKeyPressed(_cancel);
+            //_keysHandler.NubmerPressed(ref _numberButton);
 
             _shooting.HandlePrimaryShooting(_firePrimary);
             _shooting.FixedExecute();
@@ -119,7 +104,6 @@ namespace AsteroidS
 
         public void Cleanup()
         {
-#if UNITY_STANDALONE
             _horizontalMovement.OnAxisChange -= OnHorizontalAxisChange;
             _verticalMovement.OnAxisChange -= OnVerticalAxisChange;
             _primaryFire.OnAxisChange -= OnPrimaryShot;
@@ -129,14 +113,6 @@ namespace AsteroidS
             _numberInput.OnAxisChange -= OnNumberButtonPressed;
             _aimInput.OnAxisChange += OnAiming;
             _shooting.Cleanup();
-#elif UNITY_ANDROID
-            _horizontalMovement.OnAxisChange -= OnHorizontalAxisChange;
-            _verticalMovement.OnAxisChange -= OnVerticalAxisChange;
-            _aimInput.OnAxisChange += OnAiming;
-            _primaryFire.OnAxisChange -= OnPrimaryShot;
-            _androidPlayerUIController.OnAmmoSwitch -= OnSwitchButtonPressed;
-            _shooting.Cleanup();
-#endif
         }
 
         private void OnVerticalAxisChange(float value)
@@ -161,7 +137,9 @@ namespace AsteroidS
 
         private void OnEscapePressed(float value)
         {
+            if (value == 0) return;
             _cancel = value;
+            EscapePressed?.Invoke();
         }
 
         private void OnSwitchButtonPressed(float value)
@@ -172,6 +150,7 @@ namespace AsteroidS
         private void OnNumberButtonPressed(float value)
         {
             _numberButton = (int)value;
+            _playerData.SwitchAmmoTo(_numberButton);
         }
 
         private void OnAiming(float value)

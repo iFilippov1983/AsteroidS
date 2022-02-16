@@ -1,15 +1,15 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 using Button = UnityEngine.UI.Button;
 
 namespace AsteroidS
 {
-    public sealed class MainMenuController: IInitialization, ICleanup, IPointerEnterHandler
+    public sealed class MainMenuController : MenuStateController, IPointerEnterHandler
     {
-        private readonly GameStateController _gameStateController;
-        private readonly UIComponentInitializer _uiComponentInitializer;
+        //private readonly GameStateController _gameStateController;
+        //private readonly UIComponentInitializer _uiComponentInitializer;
         private MainMenuView _mainMenuView;
 
         private Button _startButton;
@@ -17,20 +17,22 @@ namespace AsteroidS
         private Button _exitButton;
         private TMP_Text _exitButtonText;
 
-        public MainMenuController(UIComponentInitializer uiComponentInitializer, GameStateController gameStateController)
+        //public MainMenuController(UIComponentInitializer uiComponentInitializer) //, GameStateController gameStateController)
+        public MainMenuController(MainMenuView mainMenuView)
         {
-            _uiComponentInitializer = uiComponentInitializer;
-            _gameStateController = gameStateController;
+            _mainMenuView = mainMenuView;
+            //_mainMenuView = _uiComponentInitializer.MainMenuView;
+            //_uiComponentInitializer = uiComponentInitializer;
+            //_gameStateController = gameStateController;
         }
 
-        public void Initialize()
+        public override void Initialize()
         {
-            _mainMenuView = _uiComponentInitializer.MainMenuView;
             GetUIComponents();
             AddListenerToComponents();
         }
 
-        public void Cleanup()
+        public override void Cleanup()
         {
             RemoveListenersFromComponents();
         }
@@ -59,23 +61,27 @@ namespace AsteroidS
 
         private void ChangeStateToStart()
         {
-            _gameStateController.ChangeGameState(GameState.Start);
+            StateChanged?.Invoke(GameState.Start);
+            //_gameStateController.ChangeGameState(GameState.Start);
         }
 
         private void ChangeStateToSettings() 
         {
-            _gameStateController.ChangeGameState(GameState.Settings);
+            StateChanged?.Invoke(GameState.Settings);
+            //_gameStateController.ChangeGameState(GameState.Settings);
         }
 
         private void ChangeStateToExit() 
         {
             if (_exitButtonText.text == UIObjectName.Exit)
             {
-                _gameStateController.ChangeGameState(GameState.Exit);
+                StateChanged?.Invoke(GameState.Exit);
+                //_gameStateController.ChangeGameState(GameState.Exit);
             }
             else
             {
-                _gameStateController.ChangeGameState(GameState.Default);
+                StateChanged?.Invoke(GameState.Default);
+                //_gameStateController.ChangeGameState(GameState.Default);
             }
         }
 

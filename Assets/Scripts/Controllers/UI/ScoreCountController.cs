@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace AsteroidS
 {
-    public sealed class ScoreCountController:IInitialization, IExecute
+    public sealed class ScoreCountController
     {
         private UIComponentInitializer _uiObjectGetter;
         private PlayerUIView _playerUIView;
@@ -11,20 +11,21 @@ namespace AsteroidS
         private int _score;
         private string _message;
 
-        public ScoreCountController(GameData gameData, UIComponentInitializer uiObjectGetter)
+        public ScoreCountController(UIData uiData, PlayerUIView playerUIView)
         {
-            _uiObjectGetter = uiObjectGetter;
-            _message = gameData.UIData.ScoreMessage;
-            _score = gameData.UIData.ScoreHolder;
+            _playerUIView = playerUIView;
+            //_uiObjectGetter = uiObjectGetter;
+            _message = uiData.ScoreMessage;
+            _score = uiData.ScoreHolder;
         }
 
         public void Initialize()
         {
-            _playerUIView = _uiObjectGetter.PlayerUIView;
+            //_playerUIView = _uiObjectGetter.PlayerUIView;
             _scoreDisplay = _playerUIView.ScoreCount;
         }
 
-        public void Execute(float deltaTime)
+        public void Execute()
         {
             DisplayScores();
         }

@@ -1,29 +1,31 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace AsteroidS
 {
-    public sealed class PlayerHPManagementController : IInitialization, ICleanup
+    public sealed class PlayerUIViewManager : IInitialization, ICleanup
     {
         private readonly List<GameObject> _playerHPList;
-        private readonly GameStateController _gameStateController;
-        private readonly SpaceObjectsController _spaceObjectsController;
+        //private readonly GameStateController _gameStateController;
+        //private readonly SpaceObjectsController _spaceObjectsController;
         private readonly Stack<GameObject> _activeHP;
         private readonly Stack<GameObject> _deactivatedHP;
 
-        public PlayerHPManagementController(PlayerUIView playerUiView, GameStateController gameStateController,
-            SpaceObjectsController spaceObjectsController)
+        //public Action PlayerIsDead;
+
+        public PlayerUIViewManager(PlayerUIView playerUiView)//, GameStateController gameStateController)
         {
             _playerHPList = playerUiView.PlayerHPList;
-            _gameStateController = gameStateController;
-            _spaceObjectsController = spaceObjectsController;
+            //_gameStateController = gameStateController;
+            //_spaceObjectsController = spaceObjectsController;
             _activeHP = new Stack<GameObject>();
             _deactivatedHP = new Stack<GameObject>();
         }
 
         public void Initialize()
         {
-            _spaceObjectsController.OnPlayerDamageEvent += LooseHP;
+            //_spaceObjectsController.OnPlayerDamageEvent += LooseHP;
 
             foreach (var gameObject in _playerHPList)
             {
@@ -33,21 +35,22 @@ namespace AsteroidS
 
         public void Cleanup()
         {
-            _spaceObjectsController.OnPlayerDamageEvent -= LooseHP;
+            //_spaceObjectsController.OnPlayerDamageEvent -= LooseHP;
         }
 
-        private void LooseHP()
+        public void LooseHP()
         {
             var spendedHP = _activeHP.Pop();
             spendedHP.SetActive(false);
             _deactivatedHP.Push(spendedHP);
             if (_activeHP.Count == 0)
             {
-                _gameStateController.ChangeGameState(GameState.Death);
+                //PlayerIsDead?.Invoke();
+                //_gameStateController.ChangeGameState(GameState.Death);
             }
         }
 
-        private void RestoreHP()
+        public void RestoreHP()
         {
             for (var i = 0; i < _playerHPList.Count; i++)
             {

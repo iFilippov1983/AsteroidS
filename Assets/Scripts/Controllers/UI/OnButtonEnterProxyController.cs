@@ -14,7 +14,6 @@ namespace AsteroidS
         public OnButtonEnterProxyController(UIComponentInitializer uiComponentInitializer)
         {
             _uiComponentInitializer = uiComponentInitializer;
-            
         }
 
         public void Initialize()

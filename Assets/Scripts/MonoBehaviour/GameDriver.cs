@@ -11,13 +11,8 @@ namespace AsteroidS
         {
             _controllers = new ControllersProxy();
             _gameInitializer = new GameInitializer(_controllers, _gameData);
-            _gameInitializer.LateInit();
+            _gameInitializer.Configure();
             _controllers.Configure();
-
-            //temp
-            //DateTime dt = DateTimeCatcher.GetNetworkTime();
-            //TimeSpan ts = dt.TimeOfDay;
-            //Debug.Log(ts);
         }
 
         void Start()
@@ -44,6 +39,7 @@ namespace AsteroidS
         private void OnDestroy()
         {
             _controllers.Cleanup();
+            _gameInitializer.Cleanup();
         }
     }
 }

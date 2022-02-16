@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace AsteroidS
 {
-    public sealed class UIComponentInitializer : IInitialization
+    public sealed class UIComponentInitializer
     {
         private readonly SceneData _sceneData;
         private readonly GameObject _mainMenu;
@@ -22,9 +22,9 @@ namespace AsteroidS
         public DeathScreenView DeathScreenView => _deathScreenView;
 
 
-        public UIComponentInitializer(GameData gameData, UIInitializer uiInitializer)
+        public UIComponentInitializer(SceneData sceneData, UIInitializer uiInitializer)
         {
-            _sceneData = gameData.SceneData;
+            _sceneData = sceneData;
             _mainMenu = uiInitializer.MainMenu;
             _settingsMenu = uiInitializer.SettingsMenu;
             _playerUI = uiInitializer.PlayerUI;

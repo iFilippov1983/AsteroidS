@@ -3,7 +3,7 @@ using TMPro;
 
 namespace AsteroidS
 {
-    public sealed class TimerController: IExecute, IInitialization, ICleanup
+    public sealed class TimerController
     {
         private UIComponentInitializer _uiComponentInitializer;
         private PlayerUIView _playerUIView;
@@ -31,11 +31,6 @@ namespace AsteroidS
         public void Execute(float deltaTime)
         {
             DisplayTimer(deltaTime);
-        }
-
-        public void Cleanup()
-        {
-           
         }
 
         private void PlayerDead(bool dead)

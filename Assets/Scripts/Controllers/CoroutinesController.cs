@@ -13,7 +13,7 @@ namespace AsteroidS
 			{
 				if(_coroutine == null)
 				{
-					var go = new GameObject("[COROUTINE MANAGER]");
+					var go = new GameObject("[COROUTINES CONTROLLER]");
 					_coroutine = go.AddComponent<CoroutinesController>();
 					
 					DontDestroyOnLoad(go);

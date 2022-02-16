@@ -5,8 +5,8 @@ namespace AsteroidS
 {
     internal sealed class DefaultStateController
     {
-        private readonly UIComponentInitializer _uiComponentInitializer;
-        private readonly GameStateController _gameStateController;
+        //private readonly UIComponentInitializer _uiComponentInitializer;
+        //private readonly GameStateController _gameStateController;
         private readonly GameObject _mainMenu;
         private readonly GameObject _settingsMenu;
         private readonly GameObject _playerUI;
@@ -16,10 +16,11 @@ namespace AsteroidS
         private TMP_Text _startButtonText;
         private TMP_Text _exitButtonText;
 
-        internal DefaultStateController(UIInitializer uiInitializer,UIComponentInitializer uiComponentInitializer, GameStateController gameStateController)
+        internal DefaultStateController(UIInitializer uiInitializer, MainMenuView mainMenuView)//, GameStateController gameStateController)
         {
-            _uiComponentInitializer = uiComponentInitializer;
-            _gameStateController = gameStateController;
+            _mainMenuView = mainMenuView;
+            //_uiComponentInitializer = uiComponentInitializer;
+            //_gameStateController = gameStateController;
             _mainMenu = uiInitializer.MainMenu;
             _settingsMenu = uiInitializer.SettingsMenu;
             _playerUI = uiInitializer.PlayerUI;
@@ -28,23 +29,23 @@ namespace AsteroidS
 
         internal void Init()
         {
-            _mainMenuView = _uiComponentInitializer.MainMenuView;
             GetUIComponents();
         }
 
-        internal void DefaultState(GameState gameState, GameState previousState)
+        internal void DefaultState(GameState gameState, GameState previousState)//<--???? 
         {
-            
-                Time.timeScale = 0;
-                _mainMenu.SetActive(true);
-                _settingsMenu.SetActive(false);
-                _playerUI.SetActive(false);
-                _deathScreen.SetActive(false);
-                SetButtons(gameState);
+            GetUIComponents();
+            Time.timeScale = 0;
+            _mainMenu.SetActive(true);
+            _settingsMenu.SetActive(false);
+            _playerUI.SetActive(false);
+            _deathScreen.SetActive(false);
+            SetButtons(gameState);
         }
 
         private void GetUIComponents()
         {
+            //_mainMenuView = _uiComponentInitializer.MainMenuView;
             _startButtonText = _mainMenuView.StartButtonText;
             _exitButtonText = _mainMenuView.ExitButtonText;
         }

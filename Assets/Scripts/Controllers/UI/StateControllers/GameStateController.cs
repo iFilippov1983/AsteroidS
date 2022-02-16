@@ -16,7 +16,7 @@ namespace AsteroidS
 
         public GameStateController(UIInitializer uiInitializer, UIComponentInitializer uiComponentInitializer)
         {
-            _defaultStateController = new DefaultStateController(uiInitializer, uiComponentInitializer, this);
+            _defaultStateController = new DefaultStateController(uiInitializer, uiComponentInitializer.MainMenuView);//, this);
             _startGameController = new StartGameStateController(uiInitializer);
             _settingsStateController = new SettingsStateController(uiInitializer);
             _deathStateController = new DeathStateController(uiInitializer);
@@ -27,10 +27,12 @@ namespace AsteroidS
         {
             _defaultStateController.Init();
             ChangeGameState(GameState.Default);
+            //ChangeGameState(GameState.Start);
         }
 
         public void ChangeGameState(GameState gameState)
         {
+            Debug.Log(gameState);
             switch (gameState)
             {
                 case GameState.Start:
@@ -58,10 +60,42 @@ namespace AsteroidS
             }
         }
 
+        public void SetPauseState()
+        {
+            ChangeGameState(GameState.Pause);
+        }
+
         private void GetPreviousState(GameState gameState)
         {
             _previousGameState = _currentGameState;
             _currentGameState = gameState;
         }
+
+        //public void SetStartState()
+        //{
+        //    ChangeGameState(GameState.Start);
+        //}
+
+        //public void SetSettingsState()
+        //{
+        //    ChangeGameState(GameState.Settings);
+        //}
+
+        //public void SetDeathState()
+        //{
+        //    ChangeGameState(GameState.Death);
+        //}
+
+        //public void SetExitState()
+        //{
+        //    ChangeGameState(GameState.Exit);
+        //}
+
+        //public void SetDefaultState()
+        //{
+        //    ChangeGameState(GameState.Default);
+        //}
+
+
     }
 }

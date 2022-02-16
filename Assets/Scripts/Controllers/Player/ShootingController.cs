@@ -7,7 +7,7 @@ using Object = UnityEngine.Object;
 
 namespace AsteroidS
 {
-    public sealed class ShootingController : IInitialization, IFixedExecute, ILateExecute, ICleanup
+    public sealed class ShootingController
     {
         private readonly PlayerData _playerData;
         private readonly Transform _player;

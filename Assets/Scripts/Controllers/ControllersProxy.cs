@@ -90,9 +90,7 @@ namespace AsteroidS
         {
             foreach (ICleanup controller in _cleanupControllers) 
                 controller.Cleanup();
-        }
-
-        
+        } 
     }
 }
 

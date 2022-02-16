@@ -111,6 +111,7 @@ namespace AsteroidS
 
         private Sprite GetRandomSprite(Sprite[] sprites)
         {
+            Debug.Log(sprites.Length);
             var randomSprite = sprites[Random.Range(0, sprites.Length)];
             return randomSprite;
         }
