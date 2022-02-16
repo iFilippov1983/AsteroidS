@@ -1,5 +1,4 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using Button = UnityEngine.UI.Button;
@@ -8,22 +7,16 @@ namespace AsteroidS
 {
     public sealed class MainMenuController : MenuStateController, IPointerEnterHandler
     {
-        //private readonly GameStateController _gameStateController;
-        //private readonly UIComponentInitializer _uiComponentInitializer;
-        private MainMenuView _mainMenuView;
+        private readonly MainMenuView _mainMenuView;
 
         private Button _startButton;
         private Button _settingsButton;
         private Button _exitButton;
         private TMP_Text _exitButtonText;
 
-        //public MainMenuController(UIComponentInitializer uiComponentInitializer) //, GameStateController gameStateController)
         public MainMenuController(MainMenuView mainMenuView)
         {
             _mainMenuView = mainMenuView;
-            //_mainMenuView = _uiComponentInitializer.MainMenuView;
-            //_uiComponentInitializer = uiComponentInitializer;
-            //_gameStateController = gameStateController;
         }
 
         public override void Initialize()
@@ -68,7 +61,6 @@ namespace AsteroidS
         private void ChangeStateToSettings() 
         {
             StateChanged?.Invoke(GameState.Settings);
-            //_gameStateController.ChangeGameState(GameState.Settings);
         }
 
         private void ChangeStateToExit() 
@@ -76,12 +68,10 @@ namespace AsteroidS
             if (_exitButtonText.text == UIObjectName.Exit)
             {
                 StateChanged?.Invoke(GameState.Exit);
-                //_gameStateController.ChangeGameState(GameState.Exit);
             }
             else
             {
                 StateChanged?.Invoke(GameState.Default);
-                //_gameStateController.ChangeGameState(GameState.Default);
             }
         }
 

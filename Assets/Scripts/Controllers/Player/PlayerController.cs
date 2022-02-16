@@ -87,7 +87,7 @@ namespace AsteroidS
             //_keysHandler.SwitchKeyPressed(_switch);
             //_keysHandler.EscapeKeyPressed(_cancel);
             //_keysHandler.NubmerPressed(ref _numberButton);
-
+            EscapePressedHandler();
             _shooting.HandlePrimaryShooting(_firePrimary);
             _shooting.FixedExecute();
         }
@@ -137,8 +137,12 @@ namespace AsteroidS
 
         private void OnEscapePressed(float value)
         {
-            if (value == 0) return;
             _cancel = value;
+        }
+
+        private void EscapePressedHandler()
+        {
+            if (_cancel == 0) return;
             EscapePressed?.Invoke();
         }
 
