@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Audio;
@@ -28,6 +29,10 @@ namespace AsteroidS
         //private readonly AudioMixerGroup _audioMainMixerGroup;
         //private readonly AudioMixerGroup _audioMixerGroupEffects;
         //private readonly GameObject _parent;
+        private GameObject _audioPlayer;
+        private Stack<AudioSource> _audioSources;
+        private Stack<Coroutine> _coroutines;
+
         private Coroutine _playSound;
 
         public AudioSourceHandler(SoundData soundData)
@@ -46,24 +51,34 @@ namespace AsteroidS
             //_sources = new Stack<AudioSource>();
             //_clips = soundData.SoundSources;
             //_source = _parent.AddComponent<AudioSource>();
+            _audioPlayer = new GameObject("AudioPlayer");
+            _audioSources = new Stack<AudioSource>();
+            _coroutines = new Stack<Coroutine>();
         }
 
-        public async void Play(SoundSource source)
+        public void Play(SoundSource source)
         {
-            await PlaySoundTask(source);   
-            //_playSound = CoroutinesController.StartRoutine(PlaySound(source));
+            var audioSource = _audioPlayer.AddComponent<AudioSource>();
+            audioSource.clip = source.source.clip;
+            _audioSources.Push(audioSource);
+            _playSound = CoroutinesController.StartRoutine(PlaySoundRoutine(audioSource));
+            _coroutines.Push(_playSound);
         }
 
-        private Task PlaySoundTask(SoundSource source)
+        private IEnumerator PlaySoundRoutine(AudioSource source)
         {
-            return new Task(() => source.source.Play());
-        }
-
-        private IEnumerator PlaySoundRoutine(SoundSource source)
-        {
-            source.source.Play();
-            yield return new WaitWhile(() => source.source.isPlaying);
-            CoroutinesController.StopRoutine(_playSound);
+            source.Play();  
+            yield return new WaitWhile(() => source.isPlaying);
+            foreach (var coroutine in _coroutines)
+            {
+                CoroutinesController.StopRoutine(coroutine);
+            }
+            foreach (var audioSource in _audioSources)
+            {
+                Object.Destroy(audioSource);
+            }
+            _coroutines.Clear();
+            _audioSources.Clear();
         }
 
         public void SetAudioSources()

@@ -26,8 +26,6 @@ namespace AsteroidS
             _spaceObjectsController = spaceObjectsController;
             _onButtonEnterProxy = onButtonEnterProxy;
 
-            
-
             _shotEventDefault = SoundInitializer.Instance.GetSoundEvents().shotEventDefault;
         } 
 

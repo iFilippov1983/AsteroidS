@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace AsteroidS
@@ -21,7 +22,12 @@ namespace AsteroidS
 				return _coroutine;
 			}
 		}
-		
+
+		public static void StartAllRoutines(Stack<IEnumerator> routines)
+		{
+			foreach (var routine in routines) StartRoutine(routine);
+		}
+
 		public static Coroutine StartRoutine (IEnumerator enumerator)
 		{
 			return Instance.StartCoroutine(enumerator);
