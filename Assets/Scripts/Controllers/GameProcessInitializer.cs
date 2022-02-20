@@ -5,7 +5,7 @@ namespace AsteroidS
         private readonly GameData _gameData;
         private readonly ControllersProxy _controllers;
         internal readonly SpaceObjectsController SpaceObjectsController;
-        internal readonly PlayerInstatiation PlayerInstance;
+        internal readonly PlayerInstantiation PlayerInstance;
         internal PlayerController PlayerController;
         
 

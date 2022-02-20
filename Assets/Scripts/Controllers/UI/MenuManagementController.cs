@@ -12,11 +12,11 @@ namespace AsteroidS
 
         public Action<GameState> MenuStateChangeAction;
 
-        public MenuManagementController(SceneData sceneData, UIComponentInitializer uIComponentInitializer)//, GameStateController gameStateController) 
+        public MenuManagementController(SceneData sceneData, UIComponentInitializer uIComponentInitializer)
         {
-            _mainMenuController = new MainMenuController(uIComponentInitializer.MainMenuView);//, gameStateController);
-            _settingsMenuController = new SettingsMenuController(uIComponentInitializer.SettingMenuView);//, gameStateController);
-            _deathScreenController = new DeathScreenController(uIComponentInitializer.DeathScreenView, sceneData.ThisSceneName);// gameStateController, );
+            _mainMenuController = new MainMenuController(uIComponentInitializer.MainMenuView);
+            _settingsMenuController = new SettingsMenuController(uIComponentInitializer.SettingMenuView);
+            _deathScreenController = new DeathScreenController(uIComponentInitializer.DeathScreenView, sceneData.ThisSceneName);
         }
 
         public void Initialize()

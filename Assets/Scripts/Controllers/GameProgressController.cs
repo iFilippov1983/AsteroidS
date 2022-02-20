@@ -15,10 +15,13 @@ namespace AsteroidS
         private float _levelDurationTimer = 0;
 
 
-        public GameProgressController(
+        public GameProgressController
+            (
             GameData gameData, 
             SpaceObjectsController spaceObjectsController,
-            ScoreCountController scoreCountController, GameStateController gameStateController)
+            ScoreCountController scoreCountController, 
+            GameStateController gameStateController
+            )
         {
             _gameData = gameData;
             _spaceObjectsController = spaceObjectsController;

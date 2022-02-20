@@ -12,6 +12,8 @@ namespace AsteroidS
         private readonly OnButtonEnterProxyController _onButtonEnterProxy;
         private readonly SpaceObjectsController _spaceObjectsController;
 
+        private readonly ISoundEventProxy _shotEventDefault;
+
         public AudioController(GameData gameData, MenuManagementController menuManagementsController, ShootingController shootingController, SpaceObjectsController spaceObjectsController, OnButtonEnterProxyController onButtonEnterProxy)
         {
             _audioSourceHandler = new AudioSourceHandler(gameData);
@@ -21,6 +23,8 @@ namespace AsteroidS
             _exposedAudioParameter = gameData.SoundData.ExposedAudioParameter;
             _spaceObjectsController = spaceObjectsController;
             _onButtonEnterProxy = onButtonEnterProxy;
+
+            _shotEventDefault = SoundInitializer.Instance.GetSoundEvents().shotEventDefault;
         } 
 
         public void Initialize()
@@ -28,8 +32,12 @@ namespace AsteroidS
             _audioSourceHandler.SetAudioSources();
             _audioSourceHandler.SetAudioClips();
             _audioSourceHandler.PlayBackgroundMusic();
+
             _settingsMenuController.OnSoundVolume += AudioGroupVolume;
-            _shootingController.OnShot += AudioShotWeaponSource;
+
+            //_shootingController.OnShot += AudioShotWeaponSource;
+            _shotEventDefault.OnSoundEvent += AudioShotWeaponSource;
+
             _spaceObjectsController.OnObjectDestroySound += AudioShotDestroy;
             _spaceObjectsController.OnObjectHitEvent += AudioShotHitsSource;
             _onButtonEnterProxy.OnButtonSelected += AudioButtonSelected;
@@ -38,7 +46,7 @@ namespace AsteroidS
         public void Cleanup()
         {
             _settingsMenuController.OnSoundVolume -= AudioGroupVolume;
-            _shootingController.OnShot -= AudioShotWeaponSource;
+            //_shootingController.OnShot -= AudioShotWeaponSource;
             _spaceObjectsController.OnObjectDestroySound -= AudioShotDestroy;
             _spaceObjectsController.OnObjectHitEvent -= AudioShotHitsSource;
             _onButtonEnterProxy.OnButtonSelected -= AudioButtonSelected;

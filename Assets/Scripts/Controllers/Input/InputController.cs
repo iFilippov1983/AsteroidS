@@ -1,6 +1,6 @@
 ﻿namespace AsteroidS
 {
-    public sealed class InputController : IExecute
+    public sealed class InputController
     {
         private readonly IUserInputProxy _horizontal;
         private readonly IUserInputProxy _vertical;
@@ -23,7 +23,7 @@
             _aim = inputInitializer.GetInput().inputAim;
         }
         
-        public void Execute(float deltaTime)
+        public void Execute()
         {
             _horizontal.GetAxis();
             _vertical.GetAxis();

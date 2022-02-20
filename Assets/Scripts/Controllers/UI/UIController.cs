@@ -11,7 +11,7 @@ namespace AsteroidS
         private UIComponentInitializer _uiComponentInitializer;
         private MenuManagementController _menuManagementController;
         private OnButtonEnterProxyController _onButtonEnterProxy;
-        private PlayerUIViewManager _playerHPManager;
+        //private PlayerUIViewManager _playerHPManager;
         private ScoreCountController _scoreCountController;
         private TimerController _timerController;
 
@@ -28,7 +28,7 @@ namespace AsteroidS
         {
             _uiInitializer = new UIInitializer(gameData);
             _uiComponentInitializer = new UIComponentInitializer(gameData.SceneData, _uiInitializer);
-            _menuManagementController = new MenuManagementController(gameData.SceneData, _uiComponentInitializer);//, _gameStateController);
+            _menuManagementController = new MenuManagementController(gameData.SceneData, _uiComponentInitializer);
             _onButtonEnterProxy = new OnButtonEnterProxyController(_uiComponentInitializer);
             //_playerHPManager = new PlayerUIViewManager(_uiComponentInitializer.PlayerUIView);//, _gameStateController);
             _scoreCountController = new ScoreCountController(gameData.UIData, _uiComponentInitializer.PlayerUIView);

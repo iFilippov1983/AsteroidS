@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Audio;
 
-namespace Assets.Scripts.Data
+namespace AsteroidS
 {
     [CreateAssetMenu(menuName = "GameData/SoundData", fileName = "SoundData")]
     public sealed class SoundData : ScriptableObject

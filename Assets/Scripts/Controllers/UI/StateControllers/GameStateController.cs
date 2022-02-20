@@ -31,7 +31,6 @@ namespace AsteroidS
 
         public void ChangeGameState(GameState gameState)
         {
-            Debug.Log(gameState);
             switch (gameState)
             {
                 case GameState.Start:
@@ -59,33 +58,5 @@ namespace AsteroidS
         {
             ChangeGameState(GameState.Pause);
         }
-
-       
-        //public void SetStartState()
-        //{
-        //    ChangeGameState(GameState.Start);
-        //}
-
-        //public void SetSettingsState()
-        //{
-        //    ChangeGameState(GameState.Settings);
-        //}
-
-        //public void SetDeathState()
-        //{
-        //    ChangeGameState(GameState.Death);
-        //}
-
-        //public void SetExitState()
-        //{
-        //    ChangeGameState(GameState.Exit);
-        //}
-
-        //public void SetDefaultState()
-        //{
-        //    ChangeGameState(GameState.Default);
-        //}
-
-
     }
 }

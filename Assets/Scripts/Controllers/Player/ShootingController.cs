@@ -27,12 +27,10 @@ namespace AsteroidS
 
         private bool _stackNotEmpty;
 
-        public event Action OnShot;
-
-        public ShootingController(GameData gameData, Transform player)
+        public ShootingController(PlayerData playerData, Transform player)
         {
             _player = player;
-            _playerData = gameData.PlayerData;
+            _playerData = playerData;
             
 
             _spawner = new AmmoSpawner(_playerData.AmmoPrefabsDictionary);
@@ -66,7 +64,7 @@ namespace AsteroidS
         public void Execute()
         {
             Vector3 position = Utilities.GetMouseWorldPosition();
-            Vector3 aimDir = (position - _player.localPosition).normalized;
+            Vector3 aimDir = (position - _player.localPosition);//.normalized;
 
             _fovHandler.SetAimDerection(aimDir);
             _fovHandler.SetOrigin(_playerGun.localPosition);
@@ -98,7 +96,8 @@ namespace AsteroidS
                 _ammoReloaded = false;
 
                 ShootPrimary(_playerGun);
-                OnShot?.Invoke();
+                SoundInitializer.Instance.GetSoundEvents().shotEventDefault.Invoke();
+
                 _coroutineTimer = CoroutinesController.StartRoutine(FireRateTimer(_reloadTime));
             }
         }
