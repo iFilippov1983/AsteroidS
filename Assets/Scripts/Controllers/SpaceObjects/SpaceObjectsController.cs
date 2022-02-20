@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 namespace AsteroidS
 {
-    public sealed class SpaceObjectsController : IInitialization, IExecute, IFixedExecute, ICleanup
+    public sealed class SpaceObjectsController : IInitialization, IExecute, IFixedExecute, ICleanup, ISoundEventSource
     {
         private GameProgressData _gameProgressData;
         private SpaceObjectsSpawner _spawner;
@@ -27,12 +27,14 @@ namespace AsteroidS
             _spawner = new SpaceObjectsSpawner(gameData);
             _objectDriver = new SpaceObjectDriver();
             _gameProgressData = gameData.GameProgressData;
+
+            SoundEventSourceOperator.Add(this);
         }
 
         public Action<SpaceObject> OnObjectDestroyEvent;
         public Action OnPlayerDamageEvent;
-        public Action<string> OnObjectHitEvent;
-        public Action<string> OnObjectDestroySound;
+
+        public event Action<SoundSource> OnSoundEvent;
 
         public void Initialize()
         {
@@ -110,14 +112,15 @@ namespace AsteroidS
         {
             if (spaceObject.HitPoints <= 0)
             {
+                OnSoundEvent?.Invoke(spaceObject.GetSoundSourceTypeOf(SoundType.Destroy));
+
                 TerminateLifeOf(spaceObject);
 
                 OnObjectDestroyEvent?.Invoke(spaceObject);
-                OnObjectDestroySound?.Invoke(spaceObject.tag);
             }
             else
             {
-                OnObjectHitEvent?.Invoke(spaceObject.tag);
+                OnSoundEvent?.Invoke(spaceObject.GetSoundSourceTypeOf(SoundType.Hit));
             }
         }
 

@@ -1,24 +1,27 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 
 namespace AsteroidS
 {
-    public sealed class SpaceObject : MonoBehaviour
+    public sealed class SpaceObject : MonoBehaviour, ISoundSource
     {
         private const string PropertiesPath = "SpaceObjectsProperties/";
 
         [SerializeField] private string _spaceObjectPropertiesPath;
-
+        [SerializeField] private List<SoundSource> _soundSources;
         private SpaceObjectProperties _spaceObjectProperties;
+        private SpriteRenderer _spriteRenderer;
         private int _hitPoints;
         private int _armorPoints;
-        private SpriteRenderer _spriteRenderer;
+        [HideInInspector] public float lifeTimeCounter = 0;
 
+        public List<SoundSource> SoundSources => _soundSources;
         public Sprite[] GetSprites => Properties.SpaceObjectSprites;
         public int HitPoints => _hitPoints;
         public int ArmorPoints => _armorPoints;
-        [HideInInspector] public float lifeTimeCounter = 0;
+        
 
         public SpaceObjectProperties Properties
         {
@@ -90,6 +93,11 @@ namespace AsteroidS
                 lifeTimeCounter = 0;
                 OnLifeTimeTermination?.Invoke(this);
             }
+        }
+
+        public SoundSource GetSoundSourceTypeOf(SoundType type)
+        {
+            return _soundSources.Find(ss => ss.type.Equals(type));
         }
     }
 }

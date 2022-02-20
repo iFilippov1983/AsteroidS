@@ -4,7 +4,7 @@
     {
         private readonly UIController _uiController;
         private readonly GameStateController _gameStateController;
-        private readonly SceneController _sceneController;
+        private readonly CameraController _sceneController;
         private readonly PlayerController _playerController;
         private readonly SpaceObjectsController _spaceObjectsController;
         private readonly GameProgressController _gameProgressController;
@@ -16,9 +16,9 @@
             _uiController = new UIController(gameData);
             _gameStateController = new GameStateController(_uiController.UIInitializer, _uiController.UIComponentInitializer);
             _playerController = new PlayerController(gameData.PlayerData);
-            _sceneController = new SceneController(gameData, _playerController.Player);
+            _sceneController = new CameraController(gameData, _playerController.Player);
             _gameProgressController = new GameProgressController(gameData, _spaceObjectsController, _uiController.ScoreCountController, _gameStateController);
-            _audioController = new AudioController(gameData, _uiController.MenuManagementController, _playerController.ShootingController, _spaceObjectsController, _uiController.OnButtonEnterProxy);
+            _audioController = new AudioController(gameData.SoundData, _uiController.MenuManagementController, _playerController.ShootingController, _spaceObjectsController, _uiController.OnButtonEnterProxy);
 
             controllers.Add(_uiController);
             controllers.Add(_sceneController);

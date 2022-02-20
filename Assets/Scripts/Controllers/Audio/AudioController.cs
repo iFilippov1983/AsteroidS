@@ -12,83 +12,107 @@ namespace AsteroidS
         private readonly OnButtonEnterProxyController _onButtonEnterProxy;
         private readonly SpaceObjectsController _spaceObjectsController;
 
+        
+
         private readonly ISoundEventProxy _shotEventDefault;
 
-        public AudioController(GameData gameData, MenuManagementController menuManagementsController, ShootingController shootingController, SpaceObjectsController spaceObjectsController, OnButtonEnterProxyController onButtonEnterProxy)
+        public AudioController(SoundData soundData, MenuManagementController menuManagementsController, ShootingController shootingController, SpaceObjectsController spaceObjectsController, OnButtonEnterProxyController onButtonEnterProxy)
         {
-            _audioSourceHandler = new AudioSourceHandler(gameData);
-            _audioMixer = gameData.SoundData.AudioMixer;
+            _audioSourceHandler = new AudioSourceHandler(soundData);
+            _audioMixer = soundData.AudioMixer;
             _settingsMenuController = menuManagementsController.SettingsMenuController;
             _shootingController = shootingController;
-            _exposedAudioParameter = gameData.SoundData.ExposedAudioParameter;
+            _exposedAudioParameter = soundData.ExposedAudioParameter;
             _spaceObjectsController = spaceObjectsController;
             _onButtonEnterProxy = onButtonEnterProxy;
+
+            
 
             _shotEventDefault = SoundInitializer.Instance.GetSoundEvents().shotEventDefault;
         } 
 
         public void Initialize()
         {
-            _audioSourceHandler.SetAudioSources();
-            _audioSourceHandler.SetAudioClips();
-            _audioSourceHandler.PlayBackgroundMusic();
+            //_audioSourceHandler.SetAudioSources();
+            //_audioSourceHandler.SetAudioClips();
+            //_audioSourceHandler.PlayBackgroundMusic();
 
-            _settingsMenuController.OnSoundVolume += AudioGroupVolume;
+            //_settingsMenuController.OnSoundVolume += AudioGroupVolume;
 
-            //_shootingController.OnShot += AudioShotWeaponSource;
-            _shotEventDefault.OnSoundEvent += AudioShotWeaponSource;
+            ////_shootingController.OnShot += AudioShotWeaponSource;
+            //_shotEventDefault.OnSoundEvent += AudioShotWeaponSource;
 
-            _spaceObjectsController.OnObjectDestroySound += AudioShotDestroy;
-            _spaceObjectsController.OnObjectHitEvent += AudioShotHitsSource;
-            _onButtonEnterProxy.OnButtonSelected += AudioButtonSelected;
+            //_spaceObjectsController.OnObjectDestroySound += AudioShotDestroy;
+            //_spaceObjectsController.OnObjectHitEvent += AudioShotHitsSource;
+            //_onButtonEnterProxy.OnButtonSelected += AudioButtonSelected;
+
+            Subscribe();
         }
 
         public void Cleanup()
         {
-            _settingsMenuController.OnSoundVolume -= AudioGroupVolume;
-            //_shootingController.OnShot -= AudioShotWeaponSource;
-            _spaceObjectsController.OnObjectDestroySound -= AudioShotDestroy;
-            _spaceObjectsController.OnObjectHitEvent -= AudioShotHitsSource;
-            _onButtonEnterProxy.OnButtonSelected -= AudioButtonSelected;
+            //_settingsMenuController.OnSoundVolume -= AudioGroupVolume;
+            ////_shootingController.OnShot -= AudioShotWeaponSource;
+            //_spaceObjectsController.OnObjectDestroySound -= AudioShotDestroy;
+            //_spaceObjectsController.OnObjectHitEvent -= AudioShotHitsSource;
+            //_onButtonEnterProxy.OnButtonSelected -= AudioButtonSelected;
+
+            UnSubscribe();
         }
 
-        private void AudioButtonSelected()
+        private void Subscribe()
         {
-            _audioSourceHandler.PlayOneButtonSource();
+            foreach (var s in SoundEventSourceOperator.GetSources())
+            {
+                s.OnSoundEvent += _audioSourceHandler.Play;
+            }
         }
 
-        private void AudioShotWeaponSource()
+        private void UnSubscribe()
         {
-            _audioSourceHandler.PlayOneShotShotWeaponSource();
+            foreach (var s in SoundEventSourceOperator.GetSources())
+            {
+                s.OnSoundEvent -= _audioSourceHandler.Play;
+            }
         }
+
+        //private void AudioButtonSelected()
+        //{
+        //    _audioSourceHandler.PlayOneButtonSource();
+        //}
+
+        //private void AudioShotWeaponSource()
+        //{
+        //    _audioSourceHandler.PlayOneShotShotWeaponSource();
+        //}
 
         private void AudioGroupVolume(float volume)
         {
             _audioMixer.SetFloat(_exposedAudioParameter, volume);
         }
 
-        private void AudioShotHitsSource(string tag)
-        {
-            if (tag.Equals(TagOrName.Ship))
-            {
-                _audioSourceHandler.PlayOneArmorHitsSource();
-            }
-            else
-            {
-                _audioSourceHandler.PlayOneAsteroidHitsSource();
-            }
-        }
+        //private void AudioShotHitsSource(string tag)
+        //{
+        //    if (tag.Equals(TagOrName.Ship))
+        //    {
+        //        _audioSourceHandler.PlayOneArmorHitsSource();
+        //    }
+        //    else
+        //    {
+        //        _audioSourceHandler.PlayOneAsteroidHitsSource();
+        //    }
+        //}
 
-        private void AudioShotDestroy(string tag)
-        {
-            if (tag.Equals(TagOrName.Ship))
-            {
-                _audioSourceHandler.PlayOneShipExplosionSource();
-            }
-            else
-            {
-                _audioSourceHandler.PlayOneAsteroidExplosionSource();
-            }
-        }
+        //private void AudioShotDestroy(string tag)
+        //{
+        //    if (tag.Equals(TagOrName.Ship))
+        //    {
+        //        _audioSourceHandler.PlayOneShipExplosionSource();
+        //    }
+        //    else
+        //    {
+        //        _audioSourceHandler.PlayOneAsteroidExplosionSource();
+        //    }
+        //}
     }
 }

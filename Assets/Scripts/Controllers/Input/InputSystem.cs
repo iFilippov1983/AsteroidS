@@ -83,12 +83,6 @@ namespace AsteroidS
             _aimInput.OnAxisChange -= OnAiming;
         }
 
-        public void HandleEscapeButton()
-        {
-            if (_cancel == 0) return;
-            EscapePressed?.Invoke();
-        }
-
         private void OnVerticalAxisChange(float value)
         {
             _vertical = value;

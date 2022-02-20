@@ -7,7 +7,7 @@ using Object = UnityEngine.Object;
 
 namespace AsteroidS
 {
-    public sealed class ShootingController
+    public sealed class ShootingController : ISoundEventSource
     {
         private readonly PlayerData _playerData;
         private readonly Transform _player;
@@ -35,7 +35,11 @@ namespace AsteroidS
 
             _spawner = new AmmoSpawner(_playerData.AmmoPrefabsDictionary);
             _ammoDriver = new AmmoDriver();
+
+            SoundEventSourceOperator.Add(this);
         }
+
+        public event Action<SoundSource> OnSoundEvent;
 
         public void Initialize()
         {
@@ -94,10 +98,7 @@ namespace AsteroidS
             if (_ammoReloaded && _stackNotEmpty)
             {
                 _ammoReloaded = false;
-
                 ShootPrimary(_playerGun);
-                SoundInitializer.Instance.GetSoundEvents().shotEventDefault.Invoke();
-
                 _coroutineTimer = CoroutinesController.StartRoutine(FireRateTimer(_reloadTime));
             }
         }
@@ -114,6 +115,7 @@ namespace AsteroidS
         {
             var ammo = _ammoPool[_currentAmmoType].Pop();
             _ammoDriver.Drive(ammo, transform);
+            OnSoundEvent?.Invoke(ammo.GetSoundSourceTypeOf(SoundType.Shoot));
         }
 
         private void SubscribeToEvents(Dictionary<AmmoType, Stack<Ammo>> keyValuePair)

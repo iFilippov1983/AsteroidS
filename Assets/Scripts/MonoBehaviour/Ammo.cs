@@ -1,14 +1,16 @@
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace AsteroidS
 {
-    public sealed class Ammo : MonoBehaviour
+    public sealed class Ammo : MonoBehaviour, ISoundSource
     {
         private const string AmmoPropertiesPath = "AmmoProperties/";
 
         [SerializeField] private string _ammoPropertiesPath;
-        
+        [SerializeField] private List<SoundSource> _soundSources;
+
         private AmmoProperties _ammoProperties;
         private float _lifeTimeCounter;
         private SpriteRenderer _renderer;
@@ -74,6 +76,11 @@ namespace AsteroidS
                 _lifeTimeCounter = 0;
                 LifeTerminationEvent?.Invoke(this);
             }
+        }
+
+        public SoundSource GetSoundSourceTypeOf(SoundType type)
+        {
+            return _soundSources.Find(ss => ss.type.Equals(type)); ;
         }
 
         //IEnumerator LifeTimer(float timeInSec)

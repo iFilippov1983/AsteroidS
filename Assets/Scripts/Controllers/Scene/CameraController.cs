@@ -2,7 +2,7 @@
 
 namespace AsteroidS
 {
-    public sealed class SceneController : IInitialization, IExecute, IFixedExecute, ILateExecute
+    public sealed class CameraController : IInitialization, IExecute, IFixedExecute, ILateExecute
     {
         private readonly SceneData _sceneData;
         private readonly BackgroundInitializer _backgroundInitializer;
@@ -15,7 +15,7 @@ namespace AsteroidS
         private float _cameraSizeMin;
         private float _cameraSizeMax;
 
-        public SceneController(GameData gameData, Transform transformToFollow)
+        public CameraController(GameData gameData, Transform transformToFollow)
         {
             _sceneData = gameData.SceneData;
             _transformToFollow = transformToFollow;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace AsteroidS
@@ -12,6 +13,8 @@ namespace AsteroidS
         private readonly ShootingController _shooting;
         private readonly PlayerMover _mover;
         private readonly InputSystem _inputSystem;
+
+        private List<ISoundEventSource> _soundEventSources;
 
         private readonly float _moveSpeed;
         private readonly float _rotationSpeed;
@@ -47,7 +50,7 @@ namespace AsteroidS
 
         public void FixedExecute()
         {
-            _inputSystem.HandleEscapeButton();
+            HandleEscapeButton();
 
             _mover.Move(_inputSystem.Vertical, _playerRB, _moveSpeed);
             _mover.Rotate(_inputSystem.Horizontal, _playerRB, _rotationSpeed);

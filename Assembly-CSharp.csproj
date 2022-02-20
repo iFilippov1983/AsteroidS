@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\MonoBehaviour\Ammo.cs" />
     <Compile Include="Assets\Scripts\Data\PlayerData.cs" />
     <Compile Include="Assets\Scripts\Data\GameData.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Input\InputSystem.cs" />
     <Compile Include="Assets\Scripts\MonoBehaviour\UIView\DeathScreenView.cs" />
     <Compile Include="Assets\Scripts\Controllers\Audio\AudioSourceHandler.cs" />
     <Compile Include="Assets\Scripts\Data\Input\PCInputStrafe.cs" />
@@ -116,7 +117,7 @@
     <Compile Include="Assets\Scripts\Data\Hanlers\InputName.cs" />
     <Compile Include="Assets\Scripts\Controllers\Player\PlayerMover.cs" />
     <Compile Include="Assets\Scripts\Controllers\UI\ScreenControllers\DeathScreenController.cs" />
-    <Compile Include="Assets\Scripts\Controllers\Scene\SceneController.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Scene\CameraController.cs" />
     <Compile Include="Assets\Scripts\Data\Input\AndroidInput\AndroidInputProxy.cs" />
     <Compile Include="Assets\Scripts\CustomTools\FunctionTimer.cs" />
     <Compile Include="Assets\Scripts\Interface\IController.cs" />
@@ -162,7 +163,11 @@
     <Compile Include="Assets\Scripts\Data\Hanlers\UIObjectName.cs" />
     <Compile Include="Assets\Scripts\CustomTools\FunctionPeriodic.cs" />
     <Compile Include="Assets\Scripts\Controllers\UI\TimerController.cs" />
-    <Compile Include="Assets\Scripts\Controllers\Input\InputSystem.cs" />
+    <Compile Include="Assets\Scripts\Data\Enum\SoundType.cs" />
+    <Compile Include="Assets\Scripts\Interface\ISoundEventSource.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Audio\SoundEventSourceOperator.cs" />
+    <Compile Include="Assets\Scripts\Interface\ISoundSource.cs" />
+    <Compile Include="Assets\Scripts\Controllers\Audio\SoundSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
