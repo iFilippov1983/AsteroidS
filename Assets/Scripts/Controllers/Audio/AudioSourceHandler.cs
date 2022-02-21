@@ -71,19 +71,16 @@ namespace AsteroidS
         }
 
         private async void AudioSourceRemoveManager()
-        {
-            while(true)
+        { 
+            for (var i = 0; i < _audioSourcesList.Count; i++)
             {
-                for (var i = 0; i < _audioSourcesList.Count; i++)
-                {
-                    var source = _audioSourcesList[i];
-                    if (source.isPlaying) continue;
-                    Debug.Log($"{source.isPlaying} {_audioSourcesList.Count}");
-                    Object.Destroy(source);
-                    _audioSourcesList.Remove(source);
-                }
-                await Task.Yield();
+                var source = _audioSourcesList[i];
+                if (source.isPlaying) continue;
+                Debug.Log($"{source.isPlaying} {_audioSourcesList.Count}");
+                Object.Destroy(source);
+                _audioSourcesList.Remove(source);
             }
+            await Task.Yield();
         }
 
         private IEnumerator PlaySoundRoutine(AudioSource source)
