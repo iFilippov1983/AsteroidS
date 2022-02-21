@@ -60,14 +60,19 @@ namespace AsteroidS
 
         public void Play(SoundSource source)
         {
-            var audioSource = _audioPlayer.AddComponent<AudioSource>();
-            audioSource.clip = source.source.clip;
-            audioSource.Play();
-            _audioSourcesList.Add(audioSource);
+            AudioSourceAddAndPlayManger(source);
             AudioSourceRemoveManager();
             /*_audioSources.Push(audioSource);
             _playSound = CoroutinesController.StartRoutine(PlaySoundRoutine(audioSource));
             _coroutines.Push(_playSound);*/
+        }
+
+        private void AudioSourceAddAndPlayManger(SoundSource source)
+        {
+            var audioSource = _audioPlayer.AddComponent<AudioSource>();
+            audioSource.clip = source.source.clip;
+            audioSource.Play();
+            _audioSourcesList.Add(audioSource);
         }
 
         private async void AudioSourceRemoveManager()
