@@ -32,6 +32,7 @@ namespace AsteroidS
         private GameObject _audioPlayer;
         private Stack<AudioSource> _audioSources;
         private Stack<Coroutine> _coroutines;
+        private List<AudioSource> _audioSourcesList;
 
         private Coroutine _playSound;
 
@@ -54,15 +55,35 @@ namespace AsteroidS
             _audioPlayer = new GameObject("AudioPlayer");
             _audioSources = new Stack<AudioSource>();
             _coroutines = new Stack<Coroutine>();
+            _audioSourcesList = new List<AudioSource>();
         }
 
         public void Play(SoundSource source)
         {
             var audioSource = _audioPlayer.AddComponent<AudioSource>();
             audioSource.clip = source.source.clip;
-            _audioSources.Push(audioSource);
+            audioSource.Play();
+            _audioSourcesList.Add(audioSource);
+            AudioSourceRemoveManager();
+            /*_audioSources.Push(audioSource);
             _playSound = CoroutinesController.StartRoutine(PlaySoundRoutine(audioSource));
-            _coroutines.Push(_playSound);
+            _coroutines.Push(_playSound);*/
+        }
+
+        private async void AudioSourceRemoveManager()
+        {
+            while(true)
+            {
+                for (var i = 0; i < _audioSourcesList.Count; i++)
+                {
+                    var source = _audioSourcesList[i];
+                    if (source.isPlaying) continue;
+                    Debug.Log($"{source.isPlaying} {_audioSourcesList.Count}");
+                    Object.Destroy(source);
+                    _audioSourcesList.Remove(source);
+                }
+                await Task.Yield();
+            }
         }
 
         private IEnumerator PlaySoundRoutine(AudioSource source)
