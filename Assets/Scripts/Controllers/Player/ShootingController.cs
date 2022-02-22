@@ -68,7 +68,7 @@ namespace AsteroidS
         public void Execute()
         {
             Vector3 position = Utilities.GetMouseWorldPosition();
-            Vector3 aimDir = (position - _player.localPosition);//.normalized;
+            Vector3 aimDir = (position - _player.localPosition);
 
             _fovHandler.SetAimDerection(aimDir);
             _fovHandler.SetOrigin(_playerGun.localPosition);

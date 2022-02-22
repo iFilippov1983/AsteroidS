@@ -1,7 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace AsteroidS
 {
@@ -10,18 +7,16 @@ namespace AsteroidS
         private UIInitializer _uiInitializer;
         private UIComponentInitializer _uiComponentInitializer;
         private MenuManagementController _menuManagementController;
-        private OnButtonEnterProxyController _onButtonEnterProxy;
+        private MenuViewHandler _menuViewHandler;
         //private PlayerUIViewManager _playerHPManager;
         private ScoreCountController _scoreCountController;
         private TimerController _timerController;
 
         public UIInitializer UIInitializer => _uiInitializer;
         public UIComponentInitializer UIComponentInitializer => _uiComponentInitializer;
-        public MenuManagementController MenuManagementController => _menuManagementController;
-        public OnButtonEnterProxyController OnButtonEnterProxy => _onButtonEnterProxy;
         public ScoreCountController ScoreCountController => _scoreCountController;
 
-        public Action<int> PlayerHPChanged;//!!!!!!!
+        //public Action<int> PlayerHPChanged;//!!!!!!!
         public Action<GameState> GameStateChangeAction;
 
         public UIController(GameData gameData)
@@ -29,9 +24,9 @@ namespace AsteroidS
             _uiInitializer = new UIInitializer(gameData);
             _uiComponentInitializer = new UIComponentInitializer(gameData.SceneData, _uiInitializer);
             _menuManagementController = new MenuManagementController(gameData.SceneData, _uiComponentInitializer);
-            _onButtonEnterProxy = new OnButtonEnterProxyController(_uiComponentInitializer);
+            _menuViewHandler = new MenuViewHandler(_uiComponentInitializer);
             //_playerHPManager = new PlayerUIViewManager(_uiComponentInitializer.PlayerUIView);//, _gameStateController);
-            _scoreCountController = new ScoreCountController(gameData.UIData, _uiComponentInitializer.PlayerUIView);
+            _scoreCountController = new ScoreCountController(gameData.UIData, _uiComponentInitializer.PlayerUIView.ScoreCount);
             _timerController = new TimerController(gameData, _uiComponentInitializer);
         }
 
@@ -39,8 +34,7 @@ namespace AsteroidS
         {
             _uiComponentInitializer.Initialize();
             _menuManagementController.Initialize();
-            _onButtonEnterProxy.Initialize();
-            _scoreCountController.Initialize();
+            _menuViewHandler.Initialize();
             _timerController.Initialize();
 
             _menuManagementController.MenuStateChangeAction += MenuStateChanged;
@@ -55,7 +49,7 @@ namespace AsteroidS
         public void Cleanup()
         {
             _menuManagementController.Cleanup();
-            _onButtonEnterProxy.Cleanup();
+            _menuViewHandler.Cleanup();
 
             _menuManagementController.MenuStateChangeAction -= MenuStateChanged;
         }
