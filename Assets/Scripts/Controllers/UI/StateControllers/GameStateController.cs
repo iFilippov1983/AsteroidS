@@ -1,7 +1,4 @@
-﻿using UnityEditor;
-using UnityEngine;
-
-namespace AsteroidS
+﻿namespace AsteroidS
 {
     public sealed class GameStateController:IInitialization
     {
@@ -10,9 +7,6 @@ namespace AsteroidS
         private readonly SettingsStateController _settingsStateController;
         private readonly DeathStateController _deathStateController;
         private readonly ExitStateController _exitStateController;
-
-        private GameState _currentGameState;
-        private GameState _previousGameState;
 
         public GameStateController(UIInitializer uiInitializer, UIComponentInitializer uiComponentInitializer)
         {

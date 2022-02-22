@@ -55,7 +55,6 @@ namespace AsteroidS
         private void ChangeStateToStart()
         {
             StateChanged?.Invoke(GameState.Start);
-            //_gameStateController.ChangeGameState(GameState.Start);
         }
 
         private void ChangeStateToSettings() 

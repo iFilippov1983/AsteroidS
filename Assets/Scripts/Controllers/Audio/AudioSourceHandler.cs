@@ -30,11 +30,8 @@ namespace AsteroidS
         //private readonly AudioMixerGroup _audioMixerGroupEffects;
         //private readonly GameObject _parent;
         private GameObject _audioPlayer;
-        private Stack<AudioSource> _audioSources;
-        private Stack<Coroutine> _coroutines;
         private List<AudioSource> _audioSourcesList;
 
-        private Coroutine _playSound;
 
         public AudioSourceHandler(SoundData soundData)
         {
@@ -53,18 +50,13 @@ namespace AsteroidS
             //_clips = soundData.SoundSources;
             //_source = _parent.AddComponent<AudioSource>();
             _audioPlayer = new GameObject("AudioPlayer");
-            _audioSources = new Stack<AudioSource>();
-            _coroutines = new Stack<Coroutine>();
             _audioSourcesList = new List<AudioSource>();
+            AudioSourceRemoveManager();
         }
 
         public void Play(SoundSource source)
         {
             AudioSourceAddAndPlayManger(source);
-            AudioSourceRemoveManager();
-            /*_audioSources.Push(audioSource);
-            _playSound = CoroutinesController.StartRoutine(PlaySoundRoutine(audioSource));
-            _coroutines.Push(_playSound);*/
         }
 
         private void AudioSourceAddAndPlayManger(SoundSource source)
@@ -91,21 +83,6 @@ namespace AsteroidS
             }
         }
 
-        private IEnumerator PlaySoundRoutine(AudioSource source)
-        {
-            source.Play();  
-            yield return new WaitWhile(() => source.isPlaying);
-            foreach (var coroutine in _coroutines)
-            {
-                CoroutinesController.StopRoutine(coroutine);
-            }
-            foreach (var audioSource in _audioSources)
-            {
-                Object.Destroy(audioSource);
-            }
-            _coroutines.Clear();
-            _audioSources.Clear();
-        }
 
         public void SetAudioSources()
         {

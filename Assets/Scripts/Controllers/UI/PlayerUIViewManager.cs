@@ -7,18 +7,14 @@ namespace AsteroidS
     public sealed class PlayerUIViewManager : IInitialization, ICleanup
     {
         private readonly List<GameObject> _playerHPList;
-        //private readonly GameStateController _gameStateController;
-        //private readonly SpaceObjectsController _spaceObjectsController;
         private readonly Stack<GameObject> _activeHP;
         private readonly Stack<GameObject> _deactivatedHP;
 
         //public Action PlayerIsDead;
 
-        public PlayerUIViewManager(PlayerUIView playerUiView)//, GameStateController gameStateController)
+        public PlayerUIViewManager(PlayerUIView playerUiView)
         {
             _playerHPList = playerUiView.PlayerHPList;
-            //_gameStateController = gameStateController;
-            //_spaceObjectsController = spaceObjectsController;
             _activeHP = new Stack<GameObject>();
             _deactivatedHP = new Stack<GameObject>();
         }

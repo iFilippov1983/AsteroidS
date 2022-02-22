@@ -56,7 +56,6 @@
      <Compile Include="Assets\Scripts\Data\Input\PCInputVertical.cs" />
      <Compile Include="Assets\Scripts\Data\Enum\SpaceObjectName.cs" />
      <Compile Include="Assets\Scripts\Data\UIData.cs" />
-     <Compile Include="Assets\Scripts\Controllers\UI\AndroidPLayerUIController.cs" />
      <Compile Include="Assets\Scripts\Data\Input\PCInputPrimaryFire.cs" />
      <Compile Include="Assets\Scripts\Data\Input\PCInputSwitch.cs" />
      <Compile Include="Assets\Scripts\Data\Sound\SoundData.cs" />
@@ -163,6 +162,7 @@
      <Compile Include="Assets\Scripts\Interface\ISoundSource.cs" />
      <Compile Include="Assets\Scripts\Data\Hanlers\UIObjectName.cs" />
      <Compile Include="Assets\Scripts\CustomTools\FunctionPeriodic.cs" />
+     <Compile Include="Assets\Scripts\Controllers\UI\StateControllers\UIConfigurator.cs" />
      <Compile Include="Assets\Scripts\Controllers\UI\TimerController.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />

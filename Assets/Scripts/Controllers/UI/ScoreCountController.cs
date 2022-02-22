@@ -14,14 +14,12 @@ namespace AsteroidS
         public ScoreCountController(UIData uiData, PlayerUIView playerUIView)
         {
             _playerUIView = playerUIView;
-            //_uiObjectGetter = uiObjectGetter;
             _message = uiData.ScoreMessage;
             _score = uiData.ScoreHolder;
         }
 
         public void Initialize()
         {
-            //_playerUIView = _uiObjectGetter.PlayerUIView;
             _scoreDisplay = _playerUIView.ScoreCount;
         }
 
