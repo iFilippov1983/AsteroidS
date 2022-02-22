@@ -2,18 +2,19 @@
 
 namespace AsteroidS
 {
-    public sealed class OnButtonEnterProxyController : IInitialization, ICleanup
+    public sealed class MenuViewHandler : IInitialization, ICleanup, ISoundEventSource
     {
         private readonly UIComponentInitializer _uiComponentInitializer;
         private MainMenuView _mainMenuView;
         private DeathScreenView _deathScreenView;
         private SettingMenuView _settingMenuView;
 
-        public event Action OnButtonSelected;
+        public event Action<SoundSource> OnSoundEvent;
 
-        public OnButtonEnterProxyController(UIComponentInitializer uiComponentInitializer)
+        public MenuViewHandler(UIComponentInitializer uiComponentInitializer)
         {
             _uiComponentInitializer = uiComponentInitializer;
+            SoundEventSourceOperator.Add(this);
         }
 
         public void Initialize()
@@ -48,9 +49,9 @@ namespace AsteroidS
             _deathScreenView.OnButtonEnter -= ButtonSelected;
         }
 
-        private void ButtonSelected()
+        private void ButtonSelected(ISoundSource source)
         {
-            OnButtonSelected?.Invoke();
+            OnSoundEvent?.Invoke(source.GetSoundSourceTypeOf(SoundType.ButtonEnter));
         }
     }
 }

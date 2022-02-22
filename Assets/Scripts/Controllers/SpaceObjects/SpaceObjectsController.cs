@@ -33,7 +33,6 @@ namespace AsteroidS
 
         public Action<SpaceObject> OnObjectDestroyEvent;
         public Action OnPlayerDamageEvent;
-
         public event Action<SoundSource> OnSoundEvent;
 
         public void Initialize()
@@ -72,7 +71,7 @@ namespace AsteroidS
 
         private void SpawnObjects()
         {
-            if (_timeCounter >= _spawnRate && !_levelTransition)
+            if (_timeCounter >= _spawnRate && !_levelTransition && _soPassive.Count != 0)
             {
                 _timeCounter = 0;
 

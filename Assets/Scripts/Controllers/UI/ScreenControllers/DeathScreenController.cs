@@ -6,27 +6,20 @@ namespace AsteroidS
     public sealed class DeathScreenController : MenuStateController
     {
         private readonly string _thisSceneName;
-        //private readonly UIComponentInitializer _uiComponentInitializer;
-        //private readonly GameStateController _gameStateController;
         private DeathScreenView _deathScreenView;
 
         private Button _continueButton;
         private Button _restartButton;
         private Button _mainMenuButton;
 
-        //public DeathScreenController(UIComponentInitializer uiComponentInitializer, string sceneName)
-        //    : base(uiComponentInitializer) //GameStateController gameStateController, )
         public DeathScreenController(DeathScreenView deathScreenView, string sceneName)
         {
             _deathScreenView = deathScreenView;
             _thisSceneName = sceneName;
-            //_uiComponentInitializer = uiComponentInitializer;
-            //_gameStateController = gameStateController;
         }
 
         public override void Initialize()
         {
-            //_deathScreenView = _uiComponentInitializer.DeathScreenView;
             GetUIComponents();
             AddListenersToComponents();
             ToMainMenu();
@@ -61,7 +54,6 @@ namespace AsteroidS
         private void ContinueGame()
         {
             StateChanged?.Invoke(GameState.Start);
-            //_gameStateController.ChangeGameState(GameState.Start);
         }
 
         private void ResetGame()
@@ -72,7 +64,6 @@ namespace AsteroidS
         private void ToMainMenu()
         {
             StateChanged?.Invoke(GameState.Default);
-            //_gameStateController.ChangeGameState(GameState.Default);
         }
     }
 }

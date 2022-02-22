@@ -18,7 +18,7 @@
             _playerController = new PlayerController(gameData.PlayerData);
             _sceneController = new CameraController(gameData, _playerController.Player);
             _gameProgressController = new GameProgressController(gameData, _spaceObjectsController, _uiController.ScoreCountController, _gameStateController);
-            _audioController = new AudioController(gameData.SoundData, _uiController.MenuManagementController, _playerController.ShootingController, _spaceObjectsController, _uiController.OnButtonEnterProxy);
+            _audioController = new AudioController(gameData.SoundData);
 
             controllers.Add(_uiController);
             controllers.Add(_sceneController);

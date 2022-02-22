@@ -7,25 +7,18 @@ namespace AsteroidS
 {
     public sealed class SettingsMenuController: MenuStateController
     {
-        //private readonly GameStateController _gameStateController;
         private SettingMenuView _settingMenuView;
 
         private Button _backButton;
         private Slider _volumeSlider;
-        private DropdownMenu _graphicsDropdown;
-        //private UIComponentInitializer _uiComponentInitializer;
+        //private DropdownMenu _graphicsDropdown;
 
         public event Action<float> OnSoundVolume;
         public event Action<int> OnGraphicsChange;
 
-        //public SettingsMenuController (UIComponentInitializer uiComponentInitializer)
-        //    : base(uiComponentInitializer) //, GameStateController gameStateController)
         public SettingsMenuController(SettingMenuView settingMenuView)
         {
             _settingMenuView = settingMenuView;
-            //_settingMenuView = _uiComponentInitializer.SettingMenuView;
-            //_gameStateController = gameStateController;
-            //_uiComponentInitializer = uiComponentInitializer;
         }
         public override void Initialize()
         {
@@ -42,14 +35,13 @@ namespace AsteroidS
         {
             _backButton = _settingMenuView.BackButton;
             _volumeSlider = _settingMenuView.VolumeSlider;
-            _graphicsDropdown = _settingMenuView.GraphicsDropdown;
+            //_graphicsDropdown = _settingMenuView.GraphicsDropdown;
         }
 
         private void AddListenersToComponents()
         {
             _backButton.onClick.AddListener(GoBackToMainMenu);
             _volumeSlider.onValueChanged.AddListener(ChangeVolumeLevel);
-            //_screenResolutoionDropDown.onValueChanged.AddListener(ChangeGraphicsPreset);
         }
 
         private void RemoveListenersFromComponents()
@@ -61,7 +53,6 @@ namespace AsteroidS
         private void GoBackToMainMenu()
         {
             StateChanged?.Invoke(GameState.Default);
-            //_gameStateController.ChangeGameState(GameState.Default);
         }
 
         private void ChangeVolumeLevel(float value)
